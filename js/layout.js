@@ -15,21 +15,17 @@ const HEADER_HTML = `
 </div>
 <header class="site-header">
   <div class="container">
-    <a href="index.html" class="logo">Furnecia</a>
-    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
     <nav class="main-nav">
-      <a href="index.html">Home</a>
       <a href="shop.html?cat=Sofa%20Beds">Sofa Beds</a>
       <a href="shop.html?cat=Corner%20Sofas">Corner Sofas</a>
       <a href="shop.html?cat=Wardrobes">Wardrobes</a>
-      <a href="shop.html?cat=Beds%20%26%20Mattresses">Beds &amp; Mattresses</a>
-      <a href="shop.html?cat=Outdoor%20Furniture">Outdoor</a>
       <a href="shop.html">All Products</a>
       <a href="finance.html" class="nav-finance">Finance</a>
-      <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <a href="index.html" class="logo">Furnecia</a>
     <div class="header-actions">
+      <button class="nav-toggle" aria-label="Menu">&#9776;</button>
       <a href="cart.html" class="cart-link">Cart (<span data-cart-count>0</span>)</a>
     </div>
   </div>

@@ -16,7 +16,7 @@ function imgFallbackAttr() {
 
 function productCardHTML(p) {
   const onSale = p.sale && p.compareAtPrice;
-  const badge = onSale ? `<span class="product-card-badge">-${discountPercent(p)}%</span>` : "";
+  const badge = onSale ? `<span class="product-card-badge">Save ${discountPercent(p)}%</span>` : "";
   const wasPrice = onSale ? `<span class="product-card-was">${formatPrice(p.compareAtPrice)}</span>` : "";
   return `
     <a href="product.html?handle=${encodeURIComponent(p.handle)}" class="product-card">
@@ -44,7 +44,7 @@ function dealCardHTML(p) {
         <div class="deal-price-row">
           <span class="deal-price-now">${formatPrice(p.price)}</span>
           <span class="deal-price-was">${formatPrice(p.compareAtPrice)}</span>
-          <span class="deal-off">-${discountPercent(p)}%</span>
+          <span class="deal-off">Save ${discountPercent(p)}%</span>
         </div>
       </div>
     </a>
@@ -57,7 +57,7 @@ function renderDealsStrip(targetId) {
   const deals = saleProducts().slice(0, 14);
   if (!deals.length) { el.style.display = "none"; return; }
   el.innerHTML = `
-    <div class="deals-strip-label">🔥 Limited-Time Deals</div>
+    <div class="deals-strip-label"><span class="eyebrow">While Stock Lasts</span></div>
     <div class="deals-track-wrap">
       <div class="deals-track">${deals.map(dealCardHTML).join("")}</div>
     </div>
@@ -89,11 +89,7 @@ function initChatBubble() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  const toggle = document.querySelector(".nav-toggle");
-  const menu = document.querySelector(".main-nav");
-  if (toggle && menu) {
-    toggle.addEventListener("click", () => menu.classList.toggle("open"));
-  }
+  // nav-toggle click handling lives in layout.js (it owns the injected header)
 
   document.querySelectorAll("[data-wa-link]").forEach(el => {
     const msg = el.getAttribute("data-wa-link") || "Hi Furnecia, I'd like to ask about one of your products.";
