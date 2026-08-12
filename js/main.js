@@ -54,7 +54,7 @@ function dealCardHTML(p) {
 function renderDealsStrip(targetId) {
   const el = document.getElementById(targetId);
   if (!el) return;
-  const deals = saleProducts();
+  const deals = saleProducts().slice(0, 14);
   if (!deals.length) { el.style.display = "none"; return; }
   el.innerHTML = `
     <div class="deals-strip-label">🔥 Limited-Time Deals</div>

@@ -26,7 +26,11 @@
 
 <div class="shop-layout">
   <div class="filter-bar" id="filter-bar"></div>
+  <p id="results-count" style="font-size:13px;color:var(--text-muted);margin:0 0 16px;"></p>
   <div class="product-grid" id="shop-grid"></div>
+  <div style="text-align:center;margin-top:32px;">
+    <button class="btn btn-secondary" id="load-more-btn" style="display:none;">Load More</button>
+  </div>
 </div>
 
 <div id="site-footer"></div>
@@ -41,31 +45,48 @@
   let activeCat = params.get("cat") || "All";
   const searchQ = (params.get("q") || "").toLowerCase();
   const maxPrice = params.get("max") ? Number(params.get("max")) : null;
+  const PAGE_SIZE = 24;
+  let visibleCount = PAGE_SIZE;
 
-  function render() {
-    const filterBar = document.getElementById("filter-bar");
-    const cats = ["All", "Sale", ...CATEGORIES];
-    filterBar.innerHTML = cats.map(c =>
-      `<button class="filter-btn ${c === activeCat ? "active" : ""}" data-cat="${c}">${c}</button>`
-    ).join("");
-    filterBar.querySelectorAll(".filter-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        activeCat = btn.getAttribute("data-cat");
-        render();
-      });
-    });
-
+  function currentItems() {
     let items = PRODUCTS;
     if (activeCat === "Sale") items = items.filter(p => p.sale);
     else if (activeCat !== "All") items = items.filter(p => p.category === activeCat);
     if (searchQ) items = items.filter(p => p.title.toLowerCase().includes(searchQ) || p.category.toLowerCase().includes(searchQ));
     if (maxPrice) items = items.filter(p => p.price <= maxPrice);
+    return items;
+  }
+
+  function render() {
+    const filterBar = document.getElementById("filter-bar");
+    const cats = ["All", "Sale", ...CATEGORIES];
+    filterBar.innerHTML = cats.map(c =>
+      `<button class="filter-btn ${c === activeCat ? "active" : ""}" data-cat="${c}">${c} (${c === "All" ? PRODUCTS.length : c === "Sale" ? PRODUCTS.filter(p => p.sale).length : PRODUCTS.filter(p => p.category === c).length})</button>`
+    ).join("");
+    filterBar.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        activeCat = btn.getAttribute("data-cat");
+        visibleCount = PAGE_SIZE;
+        render();
+      });
+    });
+
+    const items = currentItems();
+    document.getElementById("results-count").textContent = `${items.length} product${items.length === 1 ? "" : "s"}`;
 
     const grid = document.getElementById("shop-grid");
-    grid.innerHTML = items.length
-      ? items.map(productCardHTML).join("")
+    const shown = items.slice(0, visibleCount);
+    grid.innerHTML = shown.length
+      ? shown.map(productCardHTML).join("")
       : `<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:40px 0;">No products found. Try a different search or budget.</p>`;
+
+    const loadMoreBtn = document.getElementById("load-more-btn");
+    loadMoreBtn.style.display = items.length > visibleCount ? "inline-block" : "none";
   }
+  document.getElementById("load-more-btn").addEventListener("click", () => {
+    visibleCount += PAGE_SIZE;
+    render();
+  });
   render();
 </script>
 </body>
