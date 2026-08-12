@@ -25,6 +25,7 @@ const HEADER_HTML = `
       <a href="shop.html?cat=Beds%20%26%20Mattresses">Beds &amp; Mattresses</a>
       <a href="shop.html?cat=Outdoor%20Furniture">Outdoor</a>
       <a href="shop.html">All Products</a>
+      <a href="finance.html" class="nav-finance">Finance</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -71,7 +72,7 @@ const FOOTER_HTML = `
   </div>
   <div class="footer-bottom">Copyright &copy; ${new Date().getFullYear()} <strong>Furnecia</strong> all rights reserved.</div>
 </footer>
-<a class="whatsapp-btn" data-wa-link="Hi Furnecia, I'd like to ask about one of your products." target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+<a class="whatsapp-btn" id="wa-float-btn" data-wa-link="Hi Furnecia, I'd like to ask about one of your products." target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="30" height="30" fill="#ffffff">
     <path d="M16.004 3C9.096 3 3.5 8.596 3.5 15.504c0 2.63.79 5.078 2.14 7.117L3 29l6.564-2.585a12.44 12.44 0 0 0 6.44 1.77h.004c6.908 0 12.504-5.596 12.504-12.504C28.512 8.773 22.912 3 16.004 3zm0 22.86h-.003a10.34 10.34 0 0 1-5.27-1.443l-.378-.224-3.9 1.536.83-3.848-.246-.395a10.29 10.29 0 0 1-1.593-5.482c0-5.71 4.646-10.356 10.363-10.356 2.768 0 5.368 1.08 7.324 3.037a10.29 10.29 0 0 1 3.033 7.325c0 5.71-4.646 10.356-10.36 10.356zm5.68-7.756c-.312-.156-1.845-.91-2.13-1.015-.286-.104-.494-.156-.702.157-.208.312-.805 1.014-.987 1.222-.182.208-.364.234-.676.078-.312-.156-1.318-.486-2.51-1.55-.928-.828-1.555-1.85-1.737-2.162-.182-.312-.02-.48.137-.636.14-.14.312-.364.468-.546.156-.182.208-.312.312-.52.104-.208.052-.39-.026-.546-.078-.156-.702-1.694-.962-2.32-.253-.61-.512-.526-.702-.536-.182-.008-.39-.01-.598-.01a1.15 1.15 0 0 0-.833.39c-.286.312-1.092 1.068-1.092 2.606s1.118 3.022 1.274 3.23c.156.208 2.2 3.36 5.33 4.71.745.322 1.325.514 1.778.658.747.238 1.427.204 1.964.124.6-.09 1.845-.754 2.105-1.484.26-.73.26-1.354.182-1.484-.078-.13-.286-.208-.598-.364z"/>
   </svg>

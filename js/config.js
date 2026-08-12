@@ -22,3 +22,26 @@ function mailLink(subject, body) {
 function formatPrice(amount) {
   return `${SITE.currencySymbol}${Number(amount).toFixed(2)}`;
 }
+
+function formatDateShort(d) {
+  return d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+}
+
+// Skips Sat/Sun. minDays/maxDays = working days from today.
+function addWorkingDays(startDate, days) {
+  const d = new Date(startDate);
+  let added = 0;
+  while (added < days) {
+    d.setDate(d.getDate() + 1);
+    const day = d.getDay();
+    if (day !== 0 && day !== 6) added++;
+  }
+  return d;
+}
+
+function deliveryEstimateText() {
+  const today = new Date();
+  const from = addWorkingDays(today, 3);
+  const to = addWorkingDays(today, 5);
+  return `${formatDateShort(from)} – ${formatDateShort(to)}`;
+}

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Finance &amp; Payment Options — Furnecia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Furnecia payment options: Cash on Delivery, or ask about spreading the cost. Book a showroom visit appointment before you buy.">
+<link rel="canonical" href="https://furnecia.com/finance.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<div class="finance-hero">
+  <h1>Finance &amp; Payment Options</h1>
+  <p>No card details, no online payment — we've built our whole checkout around Cash on Delivery.</p>
+</div>
+
+<div class="finance-options">
+  <div class="finance-option-card">
+    <h3>💷 Cash on Delivery</h3>
+    <p>Order online or via WhatsApp, and pay the full amount in cash when your furniture is delivered to your door. Nothing to pay upfront.</p>
+  </div>
+  <div class="finance-option-card">
+    <h3>🗓️ Spreading the Cost</h3>
+    <p>For larger orders, message our team on WhatsApp before you order — we're happy to talk through options for paying in instalments on delivery.</p>
+  </div>
+  <div class="finance-option-card">
+    <h3>🔒 No Card Details, Ever</h3>
+    <p>We never ask for card details online or over the phone. If anyone contacts you asking for card details on Furnecia's behalf, please let us know immediately.</p>
+  </div>
+  <div class="finance-option-card">
+    <h3>🧾 Simple Returns</h3>
+    <p>Because there's no online payment to refund, returns are simple too — return within 30 days and we'll arrange collection.</p>
+  </div>
+</div>
+
+<div class="furnecia-appointment-section">
+  <div class="fa-container">
+    <h2 class="fa-heading">Book a Visit Appointment</h2>
+    <p class="fa-intro">
+      Want to see and feel the quality for yourself before you buy? You're welcome to visit —
+      by appointment only. We don't accept walk-ins, so please book below and our team will
+      confirm a time that suits you, along with the location.
+    </p>
+
+    <form class="fa-form" id="appointment-form">
+      <div id="fa-success" class="fa-success-message" style="display:none;">
+        Thank you! Your appointment request has been received.<br>
+        Our team will contact you shortly to confirm your visit time and location.
+      </div>
+
+      <div id="fa-fields">
+        <div class="fa-field">
+          <label for="fa-name">Full Name *</label>
+          <input type="text" id="fa-name" required>
+        </div>
+        <div class="fa-field">
+          <label for="fa-phone">Phone Number *</label>
+          <input type="tel" id="fa-phone" required>
+        </div>
+        <div class="fa-field">
+          <label for="fa-email">Email Address *</label>
+          <input type="email" id="fa-email" required>
+        </div>
+        <div class="fa-field">
+          <label for="fa-address">Address <span class="fa-optional">(optional)</span></label>
+          <input type="text" id="fa-address">
+        </div>
+        <div class="fa-field">
+          <label for="fa-product">Product Name or Product ID *</label>
+          <input type="text" id="fa-product" required placeholder="e.g. Berlin Sofa Bed – Dark Grey Velvet">
+        </div>
+
+        <div class="checkout-actions">
+          <a class="btn btn-whatsapp" id="fa-wa-btn" target="_blank" rel="noopener noreferrer">Send Appointment Request via WhatsApp</a>
+          <a class="btn btn-email" id="fa-email-btn">Send Appointment Request via Email</a>
+        </div>
+
+        <p class="fa-trust-note">
+          We prepare your selected product ahead of your visit, so it's ready for you to check
+          the moment you arrive.
+        </p>
+        <ul class="fa-important-notes">
+          <li>Appointment is required before visiting</li>
+          <li>Our team will confirm date &amp; time</li>
+          <li>Location will be shared once your appointment is confirmed</li>
+        </ul>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+.furnecia-appointment-section { padding: 60px 20px; background: var(--cream); }
+.fa-container { max-width: 480px; margin: 0 auto; }
+.fa-heading { font-size: 26px; margin-bottom: 12px; text-align: center; }
+.fa-intro { text-align: center; color: var(--text-muted); margin-bottom: 32px; line-height: 1.6; }
+.fa-field { margin-bottom: 18px; display: flex; flex-direction: column; }
+.fa-field label { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+.fa-optional { font-weight: 400; color: #888; }
+.fa-field input { padding: 12px 14px; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; font-family: inherit; }
+.fa-field input:focus { outline: none; border-color: var(--brown); }
+.fa-trust-note { font-size: 12px; color: var(--text-muted); text-align: center; margin: 18px 0 10px; }
+.fa-important-notes { font-size: 12px; color: var(--text-muted); padding-left: 18px; }
+.fa-success-message { background: #e8f6ec; color: #1e7a37; padding: 16px; border-radius: 8px; text-align: center; font-size: 14px; }
+</style>
+
+<div id="site-footer"></div>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script>
+  function refreshApptLinks() {
+    const name = document.getElementById("fa-name").value.trim();
+    const phone = document.getElementById("fa-phone").value.trim();
+    const email = document.getElementById("fa-email").value.trim();
+    const address = document.getElementById("fa-address").value.trim();
+    const productName = document.getElementById("fa-product").value.trim();
+    const body = `New Appointment Request — Furnecia\n\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\n${address ? "Address: " + address + "\n" : ""}Product: ${productName}`;
+    document.getElementById("fa-wa-btn").href = waLink(body);
+    document.getElementById("fa-email-btn").href = mailLink("New Appointment Request — Furnecia", body);
+  }
+  document.getElementById("appointment-form").addEventListener("input", refreshApptLinks);
+  refreshApptLinks();
+
+  const requiredIds = ["fa-name", "fa-phone", "fa-email", "fa-product"];
+  function guardAppt(e) {
+    const missing = requiredIds.filter(id => !document.getElementById(id).value.trim());
+    if (missing.length) {
+      e.preventDefault();
+      alert("Please fill in your name, phone, email and the product you'd like to view.");
+      return;
+    }
+    document.getElementById("fa-fields").style.display = "none";
+    document.getElementById("fa-success").style.display = "block";
+  }
+  document.getElementById("fa-wa-btn").addEventListener("click", guardAppt);
+  document.getElementById("fa-email-btn").addEventListener("click", guardAppt);
+</script>
+</body>
+</html>

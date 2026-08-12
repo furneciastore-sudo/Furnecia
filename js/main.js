@@ -1,19 +1,91 @@
 // ============================================================
-// Shared page behaviour: mobile nav, product card rendering
+// Shared page behaviour: mobile nav, product cards, image fallback, live chat bubble
 // ============================================================
 
+// Grey "image unavailable" placeholder — used if a product photo fails to load,
+// so a broken image never shows a broken-image icon to a customer.
+const IMG_FALLBACK =
+  "data:image/svg+xml;utf8," +
+  encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600"><rect width="600" height="600" fill="#f3f1ee"/><text x="50%" y="50%" font-family="sans-serif" font-size="22" fill="#b5502e" text-anchor="middle" dominant-baseline="middle">Furnecia</text></svg>`
+  );
+
+function imgFallbackAttr() {
+  return `onerror="this.onerror=null;this.src='${IMG_FALLBACK}';"`;
+}
+
 function productCardHTML(p) {
+  const onSale = p.sale && p.compareAtPrice;
+  const badge = onSale ? `<span class="product-card-badge">-${discountPercent(p)}%</span>` : "";
+  const wasPrice = onSale ? `<span class="product-card-was">${formatPrice(p.compareAtPrice)}</span>` : "";
   return `
     <a href="product.html?handle=${encodeURIComponent(p.handle)}" class="product-card">
       <div class="product-card-img">
-        <img src="${p.image}" alt="${p.title}" loading="lazy" width="600" height="600">
+        ${badge}
+        <img src="${p.image}" alt="${p.title}" loading="lazy" width="600" height="600" ${imgFallbackAttr()}>
       </div>
       <div class="product-card-info">
         <h3 class="product-card-name">${p.title}</h3>
-        <span class="product-card-price">${formatPrice(p.price)}</span>
+        <div class="product-card-price-row">
+          <span class="product-card-price">${formatPrice(p.price)}</span>
+          ${wasPrice}
+        </div>
       </div>
     </a>
   `;
+}
+
+function dealCardHTML(p) {
+  return `
+    <a href="product.html?handle=${encodeURIComponent(p.handle)}" class="deal-card">
+      <div class="deal-card-img"><img src="${p.image}" alt="${p.title}" loading="lazy" ${imgFallbackAttr()}></div>
+      <div class="deal-card-info">
+        <h4>${p.title}</h4>
+        <div class="deal-price-row">
+          <span class="deal-price-now">${formatPrice(p.price)}</span>
+          <span class="deal-price-was">${formatPrice(p.compareAtPrice)}</span>
+          <span class="deal-off">-${discountPercent(p)}%</span>
+        </div>
+      </div>
+    </a>
+  `;
+}
+
+function renderDealsStrip(targetId) {
+  const el = document.getElementById(targetId);
+  if (!el) return;
+  const deals = saleProducts();
+  if (!deals.length) { el.style.display = "none"; return; }
+  el.innerHTML = `
+    <div class="deals-strip-label">🔥 Limited-Time Deals</div>
+    <div class="deals-track-wrap">
+      <div class="deals-track">${deals.map(dealCardHTML).join("")}</div>
+    </div>
+  `;
+}
+
+function initChatBubble() {
+  const waBtn = document.getElementById("wa-float-btn") || document.querySelector(".whatsapp-btn");
+  if (!waBtn) return;
+  if (sessionStorage.getItem("furnecia_chat_dismissed")) return;
+
+  setTimeout(() => {
+    if (document.getElementById("chat-bubble")) return;
+    const bubble = document.createElement("div");
+    bubble.className = "chat-bubble";
+    bubble.id = "chat-bubble";
+    bubble.innerHTML = `
+      <button class="chat-bubble-close" aria-label="Close">&times;</button>
+      <strong>Need help? 👋</strong>
+      Chat with our team live on WhatsApp — usually replies within minutes.
+      <a class="chat-bubble-cta" href="${waBtn.href || "#"}" target="_blank" rel="noopener noreferrer">Start chat</a>
+    `;
+    document.body.appendChild(bubble);
+    bubble.querySelector(".chat-bubble-close").addEventListener("click", () => {
+      bubble.remove();
+      sessionStorage.setItem("furnecia_chat_dismissed", "1");
+    });
+  }, 4000);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -23,10 +95,10 @@ document.addEventListener("DOMContentLoaded", function () {
     toggle.addEventListener("click", () => menu.classList.toggle("open"));
   }
 
-  // Set WhatsApp float button + header links dynamically from config
   document.querySelectorAll("[data-wa-link]").forEach(el => {
     const msg = el.getAttribute("data-wa-link") || "Hi Furnecia, I'd like to ask about one of your products.";
     el.href = waLink(msg);
+    el.id = el.id || "wa-float-btn";
   });
   document.querySelectorAll("[data-mail-link]").forEach(el => {
     el.href = `mailto:${SITE.email}`;
@@ -37,4 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll("[data-shop-email]").forEach(el => { el.textContent = SITE.email; });
   document.querySelectorAll("[data-shop-phone]").forEach(el => { el.textContent = SITE.phoneDisplay; });
   document.querySelectorAll("[data-shop-address]").forEach(el => { el.textContent = SITE.address; });
+
+  initChatBubble();
 });

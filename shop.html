@@ -1,7 +1,21 @@
-<title>Shop All Furniture — Furnecia</title>
+<!doctype html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
+<title>Shop All Furniture — Furnecia</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Browse sofa beds, corner sofas, wardrobes, beds and outdoor furniture from Furnecia. Cash on Delivery across the UK, free delivery on selected items.">
+<link rel="canonical" href="https://furnecia.com/shop.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shop All Furniture — Furnecia">
+<meta property="og:description" content="Cash on Delivery across the UK. Free delivery on selected items, 30-day returns.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.shopify.com">
 <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
 <div id="site-header"></div>
 
@@ -30,7 +44,7 @@
 
   function render() {
     const filterBar = document.getElementById("filter-bar");
-    const cats = ["All", ...CATEGORIES];
+    const cats = ["All", "Sale", ...CATEGORIES];
     filterBar.innerHTML = cats.map(c =>
       `<button class="filter-btn ${c === activeCat ? "active" : ""}" data-cat="${c}">${c}</button>`
     ).join("");
@@ -42,7 +56,8 @@
     });
 
     let items = PRODUCTS;
-    if (activeCat !== "All") items = items.filter(p => p.category === activeCat);
+    if (activeCat === "Sale") items = items.filter(p => p.sale);
+    else if (activeCat !== "All") items = items.filter(p => p.category === activeCat);
     if (searchQ) items = items.filter(p => p.title.toLowerCase().includes(searchQ) || p.category.toLowerCase().includes(searchQ));
     if (maxPrice) items = items.filter(p => p.price <= maxPrice);
 
@@ -53,3 +68,5 @@
   }
   render();
 </script>
+</body>
+</html>

@@ -1,7 +1,17 @@
-<title>Product — Furnecia</title>
+<!doctype html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
+<title>Product — Furnecia</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Shop quality furniture at Furnecia with Cash on Delivery across the UK.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.shopify.com">
 <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
 <div id="site-header"></div>
 
@@ -23,15 +33,26 @@
     root.innerHTML = `<div class="content-page" style="text-align:center;"><h1>Product not found</h1><p><a href="shop.html">Back to shop</a></p></div>`;
   } else {
     document.title = product.title + " — Furnecia";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute("content", `${product.title} — ${formatPrice(product.price)}. Cash on Delivery across the UK, free delivery on selected items, 30-day returns.`);
+
+    const onSale = product.sale && product.compareAtPrice;
+    const priceRow = onSale
+      ? `<span class="product-detail-price">${formatPrice(product.price)}</span>
+         <span class="product-detail-was">${formatPrice(product.compareAtPrice)}</span>
+         <span class="product-detail-off">-${discountPercent(product)}%</span>`
+      : `<span class="product-detail-price">${formatPrice(product.price)}</span>`;
+
     root.innerHTML = `
       <div class="product-detail">
-        <div class="product-detail-img">
-          <img src="${product.image}" alt="${product.title}">
+        <div class="product-detail-img" id="zoom-trigger">
+          <img src="${product.image}" alt="${product.title}" id="main-product-img" ${imgFallbackAttr()}>
+          <span class="zoom-hint">🔍 Click to zoom</span>
         </div>
         <div class="product-detail-info">
           <span class="product-detail-category">${product.category}</span>
           <h1>${product.title}</h1>
-          <span class="product-detail-price">${formatPrice(product.price)}</span>
+          <div class="product-detail-price-row">${priceRow}</div>
 
           <div class="qty-row">
             <button type="button" id="qty-minus">−</button>
@@ -44,14 +65,44 @@
             <a class="btn btn-whatsapp" id="wa-order-btn" target="_blank" rel="noopener noreferrer">Order via WhatsApp</a>
           </div>
 
+          <div class="delivery-box">
+            <span class="db-icon">🚚</span>
+            <div>
+              <strong>Estimated delivery: <span id="delivery-dates"></span></strong>
+              <span>Order today and we'll aim to have it with you within 3–5 working days.</span>
+            </div>
+          </div>
+
           <div class="trust-badges">
-            <span>🚚 Cash on Delivery — pay when it arrives</span>
+            <span>💷 Cash on Delivery — pay when it arrives</span>
             <span>🇬🇧 Free UK delivery on selected items</span>
             <span>↻ 30-day returns</span>
+            <span>💬 Questions? <a href="#" data-wa-link="Hi Furnecia, I have a question about: ${product.title.replace(/"/g, "&quot;")}" target="_blank" rel="noopener noreferrer" style="color:var(--brown);font-weight:600;">Chat with us on WhatsApp</a></span>
           </div>
         </div>
       </div>
     `;
+
+    document.getElementById("delivery-dates").textContent = deliveryEstimateText();
+
+    const ld = document.createElement("script");
+    ld.type = "application/ld+json";
+    ld.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: product.title,
+      image: product.image,
+      category: product.category,
+      brand: { "@type": "Brand", name: "Furnecia" },
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "GBP",
+        price: product.price,
+        availability: "https://schema.org/InStock",
+        url: window.location.href
+      }
+    });
+    document.head.appendChild(ld);
 
     const qtyInput = document.getElementById("qty-input");
     document.getElementById("qty-minus").addEventListener("click", () => {
@@ -75,5 +126,16 @@
       document.getElementById("wa-order-btn").href = waLink(msg);
     }
     updateWaLink();
+
+    // simple click-to-zoom lightbox (works with a single product photo)
+    document.getElementById("zoom-trigger").addEventListener("click", () => {
+      const box = document.createElement("div");
+      box.className = "img-lightbox";
+      box.innerHTML = `<button class="img-lightbox-close" aria-label="Close">&times;</button><img src="${product.image}" alt="${product.title}">`;
+      box.addEventListener("click", () => box.remove());
+      document.body.appendChild(box);
+    });
   }
 </script>
+</body>
+</html>

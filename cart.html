@@ -1,7 +1,18 @@
-<title>Your Cart — Furnecia</title>
+<!doctype html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
+<title>Your Cart — Furnecia</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Review your cart and check out with Cash on Delivery — no card details needed.">
+<meta name="robots" content="noindex, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.shopify.com">
 <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
 <div id="site-header"></div>
 
@@ -14,7 +25,7 @@
 
 <div id="checkout-section" style="display:none;">
   <div class="checkout-form">
-    <div class="cod-note">💷 <strong>Cash on Delivery only.</strong> No online payment needed — you pay in cash when your order arrives.</div>
+    <div class="cod-note">💷 <strong>Cash on Delivery only.</strong> No online payment needed — you pay in cash when your order arrives.<br>🚚 Estimated delivery: <strong id="cart-delivery-dates"></strong></div>
     <form id="checkout-form">
       <div class="form-field">
         <label for="c-name">Full Name *</label>
@@ -69,7 +80,7 @@
 
     page.innerHTML = items.map(i => `
       <div class="cart-item" data-handle="${i.handle}">
-        <img src="${i.product.image}" alt="${i.product.title}">
+        <img src="${i.product.image}" alt="${i.product.title}" ${imgFallbackAttr()}>
         <div class="cart-item-info">
           <h4>${i.product.title}</h4>
           <span class="cart-item-price">${formatPrice(i.product.price)}</span>
@@ -162,4 +173,8 @@
   }
 
   renderCart();
+  const cartDeliveryEl = document.getElementById("cart-delivery-dates");
+  if (cartDeliveryEl) cartDeliveryEl.textContent = deliveryEstimateText();
 </script>
+</body>
+</html>
