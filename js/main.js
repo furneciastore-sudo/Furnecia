@@ -26,6 +26,7 @@ function productCardHTML(p) {
       </div>
       <div class="product-card-info">
         <h3 class="product-card-name">${p.title}</h3>
+        ${ratingRowHTML(p.handle)}
         <div class="product-card-price-row">
           <span class="product-card-price">${formatPrice(p.price)}</span>
           ${wasPrice}

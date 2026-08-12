@@ -365,3 +365,29 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; margin: 0; }
 .finance-option-card h3 { font-family: var(--font-sans); font-size: 15px; margin-bottom: 10px; color: var(--ink); font-weight: 600; }
 .finance-option-card p { color: var(--text-muted); font-size: 14px; line-height: 1.7; }
 @media (max-width: 700px) { .finance-options { grid-template-columns: 1fr; } }
+
+/* ---------- Star ratings ---------- */
+.rating-row { display: flex; align-items: center; gap: 7px; margin: 0 0 10px 0; }
+.stars { color: var(--gold); letter-spacing: 1px; }
+.rating-sm .stars { font-size: 12px; }
+.rating-sm .rating-count { font-size: 11px; color: var(--text-light); }
+.rating-lg { justify-content: center; margin: 14px 0 32px; }
+.rating-lg .stars { font-size: 18px; }
+.rating-lg .rating-count { font-size: 13px; color: var(--text-muted); }
+.product-detail-info .rating-row { justify-content: flex-start; margin: 0 0 18px 0; }
+.product-detail-info .rating-row .stars { font-size: 15px; }
+.product-detail-info .rating-row .rating-count { font-size: 13px; color: var(--text-muted); }
+
+/* ---------- Reviews section ---------- */
+.reviews-section { max-width: var(--max-width); margin: 0 auto; padding: 20px 40px 80px; text-align: center; }
+.reviews-title { font-size: 26px; margin-bottom: 6px; }
+.reviews-empty { color: var(--text-muted); font-size: 14px; max-width: 480px; margin: 0 auto; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: left; margin-top: 12px; }
+.review-card { border: 1px solid var(--line); padding: 24px; background: var(--surface); }
+.review-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.review-head .stars { font-size: 14px; }
+.review-verified { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-dark); font-weight: 700; }
+.review-title { font-family: var(--font-sans); font-size: 14px; font-weight: 600; margin: 0 0 8px 0; }
+.review-text { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin: 0 0 14px 0; }
+.review-meta { font-size: 11px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; }
+@media (max-width: 900px) { .reviews-grid { grid-template-columns: 1fr; } }
