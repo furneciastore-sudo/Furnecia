@@ -1,0 +1,165 @@
+<title>Your Cart — Furnecia</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+
+<div id="site-header"></div>
+
+<div class="page-header">
+  <h1>Your Cart</h1>
+  <p>Review your items, then check out with Cash on Delivery</p>
+</div>
+
+<div class="cart-page" id="cart-page"></div>
+
+<div id="checkout-section" style="display:none;">
+  <div class="checkout-form">
+    <div class="cod-note">💷 <strong>Cash on Delivery only.</strong> No online payment needed — you pay in cash when your order arrives.</div>
+    <form id="checkout-form">
+      <div class="form-field">
+        <label for="c-name">Full Name *</label>
+        <input type="text" id="c-name" required>
+      </div>
+      <div class="form-field">
+        <label for="c-phone">Phone Number *</label>
+        <input type="tel" id="c-phone" required>
+      </div>
+      <div class="form-field">
+        <label for="c-email">Email Address</label>
+        <input type="email" id="c-email">
+      </div>
+      <div class="form-field">
+        <label for="c-address">Delivery Address *</label>
+        <textarea id="c-address" rows="3" required></textarea>
+      </div>
+      <div class="form-field">
+        <label for="c-city">City / Postcode *</label>
+        <input type="text" id="c-city" required>
+      </div>
+      <div class="form-field">
+        <label for="c-notes">Order Notes (optional)</label>
+        <textarea id="c-notes" rows="2"></textarea>
+      </div>
+      <div class="checkout-actions">
+        <a class="btn btn-whatsapp" id="wa-checkout-btn" target="_blank" rel="noopener noreferrer">Send Order via WhatsApp</a>
+        <a class="btn btn-email" id="email-checkout-btn">Send Order via Email</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script>
+  function renderCart() {
+    const items = cartItemsWithDetails();
+    const page = document.getElementById("cart-page");
+    const checkoutSection = document.getElementById("checkout-section");
+
+    if (!items.length) {
+      page.innerHTML = `<div class="cart-empty"><p>Your cart is empty.</p><a href="shop.html" class="btn btn-primary">Browse Furniture</a></div>`;
+      checkoutSection.style.display = "none";
+      return;
+    }
+
+    page.innerHTML = items.map(i => `
+      <div class="cart-item" data-handle="${i.handle}">
+        <img src="${i.product.image}" alt="${i.product.title}">
+        <div class="cart-item-info">
+          <h4>${i.product.title}</h4>
+          <span class="cart-item-price">${formatPrice(i.product.price)}</span>
+        </div>
+        <div class="cart-item-qty">
+          <button type="button" class="qty-dec">−</button>
+          <input type="number" class="qty-val" value="${i.qty}" min="1">
+          <button type="button" class="qty-inc">+</button>
+        </div>
+        <span class="remove-link">Remove</span>
+      </div>
+    `).join("") + `
+      <div class="cart-summary">
+        <div class="cart-total">Total: ${formatPrice(cartTotal())}</div>
+      </div>
+    `;
+
+    page.querySelectorAll(".cart-item").forEach(el => {
+      const handle = el.getAttribute("data-handle");
+      el.querySelector(".qty-dec").addEventListener("click", () => {
+        const input = el.querySelector(".qty-val");
+        updateQty(handle, Math.max(1, Number(input.value) - 1));
+        renderCart();
+      });
+      el.querySelector(".qty-inc").addEventListener("click", () => {
+        const input = el.querySelector(".qty-val");
+        updateQty(handle, Number(input.value) + 1);
+        renderCart();
+      });
+      el.querySelector(".qty-val").addEventListener("change", (e) => {
+        updateQty(handle, Math.max(1, Number(e.target.value)));
+        renderCart();
+      });
+      el.querySelector(".remove-link").addEventListener("click", () => {
+        removeFromCart(handle);
+        renderCart();
+      });
+    });
+
+    checkoutSection.style.display = "block";
+    bindCheckoutLinks();
+  }
+
+  function buildOrderText() {
+    const items = cartItemsWithDetails();
+    const name = document.getElementById("c-name").value.trim();
+    const phone = document.getElementById("c-phone").value.trim();
+    const email = document.getElementById("c-email").value.trim();
+    const address = document.getElementById("c-address").value.trim();
+    const city = document.getElementById("c-city").value.trim();
+    const notes = document.getElementById("c-notes").value.trim();
+
+    let lines = ["New Cash on Delivery Order — Furnecia", ""];
+    items.forEach(i => {
+      lines.push(`${i.qty} x ${i.product.title} — ${formatPrice(i.product.price)} each = ${formatPrice(i.product.price * i.qty)}`);
+    });
+    lines.push("", `Total: ${formatPrice(cartTotal())}`, "");
+    lines.push(`Name: ${name || "-"}`);
+    lines.push(`Phone: ${phone || "-"}`);
+    if (email) lines.push(`Email: ${email}`);
+    lines.push(`Address: ${address || "-"}`);
+    lines.push(`City/Postcode: ${city || "-"}`);
+    if (notes) lines.push(`Notes: ${notes}`);
+    lines.push("", "Payment: Cash on Delivery");
+    return lines.join("\n");
+  }
+
+  function bindCheckoutLinks() {
+    const waBtn = document.getElementById("wa-checkout-btn");
+    const emailBtn = document.getElementById("email-checkout-btn");
+
+    function refreshLinks() {
+      const text = buildOrderText();
+      waBtn.href = waLink(text);
+      emailBtn.href = mailLink("New Cash on Delivery Order — Furnecia", text);
+    }
+    document.getElementById("checkout-form").addEventListener("input", refreshLinks);
+    refreshLinks();
+
+    const requiredIds = ["c-name", "c-phone", "c-address", "c-city"];
+    function guardClick(e) {
+      const missing = requiredIds.filter(id => !document.getElementById(id).value.trim());
+      if (missing.length) {
+        e.preventDefault();
+        alert("Please fill in your name, phone, address and city before ordering.");
+      }
+    }
+    waBtn.addEventListener("click", guardClick);
+    emailBtn.addEventListener("click", guardClick);
+  }
+
+  renderCart();
+</script>

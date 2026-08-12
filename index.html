@@ -1,0 +1,126 @@
+<title>Furnecia — Affordable Sofa Beds, Wardrobes &amp; Corner Sofas | Cash on Delivery UK</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Furnecia sells affordable sofa beds, wardrobes and corner sofas across the UK with Cash on Delivery, free delivery on selected items and 30-day returns.">
+<link rel="stylesheet" href="css/style.css">
+
+<div id="site-header"></div>
+
+<section class="hero">
+  <div class="hero-media">
+    <img src="https://cdn.shopify.com/s/files/1/1008/4565/0291/files/berlin-corner-sofa-bed-1.jpg?v=1784750296" alt="Affordable sofa beds, wardrobes and corner sofas - Furnecia">
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <h1>Affordable Sofa Beds, Wardrobes &amp; Corner Sofas — Cash on Delivery Across the UK</h1>
+    <p>Free UK delivery on selected items &middot; 30-day returns &middot; Pay when it arrives</p>
+    <div class="hero-ctas">
+      <a href="shop.html?cat=Sofa%20Beds" class="btn btn-primary">Shop Sofa Beds</a>
+      <a href="shop.html?cat=Wardrobes" class="btn btn-secondary">Shop Wardrobes</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="bestsellers">
+  <div class="section-inner">
+    <h2 class="section-title">Bestsellers</h2>
+    <p class="section-sub">Our most-loved pieces, chosen by Furnecia customers across the UK</p>
+    <div class="product-grid" id="bestsellers-grid"></div>
+  </div>
+</section>
+
+<section class="section budget-section">
+  <div class="budget-inner">
+    <h2 class="section-title">Find Furniture Within Your Budget</h2>
+    <p style="font-size:14px;color:var(--text-muted);margin:0 0 24px 0;">Tell us what you're after and your max budget — we'll show you what's available.</p>
+    <form class="budget-form" id="budget-form">
+      <input type="text" id="budget-query" placeholder="e.g. sofa, wardrobe, dining table, bed" required>
+      <div class="budget-price-wrap">
+        <span>£</span>
+        <input type="number" id="budget-amount" placeholder="Max budget" min="1" step="1" required>
+      </div>
+      <button type="submit">Search</button>
+    </form>
+    <p class="budget-hint">Try: sofa, sofa bed, corner sofa, wardrobe, bed, mattress, outdoor</p>
+  </div>
+</section>
+
+<section class="section why-section">
+  <div class="section-inner">
+    <h2 class="section-title">Why Furnecia</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">🚚</div>
+        <h3>Cash on Delivery</h3>
+        <p>Pay in cash when your order arrives — no card or bank transfer needed.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🇬🇧</div>
+        <h3>UK-Wide Delivery</h3>
+        <p>Free delivery in England, with Scotland &amp; Wales calculated at checkout.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">↻</div>
+        <h3>30-Day Returns</h3>
+        <p>Not quite right? Simply return it within 30 days for an exchange.</p>
+      </div>
+    </div>
+    <div class="cities-strip">
+      <span class="cities-label">Delivering across the UK</span>
+      <div class="cities-list">
+        <span>London</span><span>Manchester</span><span>Birmingham</span><span>Leeds</span><span>Glasgow</span><span>Liverpool</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="faq-inner">
+    <h2 class="section-title" style="text-align:center;">Frequently Asked Questions</h2>
+    <div style="margin-top:28px;">
+      <details class="faq-item">
+        <summary>Do you offer Cash on Delivery across the UK?</summary>
+        <p>Yes. We accept Cash on Delivery on orders across England, Scotland and Wales. You pay in cash when your order arrives.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How long does delivery take?</summary>
+        <p>Most in-stock items ship within 3–5 working days. Exact timing can vary slightly by product and location — you will see an estimate on each product page.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you assemble furniture?</summary>
+        <p>Most items arrive flat-packed with clear step-by-step instructions for self-assembly. If you would like assembly help, get in touch and we will let you know what is available in your area.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What's your returns policy?</summary>
+        <p>You can return most items within 30 days of delivery for an exchange. Please contact us before returning anything so we can arrange collection.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you deliver to Scotland / Northern Ireland?</summary>
+        <p>We deliver to Scotland, with the delivery cost calculated at checkout. We do not currently deliver to Northern Ireland or the Republic of Ireland.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I pay by card on delivery?</summary>
+        <p>No — we currently only accept Cash on Delivery. We do not take card payments or bank transfers at the point of delivery or at checkout.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.getElementById("bestsellers-grid").innerHTML =
+    PRODUCTS.filter(p => p.bestseller).map(productCardHTML).join("");
+
+  document.getElementById("budget-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const q = document.getElementById("budget-query").value.trim();
+    const budget = document.getElementById("budget-amount").value.trim();
+    window.location.href = `shop.html?q=${encodeURIComponent(q)}${budget ? "&max=" + encodeURIComponent(budget) : ""}`;
+  });
+</script>
