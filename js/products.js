@@ -1,5 +1,40 @@
 const PRODUCTS = [
   {
+    handle: "paradise-sofabed-grey",
+    title: "Paradise Sofabed Grey",
+    category: "Sofa Beds",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/paradise-gray-sofa-bed-1.jpg?v=1784720642", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/paradise-gray-sofa-bed-2.png?v=1784720642", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/paradise-gray-sofa-bed-3.jpg?v=1784720643"],
+    options: [],
+    variants: [{ title: "Default", price: 179.0, compareAtPrice: 210.0, image: null, available: true }],
+    price: 179.0,
+    compareAtPrice: 210.0,
+    bestseller: true,
+    sale: true
+  },
+  {
+    handle: "dylan-5-seater-corner-sofa-jumbo-cord",
+    title: "Dylan 5 seater corner sofa Jumbo cord",
+    category: "Corner Sofas",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-1.webp?v=1784720361", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-2.png?v=1784720361", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-3.png?v=1784720361", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-4.png?v=1784720361", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-5.png?v=1784720361", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-6.png?v=1784720361"],
+    options: [{"name": "Color", "values": ["Gray", "Black", "Cream", "Chocolate", "Mink", "Beige"]}],
+    variants: [{ title: "Gray", price: 430.0, compareAtPrice: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-1.webp?v=1784720361", available: true }, { title: "Black", price: 430.0, compareAtPrice: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-2.png?v=1784720361", available: true }, { title: "Cream", price: 430.0, compareAtPrice: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-3.png?v=1784720361", available: true }, { title: "Chocolate", price: 430.0, compareAtPrice: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-4.png?v=1784720361", available: true }, { title: "Mink", price: 430.0, compareAtPrice: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-5.png?v=1784720361", available: true }, { title: "Beige", price: 430.0, compareAtPrice: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-6.png?v=1784720361", available: true }],
+    price: 430.0,
+    compareAtPrice: 450.0,
+    bestseller: true,
+    sale: true
+  },
+  {
+    handle: "ashwin-32-seater-high-back-corner-sofa",
+    title: "Ashwin 3+2 Seater High Back Corner Sofa",
+    category: "Corner Sofas",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-1.jpg?v=1784747938", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-2.jpg?v=1784747938", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-3.jpg?v=1784747938", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-4.png?v=1784747938", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-5.png?v=1784747938"],
+    options: [{"name": "Colour", "values": ["Black", "Cream", "Light Gray", "Mustard"]}],
+    variants: [{ title: "Black", price: 600.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-2.jpg?v=1784747938", available: true }, { title: "Cream", price: 600.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-5.png?v=1784747938", available: true }, { title: "Light Gray", price: 600.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-3.jpg?v=1784747938", available: true }, { title: "Mustard", price: 600.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-4.png?v=1784747938", available: true }],
+    price: 600.0,
+    bestseller: true,
+    sale: false
+  },
+  {
     handle: "berlin-universal-corner-sofa-bed-with-storage",
     title: "Berlin Universal Corner Sofa Bed with Storage",
     category: "Corner Sofas",
@@ -22,6 +57,39 @@ const PRODUCTS = [
     sale: false
   },
   {
+    handle: "kuzey-grey-gold-sofa-collection",
+    title: "Kuzey Grey &  Gold Sofa Collection",
+    category: "Sofas",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-1.webp?v=1784725799", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-2.webp?v=1784725799", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-3.webp?v=1784725799", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-4.webp?v=1784725799", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-5.webp?v=1784725799"],
+    options: [{"name": "Design", "values": ["3 seater", "2 seater", "Arm chair", "3+2+1 seater"]}],
+    variants: [{ title: "3 seater", price: 317.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-2.webp?v=1784725799", available: true }, { title: "2 seater", price: 296.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-3.webp?v=1784725799", available: true }, { title: "Arm chair", price: 252.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-4.webp?v=1784725799", available: true }, { title: "3+2+1 seater", price: 865.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-1.webp?v=1784725799", available: true }],
+    price: 252.0,
+    bestseller: true,
+    sale: false
+  },
+  {
+    handle: "5-door-wardrobe-full-bedroom-set-with-mirrors-and-storage",
+    title: "5 Door Wardrobe Full Bedroom Set with Mirrors and Storage",
+    category: "Wardrobes",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-1.png?v=1784747690", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-2.png?v=1784747690", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-3.png?v=1784747690", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-4.png?v=1784747690", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-5.png?v=1784747690", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-6.png?v=1784747690"],
+    options: [{"name": "colour", "values": ["White", "Black", "Grey", "Oak", "Vintage", "Walnut"]}],
+    variants: [{ title: "White", price: 550.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-1.png?v=1784747690", available: true }, { title: "Black", price: 550.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-2.png?v=1784747690", available: true }, { title: "Grey", price: 550.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-3.png?v=1784747690", available: true }, { title: "Oak", price: 550.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-4.png?v=1784747690", available: true }, { title: "Vintage", price: 550.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-5.png?v=1784747690", available: true }, { title: "Walnut", price: 550.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-6.png?v=1784747690", available: true }],
+    price: 550.0,
+    bestseller: true,
+    sale: false
+  },
+  {
+    handle: "6-door-dressing-wardrobe",
+    title: "6 Door Dressing Wardrobe",
+    category: "Wardrobes",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-1.png?v=1784747575", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-2.png?v=1784747575", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-3.png?v=1784747575", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-4.png?v=1784747575", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-5.png?v=1784747575", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-6.png?v=1784747601"],
+    options: [{"name": "colour", "values": ["white", "black", "grey", "oak", "vintage", "walnut"]}],
+    variants: [{ title: "white", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-2.png?v=1784747575", available: true }, { title: "black", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-3.png?v=1784747575", available: true }, { title: "grey", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-1.png?v=1784747575", available: true }, { title: "oak", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-4.png?v=1784747575", available: true }, { title: "vintage", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-6.png?v=1784747601", available: true }, { title: "walnut", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-5.png?v=1784747575", available: true }],
+    price: 450.0,
+    bestseller: true,
+    sale: false
+  },
+  {
     handle: "8-door-wardrobe-full-set",
     title: "8 Door Wardrobe Full Bedroom Set – with Chest of Drawers & Bedside Cabinet",
     category: "Wardrobes",
@@ -33,6 +101,17 @@ const PRODUCTS = [
     sale: false
   },
   {
+    handle: "oxford-wingback-luxury-beds",
+    title: "Oxford Wingback Luxury Beds",
+    category: "Beds & Mattresses",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859"],
+    options: [{"name": "Size", "values": ["Double", "King Size", "Single", "Super King"]}, {"name": "Mattress", "values": ["No Mattress", "Spring Mattress", "Memory Foam / Orthopaedic Mattress"]}],
+    variants: [{ title: "Double / No Mattress", price: 260.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "King Size / No Mattress", price: 275.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "Single / No Mattress", price: 240.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "Super King / No Mattress", price: 305.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "Single / Spring Mattress", price: 275.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "Single / Memory Foam / Orthopaedic Mattress", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "Double / Spring Mattress", price: 310.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "Double / Memory Foam / Orthopaedic Mattress", price: 335.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "King Size / Spring Mattress", price: 335.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "King Size / Memory Foam / Orthopaedic Mattress", price: 360.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "Super King / Spring Mattress", price: 395.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "Super King / Memory Foam / Orthopaedic Mattress", price: 420.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }],
+    price: 240.0,
+    bestseller: true,
+    sale: false
+  },
+  {
     handle: "simple-bunk-bed-with-mattresses",
     title: "Solid Wooden Double Kids Bunk Bed Frame with 2 Mattresses – Space Saving, Convertible & Safe Design",
     category: "Beds & Mattresses",
@@ -40,6 +119,17 @@ const PRODUCTS = [
     options: [{"name": "Colour", "values": ["White", "Grey"]}],
     variants: [{ title: "White", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/double-bunk-bed-1.jpg?v=1784750270", available: true }, { title: "Grey", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/double-bunk-bed-5.jpg?v=1784750296", available: true }],
     price: 350.0,
+    bestseller: true,
+    sale: false
+  },
+  {
+    handle: "4-piece-outdoor-patio-furniture-set-with-cushions-rattan-conversation-set-garden-sofa-set-with-coffee-table-grey",
+    title: "4-Piece Outdoor Patio Furniture Set with Cushions, Rattan Conversation Set, Garden Sofa Set with Table, Grey",
+    category: "Outdoor Furniture",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/rattan-patio-set.jpg?v=1784720298"],
+    options: [],
+    variants: [{ title: "Default", price: 180.0, image: null, available: false }],
+    price: 180.0,
     bestseller: true,
     sale: false
   },
@@ -200,18 +290,6 @@ const PRODUCTS = [
     sale: true
   },
   {
-    handle: "paradise-sofabed-grey",
-    title: "Paradise Sofabed Grey",
-    category: "Sofa Beds",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/paradise-gray-sofa-bed-1.jpg?v=1784720642", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/paradise-gray-sofa-bed-2.png?v=1784720642", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/paradise-gray-sofa-bed-3.jpg?v=1784720643"],
-    options: [],
-    variants: [{ title: "Default", price: 179.0, compareAtPrice: 210.0, image: null, available: true }],
-    price: 179.0,
-    compareAtPrice: 210.0,
-    bestseller: false,
-    sale: true
-  },
-  {
     handle: "luxury-bishop-u-shape-corner-sofa-premium-dapple-big-stylish-ultra-comfortable",
     title: "Bishop U-Shape Corner Sofa – Big, Stylish & Ultra Comfortable",
     category: "Corner Sofas",
@@ -220,18 +298,6 @@ const PRODUCTS = [
     variants: [{ title: "High back / Dark Gray", price: 600.0, compareAtPrice: 650.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/bishop-corner-sofa-13.jpg?v=1784750348", available: true }, { title: "High back / Mink / Beige", price: 600.0, compareAtPrice: 650.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/bishop-corner-sofa-4.jpg?v=1784750322", available: true }, { title: "High back / Cream", price: 600.0, compareAtPrice: 650.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/bishop-corner-sofa-8.jpg?v=1784750348", available: true }, { title: "High back / Light Gray", price: 600.0, compareAtPrice: 650.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/bishop-corner-sofa-10.jpg?v=1784750348", available: true }, { title: "scattered back / Dark Gray", price: 550.0, compareAtPrice: 650.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/bishop-corner-sofa-16.jpg?v=1784750349", available: true }, { title: "scattered back / Mink / Beige", price: 550.0, compareAtPrice: 650.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/bishop-corner-sofa-14.jpg?v=1784750348", available: true }, { title: "scattered back / Cream", price: 550.0, compareAtPrice: 650.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/bishop-corner-sofa-17.jpg?v=1784750349", available: true }, { title: "scattered back / Light Gray", price: 550.0, compareAtPrice: 650.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/bishop-corner-sofa-18.jpg?v=1784750349", available: true }],
     price: 550.0,
     compareAtPrice: 650.0,
-    bestseller: false,
-    sale: true
-  },
-  {
-    handle: "dylan-5-seater-corner-sofa-jumbo-cord",
-    title: "Dylan 5 seater corner sofa Jumbo cord",
-    category: "Corner Sofas",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-1.webp?v=1784720361", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-2.png?v=1784720361", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-3.png?v=1784720361", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-4.png?v=1784720361", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-5.png?v=1784720361", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-6.png?v=1784720361"],
-    options: [{"name": "Color", "values": ["Gray", "Black", "Cream", "Chocolate", "Mink", "Beige"]}],
-    variants: [{ title: "Gray", price: 430.0, compareAtPrice: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-1.webp?v=1784720361", available: true }, { title: "Black", price: 430.0, compareAtPrice: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-2.png?v=1784720361", available: true }, { title: "Cream", price: 430.0, compareAtPrice: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-3.png?v=1784720361", available: true }, { title: "Chocolate", price: 430.0, compareAtPrice: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-4.png?v=1784720361", available: true }, { title: "Mink", price: 430.0, compareAtPrice: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-5.png?v=1784720361", available: true }, { title: "Beige", price: 430.0, compareAtPrice: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dylan-corner-sofa-5-seater-6.png?v=1784720361", available: true }],
-    price: 430.0,
-    compareAtPrice: 450.0,
     bestseller: false,
     sale: true
   },
@@ -284,6 +350,42 @@ const PRODUCTS = [
     sale: true
   },
   {
+    handle: "golden-extendable-dining-table-modern-luxury-dining-table",
+    title: "Golden Extendable Dining Table – Modern Luxury Dining Table",
+    category: "Dining Tables",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gold-dining-table-1.jpg?v=1784747270", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gold-dining-table-2.jpg?v=1784747270"],
+    options: [{"name": "choose Design", "values": ["ANKA Honey Gold Table", "ANKA Gold Table"]}],
+    variants: [{ title: "ANKA Honey Gold Table", price: 350.0, compareAtPrice: 370.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gold-dining-table-1.jpg?v=1784747270", available: true }, { title: "ANKA Gold Table", price: 350.0, compareAtPrice: 370.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gold-dining-table-2.jpg?v=1784747270", available: true }],
+    price: 350.0,
+    compareAtPrice: 370.0,
+    bestseller: false,
+    sale: true
+  },
+  {
+    handle: "modern-coffee-table-stylish-amp-durable-furniture-for-your-home",
+    title: "Modern Dining Table – Stylish & Durable Furniture for Your Home",
+    category: "Dining Tables",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-1.png?v=1784747242", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-2.png?v=1784747242", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-3.png?v=1784747242"],
+    options: [{"name": "choose design", "values": ["Rose Model Dinning Table", "Walnut Dinning Table", "White Smart Table"]}],
+    variants: [{ title: "Rose Model Dinning Table", price: 165.0, compareAtPrice: 180.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-1.png?v=1784747242", available: true }, { title: "Walnut Dinning Table", price: 165.0, compareAtPrice: 180.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-2.png?v=1784747242", available: true }, { title: "White Smart Table", price: 165.0, compareAtPrice: 180.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-3.png?v=1784747242", available: true }],
+    price: 165.0,
+    compareAtPrice: 180.0,
+    bestseller: false,
+    sale: true
+  },
+  {
+    handle: "round-dining-table-modern-dining-table",
+    title: "Round Dining Table – Modern Dining Table",
+    category: "Dining Tables",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-1.jpg?v=1784747270", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-2.jpg?v=1784747270", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-3.jpg?v=1784747270", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-4.jpg?v=1784747270", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-5.jpg?v=1784747270", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-6.jpg?v=1784747270"],
+    options: [{"name": "choose design", "values": ["Round glass table", "Round rose glass table", "Round  Black and White table", "Lagina grey round table", "Grey wave glass table", "white bubble glass table"]}],
+    variants: [{ title: "Round glass table", price: 235.0, compareAtPrice: 250.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-1.jpg?v=1784747270", available: true }, { title: "Round rose glass table", price: 235.0, compareAtPrice: 250.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-2.jpg?v=1784747270", available: true }, { title: "Round  Black and White table", price: 235.0, compareAtPrice: 250.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-3.jpg?v=1784747270", available: true }, { title: "Lagina grey round table", price: 235.0, compareAtPrice: 250.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-8.jpg?v=1784747271", available: true }, { title: "Grey wave glass table", price: 235.0, compareAtPrice: 250.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-10.jpg?v=1784747541", available: true }, { title: "white bubble glass table", price: 235.0, compareAtPrice: 250.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-9.jpg?v=1784747541", available: true }],
+    price: 235.0,
+    compareAtPrice: 250.0,
+    bestseller: false,
+    sale: true
+  },
+  {
     handle: "5-piece-patio-dining-set-with-glass-table-amp-wicker-chairs-gray",
     title: "5-Piece Patio Dining Set with Glass Table & Wicker Chairs – Gray",
     category: "Outdoor Furniture",
@@ -292,18 +394,6 @@ const PRODUCTS = [
     variants: [{ title: "Default", price: 165.0, compareAtPrice: 180.0, image: null, available: false }],
     price: 165.0,
     compareAtPrice: 180.0,
-    bestseller: false,
-    sale: true
-  },
-  {
-    handle: "golden-extendable-dining-table-modern-luxury-dining-table",
-    title: "Golden Extendable Dining Table – Modern Luxury Dining Table",
-    category: "Furniture",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gold-dining-table-1.jpg?v=1784747270", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gold-dining-table-2.jpg?v=1784747270"],
-    options: [{"name": "choose Design", "values": ["ANKA Honey Gold Table", "ANKA Gold Table"]}],
-    variants: [{ title: "ANKA Honey Gold Table", price: 350.0, compareAtPrice: 370.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gold-dining-table-1.jpg?v=1784747270", available: true }, { title: "ANKA Gold Table", price: 350.0, compareAtPrice: 370.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gold-dining-table-2.jpg?v=1784747270", available: true }],
-    price: 350.0,
-    compareAtPrice: 370.0,
     bestseller: false,
     sale: true
   },
@@ -332,18 +422,6 @@ const PRODUCTS = [
     sale: true
   },
   {
-    handle: "modern-coffee-table-stylish-amp-durable-furniture-for-your-home",
-    title: "Modern Dining Table – Stylish & Durable Furniture for Your Home",
-    category: "Furniture",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-1.png?v=1784747242", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-2.png?v=1784747242", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-3.png?v=1784747242"],
-    options: [{"name": "choose design", "values": ["Rose Model Dinning Table", "Walnut Dinning Table", "White Smart Table"]}],
-    variants: [{ title: "Rose Model Dinning Table", price: 165.0, compareAtPrice: 180.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-1.png?v=1784747242", available: true }, { title: "Walnut Dinning Table", price: 165.0, compareAtPrice: 180.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-2.png?v=1784747242", available: true }, { title: "White Smart Table", price: 165.0, compareAtPrice: 180.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-3.png?v=1784747242", available: true }],
-    price: 165.0,
-    compareAtPrice: 180.0,
-    bestseller: false,
-    sale: true
-  },
-  {
     handle: "nicole-armchair-in-gray-color-stylish-chenille-fabric-single-seater-modern-durable-accent-chair",
     title: "Nicole Armchair In Grey Colour – Stylish Chenille Fabric Single Seater | Modern & Durable Accent Chair",
     category: "Furniture",
@@ -352,18 +430,6 @@ const PRODUCTS = [
     variants: [{ title: "Default", price: 295.0, compareAtPrice: 310.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/nicole-gray-armchair-2.jpg?v=1784749818", available: true }],
     price: 295.0,
     compareAtPrice: 310.0,
-    bestseller: false,
-    sale: true
-  },
-  {
-    handle: "round-dining-table-modern-dining-table",
-    title: "Round Dining Table – Modern Dining Table",
-    category: "Furniture",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-1.jpg?v=1784747270", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-2.jpg?v=1784747270", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-3.jpg?v=1784747270", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-4.jpg?v=1784747270", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-5.jpg?v=1784747270", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-6.jpg?v=1784747270"],
-    options: [{"name": "choose design", "values": ["Round glass table", "Round rose glass table", "Round  Black and White table", "Lagina grey round table", "Grey wave glass table", "white bubble glass table"]}],
-    variants: [{ title: "Round glass table", price: 235.0, compareAtPrice: 250.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-1.jpg?v=1784747270", available: true }, { title: "Round rose glass table", price: 235.0, compareAtPrice: 250.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-2.jpg?v=1784747270", available: true }, { title: "Round  Black and White table", price: 235.0, compareAtPrice: 250.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-3.jpg?v=1784747270", available: true }, { title: "Lagina grey round table", price: 235.0, compareAtPrice: 250.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-8.jpg?v=1784747271", available: true }, { title: "Grey wave glass table", price: 235.0, compareAtPrice: 250.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-10.jpg?v=1784747541", available: true }, { title: "white bubble glass table", price: 235.0, compareAtPrice: 250.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/round-dining-table-9.jpg?v=1784747541", available: true }],
-    price: 235.0,
-    compareAtPrice: 250.0,
     bestseller: false,
     sale: true
   },
@@ -1196,17 +1262,6 @@ const PRODUCTS = [
     sale: false
   },
   {
-    handle: "ashwin-32-seater-high-back-corner-sofa",
-    title: "Ashwin 3+2 Seater High Back Corner Sofa",
-    category: "Corner Sofas",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-1.jpg?v=1784747938", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-2.jpg?v=1784747938", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-3.jpg?v=1784747938", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-4.png?v=1784747938", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-5.png?v=1784747938"],
-    options: [{"name": "Colour", "values": ["Black", "Cream", "Light Gray", "Mustard"]}],
-    variants: [{ title: "Black", price: 600.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-2.jpg?v=1784747938", available: true }, { title: "Cream", price: 600.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-5.png?v=1784747938", available: true }, { title: "Light Gray", price: 600.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-3.jpg?v=1784747938", available: true }, { title: "Mustard", price: 600.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/ashwin-corner-sofa-high-back-4.png?v=1784747938", available: true }],
-    price: 600.0,
-    bestseller: false,
-    sale: false
-  },
-  {
     handle: "ashwin-32-seater-scattered-back-corner-sofa",
     title: "Ashwin 3+2 Seater Scattered Back Corner Sofa",
     category: "Corner Sofas",
@@ -1460,17 +1515,6 @@ const PRODUCTS = [
     sale: false
   },
   {
-    handle: "kuzey-grey-gold-sofa-collection",
-    title: "Kuzey Grey &  Gold Sofa Collection",
-    category: "Sofas",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-1.webp?v=1784725799", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-2.webp?v=1784725799", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-3.webp?v=1784725799", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-4.webp?v=1784725799", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-5.webp?v=1784725799"],
-    options: [{"name": "Design", "values": ["3 seater", "2 seater", "Arm chair", "3+2+1 seater"]}],
-    variants: [{ title: "3 seater", price: 317.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-2.webp?v=1784725799", available: true }, { title: "2 seater", price: 296.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-3.webp?v=1784725799", available: true }, { title: "Arm chair", price: 252.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-4.webp?v=1784725799", available: true }, { title: "3+2+1 seater", price: 865.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/kuzey-gray-sofa-1.webp?v=1784725799", available: true }],
-    price: 252.0,
-    bestseller: false,
-    sale: false
-  },
-  {
     handle: "black-leather-electric-recliner-sofa-set",
     title: "Luxury Black Leather Electric Recliner Sofa Set with LED Lights & Cup Holders – 2 & 3 Seater Cinema Style Couch",
     category: "Sofas",
@@ -1647,34 +1691,12 @@ const PRODUCTS = [
     sale: false
   },
   {
-    handle: "5-door-wardrobe-full-bedroom-set-with-mirrors-and-storage",
-    title: "5 Door Wardrobe Full Bedroom Set with Mirrors and Storage",
-    category: "Wardrobes",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-1.png?v=1784747690", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-2.png?v=1784747690", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-3.png?v=1784747690", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-4.png?v=1784747690", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-5.png?v=1784747690", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-6.png?v=1784747690"],
-    options: [{"name": "colour", "values": ["White", "Black", "Grey", "Oak", "Vintage", "Walnut"]}],
-    variants: [{ title: "White", price: 550.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-1.png?v=1784747690", available: true }, { title: "Black", price: 550.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-2.png?v=1784747690", available: true }, { title: "Grey", price: 550.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-3.png?v=1784747690", available: true }, { title: "Oak", price: 550.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-4.png?v=1784747690", available: true }, { title: "Vintage", price: 550.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-5.png?v=1784747690", available: true }, { title: "Walnut", price: 550.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-6.png?v=1784747690", available: true }],
-    price: 550.0,
-    bestseller: false,
-    sale: false
-  },
-  {
     handle: "5-door-wardrobe-with-3-mirror-and-4-bottom-draws",
     title: "5 Door Wardrobe with 3 Mirrors and 4 Bottom Drawers",
     category: "Wardrobes",
     images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-v2-1.png?v=1784747690", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-v2-2.png?v=1784747690", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-v2-3.png?v=1784747690", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-v2-4.png?v=1784747690", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-v2-5.png?v=1784747690", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-v2-6.png?v=1784747719"],
     options: [{"name": "color", "values": ["White", "Black", "Grey", "Oak", "Vintage", "Walnut"]}],
     variants: [{ title: "White", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-v2-1.png?v=1784747690", available: true }, { title: "Black", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-v2-2.png?v=1784747690", available: true }, { title: "Grey", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-v2-3.png?v=1784747690", available: true }, { title: "Oak", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-v2-4.png?v=1784747690", available: true }, { title: "Vintage", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-v2-5.png?v=1784747690", available: true }, { title: "Walnut", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/5-door-mirror-wardrobe-v2-6.png?v=1784747719", available: true }],
-    price: 450.0,
-    bestseller: false,
-    sale: false
-  },
-  {
-    handle: "6-door-dressing-wardrobe",
-    title: "6 Door Dressing Wardrobe",
-    category: "Wardrobes",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-1.png?v=1784747575", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-2.png?v=1784747575", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-3.png?v=1784747575", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-4.png?v=1784747575", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-5.png?v=1784747575", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-6.png?v=1784747601"],
-    options: [{"name": "colour", "values": ["white", "black", "grey", "oak", "vintage", "walnut"]}],
-    variants: [{ title: "white", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-2.png?v=1784747575", available: true }, { title: "black", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-3.png?v=1784747575", available: true }, { title: "grey", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-1.png?v=1784747575", available: true }, { title: "oak", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-4.png?v=1784747575", available: true }, { title: "vintage", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-6.png?v=1784747601", available: true }, { title: "walnut", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/6-door-wardrobe-5.png?v=1784747575", available: true }],
     price: 450.0,
     bestseller: false,
     sale: false
@@ -1900,17 +1922,6 @@ const PRODUCTS = [
     sale: false
   },
   {
-    handle: "oxford-wingback-luxury-beds",
-    title: "Oxford Wingback Luxury Beds",
-    category: "Beds & Mattresses",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859"],
-    options: [{"name": "Size", "values": ["Double", "King Size", "Single", "Super King"]}, {"name": "Mattress", "values": ["No Mattress", "Spring Mattress", "Memory Foam / Orthopaedic Mattress"]}],
-    variants: [{ title: "Double / No Mattress", price: 260.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "King Size / No Mattress", price: 275.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "Single / No Mattress", price: 240.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "Super King / No Mattress", price: 305.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "Single / Spring Mattress", price: 275.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "Single / Memory Foam / Orthopaedic Mattress", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "Double / Spring Mattress", price: 310.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "Double / Memory Foam / Orthopaedic Mattress", price: 335.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "King Size / Spring Mattress", price: 335.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "King Size / Memory Foam / Orthopaedic Mattress", price: 360.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "Super King / Spring Mattress", price: 395.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }, { title: "Super King / Memory Foam / Orthopaedic Mattress", price: 420.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/oxford-bed.png?v=1784747859", available: true }],
-    price: 240.0,
-    bestseller: false,
-    sale: false
-  },
-  {
     handle: "trio-triple-sleeper-bunk-bed-with-mattresses",
     title: "Solid Wooden Detachable Trio Bunk Bed with 2 Mattresses – Space Saving, Convertible Design",
     category: "Beds & Mattresses",
@@ -1933,13 +1944,46 @@ const PRODUCTS = [
     sale: false
   },
   {
-    handle: "4-piece-outdoor-patio-furniture-set-with-cushions-rattan-conversation-set-garden-sofa-set-with-coffee-table-grey",
-    title: "4-Piece Outdoor Patio Furniture Set with Cushions, Rattan Conversation Set, Garden Sofa Set with Table, Grey",
-    category: "Outdoor Furniture",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/rattan-patio-set.jpg?v=1784720298"],
-    options: [],
-    variants: [{ title: "Default", price: 180.0, image: null, available: false }],
-    price: 180.0,
+    handle: "extendable-dining-table-6-velvet-chairs-set",
+    title: "Extendable Dining Table &  6 Velvet Chairs Set",
+    category: "Dining Tables",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-1.jpg?v=1784747541", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-2.jpg?v=1784747542", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-3.jpg?v=1784747542", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-4.jpg?v=1784747542", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-5.jpg?v=1784747542", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-6.jpg?v=1784747542"],
+    options: [{"name": "Choose Design", "values": ["Black sand table", "Blue and Gold table", "Brown Glass table", "Grey sand table", "Black and Gold", "Grey and Gold", "Black wooden table"]}],
+    variants: [{ title: "Black sand table", price: 400.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-1.jpg?v=1784747541", available: true }, { title: "Blue and Gold table", price: 400.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-2.jpg?v=1784747542", available: true }, { title: "Brown Glass table", price: 400.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-3.jpg?v=1784747542", available: true }, { title: "Grey sand table", price: 400.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-4.jpg?v=1784747542", available: true }, { title: "Black and Gold", price: 400.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-5.jpg?v=1784747542", available: true }, { title: "Grey and Gold", price: 400.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-6.jpg?v=1784747542", available: true }, { title: "Black wooden table", price: 400.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-7.jpg?v=1784747542", available: true }],
+    price: 400.0,
+    bestseller: false,
+    sale: false
+  },
+  {
+    handle: "extendable-dining-table-chairs-set-new-arrival",
+    title: "Extendable Marble-Effect Dining Table & 6 Velvet Chairs Set",
+    category: "Dining Tables",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-1.jpg?v=1784750349", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-2.jpg?v=1784750349", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-3.jpg?v=1784750349", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-4.jpg?v=1784750363", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-5.jpg?v=1784750363"],
+    options: [{"name": "Color", "values": ["Black", "Grey (Chrome Legs)", "Grey (Golden Legs)", "Green", "Blue"]}, {"name": "Location ", "values": ["Inside London", "Outside London ( like Birmingham etc)"]}],
+    variants: [{ title: "Black / Inside London", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-1.jpg?v=1784750349", available: true }, { title: "Black / Outside London ( like Birmingham etc)", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-1.jpg?v=1784750349", available: true }, { title: "Grey (Chrome Legs) / Inside London", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-2.jpg?v=1784750349", available: true }, { title: "Grey (Chrome Legs) / Outside London ( like Birmingham etc)", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-2.jpg?v=1784750349", available: true }, { title: "Grey (Golden Legs) / Inside London", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-3.jpg?v=1784750349", available: true }, { title: "Grey (Golden Legs) / Outside London ( like Birmingham etc)", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-3.jpg?v=1784750349", available: true }, { title: "Green / Inside London", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-4.jpg?v=1784750363", available: true }, { title: "Green / Outside London ( like Birmingham etc)", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-4.jpg?v=1784750363", available: true }, { title: "Blue / Inside London", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-4.jpg?v=1784750363", available: true }, { title: "Blue / Outside London ( like Birmingham etc)", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-4.jpg?v=1784750363", available: true }],
+    price: 300.0,
+    bestseller: false,
+    sale: false
+  },
+  {
+    handle: "turkish-dining-table-with-6-chairs",
+    title: "Turkish Dining Table with 6 Chairs",
+    category: "Dining Tables",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-1.png?v=1784750035", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-2.png?v=1784750035", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-3.jpg?v=1784750035", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-4.jpg?v=1784750035", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-5.jpg?v=1784750036", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-6.jpg?v=1784750036"],
+    options: [{"name": "color", "values": ["black and white", "grey and white", "full white table", "Real marble table", "black bubble table", "black rose glass table", "white marble table"]}],
+    variants: [{ title: "black and white", price: 285.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-1.png?v=1784750035", available: true }, { title: "grey and white", price: 285.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-2.png?v=1784750035", available: true }, { title: "full white table", price: 285.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-3.jpg?v=1784750035", available: true }, { title: "Real marble table", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-4.jpg?v=1784750035", available: true }, { title: "black bubble table", price: 285.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-5.jpg?v=1784750036", available: true }, { title: "black rose glass table", price: 285.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-6.jpg?v=1784750036", available: true }, { title: "white marble table", price: 285.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-7.jpg?v=1784750036", available: true }],
+    price: 285.0,
+    bestseller: false,
+    sale: false
+  },
+  {
+    handle: "wooden-dining-table",
+    title: "Wooden Dining Table",
+    category: "Dining Tables",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/wooden-dining-table-1.png?v=1784747541", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/wooden-dining-table-2.png?v=1784747541"],
+    options: [{"name": "choose design", "values": ["CALCUTTA Grey Wooden Marble Table Steel", "BERMUDA Grey Wooden Marble Table White"]}],
+    variants: [{ title: "CALCUTTA Grey Wooden Marble Table Steel", price: 440.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/wooden-dining-table-1.png?v=1784747541", available: true }, { title: "BERMUDA Grey Wooden Marble Table White", price: 440.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/wooden-dining-table-2.png?v=1784747541", available: true }],
+    price: 440.0,
     bestseller: false,
     sale: false
   },
@@ -1973,28 +2017,6 @@ const PRODUCTS = [
     options: [],
     variants: [{ title: "Default", price: 310.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/dino-armchair-2.webp?v=1784749545", available: true }],
     price: 310.0,
-    bestseller: false,
-    sale: false
-  },
-  {
-    handle: "extendable-dining-table-6-velvet-chairs-set",
-    title: "Extendable Dining Table &  6 Velvet Chairs Set",
-    category: "Furniture",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-1.jpg?v=1784747541", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-2.jpg?v=1784747542", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-3.jpg?v=1784747542", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-4.jpg?v=1784747542", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-5.jpg?v=1784747542", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-6.jpg?v=1784747542"],
-    options: [{"name": "Choose Design", "values": ["Black sand table", "Blue and Gold table", "Brown Glass table", "Grey sand table", "Black and Gold", "Grey and Gold", "Black wooden table"]}],
-    variants: [{ title: "Black sand table", price: 400.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-1.jpg?v=1784747541", available: true }, { title: "Blue and Gold table", price: 400.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-2.jpg?v=1784747542", available: true }, { title: "Brown Glass table", price: 400.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-3.jpg?v=1784747542", available: true }, { title: "Grey sand table", price: 400.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-4.jpg?v=1784747542", available: true }, { title: "Black and Gold", price: 400.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-5.jpg?v=1784747542", available: true }, { title: "Grey and Gold", price: 400.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-6.jpg?v=1784747542", available: true }, { title: "Black wooden table", price: 400.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-7.jpg?v=1784747542", available: true }],
-    price: 400.0,
-    bestseller: false,
-    sale: false
-  },
-  {
-    handle: "extendable-dining-table-chairs-set-new-arrival",
-    title: "Extendable Marble-Effect Dining Table & 6 Velvet Chairs Set",
-    category: "Furniture",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-1.jpg?v=1784750349", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-2.jpg?v=1784750349", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-3.jpg?v=1784750349", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-4.jpg?v=1784750363", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-5.jpg?v=1784750363"],
-    options: [{"name": "Color", "values": ["Black", "Grey (Chrome Legs)", "Grey (Golden Legs)", "Green", "Blue"]}, {"name": "Location ", "values": ["Inside London", "Outside London ( like Birmingham etc)"]}],
-    variants: [{ title: "Black / Inside London", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-1.jpg?v=1784750349", available: true }, { title: "Black / Outside London ( like Birmingham etc)", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-1.jpg?v=1784750349", available: true }, { title: "Grey (Chrome Legs) / Inside London", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-2.jpg?v=1784750349", available: true }, { title: "Grey (Chrome Legs) / Outside London ( like Birmingham etc)", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-2.jpg?v=1784750349", available: true }, { title: "Grey (Golden Legs) / Inside London", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-3.jpg?v=1784750349", available: true }, { title: "Grey (Golden Legs) / Outside London ( like Birmingham etc)", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-3.jpg?v=1784750349", available: true }, { title: "Green / Inside London", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-4.jpg?v=1784750363", available: true }, { title: "Green / Outside London ( like Birmingham etc)", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-4.jpg?v=1784750363", available: true }, { title: "Blue / Inside London", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-4.jpg?v=1784750363", available: true }, { title: "Blue / Outside London ( like Birmingham etc)", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-4.jpg?v=1784750363", available: true }],
-    price: 300.0,
     bestseller: false,
     sale: false
   },
@@ -2043,17 +2065,6 @@ const PRODUCTS = [
     sale: false
   },
   {
-    handle: "turkish-dining-table-with-6-chairs",
-    title: "Turkish Dining Table with 6 Chairs",
-    category: "Furniture",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-1.png?v=1784750035", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-2.png?v=1784750035", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-3.jpg?v=1784750035", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-4.jpg?v=1784750035", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-5.jpg?v=1784750036", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-6.jpg?v=1784750036"],
-    options: [{"name": "color", "values": ["black and white", "grey and white", "full white table", "Real marble table", "black bubble table", "black rose glass table", "white marble table"]}],
-    variants: [{ title: "black and white", price: 285.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-1.png?v=1784750035", available: true }, { title: "grey and white", price: 285.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-2.png?v=1784750035", available: true }, { title: "full white table", price: 285.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-3.jpg?v=1784750035", available: true }, { title: "Real marble table", price: 450.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-4.jpg?v=1784750035", available: true }, { title: "black bubble table", price: 285.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-5.jpg?v=1784750036", available: true }, { title: "black rose glass table", price: 285.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-6.jpg?v=1784750036", available: true }, { title: "white marble table", price: 285.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/turkish-dining-table-7.jpg?v=1784750036", available: true }],
-    price: 285.0,
-    bestseller: false,
-    sale: false
-  },
-  {
     handle: "verona-arm-chair-cuddle-chair",
     title: "Verona Arm Chair & Cuddle Chair",
     category: "Furniture",
@@ -2061,17 +2072,6 @@ const PRODUCTS = [
     options: [{"name": "Colour", "values": ["Gray"]}, {"name": "Style", "values": ["Arm Chair", "Cuddle Chair"]}],
     variants: [{ title: "Gray / Arm Chair", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/verona-armchair-6.jpg?v=1784749377", available: true }, { title: "Gray / Cuddle Chair", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/verona-armchair-4.jpg?v=1784749376", available: true }],
     price: 300.0,
-    bestseller: false,
-    sale: false
-  },
-  {
-    handle: "wooden-dining-table",
-    title: "Wooden Dining Table",
-    category: "Furniture",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/wooden-dining-table-1.png?v=1784747541", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/wooden-dining-table-2.png?v=1784747541"],
-    options: [{"name": "choose design", "values": ["CALCUTTA Grey Wooden Marble Table Steel", "BERMUDA Grey Wooden Marble Table White"]}],
-    variants: [{ title: "CALCUTTA Grey Wooden Marble Table Steel", price: 440.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/wooden-dining-table-1.png?v=1784747541", available: true }, { title: "BERMUDA Grey Wooden Marble Table White", price: 440.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/wooden-dining-table-2.png?v=1784747541", available: true }],
-    price: 440.0,
     bestseller: false,
     sale: false
   },

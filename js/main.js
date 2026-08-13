@@ -37,16 +37,18 @@ function productCardHTML(p) {
 }
 
 function dealCardHTML(p) {
+  const onSale = p.sale && p.compareAtPrice;
+  const priceRow = onSale
+    ? `<span class="deal-price-now">${formatPrice(p.price)}</span>
+       <span class="deal-price-was">${formatPrice(p.compareAtPrice)}</span>
+       <span class="deal-off">Save ${discountPercent(p)}%</span>`
+    : `<span class="deal-price-now">${formatPrice(p.price)}</span>`;
   return `
     <a href="product.html?handle=${encodeURIComponent(p.handle)}" class="deal-card">
       <div class="deal-card-img"><img src="${shopifyImg(p.images[0], 300)}" alt="${p.title}" loading="lazy" ${imgFallbackAttr()}></div>
       <div class="deal-card-info">
         <h4>${p.title}</h4>
-        <div class="deal-price-row">
-          <span class="deal-price-now">${formatPrice(p.price)}</span>
-          <span class="deal-price-was">${formatPrice(p.compareAtPrice)}</span>
-          <span class="deal-off">Save ${discountPercent(p)}%</span>
-        </div>
+        <div class="deal-price-row">${priceRow}</div>
       </div>
     </a>
   `;
@@ -61,6 +63,19 @@ function renderDealsStrip(targetId) {
     <div class="deals-strip-label"><span class="eyebrow">While Stock Lasts</span></div>
     <div class="deals-track-wrap">
       <div class="deals-track">${deals.map(dealCardHTML).join("")}</div>
+    </div>
+  `;
+}
+
+// Generic horizontal slider — used for category showcases like "Sofa Collection".
+function renderProductSlider(targetId, products, label) {
+  const el = document.getElementById(targetId);
+  if (!el) return;
+  if (!products.length) { el.style.display = "none"; return; }
+  el.innerHTML = `
+    <div class="deals-strip-label"><span class="eyebrow">${label}</span></div>
+    <div class="deals-track-wrap">
+      <div class="deals-track">${products.map(dealCardHTML).join("")}</div>
     </div>
   `;
 }

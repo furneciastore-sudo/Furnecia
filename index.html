@@ -90,6 +90,20 @@
   </div>
 </div>
 
+<div class="deals-strip" id="sofa-slider" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);"></div>
+
+<section class="section" id="wardrobes-section">
+  <div class="section-inner">
+    <span class="eyebrow">Bedroom Storage</span>
+    <h2 class="section-title" style="margin-top:14px;">Wardrobes &amp; Storage</h2>
+    <p class="section-sub">Fitted looks, freestanding flexibility — space for every bedroom</p>
+    <div class="product-grid" id="wardrobes-grid"></div>
+    <p style="margin-top:36px;"><a href="shop.html?cat=Wardrobes" class="btn btn-secondary">Shop All Wardrobes</a></p>
+  </div>
+</section>
+
+<div class="deals-strip" id="dining-slider" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);"></div>
+
 <section class="section budget-section">
   <div class="budget-inner">
     <h2 class="section-title">Find Furniture Within Your Budget</h2>
@@ -202,6 +216,21 @@
   document.getElementById("bestsellers-grid").innerHTML =
     PRODUCTS.filter(p => p.bestseller).map(productCardHTML).join("");
   renderDealsStrip("deals-strip");
+
+  renderProductSlider(
+    "sofa-slider",
+    PRODUCTS.filter(p => p.category === "Sofas" || p.category === "Corner Sofas").slice(0, 12),
+    "Sofa Collection"
+  );
+
+  document.getElementById("wardrobes-grid").innerHTML =
+    PRODUCTS.filter(p => p.category === "Wardrobes").slice(0, 8).map(productCardHTML).join("");
+
+  renderProductSlider(
+    "dining-slider",
+    PRODUCTS.filter(p => p.category === "Dining Tables"),
+    "Dining Tables"
+  );
 
   document.getElementById("budget-form").addEventListener("submit", function (e) {
     e.preventDefault();
