@@ -2286,8 +2286,8 @@ const PRODUCTS = [
     category: "Dining Tables",
     images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/wooden-dining-table-2.png?v=1784747541"],
     options: [],
-    variants: [{ title: "Default", price: 440.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/wooden-dining-table-2.png?v=1784747541", available: true }],
-    price: 440.0,
+    variants: [{ title: "Default", price: 380.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/wooden-dining-table-2.png?v=1784747541", available: true }],
+    price: 380.0,
     bestseller: false,
     sale: false
   },
@@ -2297,8 +2297,8 @@ const PRODUCTS = [
     category: "Dining Tables",
     images: ["images/dining-extras/grey-marble-extendable-1.jpg", "images/dining-extras/grey-marble-extendable-2.jpg", "images/dining-extras/grey-marble-extendable-3.jpg", "images/dining-extras/grey-marble-extendable-4.jpg"],
     options: [],
-    variants: [{ title: "Default", price: 440.0, image: "images/dining-extras/grey-marble-extendable-1.jpg", available: true }],
-    price: 440.0,
+    variants: [{ title: "Default", price: 380.0, image: "images/dining-extras/grey-marble-extendable-1.jpg", available: true }],
+    price: 380.0,
     bestseller: false,
     sale: false
   },
