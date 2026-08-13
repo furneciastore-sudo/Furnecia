@@ -254,24 +254,12 @@ const PRODUCTS = [
     sale: true
   },
   {
-    handle: "leather-gray-2-seater-sofa-bed-compact-comfort-timeless-style",
-    title: "Leather Grey 2-Seater Sofa Bed – Compact Comfort, Timeless Style",
-    category: "Sofa Beds",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-v3-1.jpg?v=1784749517", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-v3-2.jpg?v=1784749517"],
-    options: [],
-    variants: [{ title: "Default", price: 275.0, compareAtPrice: 290.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-v3-2.jpg?v=1784749517", available: true }],
-    price: 275.0,
-    compareAtPrice: 290.0,
-    bestseller: false,
-    sale: true
-  },
-  {
     handle: "new-leather-grey-sofa-bed-with-storage-51-105",
     title: "New Leather Grey Sofa Bed with Storage 51-105",
     category: "Sofa Beds",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-1.webp?v=1784725800", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-2.webp?v=1784725828", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-3.jpg?v=1784725828", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-4.jpg?v=1784725828"],
-    options: [{"name": "Design", "values": ["3 seater", "2 seater", "Arm chair"]}],
-    variants: [{ title: "3 seater", price: 313.0, compareAtPrice: 328.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-1.webp?v=1784725800", available: true }, { title: "2 seater", price: 293.0, compareAtPrice: 308.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-2.webp?v=1784725828", available: true }, { title: "Arm chair", price: 243.0, compareAtPrice: 258.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-3.jpg?v=1784725828", available: true }],
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-1.webp?v=1784725800", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-v3-1.jpg?v=1784749517", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-v3-2.jpg?v=1784749517", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-3.jpg?v=1784725828", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-4.jpg?v=1784725828"],
+    options: [{"name": "Design", "values": ["2 Seater", "3 Seater", "Arm Chair", "3+2 Seater Set", "Arm Chair + 2 Seater + 3 Seater Set"]}],
+    variants: [{ title: "2 Seater", price: 293.0, compareAtPrice: 308.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-v3-2.jpg?v=1784749517", available: true }, { title: "3 Seater", price: 313.0, compareAtPrice: 328.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-1.webp?v=1784725800", available: true }, { title: "Arm Chair", price: 243.0, compareAtPrice: 258.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-3.jpg?v=1784725828", available: true }, { title: "3+2 Seater Set", price: 575.0, compareAtPrice: 636.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-4.jpg?v=1784725828", available: true }, { title: "Arm Chair + 2 Seater + 3 Seater Set", price: 780.0, compareAtPrice: 894.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-4.jpg?v=1784725828", available: true }],
     price: 243.0,
     compareAtPrice: 258.0,
     bestseller: false,
