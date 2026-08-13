@@ -77,11 +77,11 @@
     }
 
     page.innerHTML = items.map(i => `
-      <div class="cart-item" data-handle="${i.handle}">
-        <img src="${i.product.image}" alt="${i.product.title}" ${imgFallbackAttr()}>
+      <div class="cart-item" data-handle="${i.handle}" data-variant="${i.variantTitle}">
+        <img src="${i.variant.image || i.product.images[0]}" alt="${i.product.title}" ${imgFallbackAttr()}>
         <div class="cart-item-info">
-          <h4>${i.product.title}</h4>
-          <span class="cart-item-price">${formatPrice(i.product.price)}</span>
+          <h4>${i.product.title}${i.variantTitle && i.variantTitle !== "Default" ? ` — ${i.variantTitle}` : ""}</h4>
+          <span class="cart-item-price">${formatPrice(i.variant.price)}</span>
         </div>
         <div class="cart-item-qty">
           <button type="button" class="qty-dec">−</button>
@@ -98,22 +98,23 @@
 
     page.querySelectorAll(".cart-item").forEach(el => {
       const handle = el.getAttribute("data-handle");
+      const variantTitle = el.getAttribute("data-variant");
       el.querySelector(".qty-dec").addEventListener("click", () => {
         const input = el.querySelector(".qty-val");
-        updateQty(handle, Math.max(1, Number(input.value) - 1));
+        updateQty(handle, variantTitle, Math.max(1, Number(input.value) - 1));
         renderCart();
       });
       el.querySelector(".qty-inc").addEventListener("click", () => {
         const input = el.querySelector(".qty-val");
-        updateQty(handle, Number(input.value) + 1);
+        updateQty(handle, variantTitle, Number(input.value) + 1);
         renderCart();
       });
       el.querySelector(".qty-val").addEventListener("change", (e) => {
-        updateQty(handle, Math.max(1, Number(e.target.value)));
+        updateQty(handle, variantTitle, Math.max(1, Number(e.target.value)));
         renderCart();
       });
       el.querySelector(".remove-link").addEventListener("click", () => {
-        removeFromCart(handle);
+        removeFromCart(handle, variantTitle);
         renderCart();
       });
     });
@@ -133,7 +134,8 @@
 
     let lines = ["New Cash on Delivery Order — Furnecia", ""];
     items.forEach(i => {
-      lines.push(`${i.qty} x ${i.product.title} — ${formatPrice(i.product.price)} each = ${formatPrice(i.product.price * i.qty)}`);
+      const label = i.product.title + (i.variantTitle && i.variantTitle !== "Default" ? ` (${i.variantTitle})` : "");
+      lines.push(`${i.qty} x ${label} — ${formatPrice(i.variant.price)} each = ${formatPrice(i.variant.price * i.qty)}`);
     });
     lines.push("", `Total: ${formatPrice(cartTotal())}`, "");
     lines.push(`Name: ${name || "-"}`);

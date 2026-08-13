@@ -34,24 +34,53 @@
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute("content", `${product.title} — ${formatPrice(product.price)}. Cash on Delivery across the UK, free delivery on selected items, 30-day returns.`);
 
-    const onSale = product.sale && product.compareAtPrice;
-    const priceRow = onSale
-      ? `<span class="product-detail-price">${formatPrice(product.price)}</span>
-         <span class="product-detail-was">${formatPrice(product.compareAtPrice)}</span>
-         <span class="product-detail-off">Save ${discountPercent(product)}%</span>`
-      : `<span class="product-detail-price">${formatPrice(product.price)}</span>`;
+    let selectedVariant = defaultVariant(product);
+    let selectedImage = selectedVariant.image || product.images[0];
+
+    const thumbsHTML = product.images.map((img, idx) => `
+      <button type="button" class="gallery-thumb ${img === selectedImage ? "active" : ""}" data-img="${img}">
+        <img src="${img}" alt="${product.title} photo ${idx + 1}" ${imgFallbackAttr()}>
+      </button>
+    `).join("");
+
+    const hasRealOptions = product.options && product.options.length > 0;
+    const variantSwatchesHTML = hasRealOptions ? `
+      <div class="variant-group">
+        <span class="variant-group-label">${product.options[0].name}: <span id="selected-variant-label">${selectedVariant.title}</span></span>
+        <div class="variant-swatches">
+          ${product.variants.map(v => `
+            <button type="button" class="variant-swatch ${v.title === selectedVariant.title ? "active" : ""} ${!v.available ? "unavailable" : ""}"
+              data-variant="${v.title.replace(/"/g, "&quot;")}" ${!v.available ? "disabled" : ""}>${v.title}</button>
+          `).join("")}
+        </div>
+      </div>
+    ` : "";
+
+    function priceRowHTML(v) {
+      const onSale = v.compareAtPrice && v.compareAtPrice > v.price;
+      return onSale
+        ? `<span class="product-detail-price">${formatPrice(v.price)}</span>
+           <span class="product-detail-was">${formatPrice(v.compareAtPrice)}</span>
+           <span class="product-detail-off">Save ${Math.round((1 - v.price / v.compareAtPrice) * 100)}%</span>`
+        : `<span class="product-detail-price">${formatPrice(v.price)}</span>`;
+    }
 
     root.innerHTML = `
       <div class="product-detail">
-        <div class="product-detail-img" id="zoom-trigger">
-          <img src="${product.image}" alt="${product.title}" id="main-product-img" ${imgFallbackAttr()}>
-          <span class="zoom-hint">🔍 Click to zoom</span>
+        <div class="product-gallery">
+          ${product.images.length > 1 ? `<div class="gallery-thumbs" id="gallery-thumbs">${thumbsHTML}</div>` : ""}
+          <div class="product-detail-img" id="zoom-trigger">
+            <img src="${selectedImage}" alt="${product.title}" id="main-product-img" ${imgFallbackAttr()}>
+            <span class="zoom-hint">Click to zoom</span>
+          </div>
         </div>
         <div class="product-detail-info">
           <span class="product-detail-category">${product.category}</span>
           <h1>${product.title}</h1>
           ${ratingRowHTML(product.handle, { size: "sm" })}
-          <div class="product-detail-price-row">${priceRow}</div>
+          <div class="product-detail-price-row" id="price-row">${priceRowHTML(selectedVariant)}</div>
+
+          ${variantSwatchesHTML}
 
           <div class="qty-row">
             <button type="button" id="qty-minus">−</button>
@@ -80,8 +109,7 @@
           </div>
         </div>
       </div>
-      ${reviewsSectionHTML(product.handle)}
-    `;
+    ` + reviewsSectionHTML(product.handle);
 
     document.getElementById("delivery-dates").textContent = deliveryEstimateText();
 
@@ -92,7 +120,7 @@
       "@context": "https://schema.org",
       "@type": "Product",
       name: product.title,
-      image: product.image,
+      image: product.images,
       category: product.category,
       brand: { "@type": "Brand", name: "Furnecia" },
       aggregateRating: {
@@ -103,12 +131,38 @@
       offers: {
         "@type": "Offer",
         priceCurrency: "GBP",
-        price: product.price,
+        price: selectedVariant.price,
         availability: "https://schema.org/InStock",
         url: window.location.href
       }
     });
     document.head.appendChild(ld);
+
+    // ---- gallery thumbnail switching ----
+    function setMainImage(url) {
+      selectedImage = url;
+      document.getElementById("main-product-img").src = url;
+      document.querySelectorAll(".gallery-thumb").forEach(t => t.classList.toggle("active", t.getAttribute("data-img") === url));
+    }
+    document.querySelectorAll(".gallery-thumb").forEach(btn => {
+      btn.addEventListener("click", () => setMainImage(btn.getAttribute("data-img")));
+    });
+
+    // ---- variant swatch switching ----
+    document.querySelectorAll(".variant-swatch").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (btn.disabled) return;
+        const v = getVariant(product, btn.getAttribute("data-variant"));
+        selectedVariant = v;
+        document.querySelectorAll(".variant-swatch").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const lbl = document.getElementById("selected-variant-label");
+        if (lbl) lbl.textContent = v.title;
+        document.getElementById("price-row").innerHTML = priceRowHTML(v);
+        if (v.image) setMainImage(v.image);
+        updateWaLink();
+      });
+    });
 
     const qtyInput = document.getElementById("qty-input");
     document.getElementById("qty-minus").addEventListener("click", () => {
@@ -122,22 +176,23 @@
     qtyInput.addEventListener("input", updateWaLink);
 
     document.getElementById("add-to-cart-btn").addEventListener("click", () => {
-      addToCart(product.handle, Number(qtyInput.value) || 1);
+      addToCart(product.handle, selectedVariant.title, Number(qtyInput.value) || 1);
       alert("Added to cart!");
     });
 
     function updateWaLink() {
       const qty = Number(qtyInput.value) || 1;
-      const msg = `Hi Furnecia, I'd like to order:\n${qty} x ${product.title} — ${formatPrice(product.price)} each\nTotal: ${formatPrice(product.price * qty)}\n\nMy name:\nMy address:\nMy phone:`;
+      const variantLabel = selectedVariant.title !== "Default" ? ` (${selectedVariant.title})` : "";
+      const msg = `Hi Furnecia, I'd like to order:\n${qty} x ${product.title}${variantLabel} — ${formatPrice(selectedVariant.price)} each\nTotal: ${formatPrice(selectedVariant.price * qty)}\n\nMy name:\nMy address:\nMy phone:`;
       document.getElementById("wa-order-btn").href = waLink(msg);
     }
     updateWaLink();
 
-    // simple click-to-zoom lightbox (works with a single product photo)
+    // simple click-to-zoom lightbox
     document.getElementById("zoom-trigger").addEventListener("click", () => {
       const box = document.createElement("div");
       box.className = "img-lightbox";
-      box.innerHTML = `<button class="img-lightbox-close" aria-label="Close">&times;</button><img src="${product.image}" alt="${product.title}">`;
+      box.innerHTML = `<button class="img-lightbox-close" aria-label="Close">&times;</button><img src="${selectedImage}" alt="${product.title}">`;
       box.addEventListener("click", () => box.remove());
       document.body.appendChild(box);
     });

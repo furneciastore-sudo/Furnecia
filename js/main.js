@@ -22,7 +22,7 @@ function productCardHTML(p) {
     <a href="product.html?handle=${encodeURIComponent(p.handle)}" class="product-card">
       <div class="product-card-img">
         ${badge}
-        <img src="${p.image}" alt="${p.title}" loading="lazy" width="600" height="600" ${imgFallbackAttr()}>
+        <img src="${p.images[0]}" alt="${p.title}" loading="lazy" width="600" height="600" ${imgFallbackAttr()}>
       </div>
       <div class="product-card-info">
         <h3 class="product-card-name">${p.title}</h3>
@@ -39,7 +39,7 @@ function productCardHTML(p) {
 function dealCardHTML(p) {
   return `
     <a href="product.html?handle=${encodeURIComponent(p.handle)}" class="deal-card">
-      <div class="deal-card-img"><img src="${p.image}" alt="${p.title}" loading="lazy" ${imgFallbackAttr()}></div>
+      <div class="deal-card-img"><img src="${p.images[0]}" alt="${p.title}" loading="lazy" ${imgFallbackAttr()}></div>
       <div class="deal-card-info">
         <h4>${p.title}</h4>
         <div class="deal-price-row">

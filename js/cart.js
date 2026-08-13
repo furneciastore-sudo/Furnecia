@@ -1,5 +1,7 @@
 // ============================================================
 // CART — localStorage me store hota hai, koi backend nahi chahiye
+// Each line item is keyed by handle + variantTitle (so two colours
+// of the same product sit as separate cart lines).
 // ============================================================
 const CART_KEY = "furnecia_cart";
 
@@ -16,27 +18,27 @@ function saveCart(cart) {
   updateCartCount();
 }
 
-function addToCart(handle, qty = 1) {
+function addToCart(handle, variantTitle, qty = 1) {
   const cart = getCart();
-  const existing = cart.find(i => i.handle === handle);
+  const existing = cart.find(i => i.handle === handle && i.variantTitle === variantTitle);
   if (existing) {
     existing.qty += qty;
   } else {
-    cart.push({ handle, qty });
+    cart.push({ handle, variantTitle, qty });
   }
   saveCart(cart);
 }
 
-function removeFromCart(handle) {
-  saveCart(getCart().filter(i => i.handle !== handle));
+function removeFromCart(handle, variantTitle) {
+  saveCart(getCart().filter(i => !(i.handle === handle && i.variantTitle === variantTitle)));
 }
 
-function updateQty(handle, qty) {
+function updateQty(handle, variantTitle, qty) {
   const cart = getCart();
-  const item = cart.find(i => i.handle === handle);
+  const item = cart.find(i => i.handle === handle && i.variantTitle === variantTitle);
   if (!item) return;
   if (qty <= 0) {
-    saveCart(cart.filter(i => i.handle !== handle));
+    saveCart(cart.filter(i => !(i.handle === handle && i.variantTitle === variantTitle)));
   } else {
     item.qty = qty;
     saveCart(cart);
@@ -49,12 +51,17 @@ function clearCart() {
 
 function cartItemsWithDetails() {
   return getCart()
-    .map(i => ({ ...i, product: getProductByHandle(i.handle) }))
-    .filter(i => i.product);
+    .map(i => {
+      const product = getProductByHandle(i.handle);
+      if (!product) return null;
+      const variant = getVariant(product, i.variantTitle);
+      return { ...i, product, variant };
+    })
+    .filter(Boolean);
 }
 
 function cartTotal() {
-  return cartItemsWithDetails().reduce((sum, i) => sum + i.product.price * i.qty, 0);
+  return cartItemsWithDetails().reduce((sum, i) => sum + i.variant.price * i.qty, 0);
 }
 
 function cartCount() {
