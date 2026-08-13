@@ -2028,17 +2028,6 @@ const PRODUCTS = [
     sale: false
   },
   {
-    handle: "extendable-dining-table-chairs-set-new-arrival-blue",
-    title: "Extendable Marble-Effect Dining Table & 6 Velvet Chairs Set — Blue",
-    category: "Dining Tables",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-4.jpg?v=1784750363"],
-    options: [],
-    variants: [{ title: "Default", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-4.jpg?v=1784750363", available: true }],
-    price: 300.0,
-    bestseller: false,
-    sale: false
-  },
-  {
     handle: "extendable-dining-table-chairs-set-new-arrival-green",
     title: "Extendable Marble-Effect Dining Table & 6 Velvet Chairs Set — Green",
     category: "Dining Tables",
