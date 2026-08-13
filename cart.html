@@ -78,7 +78,7 @@
 
     page.innerHTML = items.map(i => `
       <div class="cart-item" data-handle="${i.handle}" data-variant="${i.variantTitle}">
-        <img src="${i.variant.image || i.product.images[0]}" alt="${i.product.title}" ${imgFallbackAttr()}>
+        <img src="${shopifyImg(i.variant.image || i.product.images[0], 200)}" alt="${i.product.title}" ${imgFallbackAttr()}>
         <div class="cart-item-info">
           <h4>${i.product.title}${i.variantTitle && i.variantTitle !== "Default" ? ` — ${i.variantTitle}` : ""}</h4>
           <span class="cart-item-price">${formatPrice(i.variant.price)}</span>

@@ -23,6 +23,14 @@ function formatPrice(amount) {
   return `${SITE.currencySymbol}${Number(amount).toFixed(2)}`;
 }
 
+// Ask Shopify's CDN for an appropriately-sized image instead of the
+// full original (which can be several MB) — keeps photos sharp
+// without the slow page loads that full-resolution everywhere causes.
+function shopifyImg(url, width) {
+  if (!url) return url;
+  return url + (url.includes("?") ? "&" : "?") + "width=" + width;
+}
+
 function formatDateShort(d) {
   return d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
 }

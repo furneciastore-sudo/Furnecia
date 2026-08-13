@@ -39,7 +39,7 @@
 
     const thumbsHTML = product.images.map((img, idx) => `
       <button type="button" class="gallery-thumb ${img === selectedImage ? "active" : ""}" data-img="${img}">
-        <img src="${img}" alt="${product.title} photo ${idx + 1}" ${imgFallbackAttr()}>
+        <img src="${shopifyImg(img, 150)}" alt="${product.title} photo ${idx + 1}" loading="lazy" ${imgFallbackAttr()}>
       </button>
     `).join("");
 
@@ -70,7 +70,7 @@
         <div class="product-gallery">
           ${product.images.length > 1 ? `<div class="gallery-thumbs" id="gallery-thumbs">${thumbsHTML}</div>` : ""}
           <div class="product-detail-img" id="zoom-trigger">
-            <img src="${selectedImage}" alt="${product.title}" id="main-product-img" ${imgFallbackAttr()}>
+            <img src="${shopifyImg(selectedImage, 1200)}" alt="${product.title}" id="main-product-img" ${imgFallbackAttr()}>
             <span class="zoom-hint">Click to zoom</span>
           </div>
         </div>
@@ -141,7 +141,7 @@
     // ---- gallery thumbnail switching ----
     function setMainImage(url) {
       selectedImage = url;
-      document.getElementById("main-product-img").src = url;
+      document.getElementById("main-product-img").src = shopifyImg(url, 1200);
       document.querySelectorAll(".gallery-thumb").forEach(t => t.classList.toggle("active", t.getAttribute("data-img") === url));
     }
     document.querySelectorAll(".gallery-thumb").forEach(btn => {
@@ -192,7 +192,7 @@
     document.getElementById("zoom-trigger").addEventListener("click", () => {
       const box = document.createElement("div");
       box.className = "img-lightbox";
-      box.innerHTML = `<button class="img-lightbox-close" aria-label="Close">&times;</button><img src="${selectedImage}" alt="${product.title}">`;
+      box.innerHTML = `<button class="img-lightbox-close" aria-label="Close">&times;</button><img src="${shopifyImg(selectedImage, 1800)}" alt="${product.title}">`;
       box.addEventListener("click", () => box.remove());
       document.body.appendChild(box);
     });
