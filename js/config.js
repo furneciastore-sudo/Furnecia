@@ -27,7 +27,7 @@ function formatPrice(amount) {
 // full original (which can be several MB) — keeps photos sharp
 // without the slow page loads that full-resolution everywhere causes.
 function shopifyImg(url, width) {
-  if (!url) return url;
+  if (!url || url.startsWith("data:")) return url;
   return url + (url.includes("?") ? "&" : "?") + "width=" + width;
 }
 

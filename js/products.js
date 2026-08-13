@@ -1944,6 +1944,50 @@ const PRODUCTS = [
     sale: false
   },
   {
+    handle: "arial-marble-dining-table-emma-chairs",
+    title: "Arial Marble Dining Table with Emma Chairs — Dark Grey or Cream",
+    category: "Dining Tables",
+    images: ["data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23f3f1ee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2247%25%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2226%22%20fill%3D%22%23a9834b%22%20text-anchor%3D%22middle%22%3EFurnecia%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20fill%3D%22%237a7469%22%20text-anchor%3D%22middle%22%3EPhoto%20coming%20soon%3C%2Ftext%3E%3C%2Fsvg%3E"],
+    options: [{"name": "Table Size & Chairs", "values": ["1.6M + 4 Chairs", "1.6M + 6 Chairs", "1.8M + 4 Chairs", "1.8M + 6 Chairs", "2M + 6 Chairs", "2M + 8 Chairs"]}],
+    variants: [{ title: "1.6M + 4 Chairs", price: 940.0, image: null, available: true }, { title: "1.6M + 6 Chairs", price: 1020.0, image: null, available: true }, { title: "1.8M + 4 Chairs", price: 940.0, image: null, available: true }, { title: "1.8M + 6 Chairs", price: 1040.0, image: null, available: true }, { title: "2M + 6 Chairs", price: 1120.0, image: null, available: true }, { title: "2M + 8 Chairs", price: 1330.0, image: null, available: true }],
+    price: 940.0,
+    bestseller: false,
+    sale: false
+  },
+  {
+    handle: "arial-marble-dining-table-lion-knocker-chairs",
+    title: "Arial Marble Dining Table with Lion Knocker Chairs — Dark Grey or Black",
+    category: "Dining Tables",
+    images: ["data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23f3f1ee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2247%25%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2226%22%20fill%3D%22%23a9834b%22%20text-anchor%3D%22middle%22%3EFurnecia%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20fill%3D%22%237a7469%22%20text-anchor%3D%22middle%22%3EPhoto%20coming%20soon%3C%2Ftext%3E%3C%2Fsvg%3E"],
+    options: [{"name": "Table Size & Chairs", "values": ["1.6M + 4 Chairs", "1.6M + 6 Chairs", "1.8M + 4 Chairs", "1.8M + 6 Chairs", "2M + 6 Chairs", "2M + 8 Chairs"]}],
+    variants: [{ title: "1.6M + 4 Chairs", price: 960.0, image: null, available: true }, { title: "1.6M + 6 Chairs", price: 1050.0, image: null, available: true }, { title: "1.8M + 4 Chairs", price: 960.0, image: null, available: true }, { title: "1.8M + 6 Chairs", price: 1080.0, image: null, available: true }, { title: "2M + 6 Chairs", price: 1150.0, image: null, available: true }, { title: "2M + 8 Chairs", price: 1380.0, image: null, available: true }],
+    price: 960.0,
+    bestseller: false,
+    sale: false
+  },
+  {
+    handle: "ariana-marble-dining-table-emma-chairs",
+    title: "Ariana Marble Dining Table with Emma Chairs — Dark Grey or Cream",
+    category: "Dining Tables",
+    images: ["data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23f3f1ee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2247%25%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2226%22%20fill%3D%22%23a9834b%22%20text-anchor%3D%22middle%22%3EFurnecia%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20fill%3D%22%237a7469%22%20text-anchor%3D%22middle%22%3EPhoto%20coming%20soon%3C%2Ftext%3E%3C%2Fsvg%3E"],
+    options: [{"name": "Table Size & Chairs", "values": ["1.5M + 4 Chairs", "1.5M + 6 Chairs", "1.8M + 4 Chairs", "1.8M + 6 Chairs", "2M + 6 Chairs", "2M + 8 Chairs"]}],
+    variants: [{ title: "1.5M + 4 Chairs", price: 850.0, image: null, available: true }, { title: "1.5M + 6 Chairs", price: 960.0, image: null, available: true }, { title: "1.8M + 4 Chairs", price: 900.0, image: null, available: true }, { title: "1.8M + 6 Chairs", price: 1020.0, image: null, available: true }, { title: "2M + 6 Chairs", price: 1100.0, image: null, available: true }, { title: "2M + 8 Chairs", price: 1300.0, image: null, available: true }],
+    price: 850.0,
+    bestseller: false,
+    sale: false
+  },
+  {
+    handle: "ariana-marble-dining-table-lion-knocker-chairs",
+    title: "Ariana Marble Dining Table with Lion Knocker Chairs — Black, Light Grey, Dark Grey, Beige or Cream",
+    category: "Dining Tables",
+    images: ["data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23f3f1ee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2247%25%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2226%22%20fill%3D%22%23a9834b%22%20text-anchor%3D%22middle%22%3EFurnecia%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20fill%3D%22%237a7469%22%20text-anchor%3D%22middle%22%3EPhoto%20coming%20soon%3C%2Ftext%3E%3C%2Fsvg%3E"],
+    options: [{"name": "Table Size & Chairs", "values": ["1.5M + 4 Chairs", "1.5M + 6 Chairs", "1.8M + 4 Chairs", "1.8M + 6 Chairs", "2M + 6 Chairs", "2M + 8 Chairs"]}],
+    variants: [{ title: "1.5M + 4 Chairs", price: 900.0, image: null, available: true }, { title: "1.5M + 6 Chairs", price: 1050.0, image: null, available: true }, { title: "1.8M + 4 Chairs", price: 950.0, image: null, available: true }, { title: "1.8M + 6 Chairs", price: 1100.0, image: null, available: true }, { title: "2M + 6 Chairs", price: 1180.0, image: null, available: true }, { title: "2M + 8 Chairs", price: 1400.0, image: null, available: true }],
+    price: 900.0,
+    bestseller: false,
+    sale: false
+  },
+  {
     handle: "extendable-dining-table-6-velvet-chairs-set",
     title: "Extendable Dining Table &  6 Velvet Chairs Set",
     category: "Dining Tables",
@@ -1962,6 +2006,28 @@ const PRODUCTS = [
     options: [{"name": "Color", "values": ["Black", "Grey (Chrome Legs)", "Grey (Golden Legs)", "Green", "Blue"]}, {"name": "Location ", "values": ["Inside London", "Outside London ( like Birmingham etc)"]}],
     variants: [{ title: "Black / Inside London", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-1.jpg?v=1784750349", available: true }, { title: "Black / Outside London ( like Birmingham etc)", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-1.jpg?v=1784750349", available: true }, { title: "Grey (Chrome Legs) / Inside London", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-2.jpg?v=1784750349", available: true }, { title: "Grey (Chrome Legs) / Outside London ( like Birmingham etc)", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-2.jpg?v=1784750349", available: true }, { title: "Grey (Golden Legs) / Inside London", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-3.jpg?v=1784750349", available: true }, { title: "Grey (Golden Legs) / Outside London ( like Birmingham etc)", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-3.jpg?v=1784750349", available: true }, { title: "Green / Inside London", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-4.jpg?v=1784750363", available: true }, { title: "Green / Outside London ( like Birmingham etc)", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-4.jpg?v=1784750363", available: true }, { title: "Blue / Inside London", price: 300.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-4.jpg?v=1784750363", available: true }, { title: "Blue / Outside London ( like Birmingham etc)", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/extendable-dining-set-v2-4.jpg?v=1784750363", available: true }],
     price: 300.0,
+    bestseller: false,
+    sale: false
+  },
+  {
+    handle: "marble-dining-table-4-legs-emma-chairs",
+    title: "Marble Dining Table (4-Leg Base) with Emma Chairs — Dark Grey or Cream",
+    category: "Dining Tables",
+    images: ["data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23f3f1ee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2247%25%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2226%22%20fill%3D%22%23a9834b%22%20text-anchor%3D%22middle%22%3EFurnecia%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20fill%3D%22%237a7469%22%20text-anchor%3D%22middle%22%3EPhoto%20coming%20soon%3C%2Ftext%3E%3C%2Fsvg%3E"],
+    options: [{"name": "Table Size & Chairs", "values": ["1.5M + 4 Chairs", "1.5M + 6 Chairs", "1.8M + 4 Chairs", "1.8M + 6 Chairs", "2M + 6 Chairs", "2M + 8 Chairs"]}],
+    variants: [{ title: "1.5M + 4 Chairs", price: 770.0, image: null, available: true }, { title: "1.5M + 6 Chairs", price: 900.0, image: null, available: true }, { title: "1.8M + 4 Chairs", price: 820.0, image: null, available: true }, { title: "1.8M + 6 Chairs", price: 930.0, image: null, available: true }, { title: "2M + 6 Chairs", price: 1080.0, image: null, available: true }, { title: "2M + 8 Chairs", price: 1250.0, image: null, available: true }],
+    price: 770.0,
+    bestseller: false,
+    sale: false
+  },
+  {
+    handle: "marble-dining-table-4-legs-lion-knocker-chairs",
+    title: "Marble Dining Table (4-Leg Base) with Lion Knocker Chairs — Dark Grey or Black",
+    category: "Dining Tables",
+    images: ["data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23f3f1ee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2247%25%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2226%22%20fill%3D%22%23a9834b%22%20text-anchor%3D%22middle%22%3EFurnecia%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20fill%3D%22%237a7469%22%20text-anchor%3D%22middle%22%3EPhoto%20coming%20soon%3C%2Ftext%3E%3C%2Fsvg%3E"],
+    options: [{"name": "Table Size & Chairs", "values": ["1.5M + 4 Chairs", "1.5M + 6 Chairs", "1.8M + 4 Chairs", "1.8M + 6 Chairs", "2M + 6 Chairs", "2M + 8 Chairs"]}],
+    variants: [{ title: "1.5M + 4 Chairs", price: 770.0, image: null, available: true }, { title: "1.5M + 6 Chairs", price: 900.0, image: null, available: true }, { title: "1.8M + 4 Chairs", price: 820.0, image: null, available: true }, { title: "1.8M + 6 Chairs", price: 930.0, image: null, available: true }, { title: "2M + 6 Chairs", price: 1080.0, image: null, available: true }, { title: "2M + 8 Chairs", price: 1250.0, image: null, available: true }],
+    price: 770.0,
     bestseller: false,
     sale: false
   },
