@@ -90,6 +90,15 @@
   </div>
 </div>
 
+<section class="section signature-section" id="signature-collection">
+  <div class="section-inner">
+    <span class="eyebrow">The Edit</span>
+    <h2 class="section-title" style="margin-top:14px;">Signature Collection</h2>
+    <p class="section-sub">Three pieces we'd furnish our own home with first</p>
+  </div>
+  <div class="signature-grid" id="signature-grid"></div>
+</section>
+
 <div class="deals-strip" id="sofa-slider" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);"></div>
 
 <section class="section" id="wardrobes-section">
@@ -216,6 +225,10 @@
   document.getElementById("bestsellers-grid").innerHTML =
     PRODUCTS.filter(p => p.bestseller).map(productCardHTML).join("");
   renderDealsStrip("deals-strip");
+
+  const signatureHandles = ["ashwin-32-seater-high-back-corner-sofa", "oxford-wingback-luxury-beds", "8-door-wardrobe-full-set"];
+  const signaturePicks = signatureHandles.map(h => getProductByHandle(h)).filter(Boolean);
+  renderSignatureCollection("signature-grid", signaturePicks.length === 3 ? signaturePicks : PRODUCTS.filter(p => p.bestseller).slice(0, 3));
 
   renderProductSlider(
     "sofa-slider",

@@ -80,6 +80,49 @@ function renderProductSlider(targetId, products, label) {
   `;
 }
 
+function signatureCardHTML(p) {
+  return `
+    <a href="product.html?handle=${encodeURIComponent(p.handle)}" class="signature-card">
+      <div class="signature-card-img">
+        <img src="${shopifyImg(p.images[0], 900)}" alt="${p.title}" loading="lazy" ${imgFallbackAttr()}>
+      </div>
+      <div class="signature-card-info">
+        <span class="signature-card-eyebrow">${p.category}</span>
+        <h3 class="signature-card-name">${p.title}</h3>
+        <div class="signature-card-price">${formatPrice(p.price)}</div>
+        <span class="signature-card-link">Shop Now</span>
+      </div>
+    </a>
+  `;
+}
+
+function renderSignatureCollection(targetId, products) {
+  const el = document.getElementById(targetId);
+  if (!el) return;
+  el.innerHTML = products.map(signatureCardHTML).join("");
+}
+
+function relatedProductsHTML(product, count) {
+  const pool = PRODUCTS.filter(p => p.handle !== product.handle && p.category === product.category);
+  const chosen = pool.length >= count ? pool : PRODUCTS.filter(p => p.handle !== product.handle);
+  const picked = [];
+  const seed = hashSeed(product.handle);
+  const shuffled = chosen.slice().sort((a, b) => hashSeed(a.handle + seed) - hashSeed(b.handle + seed));
+  for (const p of shuffled) {
+    if (picked.length >= count) break;
+    picked.push(p);
+  }
+  if (!picked.length) return "";
+  return `
+    <section class="related-section">
+      <div class="section-inner">
+        <h2 class="section-title" style="font-size:24px;">You May Also Like</h2>
+      </div>
+      <div class="product-grid related-grid">${picked.map(productCardHTML).join("")}</div>
+    </section>
+  `;
+}
+
 function initChatBubble() {
   const waBtn = document.getElementById("wa-float-btn") || document.querySelector(".whatsapp-btn");
   if (!waBtn) return;

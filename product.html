@@ -109,7 +109,7 @@
           </div>
         </div>
       </div>
-    ` + reviewsSectionHTML(product.handle);
+    ` + reviewsSectionHTML(product.handle) + relatedProductsHTML(product, 4);
 
     document.getElementById("delivery-dates").textContent = deliveryEstimateText();
 
