@@ -2120,6 +2120,28 @@ const PRODUCTS = [
     sale: false
   },
   {
+    handle: "black-dining-set-extendable-gold-legs",
+    title: "Black Dining Set — Extendable Black Top with Golden Metal Legs",
+    category: "Dining Tables",
+    images: ["images/catalogue/black-dining-set.jpg"],
+    options: [],
+    variants: [{ title: "Default", price: 350.0, image: "images/catalogue/black-dining-set.jpg", available: true }],
+    price: 350.0,
+    bestseller: false,
+    sale: false
+  },
+  {
+    handle: "blue-dining-set-extendable-gold-legs",
+    title: "Blue Dining Set — Extendable Blue Agate-Effect Top with Golden Metal Legs",
+    category: "Dining Tables",
+    images: ["images/catalogue/blue-dining-set.jpg"],
+    options: [],
+    variants: [{ title: "Default", price: 350.0, image: "images/catalogue/blue-dining-set.jpg", available: true }],
+    price: 350.0,
+    bestseller: false,
+    sale: false
+  },
+  {
     handle: "extendable-dining-table-6-velvet-chairs-set-black-sand",
     title: "Extendable Dining Table & 6 Velvet Chairs Set — Black Sand",
     category: "Dining Tables",
@@ -2258,6 +2280,39 @@ const PRODUCTS = [
     images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gold-dining-table-1.jpg?v=1784747270"],
     options: [],
     variants: [{ title: "Default", price: 350.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gold-dining-table-1.jpg?v=1784747270", available: true }],
+    price: 350.0,
+    bestseller: false,
+    sale: false
+  },
+  {
+    handle: "green-dining-set-extendable-gold-legs",
+    title: "Green Dining Set — Extendable Green Marble-Effect Top with Golden Metal Legs",
+    category: "Dining Tables",
+    images: ["images/catalogue/green-dining-set.jpg"],
+    options: [],
+    variants: [{ title: "Default", price: 350.0, image: "images/catalogue/green-dining-set.jpg", available: true }],
+    price: 350.0,
+    bestseller: false,
+    sale: false
+  },
+  {
+    handle: "grey-dining-set-extendable-chrome-legs",
+    title: "Grey Dining Set — Extendable Grey Top with Chrome Metal Legs",
+    category: "Dining Tables",
+    images: ["images/catalogue/grey-dining-set-chrome-legs.jpg"],
+    options: [],
+    variants: [{ title: "Default", price: 350.0, image: "images/catalogue/grey-dining-set-chrome-legs.jpg", available: true }],
+    price: 350.0,
+    bestseller: false,
+    sale: false
+  },
+  {
+    handle: "grey-dining-set-extendable-golden-legs",
+    title: "Grey Dining Set — Extendable Grey Top with Golden Metal Legs",
+    category: "Dining Tables",
+    images: ["images/catalogue/grey-dining-set-golden-legs.jpg"],
+    options: [],
+    variants: [{ title: "Default", price: 350.0, image: "images/catalogue/grey-dining-set-golden-legs.jpg", available: true }],
     price: 350.0,
     bestseller: false,
     sale: false
