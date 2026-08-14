@@ -102,5 +102,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const menu = document.querySelector(".main-nav");
   if (toggle && menu) toggle.addEventListener("click", () => menu.classList.toggle("open"));
 
+  const headerBar = document.querySelector(".site-header");
+  if (headerBar) {
+    const onScroll = () => headerBar.classList.toggle("scrolled", window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
   updateCartCount();
 });
