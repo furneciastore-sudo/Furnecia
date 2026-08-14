@@ -422,32 +422,8 @@ const PRODUCTS = [
     sale: true
   },
   {
-    handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-natural-mermer-nested-set",
-    title: "Modern Coffee Table — Natural Mermer Nested Set",
-    category: "Coffee Tables",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-v2-9.png?v=1784747270"],
-    options: [],
-    variants: [{ title: "Default", price: 245.0, compareAtPrice: 260.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-v2-9.png?v=1784747270", available: true }],
-    price: 245.0,
-    compareAtPrice: 260.0,
-    bestseller: false,
-    sale: true
-  },
-  {
     handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-sasa-nested-set-gold-leg",
     title: "Modern Coffee Table — Sasa Nested Set, Gold Leg",
-    category: "Coffee Tables",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-v2-8.jpg?v=1784747243"],
-    options: [],
-    variants: [{ title: "Default", price: 245.0, compareAtPrice: 260.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-v2-8.jpg?v=1784747243", available: true }],
-    price: 245.0,
-    compareAtPrice: 260.0,
-    bestseller: false,
-    sale: true
-  },
-  {
-    handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-sasa-nested-set-silver-leg",
-    title: "Modern Coffee Table — Sasa Nested Set, Silver Leg",
     category: "Coffee Tables",
     images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-v2-8.jpg?v=1784747243"],
     options: [],
@@ -470,30 +446,6 @@ const PRODUCTS = [
     sale: true
   },
   {
-    handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-sasa-silver-leg",
-    title: "Modern Coffee Table — Sasa, Silver Leg",
-    category: "Coffee Tables",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-v2-7.png?v=1784747243"],
-    options: [],
-    variants: [{ title: "Default", price: 245.0, compareAtPrice: 260.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-v2-7.png?v=1784747243", available: true }],
-    price: 245.0,
-    compareAtPrice: 260.0,
-    bestseller: false,
-    sale: true
-  },
-  {
-    handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-valec-nested-set-gold-leg",
-    title: "Modern Coffee Table — Valec Nested Set, Gold Leg",
-    category: "Coffee Tables",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-v2-5.jpg?v=1784747243"],
-    options: [],
-    variants: [{ title: "Default", price: 245.0, compareAtPrice: 260.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-v2-5.jpg?v=1784747243", available: true }],
-    price: 245.0,
-    compareAtPrice: 260.0,
-    bestseller: false,
-    sale: true
-  },
-  {
     handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-valec-nested-set-silver-leg",
     title: "Modern Coffee Table — Valec Nested Set, Silver Leg",
     category: "Coffee Tables",
@@ -508,18 +460,6 @@ const PRODUCTS = [
   {
     handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-valec-gold-leg",
     title: "Modern Coffee Table — Valec, Gold Leg",
-    category: "Coffee Tables",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-v2-6.jpg?v=1784747243"],
-    options: [],
-    variants: [{ title: "Default", price: 245.0, compareAtPrice: 260.0, image: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-v2-6.jpg?v=1784747243", available: true }],
-    price: 245.0,
-    compareAtPrice: 260.0,
-    bestseller: false,
-    sale: true
-  },
-  {
-    handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-valec-silver-leg",
-    title: "Modern Coffee Table — Valec, Silver Leg",
     category: "Coffee Tables",
     images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/coffee-table-v2-6.jpg?v=1784747243"],
     options: [],

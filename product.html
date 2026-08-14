@@ -72,6 +72,13 @@
           <div class="product-detail-img" id="zoom-trigger">
             <img src="${shopifyImg(selectedImage, 1200)}" alt="${product.title}" id="main-product-img" ${imgFallbackAttr()}>
             <span class="zoom-hint">Click to zoom</span>
+            ${product.images.length > 1 ? `
+              <button type="button" class="gallery-nav gallery-nav-prev" id="gallery-prev" aria-label="Previous photo">&#8249;</button>
+              <button type="button" class="gallery-nav gallery-nav-next" id="gallery-next" aria-label="Next photo">&#8250;</button>
+              <div class="gallery-dots" id="gallery-dots">
+                ${product.images.map((img, idx) => `<span class="gallery-dot ${img === selectedImage ? "active" : ""}" data-idx="${idx}"></span>`).join("")}
+              </div>
+            ` : ""}
           </div>
         </div>
         <div class="product-detail-info">
@@ -143,10 +150,37 @@
       selectedImage = url;
       document.getElementById("main-product-img").src = shopifyImg(url, 1200);
       document.querySelectorAll(".gallery-thumb").forEach(t => t.classList.toggle("active", t.getAttribute("data-img") === url));
+      document.querySelectorAll(".gallery-dot").forEach(d => d.classList.toggle("active", product.images[d.getAttribute("data-idx")] === url));
     }
     document.querySelectorAll(".gallery-thumb").forEach(btn => {
       btn.addEventListener("click", () => setMainImage(btn.getAttribute("data-img")));
     });
+
+    // ---- gallery swipe / arrow navigation ----
+    if (product.images.length > 1) {
+      const stepImage = (dir) => {
+        const i = product.images.indexOf(selectedImage);
+        const next = (i + dir + product.images.length) % product.images.length;
+        setMainImage(product.images[next]);
+      };
+      document.getElementById("gallery-prev").addEventListener("click", (e) => { e.stopPropagation(); stepImage(-1); });
+      document.getElementById("gallery-next").addEventListener("click", (e) => { e.stopPropagation(); stepImage(1); });
+      document.querySelectorAll(".gallery-dot").forEach(dot => {
+        dot.addEventListener("click", (e) => { e.stopPropagation(); setMainImage(product.images[dot.getAttribute("data-idx")]); });
+      });
+      const zoomTrigger = document.getElementById("zoom-trigger");
+      let touchStartX = null;
+      zoomTrigger.addEventListener("touchstart", (e) => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+      zoomTrigger.addEventListener("touchend", (e) => {
+        if (touchStartX === null) return;
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) {
+          e.preventDefault();
+          stepImage(dx < 0 ? 1 : -1);
+        }
+        touchStartX = null;
+      });
+    }
 
     // ---- variant swatch switching ----
     document.querySelectorAll(".variant-swatch").forEach(btn => {
