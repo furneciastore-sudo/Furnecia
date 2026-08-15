@@ -32,7 +32,7 @@
   } else {
     document.title = product.title + " — Furnecia";
     const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.setAttribute("content", `${product.title} — ${formatPrice(product.price)}. Cash on Delivery across the UK, free delivery on selected items, 30-day returns.`);
+    if (metaDesc) metaDesc.setAttribute("content", `${product.title} — ${formatPrice(product.price)}. Cash on Delivery across the UK, free delivery in England (£20 Wales, £30 Scotland), 30-day returns.`);
 
     let selectedVariant = defaultVariant(product);
     let selectedImage = selectedVariant.image || product.images[0];
@@ -110,7 +110,7 @@
 
           <div class="trust-badges">
             <span>💷 Cash on Delivery — pay when it arrives</span>
-            <span>🇬🇧 Free UK delivery on selected items</span>
+            <span>🇬🇧 Free delivery in England &middot; £20 Wales &middot; £30 Scotland</span>
             <span>↻ 30-day returns</span>
             <span>💬 Questions? <a href="#" data-wa-link="Hi Furnecia, I have a question about: ${product.title.replace(/"/g, "&quot;")}" target="_blank" rel="noopener noreferrer" style="color:var(--brown);font-weight:600;">Chat with us on WhatsApp</a></span>
           </div>

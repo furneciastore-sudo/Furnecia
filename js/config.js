@@ -8,7 +8,8 @@ const SITE = {
   phoneDisplay: "+44 7947 781613",
   address: "Office 15399, 182-184 High Street North, East Ham, London E6 2JA, United Kingdom",
   currencySymbol: "£",
-  freeDeliveryNote: "Free UK Delivery on selected items",
+  freeDeliveryNote: "Free Delivery in England &middot; £20 to Wales &middot; £30 to Scotland",
+  deliveryNotePlain: "Free delivery in England. £20 to Wales, £30 to Scotland.",
 };
 
 function waLink(message) {

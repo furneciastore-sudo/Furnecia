@@ -10,7 +10,7 @@ const HEADER_HTML = `
       <a data-phone-link href="#"><span data-shop-phone></span></a>
       <a data-mail-link href="#"><span data-shop-email></span></a>
     </div>
-    <div>${"Free UK Delivery on selected items"} &middot; <a href="shop.html">Shop the Sale</a></div>
+    <div><span data-free-delivery-note></span> &middot; <a href="shop.html">Shop the Sale</a></div>
   </div>
 </div>
 <header class="site-header">
@@ -100,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll("[data-shop-email]").forEach(el => { el.textContent = SITE.email; });
   document.querySelectorAll("[data-shop-phone]").forEach(el => { el.textContent = SITE.phoneDisplay; });
   document.querySelectorAll("[data-shop-address]").forEach(el => { el.textContent = SITE.address; });
+  document.querySelectorAll("[data-free-delivery-note]").forEach(el => { el.innerHTML = SITE.freeDeliveryNote; });
 
   const toggle = document.querySelector(".nav-toggle");
   const menu = document.querySelector(".main-nav");
