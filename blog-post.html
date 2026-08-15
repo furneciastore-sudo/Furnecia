@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Guide — Furnecia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Practical UK furniture buying guides from Furnecia.">
+<link rel="preconnect" href="https://cdn.shopify.com">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<div id="article-root"></div>
+
+<div id="site-footer"></div>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/reviews.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/blog.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script>
+  const handle = new URLSearchParams(window.location.search).get("handle");
+  const article = getArticleByHandle(handle);
+  const root = document.getElementById("article-root");
+
+  function formatArticleDate(iso) {
+    return new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+  }
+
+  if (!article) {
+    root.innerHTML = `<div class="content-page" style="text-align:center;"><h1>Guide not found</h1><p><a href="blog.html">Back to Guides</a></p></div>`;
+  } else {
+    document.title = article.title + " — Furnecia Guides";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute("content", article.summary);
+
+    const canonicalUrl = `https://furnecia.com/blog-post.html?handle=${encodeURIComponent(article.handle)}`;
+    const canonical = document.createElement("link");
+    canonical.rel = "canonical";
+    canonical.href = canonicalUrl;
+    document.head.appendChild(canonical);
+
+    const shopLink = articleShopLink(article);
+
+    root.innerHTML = `
+      <nav class="breadcrumb">
+        <a href="index.html">Home</a><span class="sep">/</span><a href="blog.html">Guides</a><span class="sep">/</span><span class="current">${article.title}</span>
+      </nav>
+      <div class="article-header">
+        <span class="article-eyebrow">${article.category}</span>
+        <h1>${article.title}</h1>
+        <div class="article-meta-row">Published ${formatArticleDate(article.publishedAt)}</div>
+      </div>
+      ${article.image ? `
+        <div class="article-hero">
+          <img src="${shopifyImg(article.image, 1400)}" alt="${article.title}" ${imgFallbackAttr()}>
+        </div>
+      ` : ""}
+      <article class="article-body">${article.body}</article>
+      <div class="article-cta">
+        <div class="article-cta-box">
+          <h3>Ready to shop the range?</h3>
+          <p>Browse the pieces this guide covers — Cash on Delivery across the UK, free delivery on selected items, 30-day returns.</p>
+          <a href="${shopLink}" class="btn btn-solid">Shop Now</a>
+        </div>
+      </div>
+    ` + relatedGuidesHTML(article);
+
+    // ---- SEO: Article JSON-LD ----
+    const articleLd = document.createElement("script");
+    articleLd.type = "application/ld+json";
+    articleLd.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: article.title,
+      image: article.image ? [article.image] : undefined,
+      datePublished: article.publishedAt,
+      author: { "@type": "Organization", name: "Furnecia" },
+      publisher: {
+        "@type": "Organization",
+        name: "Furnecia",
+        logo: { "@type": "ImageObject", url: "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/berlin-corner-sofa-bed-1.jpg?v=1784750296" }
+      },
+      mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
+      description: article.summary
+    });
+    document.head.appendChild(articleLd);
+
+    // ---- Best-effort FAQ JSON-LD, parsed from a trailing "FAQ" <h2> section ----
+    const faqPairs = parseFaqSection(article.body);
+    if (faqPairs.length) {
+      const faqLd = document.createElement("script");
+      faqLd.type = "application/ld+json";
+      faqLd.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqPairs.map(([q, a]) => ({
+          "@type": "Question",
+          name: q,
+          acceptedAnswer: { "@type": "Answer", text: a }
+        }))
+      });
+      document.head.appendChild(faqLd);
+    }
+  }
+
+  function relatedGuidesHTML(current) {
+    const picks = relatedArticlesPick(current, 3);
+    if (!picks.length) return "";
+    return `
+      <section class="article-related">
+        <div class="section-inner">
+          <h2 class="section-title" style="font-size:24px;">Related Guides</h2>
+        </div>
+        <div class="article-grid" style="max-width:var(--max-width);margin:0 auto;">
+          ${picks.map(a => `
+            <a href="blog-post.html?handle=${encodeURIComponent(a.handle)}" class="article-card">
+              <div class="article-card-img">
+                <img src="${a.image ? shopifyImg(a.image, 700) : IMG_FALLBACK}" alt="${a.title}" loading="lazy" ${imgFallbackAttr()}>
+              </div>
+              <div class="article-card-info">
+                <span class="article-card-eyebrow">${a.category}</span>
+                <h3 class="article-card-title">${a.title}</h3>
+                <div class="article-card-meta">
+                  <span>${formatArticleDate(a.publishedAt)}</span>
+                  <span class="article-card-readmore">Read More</span>
+                </div>
+              </div>
+            </a>
+          `).join("")}
+        </div>
+      </section>
+    `;
+  }
+
+  // Best-effort parse of a trailing "<h2>FAQ</h2>" block made of
+  // "<p><strong>Question?</strong><br>Answer text</p>" pairs. Returns [] (and
+  // skips the FAQPage schema entirely) if the shape doesn't match cleanly —
+  // this is optional structured data, not required for the page to work.
+  function parseFaqSection(bodyHtml) {
+    const marker = bodyHtml.indexOf("<h2>FAQ</h2>");
+    if (marker === -1) return [];
+    const section = bodyHtml.slice(marker + "<h2>FAQ</h2>".length);
+    const pairs = [];
+    const pRe = /<p>\s*<strong>(.*?)<\/strong>\s*<br\s*\/?>\s*(.*?)<\/p>/gs;
+    let m;
+    while ((m = pRe.exec(section)) !== null) {
+      const q = m[1].replace(/<[^>]+>/g, "").trim();
+      const a = m[2].replace(/<[^>]+>/g, "").trim();
+      if (q && a) pairs.push([q, a]);
+    }
+    return pairs;
+  }
+</script>
+</body>
+</html>

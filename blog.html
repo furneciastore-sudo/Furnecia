@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Furniture Guides — Buying Advice, Room Ideas &amp; Care Tips | Furnecia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Real, practical UK furniture guides from Furnecia — sofa beds, wardrobes, mattresses, delivery and care advice, and seasonal room ideas.">
+<link rel="canonical" href="https://furnecia.com/blog.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Furniture Guides — Furnecia">
+<meta property="og:description" content="Practical UK furniture buying guides, room ideas and care tips from Furnecia.">
+<link rel="preconnect" href="https://cdn.shopify.com">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<div class="page-header">
+  <h1>Furnecia Guides</h1>
+  <p>Straight answers to real furniture-buying questions — sofas, wardrobes, beds and more</p>
+</div>
+
+<div class="blog-layout">
+  <div class="filter-bar" id="filter-bar"></div>
+  <p id="results-count" style="font-size:13px;color:var(--text-muted);margin:20px 0 16px;text-align:center;"></p>
+  <div class="article-grid" id="blog-grid"></div>
+</div>
+
+<div id="site-footer"></div>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/reviews.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/blog.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  let activeCat = params.get("cat") || "All";
+
+  function formatArticleDate(iso) {
+    return new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  }
+
+  function articleCardHTML(a) {
+    const img = a.image || IMG_FALLBACK;
+    return `
+      <a href="blog-post.html?handle=${encodeURIComponent(a.handle)}" class="article-card">
+        <div class="article-card-img">
+          <img src="${a.image ? shopifyImg(a.image, 700) : IMG_FALLBACK}" alt="${a.title}" loading="lazy" ${imgFallbackAttr()}>
+        </div>
+        <div class="article-card-info">
+          <span class="article-card-eyebrow">${a.category}</span>
+          <h3 class="article-card-title">${a.title}</h3>
+          <p class="article-card-excerpt">${a.summary}</p>
+          <div class="article-card-meta">
+            <span>${formatArticleDate(a.publishedAt)}</span>
+            <span class="article-card-readmore">Read More</span>
+          </div>
+        </div>
+      </a>
+    `;
+  }
+
+  function render() {
+    const filterBar = document.getElementById("filter-bar");
+    const cats = ["All", ...BLOG_CATEGORIES];
+    filterBar.innerHTML = cats.map(c =>
+      `<button class="filter-btn ${c === activeCat ? "active" : ""}" data-cat="${c}">${c} (${c === "All" ? ARTICLES.length : ARTICLES.filter(a => a.category === c).length})</button>`
+    ).join("");
+    filterBar.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        activeCat = btn.getAttribute("data-cat");
+        render();
+      });
+    });
+
+    const items = articlesByCategory(activeCat).slice().sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+    document.getElementById("results-count").textContent = `${items.length} guide${items.length === 1 ? "" : "s"}`;
+    document.getElementById("blog-grid").innerHTML = items.map(articleCardHTML).join("");
+  }
+  render();
+
+  // ---- SEO: Blog + ItemList JSON-LD ----
+  const ld = document.createElement("script");
+  ld.type = "application/ld+json";
+  ld.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Furnecia Guides",
+    "url": "https://furnecia.com/blog.html",
+    "publisher": { "@type": "Organization", "name": "Furnecia" },
+    "blogPost": ARTICLES.slice().sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)).map(a => ({
+      "@type": "BlogPosting",
+      "headline": a.title,
+      "url": `https://furnecia.com/blog-post.html?handle=${a.handle}`,
+      "datePublished": a.publishedAt,
+      "image": a.image || undefined
+    }))
+  });
+  document.head.appendChild(ld);
+</script>
+</body>
+</html>
