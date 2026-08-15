@@ -181,6 +181,16 @@
   </div>
 </section>
 
+<section class="section" id="guides-teaser" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="section-inner">
+    <span class="eyebrow">From the Guides</span>
+    <h2 class="section-title" style="margin-top:14px;">Real Answers, Not Sales Pitches</h2>
+    <p class="section-sub">Practical UK furniture advice — measuring, materials, delivery and more</p>
+    <div class="article-grid" id="guides-teaser-grid"></div>
+    <p style="margin-top:36px;"><a href="blog.html" class="btn btn-secondary">Read All Guides</a></p>
+  </div>
+</section>
+
 <section class="section">
   <div class="faq-inner">
     <h2 class="section-title" style="text-align:center;">Frequently Asked Questions</h2>
@@ -219,9 +229,27 @@
 <script src="js/products.js"></script>
 <script src="js/reviews.js"></script>
 <script src="js/cart.js"></script>
+<script src="js/blog.js"></script>
 <script src="js/layout.js"></script>
 <script src="js/main.js"></script>
 <script>
+  (function () {
+    const latest = latestArticles(3);
+    document.getElementById("guides-teaser-grid").innerHTML = latest.map(a => `
+      <a href="blog-post.html?handle=${encodeURIComponent(a.handle)}" class="article-card">
+        <div class="article-card-img">
+          <img src="${a.image ? shopifyImg(a.image, 700) : IMG_FALLBACK}" alt="${a.title}" loading="lazy" ${imgFallbackAttr()}>
+        </div>
+        <div class="article-card-info">
+          <span class="article-card-eyebrow">${a.category}</span>
+          <h3 class="article-card-title">${a.title}</h3>
+          <p class="article-card-excerpt">${a.summary}</p>
+          <span class="article-card-readmore">Read More</span>
+        </div>
+      </a>
+    `).join("");
+  })();
+
   document.getElementById("bestsellers-grid").innerHTML =
     PRODUCTS.filter(p => p.bestseller).map(productCardHTML).join("");
   renderDealsStrip("deals-strip");

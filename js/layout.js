@@ -21,6 +21,7 @@ const HEADER_HTML = `
       <a href="shop.html?cat=Wardrobes">Wardrobes</a>
       <a href="shop.html?cat=Dining%20Tables">Dining Tables</a>
       <a href="shop.html">All Products</a>
+      <a href="blog.html">Guides</a>
       <a href="finance.html" class="nav-finance">Finance</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -55,6 +56,8 @@ const FOOTER_HTML = `
         <h4>Policies</h4>
         <a href="contact.html">Contact Us</a>
         <a href="about.html">About Us</a>
+        <a href="faq.html">FAQs</a>
+        <a href="blog.html">Guides</a>
         <a href="#">Refund &amp; Returns Policy</a>
         <a href="#">Shipping Policy</a>
       </div>
