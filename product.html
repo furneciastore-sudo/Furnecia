@@ -70,7 +70,11 @@
         <div class="product-gallery">
           ${product.images.length > 1 ? `<div class="gallery-thumbs" id="gallery-thumbs">${thumbsHTML}</div>` : ""}
           <div class="product-detail-img" id="zoom-trigger">
-            <img src="${shopifyImg(selectedImage, 1200)}" alt="${product.title}" id="main-product-img" ${imgFallbackAttr()}>
+            <div class="gallery-track" id="gallery-track" style="transform: translateX(-${Math.max(0, product.images.indexOf(selectedImage)) * 100}%)">
+              ${product.images.map((img, idx) => `
+                <div class="gallery-slide"><img src="${shopifyImg(img, 1200)}" alt="${product.title} photo ${idx + 1}" ${idx === 0 ? "" : 'loading="lazy"'} ${imgFallbackAttr()}></div>
+              `).join("")}
+            </div>
             <span class="zoom-hint">Click to zoom</span>
             ${product.images.length > 1 ? `
               <button type="button" class="gallery-nav gallery-nav-prev" id="gallery-prev" aria-label="Previous photo">&#8249;</button>
@@ -148,7 +152,9 @@
     // ---- gallery thumbnail switching ----
     function setMainImage(url) {
       selectedImage = url;
-      document.getElementById("main-product-img").src = shopifyImg(url, 1200);
+      const idx = product.images.indexOf(url);
+      const track = document.getElementById("gallery-track");
+      if (track && idx > -1) track.style.transform = `translateX(-${idx * 100}%)`;
       document.querySelectorAll(".gallery-thumb").forEach(t => t.classList.toggle("active", t.getAttribute("data-img") === url));
       document.querySelectorAll(".gallery-dot").forEach(d => d.classList.toggle("active", product.images[d.getAttribute("data-idx")] === url));
     }

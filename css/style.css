@@ -343,7 +343,9 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; margin: 0; }
 .gallery-thumb:hover { opacity: 0.9; }
 .gallery-thumb.active { opacity: 1; border-color: var(--gold); }
 .product-detail-img { overflow: hidden; background: #eee; aspect-ratio: 4/5; cursor: zoom-in; position: relative; flex: 1 1 auto; min-width: 0; border: 1px solid var(--line); }
-.product-detail-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.gallery-track { display: flex; height: 100%; transition: transform 0.5s cubic-bezier(.2,.7,.2,1); }
+.gallery-slide { flex: 0 0 100%; height: 100%; }
+.product-detail-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
 .product-detail-img:hover img { transform: scale(1.05); }
 .zoom-hint { position: absolute; bottom: 12px; right: 12px; background: rgba(20,18,15,0.75); color: #fff; font-size: 11px; padding: 5px 10px; pointer-events: none; letter-spacing: 0.5px; }
 .gallery-nav {
