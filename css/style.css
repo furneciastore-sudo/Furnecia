@@ -369,6 +369,7 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; margin: 0; }
 .product-detail-info { padding-top: 8px; }
 .product-detail-info h1 { font-size: 28px; margin-bottom: 14px; line-height: 1.25; }
 .product-detail-price-row { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+.product-detail-description { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin: 0 0 22px 0; max-width: 480px; }
 .product-detail-price { font-family: var(--font-serif); font-size: 24px; color: var(--ink); }
 .product-detail-was { font-size: 15px; color: var(--text-light); text-decoration: line-through; }
 .product-detail-off { background: var(--ink); color: #f2ead9; font-size: 11px; font-weight: 700; padding: 4px 10px; letter-spacing: 0.5px; }

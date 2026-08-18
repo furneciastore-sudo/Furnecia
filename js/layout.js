@@ -20,6 +20,7 @@ const HEADER_HTML = `
       <a href="shop.html?cat=Corner%20Sofas">Corner Sofas</a>
       <a href="shop.html?cat=Wardrobes">Wardrobes</a>
       <a href="shop.html?cat=Dining%20Tables">Dining Tables</a>
+      <a href="shop.html?cat=Bar%20Stools%20%26%20Chairs">Bar Stools</a>
       <a href="shop.html">All Products</a>
       <a href="blog.html">Guides</a>
       <a href="finance.html" class="nav-finance">Finance</a>
@@ -50,6 +51,7 @@ const FOOTER_HTML = `
         <a href="shop.html?cat=Corner%20Sofas">Corner Sofas</a>
         <a href="shop.html?cat=Wardrobes">Wardrobes</a>
         <a href="shop.html?cat=Dining%20Tables">Dining Tables</a>
+        <a href="shop.html?cat=Bar%20Stools%20%26%20Chairs">Bar Stools &amp; Chairs</a>
         <a href="shop.html?cat=Outdoor%20Furniture">Outdoor Furniture</a>
       </div>
       <div class="footer-col">
