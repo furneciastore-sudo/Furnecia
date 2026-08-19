@@ -91,6 +91,7 @@
           ${ratingRowHTML(product.handle, { size: "sm" })}
           <div class="product-detail-price-row" id="price-row">${priceRowHTML(selectedVariant)}</div>
           ${product.description ? `<p class="product-detail-description">${product.description}</p>` : ""}
+          ${product.dimensions ? `<p class="product-detail-dimensions">📐 ${product.dimensions}</p>` : ""}
 
           ${variantSwatchesHTML}
 
