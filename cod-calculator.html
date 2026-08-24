@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>COD Profit &amp; Ad Budget Calculator — Furnecia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free COD Profit &amp; Ad Budget Calculator for Pakistani sellers. Enter your real numbers and see your true profit per delivered order, and exactly how much to spend on Meta ads.">
+<link rel="canonical" href="https://furnecia.com/cod-calculator.html">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<div class="cc-hero">
+  <span class="eyebrow" style="color:#e8dfc9;">Free tools for Pakistani sellers</span>
+  <h1>COD Profit &amp; Ad Budget Calculator</h1>
+  <p>Most sellers price blindly and budget ads on guesswork. Enter your real numbers — see your true profit per delivered order, and exactly how much to spend on Meta ads.</p>
+</div>
+
+<div class="cc-wrap">
+
+  <div class="cc-tabs" role="tablist">
+    <button class="cc-tab active" id="cc-tab-profit" role="tab" aria-selected="true">Profit Calculator</button>
+    <button class="cc-tab" id="cc-tab-budget" role="tab" aria-selected="false">Ad Budget Calculator</button>
+  </div>
+
+  <div class="cc-step-label"><span>Step 1</span> · Enter your numbers</div>
+
+  <div class="cc-panel">
+    <h2 class="cc-panel-title">Your numbers</h2>
+    <p class="cc-panel-sub">All amounts in Pakistani Rupees (PKR)</p>
+
+    <div class="cc-field">
+      <div class="cc-field-label">
+        <label for="cc-sp">Selling price</label>
+        <span class="cc-help">what the customer pays</span>
+      </div>
+      <div class="cc-field-input">
+        <span class="cc-prefix">Rs</span>
+        <input type="number" id="cc-sp" min="0" placeholder="e.g. 2999" inputmode="numeric">
+      </div>
+    </div>
+
+    <div class="cc-field">
+      <div class="cc-field-label">
+        <label for="cc-cost">Product cost</label>
+        <span class="cc-help">what you buy it for</span>
+      </div>
+      <div class="cc-field-input">
+        <span class="cc-prefix">Rs</span>
+        <input type="number" id="cc-cost" min="0" placeholder="e.g. 900" inputmode="numeric">
+      </div>
+    </div>
+
+    <div class="cc-field">
+      <div class="cc-field-label">
+        <label for="cc-adcost">Ad cost per order</label>
+        <span class="cc-help">cost per purchase in Ads Manager</span>
+      </div>
+      <div class="cc-field-input">
+        <span class="cc-prefix">Rs</span>
+        <input type="number" id="cc-adcost" min="0" placeholder="e.g. 300" inputmode="numeric">
+      </div>
+    </div>
+
+    <div class="cc-field">
+      <div class="cc-field-label">
+        <label for="cc-feepct">Payment fee &amp; tax on ad spend</label>
+        <span class="cc-help">what it costs you to pay Meta</span>
+        <div class="cc-presets">
+          <button type="button" class="cc-chip" data-target="cc-feepct" data-value="7">SadaPay ~7%</button>
+          <button type="button" class="cc-chip" data-target="cc-feepct" data-value="4">Payoneer ~4%</button>
+          <button type="button" class="cc-chip" data-target="cc-feepct" data-value="8">Bank card ~8%</button>
+        </div>
+      </div>
+      <div class="cc-field-input">
+        <input type="number" id="cc-feepct" min="0" max="100" value="7" inputmode="numeric">
+        <span class="cc-suffix">%</span>
+      </div>
+    </div>
+
+    <div class="cc-field">
+      <div class="cc-field-label">
+        <label for="cc-shipping">Shipping charge per order</label>
+      </div>
+      <div class="cc-field-input">
+        <span class="cc-prefix">Rs</span>
+        <input type="number" id="cc-shipping" min="0" placeholder="e.g. 200" inputmode="numeric">
+      </div>
+    </div>
+
+    <div class="cc-field">
+      <div class="cc-field-label">
+        <label for="cc-packing">Packing &amp; overheads per order</label>
+        <span class="cc-help">flyer, bubble wrap, tape + electricity, worker, internet</span>
+      </div>
+      <div class="cc-field-input">
+        <span class="cc-prefix">Rs</span>
+        <input type="number" id="cc-packing" min="0" value="250" inputmode="numeric">
+      </div>
+    </div>
+
+    <div class="cc-field">
+      <div class="cc-field-label">
+        <label for="cc-taxpct">Govt. tax deducted by courier</label>
+        <span class="cc-help">% of order value</span>
+        <div class="cc-presets">
+          <button type="button" class="cc-chip" data-target="cc-taxpct" data-value="4">Filer (ATL) — 4%</button>
+          <button type="button" class="cc-chip" data-target="cc-taxpct" data-value="6">Non-filer — 6%</button>
+        </div>
+      </div>
+      <div class="cc-field-input">
+        <input type="number" id="cc-taxpct" min="0" max="100" value="6" inputmode="numeric">
+        <span class="cc-suffix">%</span>
+      </div>
+    </div>
+    <p class="cc-note">Since July 2025, your courier deducts this from every COD order before paying you: ~2% income tax (final tax) + ~2% GST for ATL filers ≈ 4%; non-filers pay ~6%. Being a filer literally costs less on every single order.</p>
+
+    <div class="cc-field cc-field-slider">
+      <div class="cc-field-label">
+        <label for="cc-rate">Delivery success rate</label>
+        <span class="cc-help">orders actually delivered</span>
+      </div>
+      <div class="cc-slider-wrap">
+        <div class="cc-slider-row">
+          <span>40%</span>
+          <input type="range" id="cc-rate" min="40" max="100" value="40">
+          <span>100%</span>
+        </div>
+        <div class="cc-slider-value">Delivery rate: <strong id="cc-rate-out">40%</strong> · Pakistan COD average: 70–85%</div>
+      </div>
+    </div>
+
+    <details class="cc-advanced">
+      <summary>Advanced costs (returns, COD fee, orders per day)</summary>
+      <div class="cc-advanced-body">
+        <div class="cc-field">
+          <div class="cc-field-label">
+            <label for="cc-returncost">Return / RTO handling cost per failed order</label>
+            <span class="cc-help">extra courier charge for a failed / returned parcel</span>
+          </div>
+          <div class="cc-field-input">
+            <span class="cc-prefix">Rs</span>
+            <input type="number" id="cc-returncost" min="0" value="150" inputmode="numeric">
+          </div>
+        </div>
+        <div class="cc-field">
+          <div class="cc-field-label">
+            <label for="cc-codfeepct">COD collection fee</label>
+            <span class="cc-help">some couriers charge extra to collect cash, on top of govt. tax</span>
+          </div>
+          <div class="cc-field-input">
+            <input type="number" id="cc-codfeepct" min="0" max="100" value="0" inputmode="numeric">
+            <span class="cc-suffix">%</span>
+          </div>
+        </div>
+        <div class="cc-field">
+          <div class="cc-field-label">
+            <label for="cc-ordersperday">Orders booked per day</label>
+            <span class="cc-help">used to estimate your monthly profit</span>
+          </div>
+          <div class="cc-field-input">
+            <input type="number" id="cc-ordersperday" min="0" value="5" inputmode="numeric">
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="cc-step-label"><span>Step 2</span> · Your results</div>
+
+  <!-- ================= PROFIT CALCULATOR PANEL ================= -->
+  <div class="cc-panel" id="cc-panel-profit">
+    <div class="cc-result-hero">
+      <div class="cc-result-label">Profit per delivered order</div>
+      <div class="cc-result-value" id="cc-profit">Rs —</div>
+      <div class="cc-result-sub" id="cc-profit-sub">Enter your numbers to see your profit</div>
+    </div>
+
+    <div class="cc-margin-block">
+      <div class="cc-margin-row">
+        <span>Net margin</span>
+        <strong id="cc-margin">—</strong>
+      </div>
+      <div class="cc-margin-bar">
+        <div class="cc-margin-bar-seg" style="background:#8a3a2e;"></div>
+        <div class="cc-margin-bar-seg" style="background:#b98a3a;"></div>
+        <div class="cc-margin-bar-seg" style="background:#a9834b;"></div>
+        <div class="cc-margin-bar-seg" style="background:#3f7a4f;"></div>
+        <div class="cc-margin-marker" id="cc-margin-marker"></div>
+      </div>
+      <div class="cc-margin-legend">
+        <span>Under 10% risky</span><span>10–20% average</span><span>20–30% good</span><span>30%+ excellent</span>
+      </div>
+    </div>
+
+    <div class="cc-stat-grid">
+      <div class="cc-stat">
+        <span class="cc-stat-label">Breakeven ad cost / order</span>
+        <span class="cc-stat-value" id="cc-breakeven-ad">—</span>
+      </div>
+      <div class="cc-stat">
+        <span class="cc-stat-label">Breakeven ROAS</span>
+        <span class="cc-stat-value" id="cc-breakeven-roas">—</span>
+      </div>
+      <div class="cc-stat">
+        <span class="cc-stat-label">Monthly profit (est.)</span>
+        <span class="cc-stat-value" id="cc-monthly-profit">—</span>
+      </div>
+    </div>
+
+    <h3 class="cc-subhead">Where every rupee goes</h3>
+    <p class="cc-panel-sub">True cost per delivered order — ads and returns are adjusted for your delivery rate</p>
+    <div class="cc-breakdown" id="cc-breakdown"></div>
+    <div class="cc-breakdown-total">
+      <span>Total cost per delivered order</span>
+      <strong id="cc-total-cost">Rs —</strong>
+    </div>
+
+    <h3 class="cc-subhead">The real cost of returned orders</h3>
+    <p class="cc-panel-sub">Per 100 orders booked — same product, same ads, only the delivery rate changes. Every failed parcel burns the ad spend that got the order, shipping both ways, and packaging.</p>
+    <div class="cc-return-cards" id="cc-return-cards">
+      <div class="cc-return-card">
+        <span class="cc-stat-label">If all 100 orders delivered</span>
+        <span class="cc-stat-value" id="cc-return-ideal">Rs —</span>
+      </div>
+      <div class="cc-return-card">
+        <span class="cc-stat-label" id="cc-return-actual-label">At your delivery rate</span>
+        <span class="cc-stat-value" id="cc-return-actual">Rs —</span>
+      </div>
+    </div>
+    <p class="cc-note" id="cc-return-note">Fill in your numbers above to see how much returned orders really cost you.</p>
+  </div>
+
+  <!-- ================= AD BUDGET CALCULATOR PANEL ================= -->
+  <div class="cc-panel" id="cc-panel-budget" style="display:none;">
+    <div class="cc-field">
+      <div class="cc-field-label">
+        <label for="cc-target-delivered">Target delivered orders / day</label>
+        <span class="cc-help">how many delivered orders you want per day</span>
+      </div>
+      <div class="cc-field-input">
+        <input type="number" id="cc-target-delivered" min="0" placeholder="e.g. 5" inputmode="numeric">
+      </div>
+    </div>
+
+    <div class="cc-result-hero">
+      <div class="cc-result-label">Recommended daily ad budget</div>
+      <div class="cc-result-value" id="cc-daily-budget">Rs —</div>
+      <div class="cc-result-sub" id="cc-daily-budget-sub">Enter your numbers and a delivered-orders target to see your budget</div>
+    </div>
+
+    <div class="cc-stat-grid">
+      <div class="cc-stat">
+        <span class="cc-stat-label">Booked orders / day needed</span>
+        <span class="cc-stat-value" id="cc-booked-needed">—</span>
+      </div>
+      <div class="cc-stat">
+        <span class="cc-stat-label">Monthly ad budget</span>
+        <span class="cc-stat-value" id="cc-monthly-budget">—</span>
+      </div>
+      <div class="cc-stat">
+        <span class="cc-stat-label">Expected monthly profit</span>
+        <span class="cc-stat-value" id="cc-budget-monthly-profit">—</span>
+      </div>
+    </div>
+    <p class="cc-note">Daily/monthly ad budget already includes your payment fee &amp; tax on ad spend — this is what you actually need to load into your ad account or wallet, not just what Ads Manager will report as "amount spent".</p>
+  </div>
+
+</div>
+
+<style>
+.cc-hero { background: var(--ink); color: #fff; padding: 60px 20px; text-align: center; }
+.cc-hero h1 { font-size: 32px; margin: 10px 0 14px; color: #fff; }
+.cc-hero p { color: #cfc9bd; max-width: 640px; margin: 0 auto; font-size: 14px; line-height: 1.7; }
+
+.cc-wrap { max-width: 760px; margin: 0 auto; padding: 50px 20px 90px; }
+
+.cc-tabs { display: flex; gap: 0; border: 1px solid var(--line); margin-bottom: 30px; }
+.cc-tab {
+  flex: 1; padding: 14px 10px; background: var(--surface); border: none; cursor: pointer;
+  font-family: var(--font-sans); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--text-muted); border-bottom: 2px solid transparent; transition: color 0.15s ease, border-color 0.15s ease;
+}
+.cc-tab + .cc-tab { border-left: 1px solid var(--line); }
+.cc-tab.active { color: var(--ink); border-bottom-color: var(--gold); background: var(--canvas); }
+
+.cc-step-label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold-dark); font-weight: 700; margin: 34px 0 12px; }
+.cc-step-label span { color: var(--text-light); }
+
+.cc-panel { background: var(--surface); border: 1px solid var(--line); padding: 30px 26px; }
+.cc-panel-title { font-size: 22px; margin-bottom: 4px; }
+.cc-panel-sub { font-size: 13px; color: var(--text-light); margin: 0 0 22px; }
+
+.cc-field { padding: 16px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+.cc-panel > .cc-field:first-of-type { border-top: none; padding-top: 0; }
+.cc-field-label { display: flex; flex-direction: column; gap: 3px; flex: 1 1 220px; min-width: 200px; }
+.cc-field-label label { font-size: 14px; font-weight: 600; color: var(--ink); font-family: var(--font-sans); }
+.cc-help { font-size: 12px; color: var(--text-light); }
+.cc-field-input { display: flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--canvas); padding: 0 12px; flex: 0 0 auto; }
+.cc-field-input .cc-prefix, .cc-field-input .cc-suffix { font-size: 13px; color: var(--text-muted); }
+.cc-field-input input { border: none; background: transparent; padding: 11px 4px; font-size: 15px; width: 110px; font-family: inherit; text-align: right; }
+.cc-field-input input:focus { outline: none; }
+.cc-field-input:focus-within { border-color: var(--gold); }
+
+.cc-presets { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.cc-chip {
+  font-size: 11px; padding: 4px 9px; border: 1px solid var(--line); background: var(--surface); color: var(--text-muted);
+  cursor: pointer; font-family: var(--font-sans); border-radius: 20px;
+}
+.cc-chip:hover, .cc-chip.active { border-color: var(--gold); color: var(--gold-dark); }
+
+.cc-note { font-size: 12px; color: var(--text-light); line-height: 1.7; margin: 0 0 4px; }
+
+.cc-field-slider { flex-direction: column; align-items: stretch; }
+.cc-field-slider .cc-field-label { flex: 0 0 auto; }
+.cc-slider-wrap { width: 100%; }
+.cc-slider-row { display: flex; align-items: center; gap: 12px; }
+.cc-slider-row span { font-size: 11px; color: var(--text-light); }
+.cc-slider-row input[type="range"] { flex: 1; accent-color: var(--gold); }
+.cc-slider-value { font-size: 13px; color: var(--text-muted); margin-top: 8px; text-align: center; }
+.cc-slider-value strong { color: var(--ink); }
+
+.cc-advanced { border-top: 1px solid var(--line); margin-top: 4px; padding-top: 4px; }
+.cc-advanced summary { font-size: 13px; font-weight: 600; cursor: pointer; list-style: none; padding: 14px 0; position: relative; padding-right: 24px; }
+.cc-advanced summary::-webkit-details-marker { display: none; }
+.cc-advanced summary::after { content: '+'; position: absolute; right: 0; top: 12px; font-size: 16px; color: var(--gold-dark); }
+.cc-advanced[open] summary::after { content: '\2212'; }
+.cc-advanced-body { padding-bottom: 6px; }
+
+.cc-result-hero { text-align: center; padding: 10px 0 26px; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
+.cc-result-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-light); margin-bottom: 8px; }
+.cc-result-value { font-family: var(--font-serif); font-size: 40px; color: var(--ink); }
+.cc-result-sub { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+
+.cc-margin-block { margin-bottom: 26px; }
+.cc-margin-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
+.cc-margin-row strong { font-family: var(--font-serif); font-size: 18px; color: var(--ink); }
+.cc-margin-bar { display: flex; height: 8px; position: relative; margin-bottom: 6px; }
+.cc-margin-bar-seg { flex: 1; }
+.cc-margin-bar-seg:first-child { flex: 0 0 25%; }
+.cc-margin-bar-seg:nth-child(2) { flex: 0 0 25%; }
+.cc-margin-bar-seg:nth-child(3) { flex: 0 0 25%; }
+.cc-margin-bar-seg:nth-child(4) { flex: 0 0 25%; }
+.cc-margin-marker { position: absolute; top: -3px; width: 3px; height: 14px; background: var(--ink); left: 0; transition: left 0.2s ease; }
+.cc-margin-legend { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-light); flex-wrap: wrap; gap: 4px; }
+
+.cc-stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); margin-bottom: 30px; }
+.cc-stat { padding: 18px 14px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; background: var(--canvas); }
+.cc-stat-label { display: block; font-size: 11px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+.cc-stat-value { display: block; font-family: var(--font-serif); font-size: 19px; color: var(--ink); }
+@media (max-width: 560px) { .cc-stat-grid { grid-template-columns: 1fr; } }
+
+.cc-subhead { font-size: 18px; margin: 34px 0 4px; font-weight: 400; }
+
+.cc-breakdown { margin-top: 14px; }
+.cc-breakdown-row { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.cc-breakdown-row-top { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px; }
+.cc-breakdown-row-top span:first-child { color: var(--text-muted); }
+.cc-breakdown-row-top span:last-child { font-weight: 600; color: var(--ink); }
+.cc-breakdown-bar { height: 5px; background: var(--line); overflow: hidden; }
+.cc-breakdown-bar-fill { height: 100%; background: var(--gold); }
+.cc-breakdown-total { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0 0; font-size: 15px; }
+.cc-breakdown-total strong { font-family: var(--font-serif); font-size: 20px; }
+
+.cc-return-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); margin-top: 16px; }
+.cc-return-card { padding: 20px 14px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; background: var(--canvas); }
+@media (max-width: 560px) { .cc-return-cards { grid-template-columns: 1fr; } }
+</style>
+
+<div id="site-footer"></div>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/reviews.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script>
+(function () {
+  function num(id, def) {
+    const el = document.getElementById(id);
+    if (!el) return def;
+    const v = parseFloat(el.value);
+    return isNaN(v) ? def : v;
+  }
+  function fmtRs(n) {
+    if (!isFinite(n)) return "Rs —";
+    const neg = n < 0;
+    const rounded = Math.round(Math.abs(n));
+    return (neg ? "-Rs " : "Rs ") + rounded.toLocaleString("en-US");
+  }
+
+  const ids = ["cc-sp","cc-cost","cc-adcost","cc-feepct","cc-shipping","cc-packing","cc-taxpct","cc-rate","cc-returncost","cc-codfeepct","cc-ordersperday","cc-target-delivered"];
+
+  function calc() {
+    const sp = num("cc-sp", 0);
+    const cost = num("cc-cost", 0);
+    const adCost = num("cc-adcost", 0);
+    const feePct = num("cc-feepct", 7);
+    const shipping = num("cc-shipping", 0);
+    const packing = num("cc-packing", 250);
+    const taxPct = num("cc-taxpct", 6);
+    const dr = Math.max(num("cc-rate", 40) / 100, 0.01);
+    const returnCost = num("cc-returncost", 150);
+    const codFeePct = num("cc-codfeepct", 0);
+    const ordersPerDay = num("cc-ordersperday", 5);
+    const targetDelivered = num("cc-target-delivered", ordersPerDay * dr);
+
+    const failureRatio = (1 - dr) / dr;
+
+    const adsRow = (adCost * (1 + feePct / 100)) / dr;
+    const failedRow = failureRatio * (shipping + packing + returnCost);
+    const govtTaxRow = sp * (taxPct / 100);
+    const codFeeRow = sp * (codFeePct / 100);
+    const productRow = cost;
+    const shippingRow = shipping;
+    const packingRow = packing;
+
+    const totalCost = productRow + adsRow + shippingRow + failedRow + packingRow + govtTaxRow + codFeeRow;
+    const profit = sp - totalCost;
+    const margin = sp > 0 ? (profit / sp) * 100 : 0;
+
+    const nonAdCost = totalCost - adsRow;
+    const breakevenAdCost = Math.max(0, (sp - nonAdCost) * dr / (1 + feePct / 100));
+    const breakevenROAS = breakevenAdCost > 0 ? sp / breakevenAdCost : 0;
+
+    const deliveredPerDay = ordersPerDay * dr;
+    const monthlyProfit = deliveredPerDay * 30 * profit;
+
+    const costPerOrderAt100 = cost + adCost * (1 + feePct / 100) + shipping + packing + sp * (taxPct / 100) + sp * (codFeePct / 100);
+    const costAt100 = costPerOrderAt100 * 100;
+    const deliveredCountFor100 = dr * 100;
+    const costAtActualRate = totalCost * deliveredCountFor100;
+
+    const bookedPerDayNeeded = dr > 0 ? targetDelivered / dr : 0;
+    const dailyAdBudget = bookedPerDayNeeded * adCost * (1 + feePct / 100);
+    const monthlyAdBudget = dailyAdBudget * 30;
+    const expectedMonthlyProfit = targetDelivered * 30 * profit;
+
+    return {
+      sp, cost, adCost, feePct, shipping, packing, taxPct, dr, returnCost, codFeePct, ordersPerDay, targetDelivered,
+      productRow, adsRow, shippingRow, failedRow, packingRow, govtTaxRow, codFeeRow,
+      totalCost, profit, margin, breakevenAdCost, breakevenROAS, monthlyProfit,
+      costAt100, costAtActualRate, deliveredCountFor100,
+      bookedPerDayNeeded, dailyAdBudget, monthlyAdBudget, expectedMonthlyProfit,
+      hasCore: sp > 0
+    };
+  }
+
+  const BREAKDOWN_ROWS = [
+    { key: "productRow", label: "Product" },
+    { key: "adsRow", label: "Ads (per delivered)" },
+    { key: "shippingRow", label: "Shipping" },
+    { key: "failedRow", label: "Failed deliveries" },
+    { key: "packingRow", label: "Packing & overheads" },
+    { key: "govtTaxRow", label: "Govt. tax (courier)" },
+    { key: "codFeeRow", label: "COD collection fee" },
+  ];
+
+  function marginLabel(m) {
+    if (m < 10) return "Risky";
+    if (m < 20) return "Average";
+    if (m < 30) return "Good";
+    return "Excellent";
+  }
+
+  function render() {
+    const r = calc();
+
+    document.getElementById("cc-rate-out").textContent = Math.round(r.dr * 100) + "%";
+
+    // breakdown (always live, like the reference tool)
+    const maxRow = Math.max(1, ...BREAKDOWN_ROWS.map(row => r[row.key]));
+    document.getElementById("cc-breakdown").innerHTML = BREAKDOWN_ROWS.map(row => {
+      const val = r[row.key];
+      const pct = Math.min(100, (val / maxRow) * 100);
+      return `<div class="cc-breakdown-row">
+        <div class="cc-breakdown-row-top"><span>${row.label}</span><span>${fmtRs(val)}</span></div>
+        <div class="cc-breakdown-bar"><div class="cc-breakdown-bar-fill" style="width:${pct}%"></div></div>
+      </div>`;
+    }).join("");
+
+    if (r.hasCore) {
+      document.getElementById("cc-profit").textContent = fmtRs(r.profit);
+      document.getElementById("cc-profit-sub").textContent = r.profit >= 0
+        ? "This is what you keep after every real cost, per order that actually gets delivered."
+        : "You are losing money on every delivered order at these numbers.";
+      document.getElementById("cc-margin").textContent = r.margin.toFixed(1) + "% · " + marginLabel(r.margin);
+      const markerPct = Math.min(100, Math.max(0, (r.margin / 40) * 100));
+      document.getElementById("cc-margin-marker").style.left = markerPct + "%";
+      document.getElementById("cc-breakeven-ad").textContent = fmtRs(r.breakevenAdCost);
+      document.getElementById("cc-breakeven-roas").textContent = r.breakevenROAS > 0 ? r.breakevenROAS.toFixed(2) + "x" : "—";
+      document.getElementById("cc-monthly-profit").textContent = fmtRs(r.monthlyProfit);
+      document.getElementById("cc-total-cost").textContent = fmtRs(r.totalCost);
+
+      document.getElementById("cc-return-ideal").textContent = fmtRs(r.costAt100);
+      document.getElementById("cc-return-actual-label").textContent = "At your " + Math.round(r.dr * 100) + "% delivery rate";
+      document.getElementById("cc-return-actual").textContent = fmtRs(r.costAtActualRate);
+      document.getElementById("cc-return-note").textContent =
+        `That's the total cost to book 100 orders: at 100% delivery you'd land ${100} delivered orders for ${fmtRs(r.costAt100)}. At your rate you only get ${Math.round(r.deliveredCountFor100)} delivered orders, yet total cost is ${fmtRs(r.costAtActualRate)} — the gap is pure waste from failed deliveries.`;
+
+      document.getElementById("cc-daily-budget").textContent = fmtRs(r.dailyAdBudget);
+      document.getElementById("cc-daily-budget-sub").textContent = "Includes payment fee & tax — what you actually need to fund your ad account with, per day.";
+      document.getElementById("cc-booked-needed").textContent = r.bookedPerDayNeeded.toFixed(1);
+      document.getElementById("cc-monthly-budget").textContent = fmtRs(r.monthlyAdBudget);
+      document.getElementById("cc-budget-monthly-profit").textContent = fmtRs(r.expectedMonthlyProfit);
+    } else {
+      document.getElementById("cc-profit").textContent = "Rs —";
+      document.getElementById("cc-profit-sub").textContent = "Enter your numbers to see your profit";
+      document.getElementById("cc-margin").textContent = "—";
+      document.getElementById("cc-margin-marker").style.left = "0%";
+      document.getElementById("cc-breakeven-ad").textContent = "—";
+      document.getElementById("cc-breakeven-roas").textContent = "—";
+      document.getElementById("cc-monthly-profit").textContent = "—";
+      document.getElementById("cc-total-cost").textContent = "Rs —";
+
+      document.getElementById("cc-return-ideal").textContent = "Rs —";
+      document.getElementById("cc-return-actual-label").textContent = "At your delivery rate";
+      document.getElementById("cc-return-actual").textContent = "Rs —";
+      document.getElementById("cc-return-note").textContent = "Fill in your numbers above to see how much returned orders really cost you.";
+
+      document.getElementById("cc-daily-budget").textContent = "Rs —";
+      document.getElementById("cc-daily-budget-sub").textContent = "Enter your numbers and a delivered-orders target to see your budget";
+      document.getElementById("cc-booked-needed").textContent = "—";
+      document.getElementById("cc-monthly-budget").textContent = "—";
+      document.getElementById("cc-budget-monthly-profit").textContent = "—";
+    }
+  }
+
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener("input", render);
+  });
+
+  document.querySelectorAll(".cc-chip").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const target = document.getElementById(btn.getAttribute("data-target"));
+      target.value = btn.getAttribute("data-value");
+      document.querySelectorAll(`.cc-chip[data-target="${btn.getAttribute("data-target")}"]`).forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      render();
+    });
+  });
+
+  const tabProfit = document.getElementById("cc-tab-profit");
+  const tabBudget = document.getElementById("cc-tab-budget");
+  const panelProfit = document.getElementById("cc-panel-profit");
+  const panelBudget = document.getElementById("cc-panel-budget");
+  tabProfit.addEventListener("click", () => {
+    tabProfit.classList.add("active"); tabProfit.setAttribute("aria-selected", "true");
+    tabBudget.classList.remove("active"); tabBudget.setAttribute("aria-selected", "false");
+    panelProfit.style.display = ""; panelBudget.style.display = "none";
+  });
+  tabBudget.addEventListener("click", () => {
+    tabBudget.classList.add("active"); tabBudget.setAttribute("aria-selected", "true");
+    tabProfit.classList.remove("active"); tabProfit.setAttribute("aria-selected", "false");
+    panelBudget.style.display = ""; panelProfit.style.display = "none";
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
