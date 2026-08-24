@@ -31,8 +31,38 @@
     root.innerHTML = `<div class="content-page" style="text-align:center;"><h1>Product not found</h1><p><a href="shop.html">Back to shop</a></p></div>`;
   } else {
     document.title = product.title + " — Furnecia";
+    const productDesc = `${product.title} — ${formatPrice(product.price)}. Cash on Delivery across the UK, free delivery in England (£20 Wales, £30 Scotland), 30-day returns.`;
     const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.setAttribute("content", `${product.title} — ${formatPrice(product.price)}. Cash on Delivery across the UK, free delivery in England (£20 Wales, £30 Scotland), 30-day returns.`);
+    if (metaDesc) metaDesc.setAttribute("content", productDesc);
+
+    const canonicalUrl = `https://furnecia.com/product.html?handle=${encodeURIComponent(product.handle)}`;
+    const canonical = document.createElement("link");
+    canonical.rel = "canonical";
+    canonical.href = canonicalUrl;
+    document.head.appendChild(canonical);
+
+    const rawImg = product.images[0] || "";
+    const absImg = rawImg ? (rawImg.startsWith("http") ? shopifyImg(rawImg, 1200) : `https://furnecia.com/${rawImg}`) : "";
+    const ogTags = [
+      ["og:type", "product"],
+      ["og:title", `${product.title} — Furnecia`],
+      ["og:description", productDesc],
+      ["og:image", absImg],
+      ["og:url", canonicalUrl],
+      ["product:price:amount", String(product.price)],
+      ["product:price:currency", "GBP"],
+    ];
+    ogTags.forEach(([prop, content]) => {
+      if (!content) return;
+      const tag = document.createElement("meta");
+      tag.setAttribute("property", prop);
+      tag.setAttribute("content", content);
+      document.head.appendChild(tag);
+    });
+    const twitterCard = document.createElement("meta");
+    twitterCard.setAttribute("name", "twitter:card");
+    twitterCard.setAttribute("content", "summary_large_image");
+    document.head.appendChild(twitterCard);
 
     let selectedVariant = defaultVariant(product);
     let selectedImage = selectedVariant.image || product.images[0];
