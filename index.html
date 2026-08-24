@@ -227,6 +227,7 @@
 
 <script src="js/config.js"></script>
 <script src="js/products.js"></script>
+<script src="js/shopify-storefront.js"></script>
 <script src="js/reviews.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/blog.js"></script>
@@ -250,6 +251,8 @@
     `).join("");
   })();
 
+  (async () => {
+  await window.productsReady;
   document.getElementById("bestsellers-grid").innerHTML =
     PRODUCTS.filter(p => p.bestseller).map(productCardHTML).join("");
   renderDealsStrip("deals-strip");
@@ -279,6 +282,7 @@
     const budget = document.getElementById("budget-amount").value.trim();
     window.location.href = `shop.html?q=${encodeURIComponent(q)}${budget ? "&max=" + encodeURIComponent(budget) : ""}`;
   });
+  })();
 </script>
 </body>
 </html>

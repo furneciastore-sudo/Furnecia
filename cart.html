@@ -23,6 +23,10 @@
 <div id="checkout-section" style="display:none;">
   <div class="checkout-form">
     <div class="cod-note">💷 <strong>Cash on Delivery only.</strong> No online payment needed — you pay in cash when your order arrives.<br>🚚 Estimated delivery: <strong id="cart-delivery-dates"></strong><br>📍 Free delivery in England &middot; £20 to Wales &middot; £30 to Scotland (added on delivery, based on your address)</div>
+    <div id="shopify-checkout-box" style="display:none;margin-bottom:20px;">
+      <button type="button" class="btn btn-solid" id="shopify-checkout-btn" style="width:100%;">Checkout Securely (Cash on Delivery)</button>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">You'll enter your delivery address on the next page. No card details are needed — choose Cash on Delivery at the final step.</p>
+    </div>
     <form id="checkout-form">
       <div class="form-field">
         <label for="c-name">Full Name *</label>
@@ -60,8 +64,10 @@
 
 <script src="js/config.js"></script>
 <script src="js/products.js"></script>
+<script src="js/shopify-storefront.js"></script>
 <script src="js/reviews.js"></script>
 <script src="js/cart.js"></script>
+<script src="js/shopify-cart.js"></script>
 <script src="js/layout.js"></script>
 <script src="js/main.js"></script>
 <script>
@@ -121,6 +127,26 @@
 
     checkoutSection.style.display = "block";
     bindCheckoutLinks();
+
+    const shopifyBox = document.getElementById("shopify-checkout-box");
+    if (typeof shopifyCheckoutAvailable === "function" && shopifyCheckoutAvailable()) {
+      shopifyBox.style.display = "block";
+      const btn = document.getElementById("shopify-checkout-btn");
+      btn.onclick = async () => {
+        btn.disabled = true;
+        btn.textContent = "Redirecting to checkout…";
+        try {
+          await goToShopifyCheckout();
+        } catch (err) {
+          console.error(err);
+          alert("Sorry, something went wrong starting checkout. Please try again or order via WhatsApp below.");
+          btn.disabled = false;
+          btn.textContent = "Checkout Securely (Cash on Delivery)";
+        }
+      };
+    } else {
+      shopifyBox.style.display = "none";
+    }
   }
 
   function buildOrderText() {
@@ -172,9 +198,12 @@
     emailBtn.addEventListener("click", guardClick);
   }
 
-  renderCart();
-  const cartDeliveryEl = document.getElementById("cart-delivery-dates");
-  if (cartDeliveryEl) cartDeliveryEl.textContent = deliveryEstimateText();
+  (async () => {
+    await window.productsReady;
+    renderCart();
+    const cartDeliveryEl = document.getElementById("cart-delivery-dates");
+    if (cartDeliveryEl) cartDeliveryEl.textContent = deliveryEstimateText();
+  })();
 </script>
 </body>
 </html>

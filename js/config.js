@@ -10,6 +10,15 @@ const SITE = {
   currencySymbol: "£",
   freeDeliveryNote: "Free Delivery in England &middot; £20 to Wales &middot; £30 to Scotland",
   deliveryNotePlain: "Free delivery in England. £20 to Wales, £30 to Scotland.",
+
+  // ---- Shopify headless backend (live products, cart, checkout) ----
+  // Fill these in from Shopify Admin: Settings -> Apps and sales channels ->
+  // Develop apps -> (your app) -> API credentials -> Storefront API access token.
+  // shopifyDomain is your *.myshopify.com domain, not furnecia.com.
+  // Leaving storefrontToken empty means the site falls back to the static
+  // product catalogue baked into js/products.js — nothing breaks either way.
+  shopifyDomain: "",
+  storefrontToken: "",
 };
 
 function waLink(message) {

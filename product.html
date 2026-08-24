@@ -18,11 +18,14 @@
 
 <script src="js/config.js"></script>
 <script src="js/products.js"></script>
+<script src="js/shopify-storefront.js"></script>
 <script src="js/reviews.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/layout.js"></script>
 <script src="js/main.js"></script>
 <script>
+(async () => {
+  await window.productsReady;
   const handle = new URLSearchParams(window.location.search).get("handle");
   const product = getProductByHandle(handle);
   const root = document.getElementById("product-root");
@@ -271,6 +274,7 @@
       document.body.appendChild(box);
     });
   }
+})();
 </script>
 </body>
 </html>

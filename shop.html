@@ -34,11 +34,14 @@
 
 <script src="js/config.js"></script>
 <script src="js/products.js"></script>
+<script src="js/shopify-storefront.js"></script>
 <script src="js/reviews.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/layout.js"></script>
 <script src="js/main.js"></script>
 <script>
+(async () => {
+  await window.productsReady;
   const params = new URLSearchParams(window.location.search);
   let activeCat = params.get("cat") || "All";
   const searchQ = (params.get("q") || "").toLowerCase();
@@ -86,6 +89,7 @@
     render();
   });
   render();
+})();
 </script>
 </body>
 </html>
