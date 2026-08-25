@@ -43,6 +43,10 @@ const PRODUCTS_QUERY = `
           tags
           images(first: 10) { edges { node { url altText } } }
           options { name values }
+          metafields(identifiers: [{ namespace: "reviews", key: "rating" }, { namespace: "reviews", key: "rating_count" }]) {
+            key
+            value
+          }
           variants(first: 25) {
             edges {
               node {
@@ -78,6 +82,23 @@ function shopifyProductToLocal(node) {
   }));
   const first = variants[0] || { price: 0, compareAtPrice: null };
   const options = (node.options || []).filter(o => o.name !== "Title").map(o => ({ name: o.name, values: o.values }));
+
+  // Live rating from the free "Product Reviews" app (Settings -> Apps ->
+  // install "Product Reviews" by Shopify): once installed and real
+  // reviews come in, js/reviews.js prefers these over the placeholder
+  // rating shown today. Absent/unparsable metafields are just skipped —
+  // no app installed yet means this stays null and nothing changes.
+  let liveRating = null;
+  let liveRatingCount = null;
+  (node.metafields || []).filter(Boolean).forEach(mf => {
+    if (mf.key === "rating") {
+      try { liveRating = parseFloat(JSON.parse(mf.value).value); } catch (e) { /* ignore */ }
+    } else if (mf.key === "rating_count") {
+      const n = parseInt(mf.value, 10);
+      if (!isNaN(n)) liveRatingCount = n;
+    }
+  });
+
   return {
     handle: node.handle,
     title: node.title,
@@ -90,6 +111,8 @@ function shopifyProductToLocal(node) {
     compareAtPrice: first.compareAtPrice || undefined,
     bestseller: node.tags.map(t => t.toLowerCase()).includes("bestseller"),
     sale: Boolean(first.compareAtPrice && first.compareAtPrice > first.price),
+    liveRating: liveRatingCount ? liveRating : null,
+    liveRatingCount: liveRatingCount || null,
   };
 }
 

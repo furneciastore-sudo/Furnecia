@@ -66,6 +66,13 @@ function hashSeed(str) {
 }
 
 function ratingSummary(handle) {
+  // Once the free Shopify "Product Reviews" app is installed and has
+  // real customer reviews, prefer that live rating over everything below.
+  const liveProduct = typeof getProductByHandle === "function" ? getProductByHandle(handle) : null;
+  if (liveProduct && liveProduct.liveRatingCount) {
+    return { rating: liveProduct.liveRating, count: liveProduct.liveRatingCount };
+  }
+
   const own = REVIEWS.filter(r => r.handle === handle);
   if (own.length) {
     const avg = own.reduce((s, r) => s + r.rating, 0) / own.length;
