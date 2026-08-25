@@ -23,6 +23,7 @@
 <script src="js/cart.js"></script>
 <script src="js/layout.js"></script>
 <script src="js/main.js"></script>
+<script src="js/tracking.js"></script>
 <script>
 (async () => {
   await window.productsReady;
@@ -161,6 +162,10 @@
 
     document.getElementById("delivery-dates").textContent = deliveryEstimateText();
 
+    if (typeof trackEvent === "function") {
+      trackEvent("ViewContent", { content_name: product.title, content_ids: [product.handle], value: product.price, currency: "GBP" });
+    }
+
     const { rating: ldRating, count: ldCount } = ratingSummary(product.handle);
     const ld = document.createElement("script");
     ld.type = "application/ld+json";
@@ -253,7 +258,11 @@
     qtyInput.addEventListener("input", updateWaLink);
 
     document.getElementById("add-to-cart-btn").addEventListener("click", () => {
-      addToCart(product.handle, selectedVariant.title, Number(qtyInput.value) || 1);
+      const qty = Number(qtyInput.value) || 1;
+      addToCart(product.handle, selectedVariant.title, qty);
+      if (typeof trackEvent === "function") {
+        trackEvent("AddToCart", { content_name: product.title, content_ids: [product.handle], value: selectedVariant.price * qty, currency: "GBP" });
+      }
       alert("Added to cart!");
     });
 

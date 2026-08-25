@@ -19,6 +19,18 @@ const SITE = {
   // product catalogue baked into js/products.js — nothing breaks either way.
   shopifyDomain: "",
   storefrontToken: "",
+
+  // ---- Marketing tracking (optional, all off until filled in) ----
+  // metaPixelId: Meta Events Manager -> your Pixel -> Pixel ID (numbers only).
+  // ga4MeasurementId: Google Analytics 4 -> Admin -> Data Streams -> your
+  //   stream -> Measurement ID (looks like "G-XXXXXXXXXX").
+  // For Shopify's own hosted checkout page, don't add IDs here for that —
+  // instead connect the free "Google & YouTube" and "Facebook & Instagram"
+  // sales channel apps in Shopify Admin, which handle GA4 + Meta Pixel/CAPI
+  // on checkout automatically. The IDs below only cover pages on this site
+  // (product/collection pages, cart) which are outside Shopify's domain.
+  metaPixelId: "",
+  ga4MeasurementId: "",
 };
 
 function waLink(message) {

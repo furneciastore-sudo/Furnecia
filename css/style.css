@@ -296,6 +296,21 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; margin: 0; }
 @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
 
+/* ---------- Cookie consent banner ---------- */
+.cookie-banner {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999;
+  background: var(--surface, #fff); border-top: 1px solid var(--line, #e5e0d8);
+  padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  flex-wrap: wrap; box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+}
+.cookie-banner p { margin: 0; font-size: 13px; color: var(--text-muted); max-width: 640px; }
+.cookie-banner-actions { display: flex; gap: 10px; flex-shrink: 0; }
+.cookie-banner-actions .btn { padding: 8px 18px; font-size: 13px; }
+@media (max-width: 560px) {
+  .cookie-banner { flex-direction: column; align-items: stretch; text-align: center; }
+  .cookie-banner-actions { justify-content: center; }
+}
+
 /* ---------- WhatsApp float button + live chat bubble ---------- */
 .whatsapp-btn {
   position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; background: var(--whatsapp); border-radius: 50%;

@@ -70,6 +70,7 @@
 <script src="js/shopify-cart.js"></script>
 <script src="js/layout.js"></script>
 <script src="js/main.js"></script>
+<script src="js/tracking.js"></script>
 <script>
   function renderCart() {
     const items = cartItemsWithDetails();
@@ -135,6 +136,9 @@
       btn.onclick = async () => {
         btn.disabled = true;
         btn.textContent = "Redirecting to checkout…";
+        if (typeof trackEvent === "function") {
+          trackEvent("InitiateCheckout", { value: cartTotal(), currency: "GBP", num_items: cartItemsWithDetails().reduce((s, i) => s + i.qty, 0) });
+        }
         try {
           await goToShopifyCheckout();
         } catch (err) {
@@ -192,6 +196,10 @@
       if (missing.length) {
         e.preventDefault();
         alert("Please fill in your name, phone, address and city before ordering.");
+        return;
+      }
+      if (typeof trackEvent === "function") {
+        trackEvent("InitiateCheckout", { value: cartTotal(), currency: "GBP", num_items: cartItemsWithDetails().reduce((s, i) => s + i.qty, 0) });
       }
     }
     waBtn.addEventListener("click", guardClick);
