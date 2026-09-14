@@ -17,8 +17,8 @@
 <div id="site-header"></div>
 
 <div class="page-header">
-  <h1>Shop All Furniture</h1>
-  <p>Cash on Delivery across the UK &middot; Free delivery in England &middot; £20 Wales &middot; £30 Scotland</p>
+  <h1 id="shop-h1">Shop All Furniture</h1>
+  <p id="shop-subhead">Cash on Delivery across the UK &middot; Free delivery in England &middot; £20 Wales &middot; £30 Scotland</p>
 </div>
 
 <div class="shop-layout">
@@ -50,6 +50,42 @@
   const PAGE_SIZE = 24;
   let visibleCount = PAGE_SIZE;
 
+  // Keyword-targeted title/description per category, researched against
+  // how UK furniture retailers (Sofa Club, IKEA, Furniture Village, Oak
+  // Furnitureland) title their equivalent category pages — front-loads
+  // the exact term shoppers search ("corner sofa", "sliding wardrobe" etc)
+  // then the site's real differentiator (Cash on Delivery) rather than
+  // filler words.
+  const CATEGORY_SEO = {
+    "All": { title: "Shop All Furniture UK | Sofas, Beds & Wardrobes — Furnecia", desc: "Browse sofa beds, corner sofas, wardrobes, beds, dining tables and more from Furnecia. Cash on Delivery across the UK — free delivery in England, £20 to Wales, £30 to Scotland.", h1: "Shop All Furniture" },
+    "Sale": { title: "Furniture Sale UK | Sofas, Beds & Wardrobes Reduced — Furnecia", desc: "Shop discounted sofa beds, corner sofas, wardrobes and more in the Furnecia sale. Cash on Delivery, free delivery in England, 30-day returns.", h1: "Furniture Sale" },
+    "Sofa Beds": { title: "Sofa Beds UK | Corner & Storage Sofa Beds — Furnecia", desc: "Shop sofa beds UK-wide — corner, storage and fabric sofa beds at affordable prices. Cash on Delivery, free delivery in England, 30-day returns.", h1: "Sofa Beds" },
+    "Corner Sofas": { title: "Corner Sofas UK | L-Shaped & 5 Seater Corner Sofas — Furnecia", desc: "Shop corner sofas UK-wide — L-shaped, high-back and 5 seater corner sofas. Cash on Delivery, free delivery in England, 30-day returns.", h1: "Corner Sofas" },
+    "Sofas": { title: "Sofas UK | 2, 3 Seater & Chesterfield Sofas — Furnecia", desc: "Shop sofas UK-wide — 2 seater, 3 seater and Chesterfield fabric sofas. Cash on Delivery, free delivery in England, 30-day returns.", h1: "Sofas" },
+    "Wardrobes": { title: "Wardrobes UK | Sliding Door & Mirrored Wardrobes — Furnecia", desc: "Shop wardrobes UK-wide — sliding door, mirrored and fitted bedroom wardrobes with drawers. Cash on Delivery, free delivery in England, 30-day returns.", h1: "Wardrobes" },
+    "Beds & Mattresses": { title: "Beds & Mattresses UK | Divan, Ottoman & Bunk Beds — Furnecia", desc: "Shop beds and mattresses UK-wide — divan beds, ottoman storage beds, bunk beds and memory foam mattresses. Cash on Delivery, free delivery in England.", h1: "Beds & Mattresses" },
+    "Dining Tables": { title: "Dining Tables UK | Extendable & Marble Dining Sets — Furnecia", desc: "Shop dining tables UK-wide — extendable, marble-top and dining table & chair sets. Cash on Delivery, free delivery in England, 30-day returns.", h1: "Dining Tables & Chair Sets" },
+    "Coffee Tables": { title: "Coffee Tables UK | Glass & Wood Coffee Tables — Furnecia", desc: "Shop coffee tables UK-wide — glass, marble-effect and wood coffee tables, including nested sets. Cash on Delivery, free delivery in England.", h1: "Coffee Tables" },
+    "Bar Stools & Chairs": { title: "Bar Stools & Dining Chairs UK | Swivel Bar Stools — Furnecia", desc: "Shop bar stools and dining chairs UK-wide — swivel gas-lift bar stools, tub armchairs and dining chairs. Cash on Delivery, free delivery on orders £100+.", h1: "Bar Stools & Chairs" },
+    "Outdoor Furniture": { title: "Garden & Outdoor Furniture UK | Rattan Patio Sets — Furnecia", desc: "Shop garden and outdoor furniture UK-wide — rattan patio sets, garden corner sofas and dining sets. Cash on Delivery, free delivery in England.", h1: "Outdoor Furniture" },
+    "Furniture": { title: "Furniture UK | Affordable Home Furniture — Furnecia", desc: "Shop affordable furniture UK-wide from Furnecia. Cash on Delivery, free delivery in England, £20 to Wales, £30 to Scotland.", h1: "Furniture" },
+  };
+
+  function applySEO() {
+    const seo = CATEGORY_SEO[activeCat] || CATEGORY_SEO["All"];
+    document.title = seo.title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute("content", seo.desc);
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute("content", seo.title);
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute("content", seo.desc);
+    const canonical = document.querySelector('link[rel="canonical"]');
+    const canonicalUrl = activeCat === "All" ? "https://furnecia.com/shop.html" : `https://furnecia.com/shop.html?cat=${encodeURIComponent(activeCat)}`;
+    if (canonical) canonical.setAttribute("href", canonicalUrl);
+    document.getElementById("shop-h1").textContent = seo.h1;
+  }
+
   function currentItems() {
     let items = PRODUCTS;
     if (activeCat === "Sale") items = items.filter(p => p.sale);
@@ -60,6 +96,7 @@
   }
 
   function render() {
+    applySEO();
     const filterBar = document.getElementById("filter-bar");
     const cats = ["All", "Sale", ...CATEGORIES];
     filterBar.innerHTML = cats.map(c =>

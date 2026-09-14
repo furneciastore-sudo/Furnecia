@@ -35,7 +35,7 @@
     root.innerHTML = `<div class="content-page" style="text-align:center;"><h1>Product not found</h1><p><a href="shop.html">Back to shop</a></p></div>`;
   } else {
     document.title = product.title + " — Furnecia";
-    const productDesc = `${product.title} — ${formatPrice(product.price)}. Cash on Delivery across the UK, free delivery in England (£20 Wales, £30 Scotland), 30-day returns.`;
+    const productDesc = `Buy the ${product.title} at Furnecia — ${formatPrice(product.price)}. ${product.category} with Cash on Delivery UK-wide, free delivery in England (£20 Wales, £30 Scotland), 30-day returns.`;
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute("content", productDesc);
 
