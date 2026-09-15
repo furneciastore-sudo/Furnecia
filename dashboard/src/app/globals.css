@@ -2,13 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --brand: #396440;
-}
-
 html,
 body {
   background-color: #f4f6f5;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.01em;
 }
 
 @media print {
