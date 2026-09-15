@@ -16,6 +16,9 @@ on:
     branches: ["claude/furniture-order-dashboard-lypjkk"]
     paths: [".github/workflows/build-android-apk.yml"]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
