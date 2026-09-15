@@ -15,6 +15,7 @@ interface ProductRow {
   defaultVendor: { id: number; name: string } | null;
   defaultVendorCost: number;
   defaultFittingCharge: number | null;
+  defaultLeadTimeDays: number | null;
   status: string;
 }
 
@@ -26,6 +27,7 @@ const emptyForm = {
   defaultVendorId: "",
   defaultVendorCost: "0",
   defaultFittingCharge: "",
+  defaultLeadTimeDays: "",
   status: "Active",
 };
 
@@ -46,6 +48,7 @@ export function ProductsManager({ products, vendors, currency }: { products: Pro
       defaultVendorId: p.defaultVendorId ? String(p.defaultVendorId) : "",
       defaultVendorCost: String(p.defaultVendorCost),
       defaultFittingCharge: p.defaultFittingCharge != null ? String(p.defaultFittingCharge) : "",
+      defaultLeadTimeDays: p.defaultLeadTimeDays != null ? String(p.defaultLeadTimeDays) : "",
       status: p.status,
     });
     setShowForm(true);
@@ -64,6 +67,7 @@ export function ProductsManager({ products, vendors, currency }: { products: Pro
       ...form,
       defaultVendorId: form.defaultVendorId ? Number(form.defaultVendorId) : null,
       defaultFittingCharge: form.defaultFittingCharge === "" ? null : Number(form.defaultFittingCharge),
+      defaultLeadTimeDays: form.defaultLeadTimeDays === "" ? null : Number(form.defaultLeadTimeDays),
     };
     const url = editingId ? `/api/products/${editingId}` : "/api/products";
     await fetch(url, {
@@ -125,6 +129,17 @@ export function ProductsManager({ products, vendors, currency }: { products: Pro
             <input type="number" step="0.01" className="input" value={form.defaultFittingCharge} onChange={(e) => setForm({ ...form, defaultFittingCharge: e.target.value })} />
           </div>
           <div>
+            <label className="label">Delivery Lead Time (days, optional)</label>
+            <input
+              type="number"
+              min={0}
+              className="input"
+              value={form.defaultLeadTimeDays}
+              onChange={(e) => setForm({ ...form, defaultLeadTimeDays: e.target.value })}
+              placeholder="Overrides the vendor's lead time"
+            />
+          </div>
+          <div>
             <label className="label">Status</label>
             <select className="input" value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })}>
               <option value="Active">Active</option>
@@ -148,6 +163,7 @@ export function ProductsManager({ products, vendors, currency }: { products: Pro
               <th className="px-3 py-2">Default Price</th>
               <th className="px-3 py-2">Default Vendor</th>
               <th className="px-3 py-2">Vendor Cost</th>
+              <th className="px-3 py-2">Lead Time</th>
               <th className="px-3 py-2">Status</th>
               <th className="px-3 py-2">Actions</th>
             </tr>
@@ -161,6 +177,7 @@ export function ProductsManager({ products, vendors, currency }: { products: Pro
                 <td className="px-3 py-2">{formatMoney(p.defaultPrice, currency)}</td>
                 <td className="px-3 py-2">{p.defaultVendor?.name ?? "—"}</td>
                 <td className="px-3 py-2">{formatMoney(p.defaultVendorCost, currency)}</td>
+                <td className="px-3 py-2">{p.defaultLeadTimeDays != null ? `${p.defaultLeadTimeDays} days` : "—"}</td>
                 <td className="px-3 py-2">
                   <span className={p.status === "Active" ? "badge bg-green-50 text-green-700" : "badge bg-gray-100 text-gray-500"}>{p.status}</span>
                 </td>

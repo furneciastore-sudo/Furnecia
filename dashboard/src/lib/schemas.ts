@@ -61,6 +61,7 @@ export const vendorInputSchema = z.object({
   email: z.string().optional().default(""),
   address: z.string().optional().default(""),
   products: z.string().optional().default(""),
+  defaultLeadTimeDays: z.coerce.number().int().min(0).nullable().optional(),
   status: z.enum(["Active", "Inactive"]).default("Active"),
 });
 
@@ -72,6 +73,7 @@ export const productInputSchema = z.object({
   defaultVendorId: z.coerce.number().int().nullable().optional(),
   defaultVendorCost: z.coerce.number().min(0).default(0),
   defaultFittingCharge: z.coerce.number().nullable().optional(),
+  defaultLeadTimeDays: z.coerce.number().int().min(0).nullable().optional(),
   status: z.enum(["Active", "Inactive"]).default("Active"),
 });
 

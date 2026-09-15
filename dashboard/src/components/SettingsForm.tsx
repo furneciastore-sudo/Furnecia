@@ -65,6 +65,46 @@ export function SettingsForm({ initial }: { initial: SettingsMap }) {
         </Grid>
       </Section>
 
+      <Section
+        title="Delivery Date Checker"
+        description="Defaults for the standalone Delivery Date Checker tool. A product's own lead time wins, then its vendor's, then this default."
+      >
+        <Grid>
+          <div>
+            <label className="label">Default Lead Time (days)</label>
+            <input
+              type="number"
+              min={0}
+              className="input"
+              value={values.deliveryDefaultLeadTimeDays}
+              onChange={(e) => set("deliveryDefaultLeadTimeDays", e.target.value)}
+            />
+          </div>
+          <div>
+            <label className="label">Skip Weekends</label>
+            <select
+              className="input"
+              value={values.deliverySkipWeekends}
+              onChange={(e) => set("deliverySkipWeekends", e.target.value)}
+            >
+              <option value="true">Yes — count only weekdays</option>
+              <option value="false">No — count every day</option>
+            </select>
+          </div>
+          <div>
+            <label className="label">Extra Suggested Dates</label>
+            <input
+              type="number"
+              min={0}
+              className="input"
+              value={values.deliverySuggestionWindowDays}
+              onChange={(e) => set("deliverySuggestionWindowDays", e.target.value)}
+            />
+            <p className="mt-1 text-xs text-gray-400">How many extra dates to suggest after the earliest one.</p>
+          </div>
+        </Grid>
+      </Section>
+
       <Section title="Commission" description="Default commission rule for new orders (can be overridden per order).">
         <Grid>
           <div>

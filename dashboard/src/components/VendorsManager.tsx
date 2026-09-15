@@ -14,6 +14,7 @@ interface VendorRow {
   email: string | null;
   address: string | null;
   products: string | null;
+  defaultLeadTimeDays: number | null;
   status: string;
   stats: {
     totalOrders: number;
@@ -26,7 +27,7 @@ interface VendorRow {
   };
 }
 
-const emptyForm = { name: "", contactPerson: "", phone: "", whatsapp: "", email: "", address: "", products: "", status: "Active" };
+const emptyForm = { name: "", contactPerson: "", phone: "", whatsapp: "", email: "", address: "", products: "", defaultLeadTimeDays: "", status: "Active" };
 
 export function VendorsManager({ vendors, currency }: { vendors: VendorRow[]; currency: string }) {
   const router = useRouter();
@@ -45,6 +46,7 @@ export function VendorsManager({ vendors, currency }: { vendors: VendorRow[]; cu
       email: v.email ?? "",
       address: v.address ?? "",
       products: v.products ?? "",
+      defaultLeadTimeDays: v.defaultLeadTimeDays != null ? String(v.defaultLeadTimeDays) : "",
       status: v.status,
     });
     setShowForm(true);
@@ -60,10 +62,14 @@ export function VendorsManager({ vendors, currency }: { vendors: VendorRow[]; cu
     e.preventDefault();
     setSaving(true);
     const url = editingId ? `/api/vendors/${editingId}` : "/api/vendors";
+    const payload = {
+      ...form,
+      defaultLeadTimeDays: form.defaultLeadTimeDays === "" ? null : Number(form.defaultLeadTimeDays),
+    };
     await fetch(url, {
       method: editingId ? "PUT" : "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
+      body: JSON.stringify(payload),
     });
     setSaving(false);
     setShowForm(false);
@@ -112,6 +118,17 @@ export function VendorsManager({ vendors, currency }: { vendors: VendorRow[]; cu
               <option value="Inactive">Inactive</option>
             </select>
           </div>
+          <div>
+            <label className="label">Default Delivery Lead Time (days)</label>
+            <input
+              type="number"
+              min={0}
+              className="input"
+              value={form.defaultLeadTimeDays}
+              onChange={(e) => setForm({ ...form, defaultLeadTimeDays: e.target.value })}
+              placeholder="Used by the Delivery Date Checker"
+            />
+          </div>
           <div className="sm:col-span-2">
             <label className="label">Address</label>
             <input className="input" value={form.address} onChange={(e) => setForm({ ...form, address: e.target.value })} />
@@ -146,6 +163,9 @@ export function VendorsManager({ vendors, currency }: { vendors: VendorRow[]; cu
               {v.whatsapp && <a className="text-green-600" href={whatsappHref(v.whatsapp)} target="_blank" rel="noreferrer">WhatsApp</a>}
             </div>
             {v.products && <p className="text-xs text-gray-500">Products: {v.products}</p>}
+            {v.defaultLeadTimeDays != null && (
+              <p className="text-xs text-gray-500">Lead time: {v.defaultLeadTimeDays} days</p>
+            )}
             <div className="grid grid-cols-3 gap-2 border-t border-gray-100 pt-2 text-center text-xs">
               <div><p className="font-semibold">{v.stats.totalOrders}</p><p className="text-gray-400">Total</p></div>
               <div><p className="font-semibold text-green-600">{v.stats.completedOrders}</p><p className="text-gray-400">Done</p></div>

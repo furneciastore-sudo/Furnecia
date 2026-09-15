@@ -16,22 +16,22 @@ const prisma = new PrismaClient();
 
 // ⚠️ DEMO DATA — fake customers, vendors and orders for testing only.
 const VENDORS = [
-  { name: "Vendor A — Oak & Co Furniture", contactPerson: "Imran Malik", phone: "+44 7700 900111", whatsapp: "+44 7700 900111", email: "orders@oakandco.example", address: "Unit 4, Wembley Trade Park, London", products: "Sofas, Sofa Beds" },
-  { name: "Vendor B — Britannia Beds Ltd", contactPerson: "Sarah Lewis", phone: "+44 7700 900222", whatsapp: "+44 7700 900222", email: "sales@britanniabeds.example", address: "12 Industrial Rd, Luton", products: "Beds, Mattresses" },
-  { name: "Vendor C — Home Comfort Wholesale", contactPerson: "David Chen", phone: "+44 7700 900333", whatsapp: "+44 7700 900333", email: "hello@homecomfort.example", address: "Unit 9, Slough Trading Estate", products: "Wardrobes, Dining Sets" },
-  { name: "Vendor D — Metro Furniture Supplies", contactPerson: "Fatima Rahman", phone: "+44 7700 900444", whatsapp: "+44 7700 900444", email: "info@metrofurniture.example", address: "45 Long Lane, Birmingham", products: "Recliners, Coffee Tables" },
-  { name: "Vendor E — Cosy Living Imports", contactPerson: "James O'Neil", phone: "+44 7700 900555", whatsapp: "+44 7700 900555", email: "contact@cosyliving.example", address: "3 Riverside Way, Manchester", products: "Corner Sofas, Bunk Beds" },
+  { name: "Vendor A — Oak & Co Furniture", contactPerson: "Imran Malik", phone: "+44 7700 900111", whatsapp: "+44 7700 900111", email: "orders@oakandco.example", address: "Unit 4, Wembley Trade Park, London", products: "Sofas, Sofa Beds", defaultLeadTimeDays: 14 },
+  { name: "Vendor B — Britannia Beds Ltd", contactPerson: "Sarah Lewis", phone: "+44 7700 900222", whatsapp: "+44 7700 900222", email: "sales@britanniabeds.example", address: "12 Industrial Rd, Luton", products: "Beds, Mattresses", defaultLeadTimeDays: 10 },
+  { name: "Vendor C — Home Comfort Wholesale", contactPerson: "David Chen", phone: "+44 7700 900333", whatsapp: "+44 7700 900333", email: "hello@homecomfort.example", address: "Unit 9, Slough Trading Estate", products: "Wardrobes, Dining Sets", defaultLeadTimeDays: 21 },
+  { name: "Vendor D — Metro Furniture Supplies", contactPerson: "Fatima Rahman", phone: "+44 7700 900444", whatsapp: "+44 7700 900444", email: "info@metrofurniture.example", address: "45 Long Lane, Birmingham", products: "Recliners, Coffee Tables", defaultLeadTimeDays: 7 },
+  { name: "Vendor E — Cosy Living Imports", contactPerson: "James O'Neil", phone: "+44 7700 900555", whatsapp: "+44 7700 900555", email: "contact@cosyliving.example", address: "3 Riverside Way, Manchester", products: "Corner Sofas, Bunk Beds", defaultLeadTimeDays: 18 },
 ];
 
 const PRODUCTS = [
-  { name: "3-Seater Fabric Sofa", code: "SF-301", category: "Sofas", defaultPrice: 380, vendorIdx: 0, defaultVendorCost: 260, defaultFittingCharge: 30 },
-  { name: "Corner Sofa L-Shape", code: "SF-450", category: "Sofas", defaultPrice: 620, vendorIdx: 4, defaultVendorCost: 430, defaultFittingCharge: 40 },
-  { name: "Double Divan Bed with Storage", code: "BD-210", category: "Beds", defaultPrice: 290, vendorIdx: 1, defaultVendorCost: 190, defaultFittingCharge: 25 },
-  { name: "Memory Foam Mattress (King)", code: "MT-500", category: "Mattresses", defaultPrice: 220, vendorIdx: 1, defaultVendorCost: 140, defaultFittingCharge: null },
-  { name: "3-Door Sliding Wardrobe", code: "WR-120", category: "Wardrobes", defaultPrice: 340, vendorIdx: 2, defaultVendorCost: 230, defaultFittingCharge: 35 },
-  { name: "6-Seater Dining Set", code: "DN-600", category: "Dining", defaultPrice: 410, vendorIdx: 2, defaultVendorCost: 290, defaultFittingCharge: 20 },
-  { name: "Recliner Armchair", code: "RC-100", category: "Recliners", defaultPrice: 260, vendorIdx: 3, defaultVendorCost: 175, defaultFittingCharge: null },
-  { name: "Bunk Bed with Mattresses", code: "BD-330", category: "Beds", defaultPrice: 330, vendorIdx: 4, defaultVendorCost: 225, defaultFittingCharge: 30 },
+  { name: "3-Seater Fabric Sofa", code: "SF-301", category: "Sofas", defaultPrice: 380, vendorIdx: 0, defaultVendorCost: 260, defaultFittingCharge: 30, defaultLeadTimeDays: null },
+  { name: "Corner Sofa L-Shape", code: "SF-450", category: "Sofas", defaultPrice: 620, vendorIdx: 4, defaultVendorCost: 430, defaultFittingCharge: 40, defaultLeadTimeDays: 28 },
+  { name: "Double Divan Bed with Storage", code: "BD-210", category: "Beds", defaultPrice: 290, vendorIdx: 1, defaultVendorCost: 190, defaultFittingCharge: 25, defaultLeadTimeDays: null },
+  { name: "Memory Foam Mattress (King)", code: "MT-500", category: "Mattresses", defaultPrice: 220, vendorIdx: 1, defaultVendorCost: 140, defaultFittingCharge: null, defaultLeadTimeDays: 5 },
+  { name: "3-Door Sliding Wardrobe", code: "WR-120", category: "Wardrobes", defaultPrice: 340, vendorIdx: 2, defaultVendorCost: 230, defaultFittingCharge: 35, defaultLeadTimeDays: 7 },
+  { name: "6-Seater Dining Set", code: "DN-600", category: "Dining", defaultPrice: 410, vendorIdx: 2, defaultVendorCost: 290, defaultFittingCharge: 20, defaultLeadTimeDays: null },
+  { name: "Recliner Armchair", code: "RC-100", category: "Recliners", defaultPrice: 260, vendorIdx: 3, defaultVendorCost: 175, defaultFittingCharge: null, defaultLeadTimeDays: null },
+  { name: "Bunk Bed with Mattresses", code: "BD-330", category: "Beds", defaultPrice: 330, vendorIdx: 4, defaultVendorCost: 225, defaultFittingCharge: 30, defaultLeadTimeDays: 12 },
 ];
 
 const CUSTOMERS = [
@@ -90,6 +90,7 @@ async function main() {
           defaultVendorId: vendors[p.vendorIdx].id,
           defaultVendorCost: p.defaultVendorCost,
           defaultFittingCharge: p.defaultFittingCharge,
+          defaultLeadTimeDays: p.defaultLeadTimeDays,
           isDemo: true,
         },
       })

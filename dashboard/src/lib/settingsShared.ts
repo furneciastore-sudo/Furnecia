@@ -32,6 +32,12 @@ export const DEFAULT_SETTINGS: Record<string, string> = {
   businessEmail: "furneciastore@gmail.com",
 
   orderPrefix: "FRN",
+
+  // Delivery Date Checker — a separate tool from Orders. A product's own
+  // lead time wins, then its vendor's, then this fallback default.
+  deliveryDefaultLeadTimeDays: "14",
+  deliverySkipWeekends: "true",
+  deliverySuggestionWindowDays: "3",
 };
 
 export type SettingsMap = typeof DEFAULT_SETTINGS;

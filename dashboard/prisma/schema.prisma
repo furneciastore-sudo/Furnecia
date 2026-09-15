@@ -21,6 +21,7 @@ model Vendor {
   email         String?
   address       String?
   products      String? // free-text list of products supplied
+  defaultLeadTimeDays Int? // used by the Delivery Date Checker when a product has no override
   status        String   @default("Active") // Active | Inactive
   isDemo        Boolean  @default(false)
   createdAt     DateTime @default(now())
@@ -40,6 +41,7 @@ model Product {
   defaultVendor        Vendor?  @relation(fields: [defaultVendorId], references: [id])
   defaultVendorCost    Float    @default(0)
   defaultFittingCharge Float?
+  defaultLeadTimeDays  Int? // overrides the vendor's lead time for the Delivery Date Checker
   status               String   @default("Active") // Active | Inactive
   isDemo               Boolean  @default(false)
   createdAt            DateTime @default(now())
