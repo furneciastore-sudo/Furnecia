@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import clsx from "clsx";
+import { lock } from "@/lib/localAuth";
 
 const NAV = [
   { href: "/", label: "Dashboard", icon: "🏠" },
@@ -25,12 +26,11 @@ export function AppShell({
   businessName: string;
 }) {
   const pathname = usePathname();
-  const router = useRouter();
   const [open, setOpen] = useState(false);
 
-  async function logout() {
-    await fetch("/api/login", { method: "DELETE" });
-    router.replace("/login");
+  function logout() {
+    lock();
+    window.location.reload();
   }
 
   return (

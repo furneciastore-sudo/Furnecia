@@ -1,11 +1,15 @@
-import { getSettings } from "@/lib/settings";
+"use client";
+
+import { useEffect, useState } from "react";
+import { getSettings } from "@/lib/localApi";
 import { AppShell } from "@/components/AppShell";
 
-// Every page under this layout reads live business data — never
-// pre-render/cache it statically at build time.
-export const dynamic = "force-dynamic";
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const [businessName, setBusinessName] = useState("Furnecia");
 
-export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const settings = await getSettings();
-  return <AppShell businessName={settings.businessName}>{children}</AppShell>;
+  useEffect(() => {
+    setBusinessName(getSettings().businessName);
+  }, []);
+
+  return <AppShell businessName={businessName}>{children}</AppShell>;
 }

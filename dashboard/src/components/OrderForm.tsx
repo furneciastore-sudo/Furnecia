@@ -20,6 +20,7 @@ import {
 import type { SettingsMap } from "@/lib/settingsShared";
 import type { OrderFormValues, VendorOption, ProductOption } from "@/lib/orderFormTypes";
 import { formatMoney } from "@/lib/format";
+import { localFetch as fetch } from "@/lib/localFetch";
 
 export function OrderForm({
   mode,
@@ -143,7 +144,7 @@ export function OrderForm({
       return;
     }
     const data = await res.json();
-    router.push(`/orders/${data.order.id}?saved=1`);
+    router.push(`/orders/view?id=${data.order.id}&saved=1`);
     router.refresh();
   }
 

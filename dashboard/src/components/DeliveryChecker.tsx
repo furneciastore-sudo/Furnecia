@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { formatDate } from "@/lib/format";
 import type { VendorOption, ProductOption } from "@/lib/orderFormTypes";
+import { localFetch as fetch } from "@/lib/localFetch";
 
 interface CheckResult {
   earliestDate: string;

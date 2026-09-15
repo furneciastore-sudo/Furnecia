@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { REMINDER_TYPES, classifyReminder } from "@/lib/reminders";
 import { formatDate } from "@/lib/format";
+import { localFetch as fetch } from "@/lib/localFetch";
 
 interface OrderOption {
   id: number;
@@ -32,8 +33,9 @@ const BUCKET_META: Record<string, string> = {
   completed: "✅ Completed",
 };
 
-export function RemindersManager({ orders }: { orders: OrderOption[] }) {
+export function RemindersManager() {
   const searchParams = useSearchParams();
+  const [orders, setOrders] = useState<OrderOption[]>([]);
   const [reminders, setReminders] = useState<ReminderRow[]>([]);
   const [showForm, setShowForm] = useState(Boolean(searchParams.get("orderId")));
   const [showCompleted, setShowCompleted] = useState(false);
@@ -48,9 +50,15 @@ export function RemindersManager({ orders }: { orders: OrderOption[] }) {
   const [saving, setSaving] = useState(false);
 
   const load = useCallback(async () => {
-    const res = await fetch("/api/reminders");
-    const data = await res.json();
-    setReminders(data.reminders ?? []);
+    const [remindersRes, ordersRes] = await Promise.all([fetch("/api/reminders"), fetch("/api/orders?archived=0")]);
+    const remindersData = await remindersRes.json();
+    const ordersData = await ordersRes.json();
+    setReminders(remindersData.reminders ?? []);
+    setOrders((ordersData.orders ?? []).slice(0, 300).map((o: { id: number; orderNo: string; customerName: string }) => ({
+      id: o.id,
+      orderNo: o.orderNo,
+      customerName: o.customerName,
+    })));
   }, []);
 
   useEffect(() => {
@@ -166,7 +174,7 @@ export function RemindersManager({ orders }: { orders: OrderOption[] }) {
                       {r.order && (
                         <>
                           {" — "}
-                          <Link href={`/orders/${r.orderId}`} className="text-brand-600 hover:underline">{r.order.orderNo}</Link>
+                          <Link href={`/orders/view?id=${r.orderId}`} className="text-brand-600 hover:underline">{r.order.orderNo}</Link>
                         </>
                       )}
                     </p>

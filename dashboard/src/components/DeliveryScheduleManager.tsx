@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { DAY_KEYS, DAY_SHORT, type DayKey } from "@/lib/postcodeSchedule";
+import { localFetch as fetch } from "@/lib/localFetch";
 
 interface ScheduleRow {
   postcodePrefix: string;

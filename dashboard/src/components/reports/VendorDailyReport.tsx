@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { formatMoney } from "@/lib/format";
 import { downloadCsv } from "@/lib/downloadCsv";
 import type { VendorOption } from "@/lib/orderFormTypes";
+import { localFetch as fetch } from "@/lib/localFetch";
 
 interface OrderRow {
   id: number;

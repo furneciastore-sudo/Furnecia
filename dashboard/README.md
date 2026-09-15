@@ -1,14 +1,15 @@
 # Furnecia Order Management Dashboard
 
-A professional internal dashboard for managing customer orders, vendors,
-deliveries, payments, floor/fitting charges and your commission/profit —
-built so nothing has to be calculated by hand.
+A professional, fully **offline** dashboard for managing customer orders,
+vendors, deliveries, payments, floor/fitting charges and your
+commission/profit — built so nothing has to be calculated by hand, and
+nothing needs an internet connection to run.
 
 This lives in `dashboard/` alongside the existing `furnecia.com` storefront
 (the static HTML site in the repo root). They are two separate
-applications: the storefront is a static site for customers, this
-dashboard is a private Node.js app for you (the business owner) to run
-orders through. It is not linked to or published on the public website.
+applications: the storefront is a public site for customers, this
+dashboard is a private, offline tool for you (the business owner). It is
+not linked to or published on the public website.
 
 ---
 
@@ -16,143 +17,111 @@ orders through. It is not linked to or published on the public website.
 
 | Layer | Choice | Why |
 |---|---|---|
-| Framework | **Next.js 14** (App Router, TypeScript) | One project serves both the UI and the API — no separate backend to host/deploy. |
-| Database | **SQLite** via **Prisma ORM** | Zero setup, zero monthly cost, the whole database is a single file you can copy/back up. Prisma also gives a typed schema that mirrors the "Google Sheets" layout from the brief, and can be pointed at Postgres/MySQL later by changing one line if you ever outgrow SQLite. |
-| Styling | **Tailwind CSS** | Fast to build a clean, consistent, mobile-responsive UI without a component library to maintain. |
+| Framework | **Next.js 14** (App Router, TypeScript), built as a **static export** | Produces a plain HTML/CSS/JS site with no server required at all — the same build works as a website, an installable PWA, or bundled straight into an Android `.apk`. |
+| Data storage | **The browser's own local storage** (`src/lib/localApi.ts`) | Every order, vendor, product, payment, reminder and setting lives on the device itself. No database to host, no monthly cost, no internet dependency, works the moment the app opens. |
+| Styling | **Tailwind CSS** + self-hosted **Inter** font | Fast to build a clean, consistent, mobile-responsive UI. |
 | Charts | **Recharts** | Lightweight charts for the Profit Dashboard. |
-| Auth | A single shared password, signed session cookie (Web Crypto HMAC) | This is a single-owner internal tool, not a multi-user SaaS — a full user/roles system would be overkill. See §5. |
+| App lock | A single password checked in the browser, unlocked for the session (`src/lib/localAuth.ts`) | Since everything is local to one device, this is a soft PIN, not a real multi-user login system. See §4. |
 
-This is a deliberately low-cost, low-maintenance stack: no paid database,
-no paid auth provider, no separate hosting bill for a backend.
+This is about as low-cost and low-maintenance as it gets: no server bill,
+no database to manage, no accounts, nothing to keep running.
 
 ---
 
-## 2. Database structure
+## 2. Data structure
 
-`prisma/schema.prisma` defines six tables that map directly onto the
-"Google Sheets" structure described in the brief:
-
-- **Order** — every field from the brief's Orders sheet (customer info,
-  product info, floor/lift/fitting, all charges, customer payment, vendor
-  cost/payment, commission/profit, delivery status, notes).
-- **Vendor**, **Product**, **Setting**, **Payment**, **Reminder** — same
-  idea as the brief's Vendors / Products / Settings / Payments / Reminders
-  sheets.
+`src/lib/models.ts` defines the same six record types the original
+brief's "Google Sheets" structure described — **Order**, **Vendor**,
+**Product**, **Setting**, **Payment**, **Reminder** — except each is a
+plain JSON array stored under its own key in `localStorage`
+(`src/lib/localStore.ts`).
 
 Nothing about pricing is hard-coded: floor charges, the lift rule, the
 default fitting charge, commission type/value, currency symbol and
-business contact details all live in the `Setting` table and are edited
-from **Settings** in the UI (`src/lib/settingsShared.ts` holds the
-defaults that are used the first time the app runs, before you've changed
-anything).
+business contact details all live in `Setting` and are edited from
+**Settings** in the UI (`src/lib/settingsShared.ts` holds the defaults
+used before you've changed anything).
 
 All the calculation logic (floor charge → fitting charge → customer total
 → customer pending → vendor total → vendor pending → gross/net profit →
 commission) lives in one place, **`src/lib/calculations.ts`**, and is used
-by both the API (when you save an order) and the live "Automatic
-Calculation" preview in the order form, so the number you see while
-typing is always the number that gets saved.
+by both `src/lib/localApi.ts` (when you save an order) and the live
+"Automatic Calculation" preview in the order form, so the number you see
+while typing is always the number that gets saved.
+
+**`src/lib/localApi.ts`** is the entire "backend" — every function does
+exactly what a server API route would, just reading/writing local storage
+instead of a database. **`src/lib/localFetch.ts`** is a drop-in
+replacement for `fetch()` used throughout the UI, so components still
+call `fetch('/api/orders', ...)` and read `res.json()` exactly as they
+would against a real API — it just resolves locally instead of over the
+network.
 
 ---
 
-## 3. Google Sheets integration
+## 3. Data portability (the "Google Sheets" question)
 
-Full two-way live sync with Google Sheets (edit a row in Sheets and have
-it update the dashboard instantly) needs either Google's paid/limited
-Sheets API quota plus OAuth, or a constantly-running sync service — that's
-a lot of moving parts for a single-owner tool, and it's easy to end up
-with two systems disagreeing about which order is correct.
+Because this is now a genuinely offline, single-device app, there is no
+live server for Google Sheets to sync against. What's still built in:
 
-What's built instead, which covers the brief's fallback instruction
-("create the dashboard with a clean data layer/API structure so Google
-Sheets can be connected easily later"):
-
-1. **Export CSV** button on the Orders page and `GET /api/export/orders` —
-   downloads every order in exactly the column layout from the brief's
-   "Orders" sheet. Open it, or drag it into Google Sheets
-   (File → Import → Upload), any time you want a snapshot.
-2. **A token-protected live feed** at `GET /api/public/orders?token=...`
-   (protect it by setting `EXPORT_API_TOKEN` in `.env`) returns the same
-   CSV without needing a logged-in browser session — this is what an
-   external script can pull from. Example Google Sheets **Apps Script**
-   (Extensions → Apps Script in your Sheet) that refreshes a sheet called
-   `Orders` every hour:
-
-   ```javascript
-   function syncFurneciaOrders() {
-     const url = "https://your-dashboard-domain.com/api/public/orders?token=YOUR_TOKEN";
-     const csv = UrlFetchApp.fetch(url).getContentText();
-     const rows = Utilities.parseCsv(csv);
-     const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Orders");
-     sheet.clearContents();
-     sheet.getRange(1, 1, rows.length, rows[0].length).setValues(rows);
-   }
-   // Then: Triggers (clock icon) → Add Trigger → Time-driven → Every hour.
-   ```
-
-   This gives you an always-up-to-date read-only copy of your orders in
-   Google Sheets (handy for sharing with an accountant, or for pivot
-   tables/extra charts Sheets is good at) without the dashboard ever
-   trusting data back from the sheet.
-3. **Writing back from Sheets into the dashboard is intentionally not
-   built.** The simplest practical alternative, if you ever need it: add
-   another Apps Script that reads new/changed rows and calls
-   `POST /api/orders` (the same endpoint the Add Order form uses) — the
-   route and validation already exist, so this is a follow-up script, not
-   a redesign.
+- **Export CSV** (Orders page, and used internally by several reports) —
+  downloads every order in the same column layout the original brief's
+  "Orders" sheet described. Open it directly, or drag it into Google
+  Sheets (File → Import → Upload) any time you want a snapshot to share
+  or analyze.
+- Since there's no server, there's no live/automatic sync — moving data
+  between devices or into Sheets is a deliberate export step, not a
+  background process. See §5 for why that's the right tradeoff for a
+  single-device offline tool, and what to do if you outgrow it.
 
 ---
 
-## 4. Authentication & security
+## 4. The app lock & data safety
 
-- One shared password (set via `ADMIN_PASSWORD` in `.env`) protects the
-  whole dashboard. Logging in sets a signed, `httpOnly` cookie
-  (`src/lib/auth.ts`, `src/middleware.ts`) valid for 30 days; there's no
-  separate database of users because this is a single-owner tool.
-- **Change `ADMIN_PASSWORD` and `AUTH_SECRET` before putting this
-  anywhere public** — the defaults in `.env.example` are only for local
-  testing.
-- Always deploy behind HTTPS (Vercel and most modern hosts do this
-  automatically) so the password and session cookie aren't sent in the
-  clear.
-- The optional `/api/public/orders` feed is off unless you set
-  `EXPORT_API_TOKEN`; keep that token as secret as the admin password.
+- One password (Settings → Security, `appPassword`) locks the app on this
+  device. It's checked entirely in the browser — there's no account, no
+  server, nothing to reset remotely if forgotten (check Settings while
+  still signed in, or clear the site's local storage as a last resort,
+  which also erases the data).
+- **All data lives only on this device.** There is nothing to back up on
+  a server because there is no server. See §6.
+- If you ever host the built site somewhere (to install the PWA — see
+  `ANDROID.md`), still serve it over HTTPS, but note the security model
+  here is "keep casual users out," not "protect sensitive data in
+  transit" — there's no transit, the data never leaves the device.
 
 ---
 
-## 5. Deployment
+## 5. Single device, by design
 
-The static storefront in the repo root can stay on Hostinger shared
-hosting exactly as it is today — **that plan cannot run this dashboard**,
-because Hostinger's basic shared hosting doesn't run Node.js. Two simple,
-low-cost options for the dashboard itself:
+You chose local-only storage: each phone/browser that runs this app has
+its own independent copy of the data. Two phones will not see each
+other's orders. This is the simplest, most reliable option for one
+person using one device, with zero ongoing cost or maintenance.
 
-- **Vercel (recommended, free tier is enough for one business's orders)**
-  — push this repo to GitHub, import the `dashboard/` folder as a new
-  Vercel project, set the environment variables from `.env.example` in
-  Vercel's dashboard, deploy. Vercel gives you HTTPS and a URL
-  automatically.
-- **A small VPS with Node.js** (e.g. Hostinger VPS, DigitalOcean,
-  Railway) — `npm install && npm run build && npm run start` behind a
-  reverse proxy (Nginx/Caddy) with a free Let's Encrypt certificate.
-
-Either way, treat the SQLite file (`dashboard/dev.db`) as the single
-source of truth — see backups below.
+If your business grows and you need multiple people or devices sharing
+the same live order data, that's a different, larger project (a real
+backend + database + sync), not a setting to flip here. The clean
+`localApi.ts` layer means that migration is realistic later — every
+function already has a well-defined input/output shape — but it is not
+part of this build.
 
 ---
 
 ## 6. Backups
 
-Because everything lives in one SQLite file:
+Because everything lives in the browser's local storage on one device:
 
-- **Simplest backup:** copy `dashboard/dev.db` somewhere safe (cloud
-  drive, email it to yourself) on whatever schedule you're comfortable
-  with — daily is easy to script with a cron job (`cp dev.db backups/dev-$(date +%F).db`).
-- **Human-readable backup:** click **Export CSV** on the Orders page
-  whenever you like — it's a full snapshot you can open in Excel/Sheets
-  even without the app running.
-- If you move to a VPS host, most of them offer automatic disk snapshots
-  — turn that on as a second safety net.
+- **Regularly click Export CSV** (Orders page) and save the file
+  somewhere safe — email it to yourself, save to Google Drive/Files. This
+  is your backup; treat it as such.
+- Do this **before** uninstalling the app, clearing browser/site data, or
+  switching phones — none of those can be undone, and there is no server
+  copy to recover from.
+- If you want a full raw backup (not just orders), the data lives in
+  `localStorage` under keys prefixed `furnecia:` — technically inspectable
+  via browser dev tools, but the CSV export is the practical, supported
+  way to keep a copy.
 
 ---
 
@@ -160,24 +129,21 @@ Because everything lives in one SQLite file:
 
 ```bash
 cd dashboard
-cp .env.example .env        # then edit ADMIN_PASSWORD/AUTH_SECRET
 npm install
-npm run db:push             # creates dashboard/dev.db from the schema
-npm run db:seed             # loads demo data (5 vendors, 8 products, 20 orders)
-npm run dev                 # http://localhost:3000
+npm run dev            # http://localhost:3000
 ```
 
-Sign in with the password from your `.env` (`furnecia123` by default).
+Sign in with the default password `furnecia123`, then change it from
+Settings → Security.
 
-To wipe demo data and start clean: `npm run db:reset` recreates the
-database empty, then re-seeds — if you don't want the demo rows, delete
-`dashboard/dev.db` and run `npm run db:push` instead of the seed step.
+The first time the app runs, it loads the real UK postcode delivery-day
+reference data into the Delivery Checker (see `dashboard/ANDROID.md`
+for the full note on reviewing it) — orders, vendors and products start
+empty, ready for your real data.
 
-**⚠️ All customers, vendors, products and orders created by the seed
-script are fake demo data**, clearly separated in the database with an
-`isDemo` flag — safe to delete once you're adding your own real orders
-(there's no delete-all UI on purpose; drop them via `npx prisma studio`
-or `npm run db:reset` before you go live).
+To build the production static site (what actually ships to the phone or
+gets hosted): `npm run build` — output lands in `dashboard/out/`. Preview
+it with `npm run preview` (serves `out/` locally).
 
 ---
 
@@ -194,9 +160,9 @@ order).
 
 **…create an order** — Orders → **+ Add Order**. Fill in customer info,
 pick or type the product, choose floor/lift/fitting — the "Automatic
-Calculation" panel on the right updates live. Click vendor cost/discount/
-commission fields open under **"+ Show vendor cost, discount & commission
-details"** if you need them; otherwise just click **SAVE ORDER**.
+Calculation" panel on the right updates live. Click **"+ Show vendor
+cost, discount & commission details"** if you need them; otherwise just
+click **SAVE ORDER**.
 
 **…update a delivery** — On the Orders table, change the **Delivery
 Status** dropdown on that row (saves instantly), or open the order and
@@ -219,28 +185,29 @@ full detail with charts under **Reports → Profit Dashboard**.
 pick a date and vendor, then **Export CSV** or **Print Report** to send it
 to that vendor.
 
-**…back up / export your data** — Orders → **Export CSV** for everything,
-or see §6 for backing up the whole database file.
+**…check delivery dates for a postcode** — Delivery Checker → **Check by
+Postcode** (the default tab) — a completely separate tool from Orders.
+
+**…correct the delivery-day schedule** — Delivery Checker → **Manage
+Schedule** — a plain-text editor, one line per postcode area.
+
+**…back up your data** — Orders → **Export CSV**, regularly — see §6.
 
 **…install it on an Android phone** — see [`ANDROID.md`](./ANDROID.md):
-install it as a web app in one tap (works today, recommended), or build a
-real downloadable `.apk` via the included GitHub Actions workflow.
+install it as a web app (works fully offline after the first visit), or
+build a real downloadable `.apk` via the included GitHub Actions
+workflow.
 
 ---
 
 ## 9. Where this simplifies the original brief
-
-Two spots where a literal reading of the brief would add real complexity
-for little day-to-day benefit — noted here rather than silently skipped:
 
 - **"Quick Add"** isn't a second, separate form. The one order form
   starts with the vendor-cost/discount/commission section collapsed, so
   adding an order with just the essentials (name, phone, address, product,
   price, vendor, delivery date, floor, lift, fitting) is already a
   few-fields-and-save flow; expand the extra section only when you need
-  it. This avoids keeping two forms in sync as the calculation rules
-  evolve.
-- **Two-way Google Sheets sync** — see §3. One-way (dashboard → Sheets) is
-  built; writing Sheets edits back into the dashboard is a follow-up Apps
-  Script against the existing `POST /api/orders` endpoint, not a missing
-  feature in the dashboard itself.
+  it.
+- **Google Sheets sync** is one-way and manual (Export CSV), not live —
+  see §3 and §5 for why, given the single-device offline architecture,
+  and what a fuller multi-device version would require.

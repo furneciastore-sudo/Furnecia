@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { formatMoney, telHref, whatsappHref } from "@/lib/format";
 import { DeliveryStatusBadge, PaymentStatusBadge } from "@/components/Badge";
+import { localFetch as fetch } from "@/lib/localFetch";
 
 interface OrderRow {
   id: number;

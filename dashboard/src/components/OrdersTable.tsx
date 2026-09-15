@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { DeliveryStatusBadge, PaymentStatusBadge } from "@/components/Badge";
 import { formatDate, formatMoney, telHref, whatsappHref } from "@/lib/format";
 import { DELIVERY_STATUSES, CUSTOMER_PAYMENT_STATUSES, FLOORS } from "@/lib/calculations";
+import { localFetch as fetch } from "@/lib/localFetch";
 import type { VendorOption } from "@/lib/orderFormTypes";
 
 interface OrderRow {
@@ -101,7 +102,7 @@ export function OrdersTable({ vendors, currency, showArchived }: { vendors: Vend
     const res = await fetch(`/api/orders/${id}/duplicate`, { method: "POST" });
     if (res.ok) {
       const data = await res.json();
-      router.push(`/orders/${data.order.id}`);
+      router.push(`/orders/view?id=${data.order.id}`);
     }
   }
 
@@ -192,7 +193,7 @@ export function OrdersTable({ vendors, currency, showArchived }: { vendors: Vend
             {orders.map((o) => (
               <div key={o.id} className="card space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <Link href={`/orders/${o.id}`} className="font-semibold text-brand-700">
+                  <Link href={`/orders/view?id=${o.id}`} className="font-semibold text-brand-700">
                     {o.orderNo}
                   </Link>
                   <PaymentStatusBadge status={o.paymentStatus} />
@@ -212,7 +213,7 @@ export function OrdersTable({ vendors, currency, showArchived }: { vendors: Vend
                   <span className="text-sm font-semibold">{formatMoney(o.customerTotal, currency)}</span>
                 </div>
                 <div className="flex flex-wrap gap-1.5 pt-1">
-                  <Link href={`/orders/${o.id}`} className="btn-secondary px-2 py-1 text-xs">View / Edit</Link>
+                  <Link href={`/orders/view?id=${o.id}`} className="btn-secondary px-2 py-1 text-xs">View / Edit</Link>
                   {!o.isArchived ? (
                     <button onClick={() => archive(o.id)} className="btn-danger px-2 py-1 text-xs">Archive</button>
                   ) : (
@@ -246,7 +247,7 @@ export function OrdersTable({ vendors, currency, showArchived }: { vendors: Vend
                 {orders.map((o) => (
                   <tr key={o.id} className="hover:bg-gray-50">
                     <td className="whitespace-nowrap px-3 py-2 font-medium text-brand-700">
-                      <Link href={`/orders/${o.id}`}>{o.orderNo}</Link>
+                      <Link href={`/orders/view?id=${o.id}`}>{o.orderNo}</Link>
                     </td>
                     <td className="whitespace-nowrap px-3 py-2">{formatDate(o.bookingDate)}</td>
                     <td className="whitespace-nowrap px-3 py-2">{formatDate(o.deliveryDateExpected)}</td>
@@ -284,9 +285,9 @@ export function OrdersTable({ vendors, currency, showArchived }: { vendors: Vend
                         </button>
                         {openMenu === o.id && (
                           <div className="absolute right-0 z-10 mt-1 w-44 rounded-lg border border-gray-200 bg-white py-1 text-sm shadow-lg">
-                            <Link href={`/orders/${o.id}`} className="block px-3 py-1.5 hover:bg-gray-50">View / Edit</Link>
+                            <Link href={`/orders/view?id=${o.id}`} className="block px-3 py-1.5 hover:bg-gray-50">View / Edit</Link>
                             <button className="block w-full px-3 py-1.5 text-left hover:bg-gray-50" onClick={() => duplicate(o.id)}>Duplicate</button>
-                            <Link href={`/orders/${o.id}/print`} className="block px-3 py-1.5 hover:bg-gray-50">Print</Link>
+                            <Link href={`/orders/print?id=${o.id}`} className="block px-3 py-1.5 hover:bg-gray-50">Print</Link>
                             <Link href={`/reminders?orderId=${o.id}&customerName=${encodeURIComponent(o.customerName)}`} className="block px-3 py-1.5 hover:bg-gray-50">Add Reminder</Link>
                             {o.customerPending > 0 && (
                               <button className="block w-full px-3 py-1.5 text-left hover:bg-gray-50" onClick={() => markPaid(o)}>Mark Fully Paid</button>

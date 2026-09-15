@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { localFetch as fetch } from "@/lib/localFetch";
 
 export function OrderActions({ orderId, isArchived }: { orderId: number; isArchived: boolean }) {
   const router = useRouter();
@@ -10,7 +11,7 @@ export function OrderActions({ orderId, isArchived }: { orderId: number; isArchi
     const res = await fetch(`/api/orders/${orderId}/duplicate`, { method: "POST" });
     if (res.ok) {
       const data = await res.json();
-      router.push(`/orders/${data.order.id}`);
+      router.push(`/orders/view?id=${data.order.id}`);
     }
   }
 
@@ -22,12 +23,12 @@ export function OrderActions({ orderId, isArchived }: { orderId: number; isArchi
 
   async function restore() {
     await fetch(`/api/orders/${orderId}/restore`, { method: "POST" });
-    router.refresh();
+    window.location.reload();
   }
 
   return (
     <div className="flex flex-wrap gap-2">
-      <Link href={`/orders/${orderId}/print`} className="btn-secondary">Print</Link>
+      <Link href={`/orders/print?id=${orderId}`} className="btn-secondary">Print</Link>
       <button onClick={duplicate} className="btn-secondary">Duplicate</button>
       {isArchived ? (
         <button onClick={restore} className="btn-secondary">Restore</button>

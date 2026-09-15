@@ -5,6 +5,7 @@ import { DateRangePicker } from "@/components/DateRangePicker";
 import { StatCard } from "@/components/StatCard";
 import { formatMoney } from "@/lib/format";
 import type { DateRangeKey } from "@/lib/dateRanges";
+import { localFetch as fetch } from "@/lib/localFetch";
 
 interface Totals {
   customerTotal: number;

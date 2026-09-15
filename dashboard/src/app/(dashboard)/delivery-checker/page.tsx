@@ -1,11 +1,18 @@
-import { prisma } from "@/lib/db";
-import { DeliveryCheckerTabs } from "@/components/DeliveryCheckerTabs";
+"use client";
 
-export default async function DeliveryCheckerPage() {
-  const [vendors, products] = await Promise.all([
-    prisma.vendor.findMany({ where: { status: "Active" }, orderBy: { name: "asc" } }),
-    prisma.product.findMany({ where: { status: "Active" }, orderBy: { name: "asc" } }),
-  ]);
+import { useEffect, useState } from "react";
+import { listVendorsWithStats, listProducts } from "@/lib/localApi";
+import { DeliveryCheckerTabs } from "@/components/DeliveryCheckerTabs";
+import type { VendorOption, ProductOption } from "@/lib/orderFormTypes";
+
+export default function DeliveryCheckerPage() {
+  const [vendors, setVendors] = useState<VendorOption[]>([]);
+  const [products, setProducts] = useState<ProductOption[]>([]);
+
+  useEffect(() => {
+    setVendors(listVendorsWithStats().filter((v) => v.status === "Active"));
+    setProducts(listProducts().filter((p) => p.status === "Active"));
+  }, []);
 
   return (
     <div className="space-y-4">

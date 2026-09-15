@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 import { formatMoney } from "@/lib/format";
 import type { VendorOption } from "@/lib/orderFormTypes";
+import { localFetch as fetch } from "@/lib/localFetch";
+import { getSettings } from "@/lib/localApi";
 
 interface ProductRow {
   id: number;
@@ -31,12 +32,27 @@ const emptyForm = {
   status: "Active",
 };
 
-export function ProductsManager({ products, vendors, currency }: { products: ProductRow[]; vendors: VendorOption[]; currency: string }) {
-  const router = useRouter();
+export function ProductsManager() {
+  const [products, setProducts] = useState<ProductRow[]>([]);
+  const [vendors, setVendors] = useState<VendorOption[]>([]);
+  const [currency, setCurrency] = useState("£");
   const [form, setForm] = useState(emptyForm);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [saving, setSaving] = useState(false);
+
+  const load = useCallback(async () => {
+    const [productsRes, vendorsRes] = await Promise.all([fetch("/api/products"), fetch("/api/vendors")]);
+    const productsData = await productsRes.json();
+    const vendorsData = await vendorsRes.json();
+    setProducts(productsData.products ?? []);
+    setVendors((vendorsData.vendors ?? []).filter((v: { status: string }) => v.status === "Active"));
+    setCurrency(getSettings().currencySymbol);
+  }, []);
+
+  useEffect(() => {
+    load();
+  }, [load]);
 
   function startEdit(p: ProductRow) {
     setEditingId(p.id);
@@ -77,13 +93,13 @@ export function ProductsManager({ products, vendors, currency }: { products: Pro
     });
     setSaving(false);
     setShowForm(false);
-    router.refresh();
+    load();
   }
 
   async function remove(id: number) {
     if (!confirm("Set this product to Inactive? It will stop appearing in the order form.")) return;
     await fetch(`/api/products/${id}`, { method: "DELETE" });
-    router.refresh();
+    load();
   }
 
   return (

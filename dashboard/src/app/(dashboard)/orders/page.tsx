@@ -1,19 +1,26 @@
-import { Suspense } from "react";
+"use client";
+
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
-import { prisma } from "@/lib/db";
-import { getSettings } from "@/lib/settings";
+import { useSearchParams } from "next/navigation";
+import { getSettings, listVendorsWithStats, exportOrdersCsv } from "@/lib/localApi";
+import { downloadText } from "@/lib/downloadCsv";
 import { OrdersTable } from "@/components/OrdersTable";
 
-export default async function OrdersPage({
-  searchParams,
-}: {
-  searchParams: { archived?: string };
-}) {
-  const [vendors, settings] = await Promise.all([
-    prisma.vendor.findMany({ orderBy: { name: "asc" } }),
-    getSettings(),
-  ]);
-  const showArchived = searchParams.archived === "1";
+function OrdersPageInner() {
+  const searchParams = useSearchParams();
+  const showArchived = searchParams.get("archived") === "1";
+  const [vendors, setVendors] = useState<{ id: number; name: string }[]>([]);
+  const [currency, setCurrency] = useState("£");
+
+  useEffect(() => {
+    setVendors(listVendorsWithStats());
+    setCurrency(getSettings().currencySymbol);
+  }, []);
+
+  function exportCsv() {
+    downloadText(`furnecia-orders-${new Date().toISOString().slice(0, 10)}.csv`, exportOrdersCsv());
+  }
 
   return (
     <div className="space-y-4">
@@ -24,16 +31,22 @@ export default async function OrdersPage({
         </div>
         <div className="flex flex-wrap gap-2">
           <Link href="/orders/new" className="btn-primary">+ Add Order</Link>
-          <a href="/api/export/orders" className="btn-secondary">Export CSV</a>
+          <button onClick={exportCsv} className="btn-secondary">Export CSV</button>
           <Link href={showArchived ? "/orders" : "/orders?archived=1"} className="btn-secondary">
             {showArchived ? "View Active Orders" : "View Archived Orders"}
           </Link>
         </div>
       </div>
 
-      <Suspense>
-        <OrdersTable vendors={vendors} currency={settings.currencySymbol} showArchived={showArchived} />
-      </Suspense>
+      <OrdersTable vendors={vendors} currency={currency} showArchived={showArchived} />
     </div>
+  );
+}
+
+export default function OrdersPage() {
+  return (
+    <Suspense>
+      <OrdersPageInner />
+    </Suspense>
   );
 }

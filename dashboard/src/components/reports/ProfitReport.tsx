@@ -20,6 +20,7 @@ import { DateRangePicker } from "@/components/DateRangePicker";
 import { StatCard } from "@/components/StatCard";
 import { formatMoney } from "@/lib/format";
 import type { DateRangeKey } from "@/lib/dateRanges";
+import { localFetch as fetch } from "@/lib/localFetch";
 
 const COLORS = ["#396440", "#4a7d52", "#9ebda3", "#c3d6c6", "#6f9c76", "#28422c", "#2f5034"];
 

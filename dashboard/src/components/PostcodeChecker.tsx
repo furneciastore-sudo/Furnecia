@@ -4,6 +4,7 @@ import { useState } from "react";
 import clsx from "clsx";
 import { formatDate } from "@/lib/format";
 import { DAY_KEYS, DAY_SHORT, type DayKey } from "@/lib/postcodeSchedule";
+import { localFetch as fetch } from "@/lib/localFetch";
 
 interface CheckResult {
   matched: boolean;

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { SettingsMap } from "@/lib/settingsShared";
+import { localFetch as fetch } from "@/lib/localFetch";
 
 export function SettingsForm({ initial }: { initial: SettingsMap }) {
   const [values, setValues] = useState<SettingsMap>(initial);
@@ -159,6 +160,21 @@ export function SettingsForm({ initial }: { initial: SettingsMap }) {
           <div>
             <label className="label">Business Email</label>
             <input className="input" value={values.businessEmail} onChange={(e) => set("businessEmail", e.target.value)} />
+          </div>
+        </Grid>
+      </Section>
+
+      <Section title="Security" description="This app works entirely offline — this password just locks the app on this device.">
+        <Grid>
+          <div>
+            <label className="label">App Password</label>
+            <input
+              type="text"
+              className="input"
+              value={values.appPassword}
+              onChange={(e) => set("appPassword", e.target.value)}
+            />
+            <p className="mt-1 text-xs text-gray-400">Changing this takes effect the next time you sign in.</p>
           </div>
         </Grid>
       </Section>

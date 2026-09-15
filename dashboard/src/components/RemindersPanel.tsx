@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { classifyReminder } from "@/lib/reminders";
 import { formatDate } from "@/lib/format";
+import { localFetch as fetch } from "@/lib/localFetch";
 
 interface ReminderRow {
   id: number;
@@ -81,7 +82,7 @@ export function RemindersPanel({ compact = false }: { compact?: boolean }) {
                       {r.order && (
                         <>
                           {" — "}
-                          <Link href={`/orders/${r.orderId}`} className="text-brand-600 hover:underline">
+                          <Link href={`/orders/view?id=${r.orderId}`} className="text-brand-600 hover:underline">
                             {r.order.orderNo}
                           </Link>
                         </>

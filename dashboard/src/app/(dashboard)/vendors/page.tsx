@@ -1,8 +1,7 @@
-import { getVendorsWithStats } from "@/lib/vendors";
-import { getSettings } from "@/lib/settings";
+"use client";
+
 import { VendorsManager } from "@/components/VendorsManager";
 
-export default async function VendorsPage() {
-  const [vendors, settings] = await Promise.all([getVendorsWithStats(), getSettings()]);
-  return <VendorsManager vendors={vendors} currency={settings.currencySymbol} />;
+export default function VendorsPage() {
+  return <VendorsManager />;
 }

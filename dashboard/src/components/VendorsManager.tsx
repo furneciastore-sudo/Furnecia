@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { formatMoney, telHref, whatsappHref } from "@/lib/format";
+import { localFetch as fetch } from "@/lib/localFetch";
+import { getSettings } from "@/lib/localApi";
 
 interface VendorRow {
   id: number;
@@ -29,12 +30,24 @@ interface VendorRow {
 
 const emptyForm = { name: "", contactPerson: "", phone: "", whatsapp: "", email: "", address: "", products: "", defaultLeadTimeDays: "", status: "Active" };
 
-export function VendorsManager({ vendors, currency }: { vendors: VendorRow[]; currency: string }) {
-  const router = useRouter();
+export function VendorsManager() {
+  const [vendors, setVendors] = useState<VendorRow[]>([]);
+  const [currency, setCurrency] = useState("£");
   const [form, setForm] = useState(emptyForm);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [saving, setSaving] = useState(false);
+
+  const load = useCallback(async () => {
+    const res = await fetch("/api/vendors");
+    const data = await res.json();
+    setVendors(data.vendors ?? []);
+    setCurrency(getSettings().currencySymbol);
+  }, []);
+
+  useEffect(() => {
+    load();
+  }, [load]);
 
   function startEdit(v: VendorRow) {
     setEditingId(v.id);
@@ -73,13 +86,13 @@ export function VendorsManager({ vendors, currency }: { vendors: VendorRow[]; cu
     });
     setSaving(false);
     setShowForm(false);
-    router.refresh();
+    load();
   }
 
   async function remove(id: number) {
     if (!confirm("Remove this vendor? If it has past orders it will be deactivated instead of deleted.")) return;
     await fetch(`/api/vendors/${id}`, { method: "DELETE" });
-    router.refresh();
+    load();
   }
 
   return (
@@ -149,7 +162,7 @@ export function VendorsManager({ vendors, currency }: { vendors: VendorRow[]; cu
           <div key={v.id} className="card space-y-2">
             <div className="flex items-start justify-between">
               <div>
-                <Link href={`/vendors/${v.id}`} className="font-semibold text-brand-700 hover:underline">{v.name}</Link>
+                <Link href={`/vendors/view?id=${v.id}`} className="font-semibold text-brand-700 hover:underline">{v.name}</Link>
                 <p className="text-xs text-gray-400">{v.status}</p>
               </div>
               <div className="flex gap-1">

@@ -1,10 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { localFetch as fetch } from "@/lib/localFetch";
 
-export function RecordPayment({ orderId, type, currency }: { orderId: number; type: "customer" | "vendor"; currency: string }) {
-  const router = useRouter();
+export function RecordPayment({
+  orderId,
+  type,
+  currency,
+  onRecorded,
+}: {
+  orderId: number;
+  type: "customer" | "vendor";
+  currency: string;
+  onRecorded?: () => void;
+}) {
   const [amount, setAmount] = useState("");
   const [method, setMethod] = useState("");
   const [notes, setNotes] = useState("");
@@ -31,7 +40,7 @@ export function RecordPayment({ orderId, type, currency }: { orderId: number; ty
     setAmount("");
     setMethod("");
     setNotes("");
-    router.refresh();
+    onRecorded?.();
   }
 
   if (!open) {

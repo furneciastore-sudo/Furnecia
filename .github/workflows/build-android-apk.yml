@@ -1,17 +1,14 @@
 name: Build Furnecia Dashboard Android APK
 
-# Builds the Capacitor Android wrapper around the dashboard (dashboard/android)
-# on GitHub's own runners, which have normal internet access to Google's
+# Builds the fully offline dashboard (dashboard/) as a static site, then
+# wraps it in the Capacitor Android project (dashboard/android) on
+# GitHub's own runners, which have normal internet access to Google's
 # Android Maven repo — unlike some sandboxed dev environments. Run this
-# manually whenever you want a fresh .apk, then download it from the run's
-# "Artifacts" section.
+# manually whenever you want a fresh .apk, then download it from the
+# run's "Artifacts" section. No server URL is needed — everything ships
+# inside the APK.
 on:
   workflow_dispatch:
-    inputs:
-      dashboard_url:
-        description: "The deployed HTTPS URL of your dashboard (e.g. https://furnecia-dashboard.vercel.app). The app will load this URL."
-        required: true
-        default: "https://your-dashboard-domain.com"
   # workflow_dispatch only appears in the Actions UI once this file is on
   # the default branch. Until this PR merges, pushing to this branch (or
   # editing this file) also triggers a build, so it can still be tested.
@@ -43,9 +40,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build static site
+        run: npm run build
+
       - name: Sync Capacitor Android project
-        env:
-          CAPACITOR_SERVER_URL: ${{ github.event.inputs.dashboard_url || 'https://your-dashboard-domain.com' }}
         run: npx cap sync android
 
       - name: Build debug APK

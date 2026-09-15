@@ -1,20 +1,30 @@
-import { prisma } from "@/lib/db";
-import { getSettings } from "@/lib/settings";
+"use client";
+
+import { useEffect, useState } from "react";
+import { getSettings, listVendorsWithStats, listProducts } from "@/lib/localApi";
 import { OrderForm } from "@/components/OrderForm";
-import { emptyOrderForm } from "@/lib/orderFormTypes";
+import { emptyOrderForm, type OrderFormValues, type VendorOption, type ProductOption } from "@/lib/orderFormTypes";
+import type { SettingsMap } from "@/lib/settingsShared";
 
-export default async function NewOrderPage() {
-  const [vendors, products, settings] = await Promise.all([
-    prisma.vendor.findMany({ where: { status: "Active" }, orderBy: { name: "asc" } }),
-    prisma.product.findMany({ where: { status: "Active" }, orderBy: { name: "asc" } }),
-    getSettings(),
-  ]);
+export default function NewOrderPage() {
+  const [vendors, setVendors] = useState<VendorOption[]>([]);
+  const [products, setProducts] = useState<ProductOption[]>([]);
+  const [settings, setSettings] = useState<SettingsMap | null>(null);
+  const [initial, setInitial] = useState<OrderFormValues | null>(null);
 
-  const initial = emptyOrderForm({
-    bookingDate: new Date().toISOString().slice(0, 10),
-    floor: "Ground Floor",
-    commissionType: settings.commissionDefaultType,
-  });
+  useEffect(() => {
+    const s = getSettings();
+    setVendors(listVendorsWithStats().filter((v) => v.status === "Active"));
+    setProducts(listProducts().filter((p) => p.status === "Active"));
+    setSettings(s);
+    setInitial(
+      emptyOrderForm({
+        bookingDate: new Date().toISOString().slice(0, 10),
+        floor: "Ground Floor",
+        commissionType: s.commissionDefaultType,
+      })
+    );
+  }, []);
 
   return (
     <div className="space-y-4">
@@ -24,13 +34,9 @@ export default async function NewOrderPage() {
           Fill in the basics — totals, charges, vendor pending and your profit calculate automatically.
         </p>
       </div>
-      <OrderForm
-        mode="create"
-        initial={initial}
-        vendors={vendors}
-        products={products}
-        settings={settings}
-      />
+      {settings && initial && (
+        <OrderForm mode="create" initial={initial} vendors={vendors} products={products} settings={settings} />
+      )}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { PwaRegister } from "@/components/PwaRegister";
+import { AuthGate } from "@/components/AuthGate";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={inter.variable}>
       <body className="font-sans text-gray-900 antialiased">
         <PwaRegister />
-        {children}
+        <AuthGate>{children}</AuthGate>
       </body>
     </html>
   );

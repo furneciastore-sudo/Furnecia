@@ -1,31 +1,30 @@
 # Installing the Dashboard on Android
 
-There are two ways to get this dashboard onto an Android phone. Both are
-set up in this repo — pick whichever fits how you want to use it.
+The dashboard is now a fully offline app — no server, no internet
+connection, no account. All your orders, vendors, products and settings
+live only on the phone you're using, in the app's own local storage.
+There are two ways to get it onto an Android phone.
 
-## Option A — Install as a web app (works today, no build needed)
+## Option A — Install as a web app (fastest, no build needed)
 
-The dashboard is a PWA (Progressive Web App): once it's deployed to a
-real HTTPS URL (see `dashboard/README.md` §5 — Vercel is the easy path),
-just open that URL in **Chrome on Android**:
+If you host the built site anywhere reachable (even just briefly, to
+install it — see §"Serving it once to install" below), open it in
+**Chrome on Android**:
 
-1. Chrome shows an **"Add Furnecia Order Dashboard to Home screen"**
-   banner automatically (or use ⋮ menu → **Install app**).
+1. Chrome shows an **"Add to Home screen"** banner (or use ⋮ menu →
+   **Install app**).
 2. Tap it — you get a home-screen icon that opens full-screen, no browser
-   address bar, indistinguishable from a native app.
-3. It always shows live data (there's deliberately no offline caching of
-   orders/payments — a stale "pending" balance would be worse than no app
-   at all), and it updates itself the moment you redeploy the dashboard.
-
-This needs zero building, zero Android Studio, and works on any Android
-phone with Chrome. **This is the recommended option** for day-to-day use.
+   address bar.
+3. From then on it works with no internet at all: the service worker
+   caches every page you've visited, and all your data lives in the
+   browser's local storage on that phone.
 
 ## Option B — A real, downloadable `.apk` file
 
-`dashboard/android/` contains a complete **Capacitor** project — a thin
-native Android shell that loads your deployed dashboard URL inside a
-full-screen WebView, with its own launcher icon (`F` on the Furnecia
-green) and app name.
+`dashboard/android/` contains a complete **Capacitor** project that
+bundles the built app directly inside the package — `webDir: "out"` in
+`dashboard/capacitor.config.ts` points at the static site produced by
+`npm run build`, so there is no server URL to configure at all.
 
 **Important — this can't be compiled inside this Claude Code sandbox.**
 Building an Android APK requires downloading the Android Gradle Plugin
@@ -34,27 +33,24 @@ sandboxed environment's network policy blocks that host entirely (403 on
 every request, confirmed while setting this up). Nothing wrong with the
 project itself — it's ready to build, just not *here*.
 
-Two ways to actually get the `.apk`, both work with what's committed:
+Two ways to actually get the `.apk`:
 
 ### B1 — Let GitHub build it for you (easiest, no local setup)
 
-A workflow is already set up at
-`.github/workflows/build-android-apk.yml`:
+A workflow is already set up at `.github/workflows/build-android-apk.yml`:
 
 1. On GitHub, go to your repo → **Actions** tab → **"Build Furnecia
    Dashboard Android APK"** → **Run workflow**.
-2. Enter your dashboard's deployed URL (e.g.
-   `https://furnecia-dashboard.vercel.app`) when prompted.
-3. Wait for the run to finish (a few minutes), open it, and download the
+2. Wait for the run to finish (a few minutes), open it, and download the
    `furnecia-dashboard-debug-apk` artifact — that zip contains
    `app-debug.apk`.
-4. Transfer that file to an Android phone (email, WhatsApp, Google
+3. Transfer that file to an Android phone (email, WhatsApp, Google
    Drive, USB) and tap it to install. Android will warn about "unknown
    sources" the first time — this is expected for any app not from the
    Play Store; allow it for this file.
 
-Re-run the workflow (with the same or an updated URL) any time you want
-a fresh build.
+Re-run the workflow any time you've changed something and want a fresh
+build — no inputs needed, since there's no server URL to provide anymore.
 
 ### B2 — Build it yourself with Android Studio
 
@@ -64,8 +60,7 @@ computer with normal internet access:
 ```bash
 cd dashboard
 npm install
-# Point the app at your real deployed URL:
-export CAPACITOR_SERVER_URL="https://your-dashboard-domain.com"
+npm run build        # produces the static site in dashboard/out
 npx cap sync android
 cd android
 ./gradlew assembleDebug
@@ -75,20 +70,33 @@ cd android
 Or open the `dashboard/android` folder directly in Android Studio and
 use **Build → Build Bundle(s) / APK(s) → Build APK(s)**.
 
-### Changing the URL later
+## What "fully offline" actually means here
 
-The app loads whatever `CAPACITOR_SERVER_URL` was set to at build time
-(see `dashboard/capacitor.config.ts`). If your dashboard's URL changes,
-re-run the GitHub Action (B1) or rebuild locally (B2) with the new URL —
-there's no in-app settings screen for this by design, since a business
-tool shouldn't let just anyone repoint it to a different server.
+- **Every order, vendor, product, payment, reminder and setting is
+  stored in the browser/WebView's own local storage** (`src/lib/localApi.ts`
+  and `src/lib/localStore.ts`) — there is no server, no database to host,
+  nothing to deploy for the app to work.
+- The app password (Settings → Security) is a soft PIN check done on the
+  device, not a real login system — appropriate for a single-device
+  personal tool, not a shared multi-user system.
+- **Data does not sync between devices.** If you install this on two
+  phones, each has its own separate set of orders. If you want a backup,
+  or to move data to a new phone, use **Orders → Export CSV** regularly
+  and keep the file somewhere safe (email it to yourself, save to Google
+  Drive/Files).
+- Uninstalling the app, clearing the browser's site data, or resetting
+  the phone without a backup **deletes all the data permanently** —
+  there's no server copy to recover it from.
+- The Delivery Checker's postcode schedule ships pre-loaded with real UK
+  reference data on first launch (see `dashboard/README.md`) — review it
+  once against your actual courier chart from Delivery Checker → Manage
+  Schedule.
 
-### Why not an offline-only app?
+## Serving it once to install (Option A only)
 
-This dashboard is a full multi-table database (orders, vendors, payments,
-reminders) with authentication — it isn't something that can be frozen
-into a static bundle and shipped inside the APK. The APK is a shell; the
-dashboard itself has to be reachable at a real URL, exactly like any
-banking or business app on your phone talks to its own server. That's
-also why Option A (an installed PWA) behaves identically to Option B once
-installed — same app, same server, different install mechanism.
+Since the app never needs a server *while running*, you only need
+temporary hosting to get Chrome to install it the first time. Any static
+file host works: the same Hostinger account as the storefront (as a
+subfolder), Vercel/Netlify's free tiers, or even a temporary local network
+share while you're on the same Wi-Fi as the phone. Once installed, the
+hosting can go away — the installed app keeps working from its cache.

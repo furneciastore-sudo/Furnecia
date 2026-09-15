@@ -7,6 +7,7 @@ import { DateRangePicker } from "@/components/DateRangePicker";
 import { RemindersPanel } from "@/components/RemindersPanel";
 import { formatMoney } from "@/lib/format";
 import type { DateRangeKey } from "@/lib/dateRanges";
+import { localFetch as fetch } from "@/lib/localFetch";
 
 interface Cards {
   todaysOrders: number;
