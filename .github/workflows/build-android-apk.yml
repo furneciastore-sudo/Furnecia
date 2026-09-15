@@ -67,7 +67,7 @@ jobs:
         run: |
           gh release delete android-apk-latest --yes --cleanup-tag || true
           gh release create android-apk-latest \
-            dashboard/android/app/build/outputs/apk/debug/app-debug.apk \
+            android/app/build/outputs/apk/debug/app-debug.apk \
             --title "Furnecia Dashboard (Android, debug build)" \
             --notes "Automatically built from ${{ github.sha }}. Offline app — install and go, no server needed." \
             --target ${{ github.sha }}
