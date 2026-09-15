@@ -50,9 +50,24 @@ jobs:
         working-directory: dashboard/android
         run: ./gradlew assembleDebug --no-daemon
 
-      - name: Upload APK
+      - name: Upload APK (workflow artifact)
         uses: actions/upload-artifact@v4
         with:
           name: furnecia-dashboard-debug-apk
           path: dashboard/android/app/build/outputs/apk/debug/app-debug.apk
           retention-days: 30
+
+      # Workflow artifacts always download via Azure Blob Storage, which
+      # some restricted networks block. A GitHub Release asset is a
+      # second copy of the same file that can instead be fetched straight
+      # from api.github.com — see "Downloading the APK" in ANDROID.md.
+      - name: Publish APK as a release asset
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete android-apk-latest --yes --cleanup-tag || true
+          gh release create android-apk-latest \
+            dashboard/android/app/build/outputs/apk/debug/app-debug.apk \
+            --title "Furnecia Dashboard (Android, debug build)" \
+            --notes "Automatically built from ${{ github.sha }}. Offline app — install and go, no server needed." \
+            --target ${{ github.sha }}

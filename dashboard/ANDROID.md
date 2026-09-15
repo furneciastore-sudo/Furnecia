@@ -41,9 +41,11 @@ A workflow is already set up at `.github/workflows/build-android-apk.yml`:
 
 1. On GitHub, go to your repo → **Actions** tab → **"Build Furnecia
    Dashboard Android APK"** → **Run workflow**.
-2. Wait for the run to finish (a few minutes), open it, and download the
-   `furnecia-dashboard-debug-apk` artifact — that zip contains
-   `app-debug.apk`.
+2. Wait for the run to finish (a few minutes), then get the file either way:
+   - **Releases tab** (usually the more reliable download) → the
+     `android-apk-latest` release → download `app-debug.apk` directly.
+   - Or open the workflow run and download the `furnecia-dashboard-debug-apk`
+     artifact — that zip contains `app-debug.apk`.
 3. Transfer that file to an Android phone (email, WhatsApp, Google
    Drive, USB) and tap it to install. Android will warn about "unknown
    sources" the first time — this is expected for any app not from the
