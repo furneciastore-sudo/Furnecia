@@ -9,10 +9,15 @@ export async function middleware(req: NextRequest) {
     pathname === "/api/login" ||
     pathname.startsWith("/api/public/") ||
     pathname.startsWith("/_next") ||
-    pathname === "/favicon.ico"
+    pathname === "/favicon.ico" ||
+    pathname === "/manifest.webmanifest" ||
+    pathname === "/sw.js" ||
+    pathname.startsWith("/icons/")
   ) {
     // /api/public/* checks its own token instead of the session cookie —
-    // this is what a Google Sheets Apps Script pulls from.
+    // this is what a Google Sheets Apps Script pulls from. The manifest,
+    // service worker and icons must stay reachable pre-login so Android
+    // Chrome can show the "Install app" prompt.
     return NextResponse.next();
   }
 

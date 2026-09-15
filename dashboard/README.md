@@ -222,6 +222,10 @@ to that vendor.
 **…back up / export your data** — Orders → **Export CSV** for everything,
 or see §6 for backing up the whole database file.
 
+**…install it on an Android phone** — see [`ANDROID.md`](./ANDROID.md):
+install it as a web app in one tap (works today, recommended), or build a
+real downloadable `.apk` via the included GitHub Actions workflow.
+
 ---
 
 ## 9. Where this simplifies the original brief

@@ -1,0 +1,54 @@
+name: Build Furnecia Dashboard Android APK
+
+# Builds the Capacitor Android wrapper around the dashboard (dashboard/android)
+# on GitHub's own runners, which have normal internet access to Google's
+# Android Maven repo — unlike some sandboxed dev environments. Run this
+# manually whenever you want a fresh .apk, then download it from the run's
+# "Artifacts" section.
+on:
+  workflow_dispatch:
+    inputs:
+      dashboard_url:
+        description: "The deployed HTTPS URL of your dashboard (e.g. https://furnecia-dashboard.vercel.app). The app will load this URL."
+        required: true
+        default: "https://your-dashboard-domain.com"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dashboard
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sync Capacitor Android project
+        env:
+          CAPACITOR_SERVER_URL: ${{ inputs.dashboard_url }}
+        run: npx cap sync android
+
+      - name: Build debug APK
+        working-directory: dashboard/android
+        run: ./gradlew assembleDebug --no-daemon
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: furnecia-dashboard-debug-apk
+          path: dashboard/android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 30
