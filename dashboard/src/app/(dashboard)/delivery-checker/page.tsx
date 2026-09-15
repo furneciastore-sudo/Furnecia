@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/db";
-import { DeliveryChecker } from "@/components/DeliveryChecker";
+import { DeliveryCheckerTabs } from "@/components/DeliveryCheckerTabs";
 
 export default async function DeliveryCheckerPage() {
   const [vendors, products] = await Promise.all([
@@ -12,11 +12,11 @@ export default async function DeliveryCheckerPage() {
       <div>
         <h1 className="text-xl font-semibold text-gray-900">Delivery Date Checker</h1>
         <p className="text-sm text-gray-500">
-          A standalone tool — separate from Orders — for checking delivery date estimates. Lead times are configured
-          per Product/Vendor and in Settings, not tied to any fixed list of products.
+          A standalone tool — separate from Orders. Check by customer postcode against your real delivery-day
+          schedule, or by a product/vendor lead time.
         </p>
       </div>
-      <DeliveryChecker vendors={vendors} products={products} />
+      <DeliveryCheckerTabs vendors={vendors} products={products} />
     </div>
   );
 }

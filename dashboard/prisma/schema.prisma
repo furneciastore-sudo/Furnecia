@@ -53,6 +53,24 @@ model Setting {
   value String
 }
 
+// Postcode -> delivery day schedule, powering the standalone Delivery
+// Date Checker. Fully editable from the app (not hard-coded) so it can
+// be corrected against the real courier schedule at any time.
+model DeliverySchedule {
+  postcodePrefix String  @id // e.g. "SW", "LS", "B" — matched against the start of a postcode
+  areaName       String?
+  monday         Boolean @default(false)
+  tuesday        Boolean @default(false)
+  wednesday      Boolean @default(false)
+  thursday       Boolean @default(false)
+  friday         Boolean @default(false)
+  saturday       Boolean @default(false)
+  sunday         Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 model Order {
   id        Int    @id @default(autoincrement())
   orderNo   String @unique // e.g. FRN-2026-0001

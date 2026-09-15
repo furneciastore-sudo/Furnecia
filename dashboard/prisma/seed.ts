@@ -47,6 +47,93 @@ const CUSTOMERS = [
   { name: "Sophie Turner", contact: "07911 000000", address: "17 Meadow Drive", postcode: "G1 2FF", city: "Glasgow" },
 ];
 
+// Postcode -> delivery day schedule, transcribed from the courier's
+// weekly Monday-Saturday schedule charts. "London Local" and the
+// Leeds/North group run every day; everything else rotates on specific
+// days. ⚠️ This was read off compressed photos of dense tables — review
+// it against the real chart in Delivery Checker → Manage Schedule before
+// relying on it for customer promises; it's fully editable there.
+const DAILY_GROUPS: [string, string][] = [
+  ["KT", "Kingston upon Thames"], ["CR", "Croydon"], ["SM", "Sutton"], ["BR", "Bromley"],
+  ["DA", "Dartford"], ["TW", "Twickenham"], ["SW", "London SW"], ["SE", "London SE"],
+  ["W", "London W"], ["EC", "London EC"], ["UB", "Southall"], ["HA", "Harrow"],
+  ["NW", "London NW"], ["WC", "London WC"], ["WD", "Watford"], ["N", "London N"],
+  ["EN", "Enfield"], ["E", "London E"], ["IG", "Ilford"], ["RM", "Romford"],
+  ["SL", "Slough"], ["SS", "Southend-on-Sea"], ["AL", "St Albans"],
+  ["WF", "Wakefield"], ["BD", "Bradford"], ["LS", "Leeds"], ["HD", "Huddersfield"],
+  ["HX", "Halifax"], ["ST", "Stoke-on-Trent"], ["CW", "Crewe"], ["M", "Manchester"],
+  ["OL", "Oldham"], ["SK", "Stockport"], ["DN", "Doncaster"], ["PR", "Preston"],
+  ["FY", "Blackpool"], ["CH", "Chester"], ["L", "Liverpool"], ["BB", "Blackburn"],
+  ["BL", "Bolton"], ["S", "Sheffield"],
+];
+const ALL_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+const ROTATING_SCHEDULE: [string, string, string[]][] = [
+  ["CM", "Chelmsford", ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]],
+  ["CO", "Colchester", ["Tuesday", "Friday"]],
+  ["IP", "Ipswich", ["Tuesday", "Friday"]],
+  ["NR", "Norwich", ["Tuesday"]],
+  ["CB", "Cambridge", ["Tuesday", "Friday"]],
+  ["PE", "Peterborough", ["Tuesday", "Friday"]],
+  ["OX", "Oxford", ["Tuesday", "Friday"]],
+  ["RG", "Reading", ["Tuesday", "Friday"]],
+  ["SN", "Swindon", ["Tuesday", "Friday"]],
+  ["HP", "Hemel Hempstead", ["Tuesday", "Friday"]],
+  ["SP", "Salisbury", ["Tuesday"]],
+  ["DT", "Dorchester", ["Tuesday"]],
+  ["BA", "Bath", ["Tuesday"]],
+  ["TA", "Taunton", ["Tuesday"]],
+  ["EX", "Exeter", ["Tuesday"]],
+  ["PL", "Plymouth", ["Tuesday"]],
+  ["TQ", "Torquay", ["Tuesday"]],
+  ["TR", "Truro", ["Tuesday"]],
+  ["BH", "Bournemouth", ["Tuesday"]],
+  ["NG", "Nottingham", ["Monday", "Tuesday", "Wednesday", "Thursday", "Saturday"]],
+  ["DE", "Derby", ["Monday", "Tuesday", "Wednesday", "Thursday", "Saturday"]],
+  ["BS", "Bristol", ["Tuesday", "Friday"]],
+  ["NP", "Newport", ["Tuesday", "Friday"]],
+  ["CF", "Cardiff", ["Tuesday", "Friday"]],
+  ["GL", "Gloucester", ["Tuesday", "Friday"]],
+  ["WR", "Worcester", ["Tuesday", "Friday"]],
+  ["SA", "Swansea", ["Tuesday", "Friday"]],
+  ["HR", "Hereford", ["Tuesday", "Friday"]],
+  ["SO", "Southampton", ["Tuesday"]],
+  ["PO", "Portsmouth", ["Tuesday"]],
+  ["GU", "Guildford", ["Monday", "Tuesday"]],
+  ["SY", "Shrewsbury", ["Tuesday", "Saturday"]],
+  ["TF", "Telford", ["Tuesday", "Saturday"]],
+  ["TS", "Teesside", ["Monday", "Friday"]],
+  ["DL", "Darlington", ["Monday", "Friday"]],
+  ["SR", "Sunderland", ["Monday", "Friday"]],
+  ["DH", "Durham", ["Monday", "Friday"]],
+  ["NE", "Newcastle", ["Monday", "Friday"]],
+  ["HG", "Harrogate", ["Monday", "Friday"]],
+  ["LU", "Luton", ["Monday", "Wednesday", "Thursday", "Saturday"]],
+  ["MK", "Milton Keynes", ["Monday", "Wednesday", "Thursday", "Saturday"]],
+  ["NN", "Northampton", ["Monday", "Wednesday", "Thursday", "Saturday"]],
+  ["SG", "Stevenage", ["Monday", "Wednesday", "Saturday"]],
+  ["CV", "Coventry", ["Monday", "Wednesday", "Saturday"]],
+  ["LE", "Leicester", ["Monday", "Wednesday", "Thursday", "Saturday"]],
+  ["B", "Birmingham", ["Monday", "Wednesday", "Saturday"]],
+  ["WS", "Walsall", ["Monday", "Wednesday", "Saturday"]],
+  ["WV", "Wolverhampton", ["Monday", "Wednesday", "Saturday"]],
+  ["ME", "Medway", ["Monday", "Thursday"]],
+  ["CT", "Canterbury", ["Monday", "Thursday"]],
+  ["TN", "Tonbridge", ["Monday", "Thursday"]],
+  ["RH", "Redhill", ["Monday", "Thursday"]],
+  ["BN", "Brighton", ["Monday", "Thursday"]],
+  ["FK", "Falkirk", ["Monday", "Friday"]],
+  ["G", "Glasgow", ["Monday", "Friday"]],
+  ["EH", "Edinburgh", ["Monday", "Friday"]],
+  ["DG", "Dumfries", ["Monday", "Friday"]],
+  ["KA", "Kilmarnock", ["Monday", "Friday"]],
+  ["ML", "Motherwell", ["Monday", "Friday"]],
+  ["CA", "Carlisle", ["Friday"]],
+  ["HU", "Hull", ["Monday", "Wednesday", "Thursday", "Friday"]],
+  ["YO", "York", ["Monday", "Wednesday", "Thursday", "Friday"]],
+  ["LN", "Lincoln", ["Monday", "Wednesday", "Thursday", "Friday"]],
+];
+
 const FLOORS = ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "Ground Floor", "1st Floor"];
 const DELIVERY_STATUSES_CYCLE = [
   "New Order", "Confirmed", "Vendor Confirmed", "Ready for Delivery", "Delivery Scheduled",
@@ -72,6 +159,28 @@ async function main() {
   await prisma.order.deleteMany({});
   await prisma.product.deleteMany({});
   await prisma.vendor.deleteMany({});
+  await prisma.deliverySchedule.deleteMany({});
+
+  const scheduleRows = [
+    ...DAILY_GROUPS.map(([postcodePrefix, areaName]) => ({ postcodePrefix, areaName, days: ALL_DAYS })),
+    ...ROTATING_SCHEDULE.map(([postcodePrefix, areaName, days]) => ({ postcodePrefix, areaName, days })),
+  ];
+  for (const row of scheduleRows) {
+    await prisma.deliverySchedule.create({
+      data: {
+        postcodePrefix: row.postcodePrefix,
+        areaName: row.areaName,
+        monday: row.days.includes("Monday"),
+        tuesday: row.days.includes("Tuesday"),
+        wednesday: row.days.includes("Wednesday"),
+        thursday: row.days.includes("Thursday"),
+        friday: row.days.includes("Friday"),
+        saturday: row.days.includes("Saturday"),
+        sunday: row.days.includes("Sunday"),
+      },
+    });
+  }
+  console.log(`Seeded ${scheduleRows.length} delivery schedule postcode prefixes.`);
 
   const vendors = [];
   for (const v of VENDORS) {
