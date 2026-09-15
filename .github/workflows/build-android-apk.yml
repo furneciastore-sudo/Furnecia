@@ -12,6 +12,12 @@ on:
         description: "The deployed HTTPS URL of your dashboard (e.g. https://furnecia-dashboard.vercel.app). The app will load this URL."
         required: true
         default: "https://your-dashboard-domain.com"
+  # workflow_dispatch only appears in the Actions UI once this file is on
+  # the default branch. Until this PR merges, pushing to this branch (or
+  # editing this file) also triggers a build, so it can still be tested.
+  push:
+    branches: ["claude/furniture-order-dashboard-lypjkk"]
+    paths: [".github/workflows/build-android-apk.yml"]
 
 jobs:
   build:
@@ -39,7 +45,7 @@ jobs:
 
       - name: Sync Capacitor Android project
         env:
-          CAPACITOR_SERVER_URL: ${{ inputs.dashboard_url }}
+          CAPACITOR_SERVER_URL: ${{ github.event.inputs.dashboard_url || 'https://your-dashboard-domain.com' }}
         run: npx cap sync android
 
       - name: Build debug APK
