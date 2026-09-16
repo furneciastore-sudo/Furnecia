@@ -74,9 +74,9 @@ const FOOTER_HTML = `
       </div>
       <div class="footer-col footer-newsletter">
         <h4>Newsletter Signup</h4>
-        <p>Subscribe and get 10% off your first purchase</p>
-        <form onsubmit="event.preventDefault(); alert('Thanks for subscribing!'); this.reset();">
-          <input type="email" placeholder="Your email" required>
+        <p>Get new arrivals, restocks &amp; sale alerts by email</p>
+        <form id="newsletter-form">
+          <input type="email" id="newsletter-email" placeholder="Your email" required>
           <button type="submit">Join</button>
         </form>
       </div>
@@ -132,6 +132,36 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       const q = searchInput.value.trim();
       window.location.href = q ? `shop.html?q=${encodeURIComponent(q)}` : "shop.html";
+    });
+  }
+
+  const newsletterForm = document.getElementById("newsletter-form");
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const emailInput = document.getElementById("newsletter-email");
+      const email = emailInput.value.trim();
+      const btn = newsletterForm.querySelector("button");
+      if (typeof shopifyConfigured === "function" && shopifyConfigured()) {
+        btn.disabled = true;
+        btn.textContent = "Joining…";
+        try {
+          await subscribeNewsletter(email);
+          alert("Thanks for subscribing!");
+          newsletterForm.reset();
+        } catch (err) {
+          console.error(err);
+          alert("Sorry, something went wrong. Please try again or message us on WhatsApp.");
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "Join";
+        }
+      } else {
+        // No live backend yet — be honest rather than fake a success
+        // message: hand it to WhatsApp so a real person actually gets it.
+        window.open(waLink(`Hi Furnecia, please add me to your newsletter/mailing list: ${email}`), "_blank", "noopener,noreferrer");
+        newsletterForm.reset();
+      }
     });
   }
 

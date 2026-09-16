@@ -180,3 +180,25 @@ window.productsReady = (async () => {
     console.warn("Live Shopify product fetch failed, using static catalogue:", err);
   }
 })();
+
+// ---- Newsletter signup: real Shopify customer capture ----
+const CUSTOMER_CREATE_MUTATION = `
+  mutation CustomerCreate($email: String!) {
+    customerCreate(input: { email: $email, acceptsMarketing: true }) {
+      customer { id }
+      customerUserErrors { code field message }
+    }
+  }
+`;
+
+// Returns true only if the email was actually added to Shopify's
+// customer/marketing list. A "customer already exists" error still
+// counts as success (they're on the list either way).
+async function subscribeNewsletter(email) {
+  const data = await shopifyStorefrontFetch(CUSTOMER_CREATE_MUTATION, { email });
+  const errors = data.customerCreate.customerUserErrors || [];
+  if (errors.length && !errors.some(e => e.code === "TAKEN")) {
+    throw new Error(errors.map(e => e.message).join("; "));
+  }
+  return true;
+}
