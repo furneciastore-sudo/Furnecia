@@ -41,6 +41,7 @@ const PRODUCTS_QUERY = `
           productType
           descriptionHtml
           tags
+          createdAt
           images(first: 10) { edges { node { url altText } } }
           options { name values }
           metafields(identifiers: [{ namespace: "reviews", key: "rating" }, { namespace: "reviews", key: "rating_count" }]) {
@@ -113,6 +114,7 @@ function shopifyProductToLocal(node) {
     sale: Boolean(first.compareAtPrice && first.compareAtPrice > first.price),
     liveRating: liveRatingCount ? liveRating : null,
     liveRatingCount: liveRatingCount || null,
+    createdAt: node.createdAt || null,
   };
 }
 

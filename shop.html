@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Shop All Furniture — Furnecia</title>
+<title>Shop All Furniture UK | Sofas, Beds & Wardrobes — Furnecia</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Browse sofa beds, corner sofas, wardrobes, beds and outdoor furniture from Furnecia. Cash on Delivery across the UK — free delivery in England, £20 to Wales, £30 to Scotland.">
+<meta name="description" content="Browse sofa beds, corner sofas, wardrobes, beds, dining tables and more from Furnecia. Cash on Delivery across the UK — free delivery in England, £20 to Wales, £30 to Scotland.">
 <link rel="canonical" href="https://furnecia.com/shop.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Shop All Furniture — Furnecia">
+<meta property="og:title" content="Shop All Furniture UK | Sofas, Beds & Wardrobes — Furnecia">
 <meta property="og:description" content="Cash on Delivery across the UK. Free delivery in England, £20 to Wales, £30 to Scotland.">
 <link rel="preconnect" href="https://cdn.shopify.com">
 <link rel="stylesheet" href="css/style.css">
@@ -23,6 +23,32 @@
 
 <div class="shop-layout">
   <div class="filter-bar" id="filter-bar"></div>
+  <div class="shop-toolbar" id="shop-toolbar">
+    <label class="shop-toolbar-field">
+      Price
+      <select id="price-select">
+        <option value="">Any price</option>
+        <option value="0-100">Under £100</option>
+        <option value="100-250">£100 – £250</option>
+        <option value="250-500">£250 – £500</option>
+        <option value="500-1000">£500 – £1,000</option>
+        <option value="1000-">£1,000+</option>
+      </select>
+    </label>
+    <label class="shop-toolbar-field shop-toolbar-checkbox">
+      <input type="checkbox" id="instock-checkbox"> In stock only
+    </label>
+    <label class="shop-toolbar-field">
+      Sort by
+      <select id="sort-select">
+        <option value="featured">Featured</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="bestsellers">Bestsellers</option>
+        <option value="newest">Newest</option>
+      </select>
+    </label>
+  </div>
   <p id="results-count" style="font-size:13px;color:var(--text-muted);margin:0 0 16px;"></p>
   <div class="product-grid" id="shop-grid"></div>
   <div style="text-align:center;margin-top:32px;">
@@ -49,6 +75,9 @@
   const maxPrice = params.get("max") ? Number(params.get("max")) : null;
   const PAGE_SIZE = 24;
   let visibleCount = PAGE_SIZE;
+  let priceRange = "";
+  let inStockOnly = false;
+  let sortBy = "featured";
 
   // Keyword-targeted title/description per category, researched against
   // how UK furniture retailers (Sofa Club, IKEA, Furniture Village, Oak
@@ -92,6 +121,19 @@
     else if (activeCat !== "All") items = items.filter(p => p.category === activeCat);
     if (searchQ) items = items.filter(p => p.title.toLowerCase().includes(searchQ) || p.category.toLowerCase().includes(searchQ));
     if (maxPrice) items = items.filter(p => p.price <= maxPrice);
+    if (priceRange) {
+      const [lo, hi] = priceRange.split("-");
+      if (lo) items = items.filter(p => p.price >= Number(lo));
+      if (hi) items = items.filter(p => p.price < Number(hi));
+    }
+    if (inStockOnly) items = items.filter(p => p.variants.some(v => v.available));
+
+    items = items.slice();
+    if (sortBy === "price-asc") items.sort((a, b) => a.price - b.price);
+    else if (sortBy === "price-desc") items.sort((a, b) => b.price - a.price);
+    else if (sortBy === "bestsellers") items.sort((a, b) => (b.bestseller ? 1 : 0) - (a.bestseller ? 1 : 0));
+    else if (sortBy === "newest") items.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+
     return items;
   }
 
@@ -126,6 +168,22 @@
     visibleCount += PAGE_SIZE;
     render();
   });
+
+  const priceSelect = document.getElementById("price-select");
+  const instockCheckbox = document.getElementById("instock-checkbox");
+  const sortSelect = document.getElementById("sort-select");
+
+  // "Newest" only means something once real Shopify createdAt dates are
+  // loaded (js/shopify-storefront.js) — the static fallback catalogue
+  // has no reliable creation order, so don't offer a sort that would lie.
+  if (!PRODUCTS.some(p => p.createdAt)) {
+    sortSelect.querySelector('option[value="newest"]').remove();
+  }
+
+  priceSelect.addEventListener("change", () => { priceRange = priceSelect.value; visibleCount = PAGE_SIZE; render(); });
+  instockCheckbox.addEventListener("change", () => { inStockOnly = instockCheckbox.checked; visibleCount = PAGE_SIZE; render(); });
+  sortSelect.addEventListener("change", () => { sortBy = sortSelect.value; visibleCount = PAGE_SIZE; render(); });
+
   render();
 })();
 </script>

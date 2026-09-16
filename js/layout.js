@@ -28,8 +28,17 @@ const HEADER_HTML = `
     </nav>
     <a href="index.html" class="logo">Furnecia</a>
     <div class="header-actions">
+      <button type="button" class="search-toggle" id="search-toggle" aria-label="Search">&#128269;</button>
       <button class="nav-toggle" aria-label="Menu">&#9776;</button>
       <a href="cart.html" class="cart-link">Cart (<span data-cart-count>0</span>)</a>
+    </div>
+  </div>
+  <div class="search-bar" id="search-bar" hidden>
+    <div class="container">
+      <form id="site-search-form">
+        <input type="text" id="site-search-input" placeholder="Search sofas, beds, wardrobes, dining tables…" autocomplete="off">
+        <button type="submit" aria-label="Search">&#128269;</button>
+      </form>
     </div>
   </div>
 </header>
@@ -107,6 +116,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const toggle = document.querySelector(".nav-toggle");
   const menu = document.querySelector(".main-nav");
   if (toggle && menu) toggle.addEventListener("click", () => menu.classList.toggle("open"));
+
+  const searchToggle = document.getElementById("search-toggle");
+  const searchBar = document.getElementById("search-bar");
+  const searchInput = document.getElementById("site-search-input");
+  if (searchToggle && searchBar) {
+    searchToggle.addEventListener("click", () => {
+      searchBar.hidden = !searchBar.hidden;
+      if (!searchBar.hidden) searchInput.focus();
+    });
+  }
+  const searchForm = document.getElementById("site-search-form");
+  if (searchForm) {
+    searchForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const q = searchInput.value.trim();
+      window.location.href = q ? `shop.html?q=${encodeURIComponent(q)}` : "shop.html";
+    });
+  }
 
   const headerBar = document.querySelector(".site-header");
   if (headerBar) {
