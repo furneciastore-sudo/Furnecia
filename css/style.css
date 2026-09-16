@@ -82,6 +82,8 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; margin: 0; }
 .cart-link:hover { background: var(--ink); color: #fff !important; }
 .nav-toggle { display: none; background: none; border: none; font-size: 22px; cursor: pointer; color: var(--ink); }
 .search-toggle { background: none; border: none; font-size: 17px; cursor: pointer; color: var(--ink); line-height: 1; }
+.account-link { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; color: var(--ink) !important; }
+.account-link[hidden] { display: none; }
 .search-bar { border-top: 1px solid var(--line); background: var(--canvas); }
 .search-bar[hidden] { display: none; }
 .search-bar #site-search-form { display: flex; align-items: center; gap: 10px; padding: 14px 0; max-width: 480px; }

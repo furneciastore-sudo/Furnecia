@@ -29,6 +29,7 @@ const HEADER_HTML = `
     <a href="index.html" class="logo">Furnecia</a>
     <div class="header-actions">
       <button type="button" class="search-toggle" id="search-toggle" aria-label="Search">&#128269;</button>
+      <a href="#" id="account-link" class="account-link" hidden>Account</a>
       <button class="nav-toggle" aria-label="Menu">&#9776;</button>
       <a href="cart.html" class="cart-link">Cart (<span data-cart-count>0</span>)</a>
     </div>
@@ -163,6 +164,12 @@ document.addEventListener("DOMContentLoaded", function () {
         newsletterForm.reset();
       }
     });
+  }
+
+  const accountLink = document.getElementById("account-link");
+  if (accountLink && typeof shopifyConfigured === "function" && shopifyConfigured()) {
+    accountLink.href = `https://${SITE.shopifyDomain}/account`;
+    accountLink.hidden = false;
   }
 
   const headerBar = document.querySelector(".site-header");
