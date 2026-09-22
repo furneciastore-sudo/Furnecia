@@ -9,6 +9,8 @@ Ye aapki asal Shopify store (`furnecia.com`) jaisi hi ek website hai — **HTML/
 
 > ⚠️ Ye site **Shopify se bilkul independent** hai — na cart backend hai, na order database. Order sirf WhatsApp/Email message ban kar customer ke phone se bhejta hai. Beginner ke liye ye sabse aasan tareeqa hai.
 
+> 📊 **Order/Vendor/Delivery/Payment management dashboard** (internal tool, alag se) `dashboard/` folder mein hai — is public website se bilkul separate. Dekhein `dashboard/README.md` run karne, Google Sheets connect karne, aur use karne ke tareeqe ke liye.
+
 ---
 
 ## 1. Pehle apne computer par dekh lein (bilkul free, koi hosting nahi chahiye)

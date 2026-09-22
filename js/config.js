@@ -20,6 +20,21 @@ const SITE = {
   shopifyDomain: "",
   storefrontToken: "",
 
+  // ---- Automatic order email (EmailJS, no server needed) ----
+  // Sends the Cash on Delivery order straight to your inbox the moment a
+  // customer places it — no click needed from them. Free to set up:
+  //   1. Sign up at emailjs.com, add this Gmail as an "Email Service".
+  //   2. Create an Email Template using variables: subject, message,
+  //      customer_name, customer_phone, customer_email, customer_address,
+  //      customer_city, order_notes.
+  //   3. Fill in the three values below from EmailJS's dashboard.
+  // Leaving any of these blank means the "Send Order via Email" button
+  // falls back to opening the customer's own email app instead — nothing
+  // breaks either way, it just needs their tap.
+  emailjsPublicKey: "",
+  emailjsServiceId: "",
+  emailjsTemplateId: "",
+
   // ---- Marketing tracking (optional, all off until filled in) ----
   // metaPixelId: Meta Events Manager -> your Pixel -> Pixel ID (numbers only).
   // ga4MeasurementId: Google Analytics 4 -> Admin -> Data Streams -> your
