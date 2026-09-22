@@ -2,7 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://furnecia.com/</loc><priority>1.0</priority></url>
   <url><loc>https://furnecia.com/shop.html</loc><priority>0.9</priority></url>
-  <url><loc>https://furnecia.com/shop.html?cat=Bar%20Stools%20%26%20Chairs</loc><priority>0.8</priority></url>
   <url><loc>https://furnecia.com/shop.html?cat=Beds%20%26%20Mattresses</loc><priority>0.8</priority></url>
   <url><loc>https://furnecia.com/shop.html?cat=Coffee%20Tables</loc><priority>0.8</priority></url>
   <url><loc>https://furnecia.com/shop.html?cat=Corner%20Sofas</loc><priority>0.8</priority></url>
@@ -28,8 +27,6 @@
   <url><loc>https://furnecia.com/product.html?handle=8-door-wardrobe-full-set</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=oxford-wingback-luxury-beds</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=simple-bunk-bed-with-mattresses</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=diamond-stitch-swivel-bar-stool-black</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=diamond-stitch-tub-armchair-grey</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=4-piece-outdoor-patio-furniture-set-with-cushions-rattan-conversation-set-garden-sofa-set-with-coffee-table-grey</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=berlin-sofa-bed-beige-velvet</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=berlin-sofa-bed-blue-velvet</loc><priority>0.7</priority></url>
@@ -199,9 +196,7 @@
   <url><loc>https://furnecia.com/product.html?handle=hilton-bliss-blitz-chesterfield-bed</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=trio-triple-sleeper-bunk-bed-with-mattresses</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=wingback-bed</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=arial-marble-dining-table-emma-chairs</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=arial-marble-dining-table-lion-knocker-chairs</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=ariana-marble-dining-table-emma-chairs</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=ariana-marble-dining-table-lion-knocker-chairs</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=black-dining-set-extendable-gold-legs</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=blue-dining-set-extendable-gold-legs</loc><priority>0.7</priority></url>
@@ -221,7 +216,6 @@
   <url><loc>https://furnecia.com/product.html?handle=green-dining-set-extendable-gold-legs</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=grey-dining-set-extendable-chrome-legs</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=grey-dining-set-extendable-golden-legs</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=marble-dining-table-4-legs-emma-chairs</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=marble-dining-table-4-legs-lion-knocker-chairs</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=modern-coffee-table-stylish-amp-durable-furniture-for-your-home-rose-model</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=modern-coffee-table-stylish-amp-durable-furniture-for-your-home-walnut</loc><priority>0.7</priority></url>
@@ -241,19 +235,6 @@
   <url><loc>https://furnecia.com/product.html?handle=turkish-dining-table-with-6-chairs-white-marble</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=wooden-dining-table-bermuda-grey-marble-white-legs</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=wooden-dining-table-calcutta-grey-marble-steel-legs</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=diamond-stitch-dining-chair-charcoal</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=diamond-stitch-dining-chair-grey</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=diamond-stitch-swivel-bar-stool-cream</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=diamond-stitch-swivel-bar-stool-green</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=diamond-stitch-swivel-bar-stool-pink</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=diamond-stitch-tub-armchair-charcoal</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=diamond-stitch-tub-armchair-cream</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=diamond-stitch-tub-armchair-tan</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=moulded-swivel-bar-stool-grey</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=moulded-swivel-bar-stool-white</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=round-wood-top-side-stool</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=wire-mesh-bar-stool-grey</loc><priority>0.7</priority></url>
-  <url><loc>https://furnecia.com/product.html?handle=wire-mesh-bar-stool-white</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=garden-rattan-1-1-2-seater-sofa-set-outdoor-patio-lounge-furniture</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=chester-3-drawer-chest-of-drawers</loc><priority>0.7</priority></url>
   <url><loc>https://furnecia.com/product.html?handle=dino-jumbo-cord-armchair-grey-or-beige-cozy-stylish-accent-seating</loc><priority>0.7</priority></url>

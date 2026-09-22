@@ -1,5 +1,5 @@
 const PRODUCTS = [
-  {
+{
     handle: "paradise-sofabed-grey",
     title: "Paradise Sofabed Grey",
     category: "Sofa Beds",
@@ -11,7 +11,7 @@ const PRODUCTS = [
     bestseller: true,
     sale: true
   },
-  {
+{
     handle: "dylan-5-seater-corner-sofa-jumbo-cord",
     title: "Dylan 5 seater corner sofa Jumbo cord",
     category: "Corner Sofas",
@@ -23,7 +23,7 @@ const PRODUCTS = [
     bestseller: true,
     sale: true
   },
-  {
+{
     handle: "ashwin-32-seater-high-back-corner-sofa",
     title: "Ashwin 3+2 Seater High Back Corner Sofa",
     category: "Corner Sofas",
@@ -34,7 +34,7 @@ const PRODUCTS = [
     bestseller: true,
     sale: false
   },
-  {
+{
     handle: "berlin-universal-corner-sofa-bed-with-storage",
     title: "Berlin Universal Corner Sofa Bed with Storage",
     category: "Corner Sofas",
@@ -45,7 +45,7 @@ const PRODUCTS = [
     bestseller: true,
     sale: false
   },
-  {
+{
     handle: "classic-italian-chesterfield-32-seater-fabric-sofa-timeless",
     title: "Classic Italian Chesterfield 3+2 Seater Fabric Sofa – Timeless",
     category: "Sofas",
@@ -56,7 +56,7 @@ const PRODUCTS = [
     bestseller: true,
     sale: false
   },
-  {
+{
     handle: "kuzey-grey-gold-sofa-collection",
     title: "Kuzey Grey &  Gold Sofa Collection",
     category: "Sofas",
@@ -67,7 +67,7 @@ const PRODUCTS = [
     bestseller: true,
     sale: false
   },
-  {
+{
     handle: "5-door-wardrobe-full-bedroom-set-with-mirrors-and-storage",
     title: "5 Door Wardrobe Full Bedroom Set with Mirrors and Storage",
     category: "Wardrobes",
@@ -78,7 +78,7 @@ const PRODUCTS = [
     bestseller: true,
     sale: false
   },
-  {
+{
     handle: "6-door-dressing-wardrobe",
     title: "6 Door Dressing Wardrobe",
     category: "Wardrobes",
@@ -89,7 +89,7 @@ const PRODUCTS = [
     bestseller: true,
     sale: false
   },
-  {
+{
     handle: "8-door-wardrobe-full-set",
     title: "8 Door Wardrobe Full Bedroom Set – with Chest of Drawers & Bedside Cabinet",
     category: "Wardrobes",
@@ -100,7 +100,7 @@ const PRODUCTS = [
     bestseller: true,
     sale: false
   },
-  {
+{
     handle: "oxford-wingback-luxury-beds",
     title: "Oxford Wingback Luxury Beds",
     category: "Beds & Mattresses",
@@ -111,7 +111,7 @@ const PRODUCTS = [
     bestseller: true,
     sale: false
   },
-  {
+{
     handle: "simple-bunk-bed-with-mattresses",
     title: "Solid Wooden Double Kids Bunk Bed Frame with 2 Mattresses – Space Saving, Convertible & Safe Design",
     category: "Beds & Mattresses",
@@ -122,33 +122,7 @@ const PRODUCTS = [
     bestseller: true,
     sale: false
   },
-  {
-    handle: "diamond-stitch-swivel-bar-stool-black",
-    title: "Diamond Stitch Swivel Bar Stool — Black",
-    category: "Bar Stools & Chairs",
-    description: "A black velvet-effect bar stool with diamond stitching, a gas-lift height adjustment and a 360° swivel chrome base — comfortable counter-height seating for kitchen islands and breakfast bars.",
-    dimensions: "H 90-110cm (adjustable) &middot; Seat height 65-85cm &middot; Seat 38cm diameter &middot; Base 35cm diameter",
-    images: ["images/barstools/swivelstool-black-1.jpg"],
-    options: [],
-    variants: [{ title: "Default", price: 40.0, image: null, available: true }],
-    price: 40.0,
-    bestseller: true,
-    sale: false
-  },
-  {
-    handle: "diamond-stitch-tub-armchair-grey",
-    title: "Diamond Stitch Tub Armchair — Grey",
-    category: "Bar Stools & Chairs",
-    description: "A cosy grey velvet-effect tub chair with elegant diamond stitching and slim tapered legs. The padded seat and back with high armrests make it a comfortable accent chair for a living room, bedroom or hallway corner.",
-    dimensions: "H 78cm x W 68cm x D 68cm &middot; Seat height 45cm",
-    images: ["images/barstools/armchair-grey-1.jpg", "images/barstools/armchair-grey-2.jpg", "images/barstools/armchair-grey-3.jpg"],
-    options: [],
-    variants: [{ title: "Default", price: 60.0, image: null, available: true }],
-    price: 60.0,
-    bestseller: true,
-    sale: false
-  },
-  {
+{
     handle: "4-piece-outdoor-patio-furniture-set-with-cushions-rattan-conversation-set-garden-sofa-set-with-coffee-table-grey",
     title: "4-Piece Outdoor Patio Furniture Set with Cushions, Rattan Conversation Set, Garden Sofa Set with Table, Grey",
     category: "Outdoor Furniture",
@@ -159,7 +133,7 @@ const PRODUCTS = [
     bestseller: true,
     sale: false
   },
-  {
+{
     handle: "berlin-sofa-bed-beige-velvet",
     title: "Berlin sofa bed beige velvet",
     category: "Sofa Beds",
@@ -171,7 +145,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "berlin-sofa-bed-blue-velvet",
     title: "Berlin sofa bed blue velvet",
     category: "Sofa Beds",
@@ -183,7 +157,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "berlin-sofa-bed-charcoal",
     title: "Berlin sofa bed charcoal",
     category: "Sofa Beds",
@@ -195,7 +169,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "berlin-sofa-bed-cream-velvet",
     title: "Berlin sofa bed cream velvet",
     category: "Sofa Beds",
@@ -207,7 +181,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "berlin-sofa-bed-dark-gray-velvet",
     title: "Berlin sofa bed dark gray velvet",
     category: "Sofa Beds",
@@ -219,7 +193,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "berlin-sofa-bed-gray",
     title: "Berlin sofa bed gray",
     category: "Sofa Beds",
@@ -231,7 +205,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "berlin-sofa-bed-green-velvet",
     title: "Berlin sofa bed green velvet",
     category: "Sofa Beds",
@@ -243,7 +217,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "berlin-sofa-bed-light-charcoal",
     title: "Berlin sofa bed light charcoal",
     category: "Sofa Beds",
@@ -255,7 +229,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "berlin-sofa-bed-mustered-velvet",
     title: "Berlin sofa bed mustered velvet",
     category: "Sofa Beds",
@@ -267,7 +241,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "berlin-sofa-bed-red-velvet",
     title: "Berlin sofa bed red velvet",
     category: "Sofa Beds",
@@ -279,7 +253,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "new-leather-grey-sofa-bed-with-storage-51-105",
     title: "New Leather Grey Sofa Bed with Storage 51-105",
     category: "Sofa Beds",
@@ -291,7 +265,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "paradise-sofabed-brown",
     title: "Paradise Sofabed Brown",
     category: "Sofa Beds",
@@ -303,7 +277,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "luxury-bishop-u-shape-corner-sofa-premium-dapple-big-stylish-ultra-comfortable",
     title: "Bishop U-Shape Corner Sofa – Big, Stylish & Ultra Comfortable",
     category: "Corner Sofas",
@@ -315,7 +289,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "ready-assembled-2-door-wardrobe-2-drawer-with-mirrors",
     title: "2 Door Wardrobe with 2 Drawers and Mirrors",
     category: "Wardrobes",
@@ -327,7 +301,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "3-door-wardrobe-plan",
     title: "3 Door Wardrobe with Shelving and Hanging Rail",
     category: "Wardrobes",
@@ -339,7 +313,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "6-door-wardrobe",
     title: "6 Door Plain Wardrobe",
     category: "Wardrobes",
@@ -351,7 +325,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "line-bumper-luxury-beds",
     title: "Line Bumper Luxury Beds",
     category: "Beds & Mattresses",
@@ -363,7 +337,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-caree-nested-set-gold-leg",
     title: "Modern Coffee Table — Caree Nested Set, Gold Leg",
     category: "Coffee Tables",
@@ -375,7 +349,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-caree-nested-set-silver-leg",
     title: "Modern Coffee Table — Caree Nested Set, Silver Leg",
     category: "Coffee Tables",
@@ -387,7 +361,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-caree-gold-leg",
     title: "Modern Coffee Table — Caree, Gold Leg",
     category: "Coffee Tables",
@@ -399,7 +373,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-caree-silver-leg",
     title: "Modern Coffee Table — Caree, Silver Leg",
     category: "Coffee Tables",
@@ -411,7 +385,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-natural-ceviz",
     title: "Modern Coffee Table — Natural Ceviz",
     category: "Coffee Tables",
@@ -423,7 +397,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-natural-ceviz-nested-set",
     title: "Modern Coffee Table — Natural Ceviz Nested Set",
     category: "Coffee Tables",
@@ -435,7 +409,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-natural-mermer",
     title: "Modern Coffee Table — Natural Mermer",
     category: "Coffee Tables",
@@ -447,7 +421,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-sasa-nested-set-gold-leg",
     title: "Modern Coffee Table — Sasa Nested Set, Gold Leg",
     category: "Coffee Tables",
@@ -459,7 +433,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-sasa-gold-leg",
     title: "Modern Coffee Table — Sasa, Gold Leg",
     category: "Coffee Tables",
@@ -471,7 +445,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-valec-nested-set-silver-leg",
     title: "Modern Coffee Table — Valec Nested Set, Silver Leg",
     category: "Coffee Tables",
@@ -483,7 +457,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "modern-coffee-table-stylish-functional-living-room-centerpiece-valec-gold-leg",
     title: "Modern Coffee Table — Valec, Gold Leg",
     category: "Coffee Tables",
@@ -495,7 +469,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "5-piece-patio-dining-set-with-glass-table-amp-wicker-chairs-gray",
     title: "5-Piece Patio Dining Set with Glass Table & Wicker Chairs – Gray",
     category: "Outdoor Furniture",
@@ -507,7 +481,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "harrison-timeless-comfort-arm-chair",
     title: "Harrison Timeless Comfort Arm Chair",
     category: "Furniture",
@@ -519,7 +493,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "nicole-armchair-in-gray-color-stylish-chenille-fabric-single-seater-modern-durable-accent-chair",
     title: "Nicole Armchair In Grey Colour – Stylish Chenille Fabric Single Seater | Modern & Durable Accent Chair",
     category: "Furniture",
@@ -531,7 +505,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "ruby-alaska-armchair-jumbo-cord-fabric",
     title: "Ruby/Alaska Armchair – Jumbo Cord Fabric | Stylish & Comfortable Seating",
     category: "Furniture",
@@ -543,7 +517,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "shanon-arm-chair-in-black-where-elegance-meets-comfort",
     title: "Shannon Arm Chair in Black – Where Elegance Meets Comfort",
     category: "Furniture",
@@ -555,7 +529,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "sloane-grey-velvet-armchair-with-cushion",
     title: "Sloane Grey Velvet Armchair with Cushion – Wide Seat & Modern Design",
     category: "Furniture",
@@ -567,7 +541,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: true
   },
-  {
+{
     handle: "acelya-black-2-seater-sofa-bed-with-storage",
     title: "Acelya Black 2 Seater Sofa Bed with Storage",
     category: "Sofa Beds",
@@ -578,7 +552,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "acelya-black-sofa-bed-with-storage-bold-style-meets-smart-living",
     title: "Acelya Black Sofa Bed with Storage – Bold Style Meets Smart Living",
     category: "Sofa Beds",
@@ -589,7 +563,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "alya-sofabed-grey",
     title: "Alya Sofabed Grey",
     category: "Sofa Beds",
@@ -600,7 +574,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "angel-leon-sofabed-black-amp-silver-with-storage-65-103",
     title: "Angel Leon Sofabed Black & Silver with Storage 65-103",
     category: "Sofa Beds",
@@ -611,7 +585,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "angel-leon-sofabed-black-and-gold-with-storage-65-103",
     title: "Angel Leon Sofabed Black and Gold with Storage 65-103",
     category: "Sofa Beds",
@@ -622,7 +596,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "angel-leon-sofabed-grey-silver-with-storage-52-103",
     title: "Angel Leon Sofabed Grey &  Silver with Storage 52-103",
     category: "Sofa Beds",
@@ -633,7 +607,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "angel-leon-sofabed-grey-amp-gold-with-storage-52-103",
     title: "Angel Leon Sofabed Grey & Gold with Storage 52-103",
     category: "Sofa Beds",
@@ -644,7 +618,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "arte-sofabed-blue",
     title: "Arte Sofabed Blue",
     category: "Sofa Beds",
@@ -655,7 +629,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "beige-cheater-sofa-bed-modern-comfort-in-a-timeless-neutral-tone",
     title: "Beige Chester Sofa Bed – Modern Comfort in a Timeless Neutral Tone",
     category: "Sofa Beds",
@@ -666,7 +640,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "beige-istanbul-sofa-bed-modern-comfort-with-elegant-versatility",
     title: "Beige Istanbul Sofa Bed – Modern Comfort with Elegant Versatility",
     category: "Sofa Beds",
@@ -677,7 +651,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "black-chester-sofa-bed-luxury-chesterfield-style-with-modern-comfort",
     title: "Black Chester Sofa Bed – Luxury Chesterfield Style with Modern Comfort",
     category: "Sofa Beds",
@@ -688,7 +662,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "black-leather-sofa-modern-luxury-timeless-comfort",
     title: "Black Leather Sofa – Modern Luxury &  Timeless Comfort",
     category: "Sofa Beds",
@@ -699,7 +673,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "black-silver-diamond-sofa-bed-luxury-glamour-modern-comfort",
     title: "Black Silver Diamond Sofa Bed – Luxury Glamour & Modern Comfort",
     category: "Sofa Beds",
@@ -710,7 +684,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "black-silver-lion-sofa-luxury-glamour-with-royal-elegance",
     title: "Black Silver Lion Sofa – Luxury Glamour with Royal Elegance",
     category: "Sofa Beds",
@@ -721,7 +695,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "black-violet-sofa-bed-modern-luxury-versatile-comfort",
     title: "Black Violet Sofa Bed – Modern Luxury &  Versatile Comfort",
     category: "Sofa Beds",
@@ -732,7 +706,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "charcoal-italian-chesterfield-6-seater-sofa-iconic-design-comfort",
     title: "Charcoal Italian Chesterfield 6 Seater  Sofa  – Iconic Design & Comfort",
     category: "Sofa Beds",
@@ -743,7 +717,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "dizayn-sofabed-grey",
     title: "Dizayn Sofabed Grey",
     category: "Sofa Beds",
@@ -754,7 +728,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "eliza-sofabed-grey",
     title: "Eliza Sofabed Grey",
     category: "Sofa Beds",
@@ -765,7 +739,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "futuro-faux-leather-sofa-bed-with-storage-65-105-modern-convertible-sleeper-sofa",
     title: "Futuro Faux Leather Sofa Bed with Storage 65–105 | Modern Convertible Sleeper Sofa",
     category: "Sofa Beds",
@@ -776,7 +750,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "grey-chester-sofa-bed-modern-luxury-timeless-comfort",
     title: "Grey Chester Sofa Bed – Modern Luxury &  Timeless Comfort",
     category: "Sofa Beds",
@@ -787,7 +761,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "grey-gold-lion-sofa-luxury-chesterfield-elegance-for-modern-homes",
     title: "Grey Gold Lion Sofa – Luxury Chesterfield Elegance for Modern Homes",
     category: "Sofa Beds",
@@ -798,7 +772,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "grey-istanbul-sofa-modern-luxury-timeless-comfort",
     title: "Grey Istanbul Sofa – Modern Luxury & Timeless Comfort",
     category: "Sofa Beds",
@@ -809,7 +783,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "grey-silver-diamond-sofa-bed-luxury-comfort-with-modern-elegance",
     title: "Grey Silver Diamond Sofa Bed – Luxury Comfort with Modern Elegance",
     category: "Sofa Beds",
@@ -820,7 +794,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "grey-silver-lion-sofa-luxury-comfort-with-timeless-elegance",
     title: "Grey Silver Lion Sofa – Luxury Comfort with Timeless Elegance",
     category: "Sofa Beds",
@@ -831,7 +805,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "grey-tual-sofa-bed-modern-comfort-meets-smart-functionality",
     title: "Grey Tual Sofa Bed – Modern Comfort Meets Smart Functionality",
     category: "Sofa Beds",
@@ -842,7 +816,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "grey-violet-sofa-bed-modern-comfort-with-elegant-style-transform",
     title: "Grey Violet Sofa Bed – Modern Comfort with Elegant Style",
     category: "Sofa Beds",
@@ -853,7 +827,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "gulf-sofabed-black-with-storage-65-103",
     title: "Gulf Sofabed Black with Storage 65-103",
     category: "Sofa Beds",
@@ -864,7 +838,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "gulf-sofabed-grey-with-storage-52-103",
     title: "Gulf Sofabed Grey with Storage 52-103",
     category: "Sofa Beds",
@@ -875,7 +849,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "hegel-chesterfield-sofa-bed-in-black-with-hidden-storage",
     title: "Hegel Chester Sofa Bed with Storage 65-103",
     category: "Sofa Beds",
@@ -886,7 +860,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "smart-comfort-hegel-gray-chesterfield-2-seater-sofa-bed-with-storage",
     title: "Hegel Chester Sofabed with Storage 52-103",
     category: "Sofa Beds",
@@ -897,7 +871,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "hegel-brown-chesterfield-2-seater-sofa-bed-with-storage",
     title: "Hegel Chester Sofabed with Storage 67-103",
     category: "Sofa Beds",
@@ -908,7 +882,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "hegel-blue-chesterfield-3-seater-sofa-bed-with-storage",
     title: "Hegel Chester Sofabed with Storage 82–103",
     category: "Sofa Beds",
@@ -919,7 +893,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "kermont-sofabed-black-with-storage",
     title: "Kermont Sofabed Black with Storage",
     category: "Sofa Beds",
@@ -930,7 +904,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "kermont-sofabed-brown-with-storage",
     title: "Kermont Sofabed Brown with Storage",
     category: "Sofa Beds",
@@ -941,7 +915,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "kermont-sofabed-grey-with-storage",
     title: "Kermont Sofabed Grey with Storage",
     category: "Sofa Beds",
@@ -952,7 +926,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "kuzey-gold-black-sofa-bed-with-storage-luxury-meets-smart-living",
     title: "Kuzey Gold Black Sofa Bed with Storage – Luxury Meets Smart Living",
     category: "Sofa Beds",
@@ -963,7 +937,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "kuzey-gold-burgundy-3-seater-sofa-bed",
     title: "Kuzey Gold Burgundy Sofa Collection",
     category: "Sofa Beds",
@@ -974,7 +948,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "kuzey-gold-green-3-seater-sofa-bed-luxury-function-and-timeless-style-in-one",
     title: "Kuzey Gold Green Sofa Collection",
     category: "Sofa Beds",
@@ -985,7 +959,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "lanto-turkish-sofa-bed",
     title: "Lanto Turkish Sofa Bed",
     category: "Sofa Beds",
@@ -996,7 +970,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "lincoln-brown-sofa-bed-with-storage-3-seater-comfort-for-modern-living",
     title: "Lincoln Sofabed Brown with Storage 67-103",
     category: "Sofa Beds",
@@ -1007,7 +981,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "lincoln-sofabed-grey-with-storage-52-103",
     title: "Lincoln Sofabed Grey with Storage 52-103",
     category: "Sofa Beds",
@@ -1018,7 +992,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "loft-love-set-2-seat-sofa-bed-modern-comfort-smart-living",
     title: "Loft Love Set 2 Seat Sofa Bed – Modern Comfort & Smart Living",
     category: "Sofa Beds",
@@ -1029,7 +1003,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "luca-l-shape-sofa-bed-storage",
     title: "Luca L-Shape Sofa Bed with Storage",
     category: "Sofa Beds",
@@ -1040,7 +1014,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "smart-style-for-any-room-malisa-sofa-bed-in-sleek-black",
     title: "Malisa Sofabed Black with Storage",
     category: "Sofa Beds",
@@ -1051,7 +1025,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "malisa-sofabed-grey-with-storage",
     title: "Malisa Sofabed Grey with Storage",
     category: "Sofa Beds",
@@ -1062,7 +1036,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "malta-3-seater-sofa-bed-with-storage-sleek-design-smart-living-in-grey",
     title: "Malta Grey Sofabed with Storage 52-103",
     category: "Sofa Beds",
@@ -1073,7 +1047,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "malta-3-seater-sofa-bed-with-storage-sleek-design-smart-living-in-black",
     title: "Malta Sofabed Black with Storage 65-103",
     category: "Sofa Beds",
@@ -1084,7 +1058,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "melis-sofabed-grey",
     title: "Melis Sofabed Grey",
     category: "Sofa Beds",
@@ -1095,7 +1069,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "new-black-leather-sofa-bed-with-storage-65-105-modern-comfort-smart-living",
     title: "New Black Leather Sofa Bed with Storage (65–105) – Modern Comfort &  Smart Living",
     category: "Sofa Beds",
@@ -1106,7 +1080,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "new-gray-leather-1-seater-sofa-bed-sleek-comfort-in-a-compact-form",
     title: "New Grey Leather 1-Seater Sofa Bed – Sleek Comfort in a Compact Form",
     category: "Sofa Beds",
@@ -1117,7 +1091,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "orion-turkish-sofa-bed",
     title: "Orion Turkish Sofa Bed",
     category: "Sofa Beds",
@@ -1128,7 +1102,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "seren-sofabed-black-with-storage-65-103",
     title: "Seren Sofabed Black with Storage 65-103",
     category: "Sofa Beds",
@@ -1139,7 +1113,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "seren-sofabed-grey-with-storage-52-103",
     title: "Seren Sofabed Grey with Storage 52-103",
     category: "Sofa Beds",
@@ -1150,7 +1124,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "sleek-smart-malisa-sofa-bed-in-blue-with-hidden-storage",
     title: "Sleek & Smart: Malisa Sofa Bed in Blue with Hidden Storage",
     category: "Sofa Beds",
@@ -1161,7 +1135,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "smart-stylish-acelya-gray-sofa-bed-with-storage",
     title: "Smart & Stylish: Acelya Grey Sofa Bed with Storage",
     category: "Sofa Beds",
@@ -1172,7 +1146,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "smart-comfort-gray-d-arm-2-seater-sofa-bed",
     title: "Smart Comfort: Grey D-Arm 2-Seater Sofa Bed",
     category: "Sofa Beds",
@@ -1183,7 +1157,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "smart-comfort-gray-d-arm-3-seater-sofa-bed-with-built-in-storage",
     title: "Smart Comfort: Grey D-Arm Sofa Bed with Built-In Storage",
     category: "Sofa Beds",
@@ -1194,7 +1168,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "sofya-sofabed-black-with-storage",
     title: "Sofya Sofabed Black with Storage",
     category: "Sofa Beds",
@@ -1205,7 +1179,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "modern-grey-sofa-bed-with-hidden-storage",
     title: "Sofya Sofabed Grey with Storage",
     category: "Sofa Beds",
@@ -1216,7 +1190,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "still-sofabed-grey",
     title: "Still Sofa bed Grey",
     category: "Sofa Beds",
@@ -1227,7 +1201,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "tual-sofabed-black-with-storage-65-103",
     title: "Tual Sofabed Black with Storage 65-103",
     category: "Sofa Beds",
@@ -1238,7 +1212,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "tual-sofabed-blue-with-storage-82-103",
     title: "Tual Sofabed Blue with Storage 82-103",
     category: "Sofa Beds",
@@ -1249,7 +1223,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "tual-sofabed-brown-with-storage-67-103",
     title: "Tual Sofabed Brown with Storage 67-103",
     category: "Sofa Beds",
@@ -1260,7 +1234,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "tual-sofabed-grey-with-storage-52-103",
     title: "Tual Sofabed Grey with Storage 52-103",
     category: "Sofa Beds",
@@ -1271,7 +1245,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "verona-sofabed-black-with-storage-65-103",
     title: "Verona Sofabed Black with Storage 65-103",
     category: "Sofa Beds",
@@ -1282,7 +1256,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "verona-sofabed-brown-with-storage-67-103",
     title: "Verona Sofabed Brown with Storage 67-103",
     category: "Sofa Beds",
@@ -1293,7 +1267,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "verona-sofabed-grey-with-storage-52-103",
     title: "Verona Sofabed Grey with Storage 52-103",
     category: "Sofa Beds",
@@ -1304,7 +1278,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "viva-sofabed-black-with-storage-65-103",
     title: "Viva Sofabed Black with Storage 65-103",
     category: "Sofa Beds",
@@ -1315,7 +1289,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "viva-sofabed-grey-with-storage-52-103",
     title: "Viva Sofabed Grey with Storage 52-103",
     category: "Sofa Beds",
@@ -1326,7 +1300,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "arctic-corner-sofa-bed-storage",
     title: "Arctic Corner Sofa Bed with Storage – Modern L-Shape Convertible Sofa (Grey, Black, Cream)",
     category: "Corner Sofas",
@@ -1337,7 +1311,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "ashton-5-seater-corner-sofa-bed-with-or-without-stool",
     title: "Ashton 5 Seater Corner Sofa Scattered back cushions",
     category: "Corner Sofas",
@@ -1348,7 +1322,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "ashton-5-seater-corner-sofa-bed",
     title: "Ashton 5 Seater Corner high back Sofa",
     category: "Corner Sofas",
@@ -1359,7 +1333,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "ashwin-32-seater-scattered-back-corner-sofa",
     title: "Ashwin 3+2 Seater Scattered Back Corner Sofa",
     category: "Corner Sofas",
@@ -1370,7 +1344,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "ashwin-5-seater-high-back-corner-sofa",
     title: "Ashwin 5-Seater High Back Corner Sofa",
     category: "Corner Sofas",
@@ -1381,7 +1355,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "ashwin-5-seater-corner-sofa",
     title: "Ashwin 5-Seater Scattered Back Corner Sofa",
     category: "Corner Sofas",
@@ -1392,7 +1366,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "dino-5-seater-corner-sofa-jumbo-cord",
     title: "Dino 5 Seater Corner Sofa–Jumbo Cord",
     category: "Corner Sofas",
@@ -1403,7 +1377,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "dylan-sofa-32-seater-jumbo-cord-copy",
     title: "Dylan Sofa corner 4 seater Jumbo cord",
     category: "Corner Sofas",
@@ -1414,7 +1388,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "victoria-3-piece-garden-corner-sofa-set-rattan-outdoor-patio-lounge-for-garden-backyard",
     title: "Garden Rattan Corner Sofa Set – Outdoor Patio Lounge for Garden & Backyard",
     category: "Corner Sofas",
@@ -1425,7 +1399,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "harrison-5-seater-corner-sofa",
     title: "Harrison 5 Seater Corner Sofa | Modern Fabric | Sofa for Living Room",
     category: "Corner Sofas",
@@ -1436,7 +1410,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "nicole-32-seater-chesterfield-corner-sofa-elegant-comfortable-fabric-couch",
     title: "Nicole 3+2 Seater Chesterfield Corner Sofa – Elegant, Comfortable Fabric Couch",
     category: "Corner Sofas",
@@ -1447,7 +1421,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "nicole-5-seater-chesterfield-corner-sofa-elegant-comfortable-fabric-couch-in-all-colors",
     title: "Nicole 5-Seater Chesterfield Corner Sofa – Elegant, Comfortable Fabric Couch",
     category: "Corner Sofas",
@@ -1458,7 +1432,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "oakland-5-seater-corner-leather-sofa",
     title: "Oakland 5 Seater Corner Leather Sofa",
     category: "Corner Sofas",
@@ -1469,7 +1443,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "ruby-alaska-5-seater-corner-sofa-velvet-luxury-cornered-to-perfection",
     title: "Ruby/Alaska 5 Seater Corner Sofa – Velvet Luxury, Cornered to Perfection",
     category: "Corner Sofas",
@@ -1480,7 +1454,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "shannon-luxury-5-seater-corner-sofa-modern-living-room-sofa",
     title: "Shannon Luxury 5 Seater Corner Sofa | Modern Living Room Sofa",
     category: "Corner Sofas",
@@ -1491,7 +1465,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "style-meets-comfort-sloane-grey-velvet-corner-sofa-5-seater-luxury-for-modern-homes",
     title: "Style Meets Comfort – Sloane Grey Velvet Corner Sofa, 5 Seater Luxury for Modern Homes",
     category: "Corner Sofas",
@@ -1502,7 +1476,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "verona-so",
     title: "Verona corner sofa 5 seater",
     category: "Corner Sofas",
@@ -1513,7 +1487,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "ashton-32-seater-sofa-high-back-cushions",
     title: "Ashton 3+2 Seater  Sofa High Back cushions",
     category: "Sofas",
@@ -1524,7 +1498,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "ashton-32-seater-sofa-scattered-back-cushions",
     title: "Ashton 3+2 Seater  Sofa Scattered back cushions",
     category: "Sofas",
@@ -1535,7 +1509,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "black-gold-lion-sofa-luxury-royal-elegance-for-modern-living",
     title: "Black Gold Lion Sofa – Luxury Royal Elegance for Modern Living",
     category: "Sofas",
@@ -1546,7 +1520,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "black-istanbul-sofa-modern-luxury-with-timeless-elegance",
     title: "Black Istanbul Sofa – Modern Luxury with Timeless Elegance",
     category: "Sofas",
@@ -1557,7 +1531,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "blue-lion-sofa-modern-luxury-timeless-comfort",
     title: "Blue Lion Sofa – Modern Luxury & Timeless Comfort",
     category: "Sofas",
@@ -1568,7 +1542,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "cream-bej-lion-sofa-timeless-luxury-elegant-comfort",
     title: "Cream Bej Lion Sofa – Timeless Luxury & Elegant Comfort",
     category: "Sofas",
@@ -1579,7 +1553,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "dino-32-seater-sofa-jumbo-cord",
     title: "Dino 3+2 Seater Sofa–Jumbo Cord",
     category: "Sofas",
@@ -1590,7 +1564,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "verona-sofa-set",
     title: "Dylan Sofa 3+2 seater Jumbo cord",
     category: "Sofas",
@@ -1601,7 +1575,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "harrison-32-seater-sofa-modern-fabric-sofa-for-living-room",
     title: "Harrison 3+2 Seater  Sofa | Modern Fabric | Sofa for Living Room",
     category: "Sofas",
@@ -1612,7 +1586,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "black-leather-electric-recliner-sofa-set",
     title: "Luxury Black Leather Electric Recliner Sofa Set with LED Lights & Cup Holders – 2 & 3 Seater Cinema Style Couch",
     category: "Sofas",
@@ -1623,7 +1597,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "oakland-sofa-32-seater-faux-leather",
     title: "Oakland Sofa – Faux Leather",
     category: "Sofas",
@@ -1634,7 +1608,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "rubyalaska-32-seater-sofa-velvet-luxury-cornered-to-perfection",
     title: "Ruby/Alaska 3+2 Seater Sofa – Velvet Luxury, Cornered to Perfection",
     category: "Sofas",
@@ -1645,7 +1619,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "shannon-luxury32-seater-sofa-modern-living-room-sofa",
     title: "Shannon Luxury 3+2 Seater Sofa | Modern Living Room Sofa",
     category: "Sofas",
@@ -1656,7 +1630,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "sloane-plush-velvet-32-seater-sofa-set-elegant-comfortable-seating",
     title: "Sloane Plush Velvet 3+2 Seater Sofa Set | Elegant & Comfortable Seating",
     category: "Sofas",
@@ -1667,7 +1641,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "teal-lion-sofa-luxury-velvet-comfort-with-bold-modern-elegance",
     title: "Teal Lion Sofa – Luxury Velvet Comfort with Bold Modern Elegance",
     category: "Sofas",
@@ -1678,7 +1652,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "verona-corner-sofa-32-seater",
     title: "Verona sofa 3+2 seater",
     category: "Sofas",
@@ -1689,7 +1663,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "1-door-wardrobe-plan",
     title: "1 Door Wardrobe with Hanging Rail and Shelf",
     category: "Wardrobes",
@@ -1700,7 +1674,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "combi-2-door-wardrobe-1-mirror-3-bottom-drawers",
     title: "2 Door Wardrobe with 1 Mirror, 3 Bottom Drawers and Inside Shelves Combi",
     category: "Wardrobes",
@@ -1711,7 +1685,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "2-door-wardrobe-plan",
     title: "2 Door Wardrobe with Shelving and Hanging Rail",
     category: "Wardrobes",
@@ -1722,7 +1696,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "3-door-wardrobe-2-mirrors-and-2-bottom-draws",
     title: "3 Door Wardrobe with 2 Mirrors and 2 Bottom Drawers",
     category: "Wardrobes",
@@ -1733,7 +1707,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "3-door-wardrobe-full-set",
     title: "3 door wardrobe full set",
     category: "Wardrobes",
@@ -1744,7 +1718,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "combi-3-door-wardrobe-with-1-mirror-3-bottom-drawers",
     title: "3 door wardrobe with 1 mirror, 3 bottom drawers",
     category: "Wardrobes",
@@ -1755,7 +1729,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "4-door-wardrobe-set",
     title: "4 Door Wardrobe Bedroom Set – with Chest of Drawers & Bedside Cabinet",
     category: "Wardrobes",
@@ -1766,7 +1740,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "4-door-wardrobe-with-2-mirrors-amp-4-bottom-drawers",
     title: "4 Door Wardrobe with 2 Mirrors and 4 Bottom Drawers",
     category: "Wardrobes",
@@ -1777,7 +1751,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "4-door-wardrobe-plan",
     title: "4 Door Wardrobe with Shelving and Hanging Rail",
     category: "Wardrobes",
@@ -1788,7 +1762,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "5-door-wardrobe-with-3-mirror-and-4-bottom-draws",
     title: "5 Door Wardrobe with 3 Mirrors and 4 Bottom Drawers",
     category: "Wardrobes",
@@ -1799,7 +1773,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "6-door-dressing-wardrobe-with-top-boxes",
     title: "6 Door Dressing Wardrobe with Top Boxes",
     category: "Wardrobes",
@@ -1810,7 +1784,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "6-door-wardrobe-full-bedroom-set",
     title: "6 Door Wardrobe Full Bedroom Set",
     category: "Wardrobes",
@@ -1821,7 +1795,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "6-door-wardrobe-with-2-mirrors-and-2-bottom-draws",
     title: "6 Door Wardrobe with 2 Mirrors and 2 Bottom Drawers",
     category: "Wardrobes",
@@ -1832,7 +1806,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "6-door-wardrobe-with-top-boxes-drawers-and-mirrors",
     title: "6 Door Wardrobe with Top Boxes, Drawers and Mirrors",
     category: "Wardrobes",
@@ -1843,7 +1817,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "8-door-wardrobe-plan",
     title: "8 Door Wardrobe with Hanging Rail and Shelving",
     category: "Wardrobes",
@@ -1854,7 +1828,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "8-door-wardrobe-with-mirrors-and-bottom-draws",
     title: "8 Door Wardrobe with Top Boxes",
     category: "Wardrobes",
@@ -1865,7 +1839,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "8-door-wardrobe",
     title: "8 Door Wardrobe – Large Storage Design",
     category: "Wardrobes",
@@ -1876,7 +1850,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "2-door-wardrobe-gent-full-set",
     title: "Classic 2 Door Wardrobe Bedroom Set – with Chest of Drawers & Bedside Cabinet",
     category: "Wardrobes",
@@ -1887,7 +1861,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "florence-sliding-door-wardrobe-modern-elegance-with-smart-storage",
     title: "Florence Sliding Door Wardrobe – Modern Elegance with Smart Storage",
     category: "Wardrobes",
@@ -1898,7 +1872,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "lyon-slide-door-wardrobe",
     title: "Lyon Slide door wardrobe",
     category: "Wardrobes",
@@ -1909,7 +1883,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "milan-slide-door-wardrobe",
     title: "Milan Slide door wardrobe",
     category: "Wardrobes",
@@ -1920,7 +1894,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "oslo-slide-door-wardrobe",
     title: "Oslo Slide door wardrobe",
     category: "Wardrobes",
@@ -1931,7 +1905,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "venice-slide-door-wardrobe",
     title: "Venice Slide door wardrobe",
     category: "Wardrobes",
@@ -1942,7 +1916,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "ambassador-luxury-beds",
     title: "Ambassador Luxury Beds",
     category: "Beds & Mattresses",
@@ -1953,7 +1927,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "arizona-luxury-beds",
     title: "Arizona Luxury Beds",
     category: "Beds & Mattresses",
@@ -1964,7 +1938,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "bedside-table-3-level",
     title: "Chester 3 Drawer Bedside Table",
     category: "Beds & Mattresses",
@@ -1975,7 +1949,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "cube-luxury-beds",
     title: "Cube Luxury Beds",
     category: "Beds & Mattresses",
@@ -1986,7 +1960,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "divan-bed",
     title: "Divan Bed",
     category: "Beds & Mattresses",
@@ -1997,7 +1971,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "florida-monaco-bed",
     title: "Florida / Monaco Bed",
     category: "Beds & Mattresses",
@@ -2008,7 +1982,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "hilton-bliss-blitz-chesterfield-bed",
     title: "Hilton / Bliss / Blitz Chesterfield Bed",
     category: "Beds & Mattresses",
@@ -2019,7 +1993,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "trio-triple-sleeper-bunk-bed-with-mattresses",
     title: "Solid Wooden Detachable Trio Bunk Bed with 2 Mattresses – Space Saving, Convertible Design",
     category: "Beds & Mattresses",
@@ -2030,7 +2004,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "wingback-bed",
     title: "Wingback Bed",
     category: "Beds & Mattresses",
@@ -2041,18 +2015,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
-    handle: "arial-marble-dining-table-emma-chairs",
-    title: "Arial Marble Dining Table with Emma Chairs — Dark Grey or Cream",
-    category: "Dining Tables",
-    images: ["data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23f3f1ee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2247%25%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2226%22%20fill%3D%22%23a9834b%22%20text-anchor%3D%22middle%22%3EFurnecia%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20fill%3D%22%237a7469%22%20text-anchor%3D%22middle%22%3EPhoto%20coming%20soon%3C%2Ftext%3E%3C%2Fsvg%3E"],
-    options: [{"name": "Table Size & Chairs", "values": ["1.6M + 4 Chairs", "1.6M + 6 Chairs", "1.8M + 4 Chairs", "1.8M + 6 Chairs", "2M + 6 Chairs", "2M + 8 Chairs"]}],
-    variants: [{ title: "1.6M + 4 Chairs", price: 940.0, image: null, available: true }, { title: "1.6M + 6 Chairs", price: 1020.0, image: null, available: true }, { title: "1.8M + 4 Chairs", price: 940.0, image: null, available: true }, { title: "1.8M + 6 Chairs", price: 1040.0, image: null, available: true }, { title: "2M + 6 Chairs", price: 1120.0, image: null, available: true }, { title: "2M + 8 Chairs", price: 1330.0, image: null, available: true }],
-    price: 940.0,
-    bestseller: false,
-    sale: false
-  },
-  {
+{
     handle: "arial-marble-dining-table-lion-knocker-chairs",
     title: "Arial Marble Dining Table with Lion Knocker Chairs — Dark Grey or Black",
     category: "Dining Tables",
@@ -2063,18 +2026,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
-    handle: "ariana-marble-dining-table-emma-chairs",
-    title: "Ariana Marble Dining Table with Emma Chairs — Dark Grey or Cream",
-    category: "Dining Tables",
-    images: ["data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23f3f1ee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2247%25%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2226%22%20fill%3D%22%23a9834b%22%20text-anchor%3D%22middle%22%3EFurnecia%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20fill%3D%22%237a7469%22%20text-anchor%3D%22middle%22%3EPhoto%20coming%20soon%3C%2Ftext%3E%3C%2Fsvg%3E"],
-    options: [{"name": "Table Size & Chairs", "values": ["1.5M + 4 Chairs", "1.5M + 6 Chairs", "1.8M + 4 Chairs", "1.8M + 6 Chairs", "2M + 6 Chairs", "2M + 8 Chairs"]}],
-    variants: [{ title: "1.5M + 4 Chairs", price: 850.0, image: null, available: true }, { title: "1.5M + 6 Chairs", price: 960.0, image: null, available: true }, { title: "1.8M + 4 Chairs", price: 900.0, image: null, available: true }, { title: "1.8M + 6 Chairs", price: 1020.0, image: null, available: true }, { title: "2M + 6 Chairs", price: 1100.0, image: null, available: true }, { title: "2M + 8 Chairs", price: 1300.0, image: null, available: true }],
-    price: 850.0,
-    bestseller: false,
-    sale: false
-  },
-  {
+{
     handle: "ariana-marble-dining-table-lion-knocker-chairs",
     title: "Ariana Marble Dining Table with Lion Knocker Chairs — Black, Light Grey, Dark Grey, Beige or Cream",
     category: "Dining Tables",
@@ -2085,7 +2037,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "black-dining-set-extendable-gold-legs",
     title: "Black Dining Set — Extendable Black Top with Golden Metal Legs",
     category: "Dining Tables",
@@ -2096,7 +2048,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "blue-dining-set-extendable-gold-legs",
     title: "Blue Dining Set — Extendable Blue Agate-Effect Top with Golden Metal Legs",
     category: "Dining Tables",
@@ -2107,7 +2059,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "extendable-dining-table-6-velvet-chairs-set-black-sand",
     title: "Extendable Dining Table & 6 Velvet Chairs Set — Black Sand",
     category: "Dining Tables",
@@ -2118,7 +2070,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "extendable-dining-table-6-velvet-chairs-set-black-wooden",
     title: "Extendable Dining Table & 6 Velvet Chairs Set — Black Wooden",
     category: "Dining Tables",
@@ -2129,7 +2081,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "extendable-dining-table-6-velvet-chairs-set-black-and-gold",
     title: "Extendable Dining Table & 6 Velvet Chairs Set — Black and Gold",
     category: "Dining Tables",
@@ -2140,7 +2092,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "extendable-dining-table-6-velvet-chairs-set-blue-and-gold",
     title: "Extendable Dining Table & 6 Velvet Chairs Set — Blue and Gold",
     category: "Dining Tables",
@@ -2151,7 +2103,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "extendable-dining-table-6-velvet-chairs-set-brown-glass",
     title: "Extendable Dining Table & 6 Velvet Chairs Set — Brown Glass",
     category: "Dining Tables",
@@ -2162,7 +2114,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "extendable-dining-table-6-velvet-chairs-set-grey-sand",
     title: "Extendable Dining Table & 6 Velvet Chairs Set — Grey Sand",
     category: "Dining Tables",
@@ -2173,7 +2125,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "extendable-dining-table-6-velvet-chairs-set-grey-and-gold",
     title: "Extendable Dining Table & 6 Velvet Chairs Set — Grey and Gold",
     category: "Dining Tables",
@@ -2184,7 +2136,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "extendable-dining-table-chairs-set-new-arrival-black",
     title: "Extendable Marble-Effect Dining Table & 6 Velvet Chairs Set — Black",
     category: "Dining Tables",
@@ -2195,7 +2147,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "extendable-dining-table-chairs-set-new-arrival-green",
     title: "Extendable Marble-Effect Dining Table & 6 Velvet Chairs Set — Green",
     category: "Dining Tables",
@@ -2206,7 +2158,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "extendable-dining-table-chairs-set-new-arrival-grey-chrome-legs",
     title: "Extendable Marble-Effect Dining Table & 6 Velvet Chairs Set — Grey (Chrome Legs)",
     category: "Dining Tables",
@@ -2217,7 +2169,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "extendable-dining-table-chairs-set-new-arrival-grey-golden-legs",
     title: "Extendable Marble-Effect Dining Table & 6 Velvet Chairs Set — Grey (Golden Legs)",
     category: "Dining Tables",
@@ -2228,7 +2180,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "golden-extendable-dining-table-modern-luxury-dining-table-gold",
     title: "Golden Extendable Dining Table — Gold",
     category: "Dining Tables",
@@ -2239,7 +2191,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "golden-extendable-dining-table-modern-luxury-dining-table-honey-gold",
     title: "Golden Extendable Dining Table — Honey Gold",
     category: "Dining Tables",
@@ -2250,7 +2202,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "green-dining-set-extendable-gold-legs",
     title: "Green Dining Set — Extendable Green Marble-Effect Top with Golden Metal Legs",
     category: "Dining Tables",
@@ -2261,7 +2213,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "grey-dining-set-extendable-chrome-legs",
     title: "Grey Dining Set — Extendable Grey Top with Chrome Metal Legs",
     category: "Dining Tables",
@@ -2272,7 +2224,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "grey-dining-set-extendable-golden-legs",
     title: "Grey Dining Set — Extendable Grey Top with Golden Metal Legs",
     category: "Dining Tables",
@@ -2283,18 +2235,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
-    handle: "marble-dining-table-4-legs-emma-chairs",
-    title: "Marble Dining Table (4-Leg Base) with Emma Chairs — Dark Grey or Cream",
-    category: "Dining Tables",
-    images: ["data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23f3f1ee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2247%25%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2226%22%20fill%3D%22%23a9834b%22%20text-anchor%3D%22middle%22%3EFurnecia%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20fill%3D%22%237a7469%22%20text-anchor%3D%22middle%22%3EPhoto%20coming%20soon%3C%2Ftext%3E%3C%2Fsvg%3E"],
-    options: [{"name": "Table Size & Chairs", "values": ["1.5M + 4 Chairs", "1.5M + 6 Chairs", "1.8M + 4 Chairs", "1.8M + 6 Chairs", "2M + 6 Chairs", "2M + 8 Chairs"]}],
-    variants: [{ title: "1.5M + 4 Chairs", price: 770.0, image: null, available: true }, { title: "1.5M + 6 Chairs", price: 900.0, image: null, available: true }, { title: "1.8M + 4 Chairs", price: 820.0, image: null, available: true }, { title: "1.8M + 6 Chairs", price: 930.0, image: null, available: true }, { title: "2M + 6 Chairs", price: 1080.0, image: null, available: true }, { title: "2M + 8 Chairs", price: 1250.0, image: null, available: true }],
-    price: 770.0,
-    bestseller: false,
-    sale: false
-  },
-  {
+{
     handle: "marble-dining-table-4-legs-lion-knocker-chairs",
     title: "Marble Dining Table (4-Leg Base) with Lion Knocker Chairs — Dark Grey or Black",
     category: "Dining Tables",
@@ -2305,7 +2246,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "modern-coffee-table-stylish-amp-durable-furniture-for-your-home-rose-model",
     title: "Modern Dining Table — Rose Model",
     category: "Dining Tables",
@@ -2316,7 +2257,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "modern-coffee-table-stylish-amp-durable-furniture-for-your-home-walnut",
     title: "Modern Dining Table — Walnut",
     category: "Dining Tables",
@@ -2327,7 +2268,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "modern-coffee-table-stylish-amp-durable-furniture-for-your-home-white-smart",
     title: "Modern Dining Table — White Smart",
     category: "Dining Tables",
@@ -2338,7 +2279,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "round-dining-table-modern-dining-table-black-and-white",
     title: "Round Dining Table — Black and White",
     category: "Dining Tables",
@@ -2349,7 +2290,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "round-dining-table-modern-dining-table-glass",
     title: "Round Dining Table — Glass",
     category: "Dining Tables",
@@ -2360,7 +2301,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "round-dining-table-modern-dining-table-grey-wave-glass",
     title: "Round Dining Table — Grey Wave Glass",
     category: "Dining Tables",
@@ -2371,7 +2312,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "round-dining-table-modern-dining-table-lagina-grey",
     title: "Round Dining Table — Lagina Grey",
     category: "Dining Tables",
@@ -2382,7 +2323,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "round-dining-table-modern-dining-table-rose-glass",
     title: "Round Dining Table — Rose Glass",
     category: "Dining Tables",
@@ -2393,7 +2334,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "round-dining-table-modern-dining-table-white-bubble-glass",
     title: "Round Dining Table — White Bubble Glass",
     category: "Dining Tables",
@@ -2404,7 +2345,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "turkish-dining-table-with-6-chairs-black-bubble",
     title: "Turkish Dining Table with 6 Chairs — Black Bubble",
     category: "Dining Tables",
@@ -2415,7 +2356,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "turkish-dining-table-with-6-chairs-black-rose-glass",
     title: "Turkish Dining Table with 6 Chairs — Black Rose Glass",
     category: "Dining Tables",
@@ -2426,7 +2367,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "turkish-dining-table-with-6-chairs-black-and-white",
     title: "Turkish Dining Table with 6 Chairs — Black and White",
     category: "Dining Tables",
@@ -2437,7 +2378,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "turkish-dining-table-with-6-chairs-full-white",
     title: "Turkish Dining Table with 6 Chairs — Full White",
     category: "Dining Tables",
@@ -2448,7 +2389,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "turkish-dining-table-with-6-chairs-grey-and-white",
     title: "Turkish Dining Table with 6 Chairs — Grey and White",
     category: "Dining Tables",
@@ -2459,7 +2400,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "turkish-dining-table-with-6-chairs-real-marble",
     title: "Turkish Dining Table with 6 Chairs — Real Marble",
     category: "Dining Tables",
@@ -2470,7 +2411,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "turkish-dining-table-with-6-chairs-white-marble",
     title: "Turkish Dining Table with 6 Chairs — White Marble",
     category: "Dining Tables",
@@ -2481,7 +2422,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "wooden-dining-table-bermuda-grey-marble-white-legs",
     title: "Wooden Dining Table — Bermuda Grey Marble, White Legs",
     category: "Dining Tables",
@@ -2492,7 +2433,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "wooden-dining-table-calcutta-grey-marble-steel-legs",
     title: "Wooden Dining Table — Calcutta Grey Marble, Steel Legs",
     category: "Dining Tables",
@@ -2503,176 +2444,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
-    handle: "diamond-stitch-dining-chair-charcoal",
-    title: "Diamond Stitch Dining Chair — Charcoal",
-    category: "Bar Stools & Chairs",
-    description: "A curved-back dining chair in charcoal velvet-effect fabric with diamond stitch detailing and slim metal legs. Comfortable, contemporary seating that suits a dining table or occasional use around the home.",
-    dimensions: "H 85cm x W 48cm x D 55cm &middot; Seat height 46cm",
-    images: ["images/barstools/diningchair-charcoal-1.jpg", "images/barstools/diningchair-charcoal-2.jpg"],
-    options: [],
-    variants: [{ title: "Default", price: 50.0, image: null, available: true }],
-    price: 50.0,
-    bestseller: false,
-    sale: false
-  },
-  {
-    handle: "diamond-stitch-dining-chair-grey",
-    title: "Diamond Stitch Dining Chair — Grey",
-    category: "Bar Stools & Chairs",
-    description: "A curved-back dining chair in grey velvet-effect fabric with diamond stitch detailing and slim metal legs. Comfortable, contemporary seating that suits a dining table or occasional use around the home.",
-    dimensions: "H 85cm x W 48cm x D 55cm &middot; Seat height 46cm",
-    images: ["images/barstools/diningchair-grey-1.jpg"],
-    options: [],
-    variants: [{ title: "Default", price: 50.0, image: null, available: true }],
-    price: 50.0,
-    bestseller: false,
-    sale: false
-  },
-  {
-    handle: "diamond-stitch-swivel-bar-stool-cream",
-    title: "Diamond Stitch Swivel Bar Stool — Cream",
-    category: "Bar Stools & Chairs",
-    description: "A cream velvet-effect bar stool with diamond stitching, a gas-lift height adjustment and a 360° swivel chrome base — comfortable counter-height seating for kitchen islands and breakfast bars.",
-    dimensions: "H 90-110cm (adjustable) &middot; Seat height 65-85cm &middot; Seat 38cm diameter &middot; Base 35cm diameter",
-    images: ["images/barstools/swivelstool-cream-1.jpg"],
-    options: [],
-    variants: [{ title: "Default", price: 40.0, image: null, available: true }],
-    price: 40.0,
-    bestseller: false,
-    sale: false
-  },
-  {
-    handle: "diamond-stitch-swivel-bar-stool-green",
-    title: "Diamond Stitch Swivel Bar Stool — Green",
-    category: "Bar Stools & Chairs",
-    description: "A green velvet-effect bar stool with diamond stitching, a gas-lift height adjustment and a 360° swivel chrome base — comfortable counter-height seating for kitchen islands and breakfast bars.",
-    dimensions: "H 90-110cm (adjustable) &middot; Seat height 65-85cm &middot; Seat 38cm diameter &middot; Base 35cm diameter",
-    images: ["images/barstools/swivelstool-green-1.jpg"],
-    options: [],
-    variants: [{ title: "Default", price: 40.0, image: null, available: true }],
-    price: 40.0,
-    bestseller: false,
-    sale: false
-  },
-  {
-    handle: "diamond-stitch-swivel-bar-stool-pink",
-    title: "Diamond Stitch Swivel Bar Stool — Pink",
-    category: "Bar Stools & Chairs",
-    description: "A pink velvet-effect bar stool with diamond stitching, a gas-lift height adjustment and a 360° swivel chrome base — comfortable counter-height seating for kitchen islands and breakfast bars.",
-    dimensions: "H 90-110cm (adjustable) &middot; Seat height 65-85cm &middot; Seat 38cm diameter &middot; Base 35cm diameter",
-    images: ["images/barstools/swivelstool-pink-1.jpg"],
-    options: [],
-    variants: [{ title: "Default", price: 40.0, image: null, available: true }],
-    price: 40.0,
-    bestseller: false,
-    sale: false
-  },
-  {
-    handle: "diamond-stitch-tub-armchair-charcoal",
-    title: "Diamond Stitch Tub Armchair — Charcoal",
-    category: "Bar Stools & Chairs",
-    description: "A cosy charcoal velvet-effect tub chair with elegant diamond stitching and slim tapered legs. The padded seat and back with high armrests make it a comfortable accent chair for a living room, bedroom or hallway corner.",
-    dimensions: "H 78cm x W 68cm x D 68cm &middot; Seat height 45cm",
-    images: ["images/barstools/armchair-charcoal-1.jpg", "images/barstools/armchair-charcoal-2.jpg", "images/barstools/armchair-charcoal-3.jpg"],
-    options: [],
-    variants: [{ title: "Default", price: 60.0, image: null, available: true }],
-    price: 60.0,
-    bestseller: false,
-    sale: false
-  },
-  {
-    handle: "diamond-stitch-tub-armchair-cream",
-    title: "Diamond Stitch Tub Armchair — Cream",
-    category: "Bar Stools & Chairs",
-    description: "A cosy cream velvet-effect tub chair with elegant diamond stitching and slim tapered legs. The padded seat and back with high armrests make it a comfortable accent chair for a living room, bedroom or hallway corner.",
-    dimensions: "H 78cm x W 68cm x D 68cm &middot; Seat height 45cm",
-    images: ["images/barstools/armchair-cream-1.jpg"],
-    options: [],
-    variants: [{ title: "Default", price: 60.0, image: null, available: true }],
-    price: 60.0,
-    bestseller: false,
-    sale: false
-  },
-  {
-    handle: "diamond-stitch-tub-armchair-tan",
-    title: "Diamond Stitch Tub Armchair — Tan",
-    category: "Bar Stools & Chairs",
-    description: "A cosy tan velvet-effect tub chair with elegant diamond stitching and slim tapered legs. The padded seat and back with high armrests make it a comfortable accent chair for a living room, bedroom or hallway corner.",
-    dimensions: "H 78cm x W 68cm x D 68cm &middot; Seat height 45cm",
-    images: ["images/barstools/armchair-orange-1.jpg", "images/barstools/armchair-orange-2.jpg"],
-    options: [],
-    variants: [{ title: "Default", price: 60.0, image: null, available: true }],
-    price: 60.0,
-    bestseller: false,
-    sale: false
-  },
-  {
-    handle: "moulded-swivel-bar-stool-grey",
-    title: "Moulded Swivel Bar Stool — Grey",
-    category: "Bar Stools & Chairs",
-    description: "A sleek grey moulded-seat bar stool with a gas-lift chrome swivel base — durable, wipe-clean seating for kitchens and home bars.",
-    dimensions: "H 90-110cm (adjustable) &middot; Seat height 65-85cm &middot; Seat 38cm diameter &middot; Base 35cm diameter",
-    images: ["images/barstools/moldedstool-grey-1.jpg"],
-    options: [],
-    variants: [{ title: "Default", price: 40.0, image: null, available: true }],
-    price: 40.0,
-    bestseller: false,
-    sale: false
-  },
-  {
-    handle: "moulded-swivel-bar-stool-white",
-    title: "Moulded Swivel Bar Stool — White",
-    category: "Bar Stools & Chairs",
-    description: "A sleek white moulded-seat bar stool with a gas-lift chrome swivel base — durable, wipe-clean seating for kitchens and home bars.",
-    dimensions: "H 90-110cm (adjustable) &middot; Seat height 65-85cm &middot; Seat 38cm diameter &middot; Base 35cm diameter",
-    images: ["images/barstools/swivelstool-grey-1.jpg"],
-    options: [],
-    variants: [{ title: "Default", price: 40.0, image: null, available: true }],
-    price: 40.0,
-    bestseller: false,
-    sale: false
-  },
-  {
-    handle: "round-wood-top-side-stool",
-    title: "Round Wood-Top Side Stool",
-    category: "Bar Stools & Chairs",
-    description: "A compact round stool with a natural wood-effect seat on a slim pedestal base — handy extra seating, a plant stand, or a side table for small spaces.",
-    dimensions: "H 45cm x Diameter 30cm",
-    images: ["images/barstools/smallstool-1.jpg"],
-    options: [],
-    variants: [{ title: "Default", price: 40.0, image: null, available: true }],
-    price: 40.0,
-    bestseller: false,
-    sale: false
-  },
-  {
-    handle: "wire-mesh-bar-stool-grey",
-    title: "Wire-Mesh Bar Stool — Grey",
-    category: "Bar Stools & Chairs",
-    description: "A modern bar stool with a breathable wire-mesh backrest, moulded grey seat and sturdy black metal legs — a lightweight, easy-clean option for kitchens and breakfast bars.",
-    dimensions: "H 100cm x W 45cm x D 42cm &middot; Seat height 75cm",
-    images: ["images/barstools/meshstool-white-1.jpg"],
-    options: [],
-    variants: [{ title: "Default", price: 40.0, image: null, available: true }],
-    price: 40.0,
-    bestseller: false,
-    sale: false
-  },
-  {
-    handle: "wire-mesh-bar-stool-white",
-    title: "Wire-Mesh Bar Stool — White",
-    category: "Bar Stools & Chairs",
-    description: "A modern bar stool with a breathable wire-mesh backrest, moulded white seat and sturdy black metal legs — a lightweight, easy-clean option for kitchens and breakfast bars.",
-    dimensions: "H 100cm x W 45cm x D 42cm &middot; Seat height 75cm",
-    images: ["images/barstools/meshstool-grey-1.jpg"],
-    options: [],
-    variants: [{ title: "Default", price: 40.0, image: null, available: true }],
-    price: 40.0,
-    bestseller: false,
-    sale: false
-  },
-  {
+{
     handle: "garden-rattan-1-1-2-seater-sofa-set-outdoor-patio-lounge-furniture",
     title: "Garden Rattan 1+1+2 Seater Sofa Set – Outdoor Patio Lounge Furniture",
     category: "Outdoor Furniture",
@@ -2683,7 +2455,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "chester-3-drawer-chest-of-drawers",
     title: "Chester Chest of Drawers – 3 to 7 Drawer",
     category: "Furniture",
@@ -2694,7 +2466,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "dino-jumbo-cord-armchair-grey-or-beige-cozy-stylish-accent-seating",
     title: "Dino Jumbo Cord Armchair – Grey or Beige | Cosy & Stylish Accent Seating",
     category: "Furniture",
@@ -2705,7 +2477,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "luxury-chesterfield-armchair-classic-tufted-design-timeless-comfort",
     title: "Luxury Chesterfield Armchair – Classic Tufted Design & Timeless Comfort",
     category: "Furniture",
@@ -2716,7 +2488,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "mattress",
     title: "Mattress – Sprung, Full Foam & Pocket Spring, All UK Sizes",
     category: "Furniture",
@@ -2727,7 +2499,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "memory-foam-mattress-uk",
     title: "Memory Foam Mattress – Pressure Relief",
     category: "Furniture",
@@ -2738,7 +2510,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "oakland-sofa-set-2-seater-3-seater-corner-sofa-armchair-brown-fabric-fullback-sofa-set-3-seater-1-armchair-copy-2",
     title: "Oakland Armchair – Vintage Elegance Meets Modern Comfort",
     category: "Furniture",
@@ -2749,7 +2521,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
-  {
+{
     handle: "verona-arm-chair-cuddle-chair",
     title: "Verona Arm Chair & Cuddle Chair",
     category: "Furniture",
@@ -2760,6 +2532,7 @@ const PRODUCTS = [
     bestseller: false,
     sale: false
   },
+
 ];
 
 const CATEGORIES = [...new Set(PRODUCTS.map(p => p.category))];
