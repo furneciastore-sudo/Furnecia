@@ -2533,6 +2533,55 @@ const PRODUCTS = [
     sale: false
   },
 
+  {
+    handle: "lilly-corner-sofa-4-seater",
+    title: "Lilly Corner Sofa — 4 Seater",
+    category: "Corner Sofas",
+    description: "Transform your living space with the Lilly Corner Sofa—where high-end designer aesthetics meet everyday luxury.",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsAppImage2024-11-05at8.14.16AM.jpg?v=1789297414", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsAppImage2024-11-05at8.14.08AM.jpg?v=1789297414", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsApp_Image_2024-11-05_at_8.14.35_AM.jpg?v=1789297504", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/465500032_511678831696708_797678968362353613_n.jpg?v=1789297414", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsAppImage2024-11-05at8.14.13AM_1.jpg?v=1789297414", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsAppImage2024-11-05at8.14.21AM.jpg?v=1789297414", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsAppImage2024-11-05at8.14.22AM_1.jpg?v=1789297414", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsApp_Image_2024-11-05_at_8.14.54_AM_1.jpg?v=1789297800", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsApp_Image_2024-11-05_at_8.14.49_AM_1.jpg?v=1789297829"],
+    options: [],
+    variants: [{ title: "Default", price: 550.0, image: null, available: true }],
+    price: 550.0,
+    bestseller: false,
+    sale: false
+  },
+  {
+    handle: "lilly-corner-sofa-5-seater",
+    title: "Lilly Corner Sofa — 5 Seater",
+    category: "Corner Sofas",
+    description: "Transform your living space with the Lilly Corner Sofa—where high-end designer aesthetics meet everyday luxury.",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsApp_Image_2024-11-05_at_8.14.37_AM.jpg?v=1789297985", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsApp_Image_2024-11-05_at_8.14.33_AM_1.jpg?v=1789297984", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsApp_Image_2024-11-05_at_8.14.37_AM_1.jpg?v=1789297984", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsAppImage2024-11-05at8.14.37AM_1.jpg?v=1789297939", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsApp_Image_2024-11-05_at_8.14.32_AM.jpg?v=1789297985", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsApp_Image_2024-11-05_at_8.14.36_AM.jpg?v=1789297984", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsApp_Image_2024-11-05_at_8.14.38_AM_1.jpg?v=1789297985", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsApp_Image_2024-11-05_at_8.14.42_AM.jpg?v=1789297985", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsApp_Image_2024-11-05_at_8.14.44_AM_1.jpg?v=1789297985"],
+    options: [],
+    variants: [{ title: "Default", price: 600.0, image: null, available: true }],
+    price: 600.0,
+    bestseller: false,
+    sale: false
+  },
+  {
+    handle: "lilly-3-2-seater-sofa-set",
+    title: "Lilly 3+2 Seater Sofa Set",
+    category: "Sofas",
+    description: "Transform your living space with the Lilly 3+2 Seater Sofa Set—where high-end designer aesthetics meet everyday luxury.",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsAppImage2024-11-05at8.14.30AM_1.jpg?v=1789298229", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsAppImage2024-11-05at8.14.24AM_1.jpg?v=1789298229", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsAppImage2024-11-05at8.14.34AM_1.jpg?v=1789298229", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/465586258_1064153091844585_6892312346904885218_n_dc4b825c-921a-4ecc-9771-419cb8d130a4.jpg?v=1789298229", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsAppImage2024-11-05at8.14.11AM_1.jpg?v=1789298229", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsAppImage2024-11-05at8.14.14AM.jpg?v=1789298229", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsAppImage2024-11-05at8.14.25AM_1.jpg?v=1789298229", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsAppImage2024-11-05at8.14.26AM_1.jpg?v=1789298229", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsAppImage2024-11-05at8.14.36AM_1_fbd164a4-9710-4077-b5c6-6bb7da1aa92b.jpg?v=1789298229", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsAppImage2024-11-05at8.14.57AM_1.jpg?v=1789298229"],
+    options: [],
+    variants: [{ title: "Default", price: 600.0, image: null, available: true }],
+    price: 600.0,
+    bestseller: false,
+    sale: false
+  },
+  {
+    handle: "leather-gray-2-seater-sofa-bed-compact-comfort-timeless-style",
+    title: "Leather Grey 2-Seater Sofa Bed — Compact Comfort, Timeless Style",
+    category: "Sofa Beds",
+    description: "New Leather Grey 2-Seater Sofa – Compact Luxury for Modern Living Discover refined comfort and timeless elegance with the New Leather Grey 2-Seater Sofa , a stylish and space-efficient solution for today's contemporary homes.",
+    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-v3-1.jpg?v=1784749517", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/gray-sofa-bed-v3-2.jpg?v=1784749517"],
+    options: [],
+    variants: [{ title: "Default", price: 275.0, compareAtPrice: 290.0, image: null, available: true }],
+    price: 275.0,
+    compareAtPrice: 290.0,
+    bestseller: false,
+    sale: true
+  },
 ];
 
 const CATEGORIES = [...new Set(PRODUCTS.map(p => p.category))];
