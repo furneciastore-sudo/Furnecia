@@ -173,7 +173,7 @@ const PRODUCTS = [
     handle: "berlin-sofa-bed-cream-velvet",
     title: "Berlin sofa bed cream velvet",
     category: "Sofa Beds",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/berlin-corner-sofa-bed-4.jpg?v=1784750322", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsApp_Image_2023-06-10_at_7.33.46_AM_2dfee988-3036-4955-8f17-1ecbdb5508a3.jpg?v=1783927071", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsApp_Image_2023-06-10_at_7.33.15_AM_-_Copy_-_Copy_d72c5e8c-4a3c-4071-bcc7-b796b46f671a.jpg?v=1783927071", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsApp_Image_2023-06-10_at_7.33.22_AM_7bce2baa-bd75-4c67-8c85-09a106547251.jpg?v=1783927071", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsApp_Image_2023-06-10_at_7.33.48_AM_1_-_Copy.jpg?v=1783927071", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsApp_Image_2023-06-10_at_7.33.48_AM.jpg?v=1783927071"],
+    images: ["images/berlin-sofa-bed-cream/cream-velvet-1.jpg", "images/berlin-sofa-bed-cream/cream-velvet-2.jpg", "images/berlin-sofa-bed-cream/cream-velvet-3.jpg", "images/berlin-sofa-bed-cream/cream-velvet-4.jpg", "images/berlin-sofa-bed-cream/cream-velvet-5.jpg", "images/berlin-sofa-bed-cream/cream-velvet-6.jpg"],
     options: [],
     variants: [{ title: "Default", price: 400.0, compareAtPrice: 400.0, image: null, available: true }],
     price: 400.0,
