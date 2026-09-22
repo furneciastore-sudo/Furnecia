@@ -60,7 +60,7 @@ function renderDealsStrip(targetId) {
   const deals = saleProducts().slice(0, 14);
   if (!deals.length) { el.style.display = "none"; return; }
   el.innerHTML = `
-    <div class="deals-strip-label"><span class="eyebrow">While Stock Lasts</span></div>
+    <div class="deals-strip-label"><span class="eyebrow">Winter Sale &middot; While Stock Lasts</span></div>
     <div class="deals-track-wrap">
       <div class="deals-track">${deals.map(dealCardHTML).join("")}</div>
     </div>

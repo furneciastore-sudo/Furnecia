@@ -10,7 +10,7 @@ const HEADER_HTML = `
       <a data-phone-link href="#"><span data-shop-phone></span></a>
       <a data-mail-link href="#"><span data-shop-email></span></a>
     </div>
-    <div><span data-free-delivery-note></span> &middot; <a href="shop.html">Shop the Sale</a></div>
+    <div><span data-free-delivery-note></span> &middot; <a href="shop.html?cat=Sale">Winter Sale — Shop Now</a></div>
   </div>
 </div>
 <header class="site-header">
