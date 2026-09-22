@@ -60,9 +60,6 @@ Play Store; allow it for this file.
   stored in the browser/WebView's own local storage** (`src/lib/localApi.ts`
   and `src/lib/localStore.ts`) — there is no server, no database to host,
   nothing to deploy for the app to work.
-- The app password (Settings → Security) is a soft PIN check done on the
-  device, not a real login system — appropriate for a single-device
-  personal tool, not a shared multi-user system.
 - **Data does not sync between devices.** If you install this on two
   phones, each has its own separate set of orders. If you want a backup,
   or to move data to a new phone, use **Orders → Export CSV** regularly

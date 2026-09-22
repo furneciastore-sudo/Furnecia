@@ -164,21 +164,6 @@ export function SettingsForm({ initial }: { initial: SettingsMap }) {
         </Grid>
       </Section>
 
-      <Section title="Security" description="This app works entirely offline — this password just locks the app on this device.">
-        <Grid>
-          <div>
-            <label className="label">App Password</label>
-            <input
-              type="text"
-              className="input"
-              value={values.appPassword}
-              onChange={(e) => set("appPassword", e.target.value)}
-            />
-            <p className="mt-1 text-xs text-gray-400">Changing this takes effect the next time you sign in.</p>
-          </div>
-        </Grid>
-      </Section>
-
       <div className="flex items-center gap-3">
         <button type="submit" disabled={saving} className="btn-primary">{saving ? "Saving…" : "Save Settings"}</button>
         {saved && <span className="text-sm text-green-600">Saved.</span>}

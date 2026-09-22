@@ -33,11 +33,6 @@ export const DEFAULT_SETTINGS: Record<string, string> = {
 
   orderPrefix: "FRN",
 
-  // Local app lock — this is a single-device offline app, so this is a
-  // soft PIN/password check done entirely on the phone, not a real
-  // authentication system.
-  appPassword: "furnecia123",
-
   // Delivery Date Checker — a separate tool from Orders. A product's own
   // lead time wins, then its vendor's, then this fallback default.
   deliveryDefaultLeadTimeDays: "14",

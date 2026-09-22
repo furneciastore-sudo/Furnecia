@@ -21,7 +21,6 @@ not linked to or published on the public website.
 | Data storage | **The browser's own local storage** (`src/lib/localApi.ts`) | Every order, vendor, product, payment, reminder and setting lives on the device itself. No database to host, no monthly cost, no internet dependency, works the moment the app opens. |
 | Styling | **Tailwind CSS** + self-hosted **Inter** font | Fast to build a clean, consistent, mobile-responsive UI. |
 | Charts | **Recharts** | Lightweight charts for the Profit Dashboard. |
-| App lock | A single password checked in the browser, unlocked for the session (`src/lib/localAuth.ts`) | Since everything is local to one device, this is a soft PIN, not a real multi-user login system. See §4. |
 
 This is about as low-cost and low-maintenance as it gets: no server bill,
 no database to manage, no accounts, nothing to keep running.
@@ -76,14 +75,10 @@ live server for Google Sheets to sync against. What's still built in:
 
 ---
 
-## 4. The app lock & data safety
+## 4. Data safety
 
-- One password (Settings → Security, `appPassword`) locks the app on this
-  device. It's checked entirely in the browser — there's no account, no
-  server, nothing to reset remotely if forgotten (check Settings while
-  still signed in, or clear the site's local storage as a last resort,
-  which also erases the data).
-- **All data lives only on this device.** There is nothing to back up on
+- The app opens straight to the dashboard — no password or lock screen.
+  **All data lives only on this device.** There is nothing to back up on
   a server because there is no server. See §6.
 - If you ever host the built site somewhere (to install the PWA — see
   `ANDROID.md`), still serve it over HTTPS, but note the security model
@@ -132,9 +127,6 @@ cd dashboard
 npm install
 npm run dev            # http://localhost:3000
 ```
-
-Sign in with the default password `furnecia123`, then change it from
-Settings → Security.
 
 The first time the app runs, it loads the real UK postcode delivery-day
 reference data into the Delivery Checker (see `dashboard/ANDROID.md`
