@@ -31,9 +31,9 @@ const SITE = {
   // Leaving any of these blank means the "Send Order via Email" button
   // falls back to opening the customer's own email app instead — nothing
   // breaks either way, it just needs their tap.
-  emailjsPublicKey: "",
-  emailjsServiceId: "",
-  emailjsTemplateId: "",
+  emailjsPublicKey: "DR3SM_WQtlbAK-F9y",
+  emailjsServiceId: "service_vtp635h",
+  emailjsTemplateId: "template_gu3jwgc",
 
   // ---- Marketing tracking (optional, all off until filled in) ----
   // metaPixelId: Meta Events Manager -> your Pixel -> Pixel ID (numbers only).
