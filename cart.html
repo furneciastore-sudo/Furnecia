@@ -54,8 +54,9 @@
       </div>
       <div class="checkout-actions">
         <a class="btn btn-whatsapp" id="wa-checkout-btn" target="_blank" rel="noopener noreferrer">Send Order via WhatsApp</a>
-        <a class="btn btn-email" id="email-checkout-btn">Send Order via Email</a>
+        <button type="button" class="btn btn-email" id="email-checkout-btn">Send Order via Email</button>
       </div>
+      <p id="email-checkout-status" style="display:none;margin-top:8px;font-size:13px;"></p>
     </form>
   </div>
 </div>
@@ -68,6 +69,7 @@
 <script src="js/reviews.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/shopify-cart.js"></script>
+<script src="js/order-email.js"></script>
 <script src="js/layout.js"></script>
 <script src="js/main.js"></script>
 <script src="js/tracking.js"></script>
@@ -181,29 +183,68 @@
   function bindCheckoutLinks() {
     const waBtn = document.getElementById("wa-checkout-btn");
     const emailBtn = document.getElementById("email-checkout-btn");
+    const emailStatus = document.getElementById("email-checkout-status");
 
     function refreshLinks() {
       const text = buildOrderText();
       waBtn.href = waLink(text);
-      emailBtn.href = mailLink("New Cash on Delivery Order — Furnecia", text);
     }
     document.getElementById("checkout-form").addEventListener("input", refreshLinks);
     refreshLinks();
 
     const requiredIds = ["c-name", "c-phone", "c-address", "c-city"];
-    function guardClick(e) {
-      const missing = requiredIds.filter(id => !document.getElementById(id).value.trim());
-      if (missing.length) {
-        e.preventDefault();
-        alert("Please fill in your name, phone, address and city before ordering.");
-        return;
-      }
+    function missingFields() {
+      return requiredIds.filter(id => !document.getElementById(id).value.trim());
+    }
+    function fieldValues() {
+      return {
+        name: document.getElementById("c-name").value.trim(),
+        phone: document.getElementById("c-phone").value.trim(),
+        email: document.getElementById("c-email").value.trim(),
+        address: document.getElementById("c-address").value.trim(),
+        city: document.getElementById("c-city").value.trim(),
+        notes: document.getElementById("c-notes").value.trim(),
+      };
+    }
+    function trackCheckout() {
       if (typeof trackEvent === "function") {
         trackEvent("InitiateCheckout", { value: cartTotal(), currency: "GBP", num_items: cartItemsWithDetails().reduce((s, i) => s + i.qty, 0) });
       }
     }
-    waBtn.addEventListener("click", guardClick);
-    emailBtn.addEventListener("click", guardClick);
+
+    waBtn.addEventListener("click", (e) => {
+      if (missingFields().length) {
+        e.preventDefault();
+        alert("Please fill in your name, phone, address and city before ordering.");
+        return;
+      }
+      trackCheckout();
+    });
+
+    emailBtn.addEventListener("click", async () => {
+      if (missingFields().length) {
+        alert("Please fill in your name, phone, address and city before ordering.");
+        return;
+      }
+      trackCheckout();
+      const text = buildOrderText();
+      const originalLabel = emailBtn.textContent;
+      emailBtn.disabled = true;
+      emailBtn.textContent = "Sending…";
+      const sent = await sendOrderEmailAuto(text, fieldValues());
+      emailBtn.disabled = false;
+      emailBtn.textContent = originalLabel;
+      if (sent) {
+        emailStatus.style.display = "block";
+        emailStatus.style.color = "green";
+        emailStatus.textContent = "Order sent! We'll contact you shortly to confirm delivery.";
+      } else {
+        // Not configured, or the request failed — fall back to opening
+        // the customer's own email app with the order pre-filled, exactly
+        // as this button always used to work.
+        window.location.href = mailLink("New Cash on Delivery Order — Furnecia", text);
+      }
+    });
   }
 
   (async () => {
