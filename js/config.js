@@ -11,6 +11,13 @@ const SITE = {
   freeDeliveryNote: "Free Delivery in England &middot; £20 to Wales &middot; £30 to Scotland",
   deliveryNotePlain: "Free delivery in England. £20 to Wales, £30 to Scotland.",
 
+  // ---- Homepage hero video (optional) ----
+  // Drop an MP4 into videos/hero.mp4 (see js/product-videos.js for specs
+  // and product-page video setup) and set this to "videos/hero.mp4" — the
+  // homepage hero plays it muted/looped instead of the static photo. Leave
+  // blank to keep the current image; nothing breaks either way.
+  heroVideoUrl: "",
+
   // ---- Shopify headless backend (live products, cart, checkout) ----
   // Fill these in from Shopify Admin: Settings -> Apps and sales channels ->
   // Develop apps -> (your app) -> API credentials -> Storefront API access token.

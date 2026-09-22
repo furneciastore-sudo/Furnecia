@@ -19,6 +19,7 @@
 <script src="js/config.js"></script>
 <script src="js/products.js"></script>
 <script src="js/shopify-storefront.js"></script>
+<script src="js/product-videos.js"></script>
 <script src="js/reviews.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/layout.js"></script>
@@ -118,6 +119,11 @@
               </div>
             ` : ""}
           </div>
+          ${product.video ? `
+            <div class="product-video-wrap">
+              <video src="${product.video}" controls playsinline preload="metadata" poster="${shopifyImg(product.images[0], 1200)}"></video>
+            </div>
+          ` : ""}
         </div>
         <div class="product-detail-info">
           <span class="product-detail-category">${product.category}</span>
