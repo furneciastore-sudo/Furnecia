@@ -40,7 +40,7 @@ const SITE = {
   // breaks either way, it just needs their tap.
   emailjsPublicKey: "DR3SM_WQtlbAK-F9y",
   emailjsServiceId: "service_vtp635h",
-  emailjsTemplateId: "template_gu3jwgc",
+  emailjsTemplateId: "template_e8elpbn",
 
   // ---- Marketing tracking (optional, all off until filled in) ----
   // metaPixelId: Meta Events Manager -> your Pixel -> Pixel ID (numbers only).
