@@ -46,6 +46,11 @@ export const DEFAULT_SETTINGS: Record<string, string> = {
   aiProvider: "claude",
   aiModel: "",
   aiApiKey: "",
+
+  // Auto Import from Gmail (optional) — on each app open, automatically
+  // reads new order emails and creates orders with no review step. Needs
+  // your own Google Cloud OAuth Client ID and a one-time "Connect Gmail".
+  gmailClientId: "",
 };
 
 export type SettingsMap = typeof DEFAULT_SETTINGS;
