@@ -33,30 +33,7 @@ sandboxed environment's network policy blocks that host entirely (403 on
 every request, confirmed while setting this up). Nothing wrong with the
 project itself — it's ready to build, just not *here*.
 
-Two ways to actually get the `.apk`:
-
-### B1 — Let GitHub build it for you (easiest, no local setup)
-
-A workflow is already set up at `.github/workflows/build-android-apk.yml`:
-
-1. On GitHub, go to your repo → **Actions** tab → **"Build Furnecia
-   Dashboard Android APK"** → **Run workflow**.
-2. Wait for the run to finish (a few minutes), then get the file either way:
-   - **Releases tab** (usually the more reliable download) → the
-     `android-apk-latest` release → download `app-debug.apk` directly.
-   - Or open the workflow run and download the `furnecia-dashboard-debug-apk`
-     artifact — that zip contains `app-debug.apk`.
-3. Transfer that file to an Android phone (email, WhatsApp, Google
-   Drive, USB) and tap it to install. Android will warn about "unknown
-   sources" the first time — this is expected for any app not from the
-   Play Store; allow it for this file.
-
-Re-run the workflow any time you've changed something and want a fresh
-build — no inputs needed, since there's no server URL to provide anymore.
-
-### B2 — Build it yourself with Android Studio
-
-If you have Android Studio (or just the Android SDK + a JDK) on your own
+Build it with Android Studio (or just the Android SDK + a JDK) on a
 computer with normal internet access:
 
 ```bash
@@ -71,6 +48,11 @@ cd android
 
 Or open the `dashboard/android` folder directly in Android Studio and
 use **Build → Build Bundle(s) / APK(s) → Build APK(s)**.
+
+Transfer the resulting file to an Android phone (email, WhatsApp, Google
+Drive, USB) and tap it to install. Android will warn about "unknown
+sources" the first time — this is expected for any app not from the
+Play Store; allow it for this file.
 
 ## What "fully offline" actually means here
 
