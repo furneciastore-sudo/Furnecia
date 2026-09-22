@@ -1,13 +1,44 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { SettingsMap } from "@/lib/settingsShared";
 import { localFetch as fetch } from "@/lib/localFetch";
+import { connectGmail, isGmailConnected, runGmailAutoImport } from "@/lib/gmailAutoImport";
 
 export function SettingsForm({ initial }: { initial: SettingsMap }) {
   const [values, setValues] = useState<SettingsMap>(initial);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [gmailConnected, setGmailConnected] = useState(false);
+  const [gmailConnecting, setGmailConnecting] = useState(false);
+  const [gmailStatus, setGmailStatus] = useState("");
+
+  useEffect(() => {
+    setGmailConnected(isGmailConnected());
+  }, []);
+
+  async function handleConnectGmail() {
+    if (!values.gmailClientId.trim()) {
+      setGmailStatus("Enter your Google Cloud OAuth Client ID first, then Save Settings, then Connect Gmail.");
+      return;
+    }
+    setGmailConnecting(true);
+    setGmailStatus("");
+    const result = await connectGmail(values.gmailClientId.trim());
+    setGmailConnecting(false);
+    if (result.ok) {
+      setGmailConnected(true);
+      setGmailStatus("Connected! Checking for new orders now…");
+      const summary = await runGmailAutoImport();
+      if (summary) {
+        setGmailStatus(
+          `Connected. Found ${summary.imported} order(s) to import, ${summary.needsManualEntry} needing manual entry.`
+        );
+      }
+    } else {
+      setGmailStatus(result.error || "Could not connect to Gmail.");
+    }
+  }
 
   function set(key: keyof SettingsMap, value: string) {
     setValues((v) => ({ ...v, [key]: value }));
@@ -174,6 +205,39 @@ export function SettingsForm({ initial }: { initial: SettingsMap }) {
               onChange={(e) => set("aiModel", e.target.value)}
               placeholder={values.aiProvider === "openai" ? "gpt-4o-mini (default)" : "claude-3-5-haiku-20241022 (default)"}
             />
+          </div>
+        </Grid>
+      </Section>
+
+      <Section
+        title="Auto Import Orders from Gmail (optional)"
+        description="On each app open, automatically reads new order emails from Gmail and creates orders straight away — no review step. This is the one feature that needs internet, and it only checks while the app is open (there's no way for a phone app to run truly in the background without a real always-on server). Orders it can't fully read are added to Reminders instead of being skipped."
+      >
+        <Grid>
+          <div>
+            <label className="label">Google Cloud OAuth Client ID</label>
+            <input
+              className="input"
+              value={values.gmailClientId}
+              onChange={(e) => set("gmailClientId", e.target.value)}
+              placeholder="xxxxxxxxxx.apps.googleusercontent.com"
+              autoComplete="off"
+            />
+            <p className="mt-1 text-xs text-gray-400">
+              Create one free at console.cloud.google.com (see setup guide). Save Settings after entering this, then Connect Gmail.
+            </p>
+          </div>
+          <div className="flex flex-col justify-end gap-2">
+            <button
+              type="button"
+              className="btn-secondary"
+              disabled={gmailConnecting}
+              onClick={handleConnectGmail}
+            >
+              {gmailConnecting ? "Connecting…" : gmailConnected ? "Reconnect Gmail" : "Connect Gmail"}
+            </button>
+            {gmailConnected && <span className="text-xs text-green-600">Gmail connected.</span>}
+            {gmailStatus && <span className="text-xs text-gray-500">{gmailStatus}</span>}
           </div>
         </Grid>
       </Section>

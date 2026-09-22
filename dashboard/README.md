@@ -21,7 +21,8 @@ not linked to or published on the public website.
 | Data storage | **The browser's own local storage** (`src/lib/localApi.ts`) | Every order, vendor, product, payment, reminder and setting lives on the device itself. No database to host, no monthly cost, no internet dependency, works the moment the app opens. |
 | Styling | **Tailwind CSS** + self-hosted **Inter** font | Fast to build a clean, consistent, mobile-responsive UI. |
 | Charts | **Recharts** | Lightweight charts for the Profit Dashboard. |
-| AI Auto-fill | **Claude or ChatGPT**, called directly from the browser with your own API key (`src/lib/aiOrderParser.ts`) | Optional: reads a free-text order description and fills the Add Order form. The only feature that needs internet — see §9. |
+| AI Auto-fill | **Claude or ChatGPT**, called directly from the browser with your own API key (`src/lib/aiOrderParser.ts`) | Optional: reads a free-text order description and fills the Add Order form. See §9. |
+| Auto Import (Gmail) | **Gmail API**, called directly from the browser with your own Google OAuth key (`src/lib/gmailAutoImport.ts`) | Optional: creates orders from new order emails automatically, no review step. See §10. |
 
 This is about as low-cost and low-maintenance as it gets: no server bill,
 no database to manage, no accounts, nothing to keep running.
@@ -165,6 +166,16 @@ text** — it fills in what it recognises for you to check before saving.
 This is the one feature that needs internet and an API key (Settings →
 AI Auto-fill); everything else in the app stays fully offline. See §9.
 
+**…have orders create themselves from your inbox** — Settings → **Auto
+Import Orders from Gmail**: paste in a Google Cloud OAuth Client ID and
+click **Connect Gmail**. From then on, every time you open the app it
+checks Gmail for new "New Order — …" emails (the ones the website sends
+automatically) and creates the order immediately, with no review step —
+faster than Quick Add via AI, but also less safe, since a misread email
+becomes a saved order with no check. An email it can't confidently read
+becomes a Reminder instead, with the original text attached, so nothing
+is silently lost. See §10 before turning this on.
+
 **…update a delivery** — On the Orders table, change the **Delivery
 Status** dropdown on that row (saves instantly), or open the order and
 use the same dropdown in the form, or use **Actions → Mark Delivered**.
@@ -225,7 +236,59 @@ of this app that talks to the internet, and only when you use it:
 
 ---
 
-## 10. Where this simplifies the original brief
+## 10. Auto Import from Gmail (optional, no review step)
+
+**Settings → Auto Import Orders from Gmail** goes a step further than
+AI Auto-fill: instead of you pasting text in, it reads your inbox itself
+and creates the order with no confirmation step at all. Set this up only
+if you're comfortable with that tradeoff.
+
+**How it works:** every time you open the app, it silently checks Gmail
+for unlabelled emails whose subject starts with `New Order —` (the ones
+`js/order-email.js` on the website sends automatically), reads each one
+with the same AI parser as Quick Add via AI, and calls `createOrder()`
+directly — no review, no tap. It then labels the email `FurneciaImported`
+in Gmail so it's never processed twice. It only runs while the app is
+open in front of you; there's no way for a phone app to keep working
+while closed without a real always-on server, which this app deliberately
+doesn't have (see §5).
+
+**If an email can't be confidently read** (say, the customer's address
+is missing), it doesn't get silently dropped or guessed at — a Reminder
+is created instead, of type "Manual Order Entry Needed", with the
+original email text attached, so you can add it by hand from the
+Reminders page.
+
+**Setup (free, about 5 minutes, one time):**
+1. Go to [console.cloud.google.com](https://console.cloud.google.com),
+   create a project (any name).
+2. **APIs & Services → Library** → search "Gmail API" → **Enable**.
+3. **APIs & Services → OAuth consent screen** → choose **External**,
+   fill in the app name/support email, and add your own Gmail account
+   under **Test users** (this keeps it a personal, unpublished app —
+   fine for single-user use, no Google review needed).
+4. **APIs & Services → Credentials → Create Credentials → OAuth client
+   ID** → Application type **Web application** → under **Authorized
+   JavaScript origins** add the exact URL the app is served from (e.g.
+   `https://furneciastore-sudo.github.io`). Copy the **Client ID**.
+5. Paste that Client ID into **Settings → Auto Import Orders from
+   Gmail**, click **Save Settings**, then **Connect Gmail** and approve
+   access. Google will show an "app not verified" warning — that's
+   expected for a personal, unpublished app; click **Advanced → Go to
+   (app name)** to continue.
+6. Leaving the Client ID blank, or never clicking Connect, means this
+   feature does nothing — the rest of the app is completely unaffected
+   either way.
+
+**A note on the access this grants:** it uses the `gmail.modify` scope
+(read messages, add/remove labels) — not full account access, and not
+delete. The access token is stored only in this device's local storage
+and typically expires after about an hour; reconnecting is a single
+click in Settings whenever it lapses.
+
+---
+
+## 11. Where this simplifies the original brief
 
 - **"Quick Add"** isn't a second, separate form. The one order form
   starts with the vendor-cost/discount/commission section collapsed, so
