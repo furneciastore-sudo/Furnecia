@@ -197,7 +197,7 @@ const PRODUCTS = [
     handle: "berlin-sofa-bed-gray",
     title: "Berlin sofa bed gray",
     category: "Sofa Beds",
-    images: ["https://cdn.shopify.com/s/files/1/1008/4565/0291/files/berlin-corner-sofa-bed-9.jpg?v=1784750322", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/380145509_1029415611461979_4678196205299356250_n-Copy-Copy.jpg?v=1783927077", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/443006196_1095468514890247_7201792004623867189_n-Copy-Copy.jpg?v=1783927077", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsAppImage2023-08-05at9.47.21AM-Copy-Copy.jpg?v=1783927077", "https://cdn.shopify.com/s/files/1/1008/4565/0291/files/WhatsAppImage2023-08-30at8.43.59AM-Copy.jpg?v=1783927077"],
+    images: ["images/berlin-sofa-bed-gray/gray-1.jpg", "images/berlin-sofa-bed-gray/gray-2.jpg", "images/berlin-sofa-bed-gray/gray-3.jpg", "images/berlin-sofa-bed-gray/gray-4.jpg", "images/berlin-sofa-bed-gray/gray-5.jpg"],
     options: [],
     variants: [{ title: "Default", price: 400.0, compareAtPrice: 400.0, image: null, available: true }],
     price: 400.0,
