@@ -21,6 +21,7 @@ import type { SettingsMap } from "@/lib/settingsShared";
 import type { OrderFormValues, VendorOption, ProductOption } from "@/lib/orderFormTypes";
 import { formatMoney } from "@/lib/format";
 import { localFetch as fetch } from "@/lib/localFetch";
+import { parseOrderText, type ParsedOrder } from "@/lib/aiOrderParser";
 
 export function OrderForm({
   mode,
@@ -44,10 +45,64 @@ export function OrderForm({
   const [showAdvanced, setShowAdvanced] = useState(mode === "edit");
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+  const [aiText, setAiText] = useState("");
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState("");
+  const [aiFilledFields, setAiFilledFields] = useState<string[]>([]);
   const currency = settings.currencySymbol;
 
   function set<K extends keyof OrderFormValues>(key: K, value: OrderFormValues[K]) {
     setValues((v) => ({ ...v, [key]: value }));
+  }
+
+  async function runAiAutofill() {
+    setAiLoading(true);
+    setAiError("");
+    setAiFilledFields([]);
+    try {
+      const parsed = await parseOrderText(aiText, settings, vendors, products);
+      const filled = applyAiResult(parsed);
+      if (filled.length === 0) {
+        setAiError("Couldn't find any order details in that text — try adding more, or fill the form by hand.");
+      } else {
+        setAiFilledFields(filled);
+        if (filled.includes("Discount") || filled.includes("Amount paid")) setShowAdvanced(true);
+      }
+    } catch (e) {
+      setAiError(e instanceof Error ? e.message : "Something went wrong reading that text.");
+    } finally {
+      setAiLoading(false);
+    }
+  }
+
+  function applyAiResult(parsed: ParsedOrder): string[] {
+    const filled: string[] = [];
+    setValues((v) => {
+      const next = { ...v };
+      if (parsed.customerName) { next.customerName = parsed.customerName; filled.push("Customer name"); }
+      if (parsed.contact) { next.contact = parsed.contact; filled.push("Contact number"); }
+      if (parsed.whatsapp) { next.whatsapp = parsed.whatsapp; filled.push("WhatsApp"); }
+      if (parsed.address) { next.address = parsed.address; filled.push("Address"); }
+      if (parsed.postcode) { next.postcode = parsed.postcode; filled.push("Postcode"); }
+      if (parsed.city) { next.city = parsed.city; filled.push("City"); }
+      if (parsed.productName) { next.productName = parsed.productName; filled.push("Product"); }
+      if (parsed.productCode) next.productCode = parsed.productCode;
+      if (parsed.colour) { next.colour = parsed.colour; filled.push("Colour"); }
+      if (parsed.quantity !== undefined) next.quantity = parsed.quantity;
+      if (parsed.productPrice !== undefined) { next.productPrice = parsed.productPrice; filled.push("Price"); }
+      if (parsed.vendorId !== undefined) { next.vendorId = parsed.vendorId; filled.push("Vendor"); }
+      if (parsed.bookingDate) next.bookingDate = parsed.bookingDate;
+      if (parsed.deliveryDateExpected) { next.deliveryDateExpected = parsed.deliveryDateExpected; filled.push("Delivery date"); }
+      if (parsed.floor) { next.floor = parsed.floor; filled.push("Floor"); }
+      if (parsed.liftAvailable !== undefined) next.liftAvailable = parsed.liftAvailable;
+      if (parsed.fittingRequired !== undefined) { next.fittingRequired = parsed.fittingRequired; filled.push("Fitting"); }
+      if (parsed.additionalCharge !== undefined) next.additionalCharge = parsed.additionalCharge;
+      if (parsed.discount !== undefined) { next.discount = parsed.discount; filled.push("Discount"); }
+      if (parsed.amountPaid !== undefined) { next.amountPaid = parsed.amountPaid; filled.push("Amount paid"); }
+      if (parsed.notes) next.notes = next.notes ? `${next.notes}\n${parsed.notes}` : parsed.notes;
+      return next;
+    });
+    return filled;
   }
 
   function applyProduct(productId: string) {
@@ -151,6 +206,34 @@ export function OrderForm({
   return (
     <form onSubmit={onSubmit} className="grid grid-cols-1 gap-4 lg:grid-cols-3">
       <div className="space-y-4 lg:col-span-2">
+        {mode === "create" && (
+          <Section title="Quick Add via AI (optional)">
+            <p className="mb-2 text-xs text-gray-400">
+              Type or paste the order in any order or wording — name, phone, address, product, price, floor, delivery date,
+              whatever you have — and the AI fills in what it can find below for you to check before saving.
+            </p>
+            <textarea
+              className="input"
+              rows={4}
+              value={aiText}
+              onChange={(e) => setAiText(e.target.value)}
+              placeholder="e.g. Jane Smith 07911 123456, 12 High St Bristol BS1 4ST, grey 3 seater sofa £450, 2nd floor no lift, needs fitting, deliver next Friday, paid £100 deposit"
+            />
+            <div className="mt-2 flex flex-wrap items-center gap-2">
+              <button type="button" className="btn-primary" disabled={aiLoading || !aiText.trim()} onClick={runAiAutofill}>
+                {aiLoading ? "Reading…" : "Auto-fill from text"}
+              </button>
+              {aiFilledFields.length > 0 && (
+                <span className="text-xs text-green-600">Filled: {aiFilledFields.join(", ")} — please check before saving.</span>
+              )}
+            </div>
+            {aiError && <p className="mt-2 text-sm text-red-600">{aiError}</p>}
+            <p className="mt-2 text-xs text-gray-400">
+              Needs internet and an API key (Settings → AI Auto-fill). Everything else in this app works offline.
+            </p>
+          </Section>
+        )}
+
         {/* Customer Information */}
         <Section title="Customer Information">
           <Grid>

@@ -139,6 +139,45 @@ export function SettingsForm({ initial }: { initial: SettingsMap }) {
         </Grid>
       </Section>
 
+      <Section
+        title="AI Auto-fill (optional)"
+        description="Lets the Add Order chat box read a free-text order description and fill the form. This is the only part of the app that needs internet — everything else stays fully offline. The text you type there, and this API key, are sent only to the provider you pick below, never anywhere else."
+      >
+        <Grid>
+          <div>
+            <label className="label">Provider</label>
+            <select className="input" value={values.aiProvider} onChange={(e) => set("aiProvider", e.target.value)}>
+              <option value="claude">Claude (Anthropic)</option>
+              <option value="openai">ChatGPT (OpenAI)</option>
+            </select>
+          </div>
+          <div>
+            <label className="label">API Key</label>
+            <input
+              type="password"
+              className="input"
+              value={values.aiApiKey}
+              onChange={(e) => set("aiApiKey", e.target.value)}
+              placeholder={values.aiProvider === "openai" ? "sk-…" : "sk-ant-…"}
+              autoComplete="off"
+            />
+            <p className="mt-1 text-xs text-gray-400">
+              Get one from{" "}
+              {values.aiProvider === "openai" ? "platform.openai.com/api-keys" : "console.anthropic.com"}.
+            </p>
+          </div>
+          <div>
+            <label className="label">Model (optional)</label>
+            <input
+              className="input"
+              value={values.aiModel}
+              onChange={(e) => set("aiModel", e.target.value)}
+              placeholder={values.aiProvider === "openai" ? "gpt-4o-mini (default)" : "claude-3-5-haiku-20241022 (default)"}
+            />
+          </div>
+        </Grid>
+      </Section>
+
       <Section title="Business Settings">
         <Grid>
           <div>

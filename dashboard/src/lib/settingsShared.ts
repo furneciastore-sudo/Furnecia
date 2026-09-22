@@ -38,6 +38,14 @@ export const DEFAULT_SETTINGS: Record<string, string> = {
   deliveryDefaultLeadTimeDays: "14",
   deliverySkipWeekends: "true",
   deliverySuggestionWindowDays: "3",
+
+  // AI Auto-fill (optional) — lets the Add Order chat box read a
+  // free-text order description and fill the form. This is the one
+  // feature that needs internet (only while you use it) and your own
+  // API key, since it calls Claude or ChatGPT directly from the app.
+  aiProvider: "claude",
+  aiModel: "",
+  aiApiKey: "",
 };
 
 export type SettingsMap = typeof DEFAULT_SETTINGS;

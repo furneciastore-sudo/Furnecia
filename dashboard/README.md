@@ -21,6 +21,7 @@ not linked to or published on the public website.
 | Data storage | **The browser's own local storage** (`src/lib/localApi.ts`) | Every order, vendor, product, payment, reminder and setting lives on the device itself. No database to host, no monthly cost, no internet dependency, works the moment the app opens. |
 | Styling | **Tailwind CSS** + self-hosted **Inter** font | Fast to build a clean, consistent, mobile-responsive UI. |
 | Charts | **Recharts** | Lightweight charts for the Profit Dashboard. |
+| AI Auto-fill | **Claude or ChatGPT**, called directly from the browser with your own API key (`src/lib/aiOrderParser.ts`) | Optional: reads a free-text order description and fills the Add Order form. The only feature that needs internet — see §9. |
 
 This is about as low-cost and low-maintenance as it gets: no server bill,
 no database to manage, no accounts, nothing to keep running.
@@ -156,6 +157,14 @@ Calculation" panel on the right updates live. Click **"+ Show vendor
 cost, discount & commission details"** if you need them; otherwise just
 click **SAVE ORDER**.
 
+**…add an order by typing it in free text** — On the same Add Order
+page, use the **Quick Add via AI** box at the top: type or paste the
+order in any order or wording (name, phone, address, product, price,
+floor, delivery date, whatever you have) and click **Auto-fill from
+text** — it fills in what it recognises for you to check before saving.
+This is the one feature that needs internet and an API key (Settings →
+AI Auto-fill); everything else in the app stays fully offline. See §9.
+
 **…update a delivery** — On the Orders table, change the **Delivery
 Status** dropdown on that row (saves instantly), or open the order and
 use the same dropdown in the form, or use **Actions → Mark Delivered**.
@@ -187,12 +196,36 @@ Schedule** — a plain-text editor, one line per postcode area.
 
 **…install it on an Android phone** — see [`ANDROID.md`](./ANDROID.md):
 install it as a web app (works fully offline after the first visit), or
-build a real downloadable `.apk` via the included GitHub Actions
-workflow.
+build a real downloadable `.apk` with Android Studio.
 
 ---
 
-## 9. Where this simplifies the original brief
+## 9. AI Auto-fill (optional, the one online feature)
+
+The **Quick Add via AI** box on the Add Order page (§8) is the only part
+of this app that talks to the internet, and only when you use it:
+
+- Set it up in **Settings → AI Auto-fill**: pick **Claude** or
+  **ChatGPT**, then paste in your own API key from that provider
+  (`console.anthropic.com` or `platform.openai.com/api-keys`). The key
+  is stored in this device's local storage, same as everything else —
+  it is never bundled into the app or sent anywhere except that one
+  provider's API.
+- When you click **Auto-fill from text**, the text you typed (and that
+  API key) is sent directly from the app to whichever provider you
+  picked — this is the one moment any data leaves the device. Be mindful
+  of that if the text includes real customer details.
+- The AI is instructed to only fill in what's clearly stated in your
+  text and to leave the rest blank rather than guess — always review the
+  filled fields (they're listed after it runs) before hitting **SAVE
+  ORDER**, same as any other order.
+- No key set, or no internet, or the request fails: you get a clear
+  error message and can just fill the form in by hand — nothing else in
+  the app is affected (`src/lib/aiOrderParser.ts`).
+
+---
+
+## 10. Where this simplifies the original brief
 
 - **"Quick Add"** isn't a second, separate form. The one order form
   starts with the vendor-cost/discount/commission section collapsed, so

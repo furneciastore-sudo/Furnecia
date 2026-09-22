@@ -1,9 +1,10 @@
 # Installing the Dashboard on Android
 
-The dashboard is now a fully offline app — no server, no internet
-connection, no account. All your orders, vendors, products and settings
-live only on the phone you're using, in the app's own local storage.
-There are two ways to get it onto an Android phone.
+The dashboard is a fully offline app by default — no server, no account,
+no internet connection required. All your orders, vendors, products and
+settings live only on the phone you're using, in the app's own local
+storage. (The only optional exception is the AI Auto-fill chat box — see
+below.) There are two ways to get it onto an Android phone.
 
 ## Option A — Install as a web app (fastest, no build needed)
 
@@ -60,6 +61,11 @@ Play Store; allow it for this file.
   stored in the browser/WebView's own local storage** (`src/lib/localApi.ts`
   and `src/lib/localStore.ts`) — there is no server, no database to host,
   nothing to deploy for the app to work.
+- The one exception is the optional **Quick Add via AI** box on the Add
+  Order page (see `dashboard/README.md` §9) — it needs internet and your
+  own Claude/ChatGPT API key, and only while you're using it. Skip
+  Settings → AI Auto-fill entirely and the app never makes a network
+  request.
 - **Data does not sync between devices.** If you install this on two
   phones, each has its own separate set of orders. If you want a backup,
   or to move data to a new phone, use **Orders → Export CSV** regularly
