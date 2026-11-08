@@ -6,7 +6,7 @@ import { DELIVERY_SCHEDULE_SEED } from "@/lib/deliveryScheduleSeed";
 // official route sheet, so existing installs pick up the correction
 // automatically on next launch — without touching their orders,
 // vendors, products or settings.
-const DELIVERY_SCHEDULE_VERSION = "2026-final-new-routes";
+const DELIVERY_SCHEDULE_VERSION = "2026-2027-extended-routes";
 const VERSION_KEY = "deliveryScheduleVersion";
 
 /** Runs once on the very first launch: loads the real UK delivery-day
