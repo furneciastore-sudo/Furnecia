@@ -1,14 +1,15 @@
-// Real UK postcode -> delivery-day reference data, updated from the
+// Real UK postcode -> delivery-day reference data, from the
 // business's "Final_extended_routes_2026-2027" route sheet (same
 // source used for the website's customer-facing delivery checker —
-// see js/delivery-checker-data.js on the storefront).
+// see js/delivery-checker-data.js on the storefront). Every postcode
+// prefix in the sheet is included below — nothing held back.
 //
 // This sheet rotated every area's dispatch day forward by one from
 // the previous sheet (Hull Mon->Tue, Norwich Tue->Wed, Birmingham
 // Wed->Thu, Kent Thu->Fri, Newcastle Fri->Sat), and added Manchester
 // as its own Monday route. The previous sheet's Saturday-anchored
 // dispatch days (Nottingham, Birmingham-depends, Telford, Scotland,
-// Wales, Oxford, Peterborough, Newcastle) could not be confidently
+// Wales, Oxford, Peterborough, Newcastle) couldn't be confidently
 // matched to a new slot in the scan, since Saturday has no following
 // working day to roll into — they were left unchanged as a
 // conservative choice. Confirm with the delivery team whether those
@@ -23,18 +24,11 @@
 // area shows up under more than one route type, its served days are
 // the union of all of them; staff should still confirm an exact date
 // for anything marked "depends on orders" on the source sheet.
-//
-// Not yet included here, pending confirmation from the delivery
-// team (same as flagged on the website checker): CT (Canterbury),
-// SO, PO, GU (unclear parent group in the previous sheet); NR
-// (Norwich), SP, DT, BA, TA (Plymouth group) were shaded "depends on
-// orders" in this updated sheet unlike the rest of their groups —
-// removed from their areas pending confirmation. Add any of these
-// once confirmed, from Delivery Checker -> Manage Schedule.
 
 export const DELIVERY_SCHEDULE_SEED: { postcodePrefix: string; areaName: string; days: string[] }[] = [
   { postcodePrefix: "AL", areaName: "London Local", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "B", areaName: "Birmingham", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
+  { postcodePrefix: "BA", areaName: "Plymouth / South West", days: ["Wednesday"] },
   { postcodePrefix: "BB", areaName: "Manchester", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "BD", areaName: "Leeds", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "BH", areaName: "Plymouth / South West", days: ["Wednesday"] },
@@ -48,6 +42,7 @@ export const DELIVERY_SCHEDULE_SEED: { postcodePrefix: string; areaName: string;
   { postcodePrefix: "CM", areaName: "Nottingham", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "CO", areaName: "Norwich", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "CR", areaName: "London Local", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
+  { postcodePrefix: "CT", areaName: "Kent", days: ["Monday", "Wednesday", "Thursday", "Saturday"] },
   { postcodePrefix: "CV", areaName: "Birmingham", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "CW", areaName: "Stoke-on-Trent", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "DA", areaName: "London Local", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
@@ -56,6 +51,7 @@ export const DELIVERY_SCHEDULE_SEED: { postcodePrefix: string; areaName: string;
   { postcodePrefix: "DH", areaName: "Newcastle", days: ["Monday", "Tuesday", "Thursday", "Friday"] },
   { postcodePrefix: "DL", areaName: "Newcastle", days: ["Monday", "Tuesday", "Thursday", "Friday"] },
   { postcodePrefix: "DN", areaName: "Manchester", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
+  { postcodePrefix: "DT", areaName: "Plymouth / South West", days: ["Wednesday"] },
   { postcodePrefix: "E", areaName: "London Local", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "EC", areaName: "London Local", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "EH", areaName: "Scotland", days: ["Monday", "Tuesday", "Friday", "Saturday"] },
@@ -65,6 +61,7 @@ export const DELIVERY_SCHEDULE_SEED: { postcodePrefix: string; areaName: string;
   { postcodePrefix: "FY", areaName: "Manchester", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "G", areaName: "Scotland", days: ["Monday", "Tuesday", "Friday", "Saturday"] },
   { postcodePrefix: "GL", areaName: "Wales", days: ["Monday", "Tuesday", "Thursday", "Friday"] },
+  { postcodePrefix: "GU", areaName: "Wales", days: ["Monday", "Tuesday", "Thursday", "Friday"] },
   { postcodePrefix: "HA", areaName: "London Local", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "HD", areaName: "Leeds", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "HG", areaName: "Newcastle", days: ["Monday", "Tuesday", "Thursday", "Friday"] },
@@ -90,11 +87,13 @@ export const DELIVERY_SCHEDULE_SEED: { postcodePrefix: string; areaName: string;
   { postcodePrefix: "NG", areaName: "Nottingham", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "NN", areaName: "Birmingham", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "NP", areaName: "Wales", days: ["Monday", "Tuesday", "Thursday", "Friday"] },
+  { postcodePrefix: "NR", areaName: "Norwich", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "NW", areaName: "London Local", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "OL", areaName: "Manchester", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "OX", areaName: "Oxford", days: ["Monday", "Tuesday", "Thursday", "Friday"] },
   { postcodePrefix: "PE", areaName: "Peterborough", days: ["Monday", "Tuesday", "Thursday", "Friday"] },
   { postcodePrefix: "PL", areaName: "Plymouth / South West", days: ["Wednesday"] },
+  { postcodePrefix: "PO", areaName: "Wales", days: ["Monday", "Tuesday", "Thursday", "Friday"] },
   { postcodePrefix: "PR", areaName: "Manchester", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "RG", areaName: "Oxford", days: ["Monday", "Tuesday", "Thursday", "Friday"] },
   { postcodePrefix: "RH", areaName: "Kent", days: ["Monday", "Wednesday", "Thursday", "Saturday"] },
@@ -107,11 +106,14 @@ export const DELIVERY_SCHEDULE_SEED: { postcodePrefix: string; areaName: string;
   { postcodePrefix: "SL", areaName: "London Local", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "SM", areaName: "London Local", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "SN", areaName: "Oxford", days: ["Monday", "Tuesday", "Thursday", "Friday"] },
+  { postcodePrefix: "SO", areaName: "Wales", days: ["Monday", "Tuesday", "Thursday", "Friday"] },
+  { postcodePrefix: "SP", areaName: "Plymouth / South West", days: ["Wednesday"] },
   { postcodePrefix: "SR", areaName: "Newcastle", days: ["Monday", "Tuesday", "Thursday", "Friday"] },
   { postcodePrefix: "SS", areaName: "London Local", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "ST", areaName: "Stoke-on-Trent", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "SW", areaName: "London Local", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   { postcodePrefix: "SY", areaName: "Telford", days: ["Monday", "Tuesday", "Thursday", "Friday"] },
+  { postcodePrefix: "TA", areaName: "Plymouth / South West", days: ["Wednesday"] },
   { postcodePrefix: "TF", areaName: "Telford", days: ["Monday", "Tuesday", "Thursday", "Friday"] },
   { postcodePrefix: "TN", areaName: "Kent", days: ["Monday", "Wednesday", "Thursday", "Saturday"] },
   { postcodePrefix: "TQ", areaName: "Plymouth / South West", days: ["Wednesday"] },
